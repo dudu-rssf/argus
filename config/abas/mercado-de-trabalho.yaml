@@ -1,0 +1,47 @@
+# Aba Mercado de Trabalho (Fase 4).
+id: mercado-de-trabalho
+titulo: Mercado de Trabalho
+grupo: Brasil
+ordem: 2
+paineis:
+  - titulo: Taxa de desocupação
+    transformacao: nivel
+    series:
+      - { dado: "BR-015:24369", rotulo: Desocupação }
+
+  - titulo: Participação e nível de ocupação
+    transformacao: nivel
+    series:
+      - { dado: "BR-016:t5944/v4096", rotulo: Participação na força de trabalho }
+      - { dado: "BR-016:t6379/v4097", rotulo: Nível da ocupação }
+
+  - titulo: Pessoas ocupadas
+    transformacao: yoy
+    series:
+      - { dado: "BR-017:t8501/v4090/c1350=57302,57303@57302", rotulo: Total }
+      - { dado: "BR-017:t8501/v4090/c1350=57302,57303@57303", rotulo: Informais }
+
+  - titulo: Taxa de informalidade
+    transformacao: nivel
+    series:
+      - { dado: "BR-018:t8513/v12466", rotulo: Informalidade }
+
+  - titulo: Rendimento médio real habitual
+    transformacao: yoy
+    series:
+      - { dado: "BR-019:t6390/v5933,5929@5933", rotulo: Rendimento real }
+
+  - titulo: Massa de rendimento real habitual
+    transformacao: yoy
+    series:
+      - { dado: "BR-020:t6392/v6293,6288@6293", rotulo: Massa real }
+
+  - titulo: Emprego formal (Novo CAGED), estoque
+    transformacao: yoy
+    series:
+      - { dado: "BR-022:28763", rotulo: Estoque de empregos formais }
+
+  - titulo: Saldo de empregos formais (Novo CAGED)
+    transformacao: soma12
+    series:
+      - { dado: "BR-133:derivado", rotulo: Saldo, tipo: Fluxo }

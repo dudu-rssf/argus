@@ -1,0 +1,33 @@
+# Aba Famílias (Fase 4).
+id: familias
+titulo: Famílias
+grupo: Brasil
+ordem: 7
+paineis:
+  - titulo: Endividamento e comprometimento de renda
+    transformacao: nivel
+    series:
+      - { dado: "BR-091:29037", rotulo: Endividamento (% da renda em 12 meses) }
+      - { dado: "BR-092:29034", rotulo: Comprometimento de renda (com ajuste sazonal) }
+
+  - titulo: Inadimplência das pessoas físicas
+    transformacao: nivel
+    series:
+      - { dado: "BR-096:21084", rotulo: Inadimplência PF }
+
+  - titulo: Crédito às famílias por modalidade
+    transformacao: yoy
+    series:
+      - { dado: "BR-093:20590", rotulo: Cartão de crédito }
+      - { dado: "BR-094:20580", rotulo: Crédito pessoal }
+      - { dado: "BR-095:20612", rotulo: Financiamento imobiliário }
+
+  - titulo: Massa de rendimento real (renda do trabalho)
+    transformacao: yoy
+    series:
+      - { dado: "BR-020:t6392/v6293,6288@6293", rotulo: Massa real }
+
+  - titulo: Consumo das famílias (PIB)
+    transformacao: yoy
+    series:
+      - { dado: "BR-004:t1621/v584/c11255=93404,93405,93406,93407,93408@93404", rotulo: Consumo das famílias }

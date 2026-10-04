@@ -1,0 +1,57 @@
+# Aba Setor Externo (Fase 4).
+id: setor-externo
+titulo: Setor Externo
+grupo: Brasil
+ordem: 6
+paineis:
+  - titulo: Exportações e importações (12 meses, US$)
+    transformacao: soma12
+    series:
+      - { dado: "BR-079:fluxo=export", rotulo: Exportações }
+      - { dado: "BR-079:fluxo=import", rotulo: Importações }
+
+  - titulo: Exportações por destino (12 meses, US$)
+    transformacao: soma12
+    series:
+      - { dado: "BR-080:fluxo=export/pais=160", rotulo: China }
+      - { dado: "BR-080:fluxo=export/pais=249", rotulo: Estados Unidos }
+      - { dado: "BR-080:fluxo=export/bloco=22", rotulo: União Europeia }
+
+  - titulo: Transações correntes (12 meses, % do PIB)
+    transformacao: nivel
+    series:
+      - { dado: "BR-082:23079", rotulo: Transações correntes }
+
+  - titulo: Transações correntes e investimento direto (12 meses, US$ milhões)
+    transformacao: soma12
+    series:
+      - { dado: "BR-081:22701", rotulo: Transações correntes }
+      - { dado: "BR-083:22885", rotulo: Investimento direto no país }
+
+  - titulo: Reservas internacionais (US$ milhões)
+    transformacao: nivel
+    series:
+      - { dado: "BR-084:13621", rotulo: Reservas }
+
+  - titulo: Dólar
+    transformacao: nivel
+    series:
+      - { dado: "BR-085:1", rotulo: R$ por US$ (venda) }
+
+  - titulo: Câmbio real efetivo
+    transformacao: nivel
+    series:
+      - { dado: "BR-086:11752", rotulo: Índice (jun/1994 = 100) }
+
+  - titulo: Focus, dólar no fim de cada ano
+    transformacao: nivel
+    series:
+      - { dado: "BR-088:ExpectativasMercadoAnuais · Indicador='Câmbio'@{ano}", rotulo: "{ano}" }
+      - { dado: "BR-088:ExpectativasMercadoAnuais · Indicador='Câmbio'@{ano+1}", rotulo: "{ano+1}" }
+
+  - titulo: Commodities exportadas pelo Brasil
+    transformacao: yoy
+    series:
+      - { dado: "BR-089:PIORECRUSDM", rotulo: Minério de ferro }
+      - { dado: "BR-089:DCOILBRENTEU", rotulo: Petróleo Brent }
+      - { dado: "BR-089:PSOYBUSDM", rotulo: Soja }

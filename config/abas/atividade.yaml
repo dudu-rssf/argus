@@ -1,0 +1,60 @@
+# Aba Atividade (Fase 4).
+id: atividade
+titulo: Atividade
+grupo: Brasil
+ordem: 1
+paineis:
+  - titulo: PIB real
+    transformacao: qoq
+    series:
+      - { dado: "BR-001:t1621/v584/c11255=90707", rotulo: PIB (com ajuste sazonal) }
+
+  - titulo: PIB pela ótica da oferta
+    transformacao: yoy
+    series:
+      - { dado: "BR-003:t1621/v584/c11255=90687,90691,90696@90687", rotulo: Agropecuária }
+      - { dado: "BR-003:t1621/v584/c11255=90687,90691,90696@90691", rotulo: Indústria }
+      - { dado: "BR-003:t1621/v584/c11255=90687,90691,90696@90696", rotulo: Serviços }
+
+  - titulo: PIB pela ótica da demanda
+    transformacao: yoy
+    series:
+      - { dado: "BR-004:t1621/v584/c11255=93404,93405,93406,93407,93408@93404", rotulo: Consumo das famílias }
+      - { dado: "BR-004:t1621/v584/c11255=93404,93405,93406,93407,93408@93405", rotulo: Consumo do governo }
+      - { dado: "BR-004:t1621/v584/c11255=93404,93405,93406,93407,93408@93406", rotulo: Investimento (FBCF) }
+      - { dado: "BR-004:t1621/v584/c11255=93404,93405,93406,93407,93408@93407", rotulo: Exportações }
+      - { dado: "BR-004:t1621/v584/c11255=93404,93405,93406,93407,93408@93408", rotulo: Importações }
+
+  - titulo: IBC-Br
+    transformacao: yoy
+    series:
+      - { dado: "BR-006:24364", rotulo: IBC-Br (com ajuste sazonal) }
+
+  - titulo: Produção industrial
+    transformacao: mom
+    series:
+      - { dado: "BR-007:t8888/v12606,12607/c544=129314,129315,129316@12607.129314", rotulo: Indústria geral }
+      - { dado: "BR-007:t8888/v12606,12607/c544=129314,129315,129316@12607.129315", rotulo: Extrativa }
+      - { dado: "BR-007:t8888/v12606,12607/c544=129314,129315,129316@12607.129316", rotulo: Transformação }
+
+  - titulo: Varejo (volume)
+    transformacao: mom
+    series:
+      - { dado: "BR-008:t8880/v7169,7170/c11046=56733,56734@7170.56734", rotulo: Restrito }
+      - { dado: "BR-008:t8881/v7169,7170/c11046=56735,56736@7170.56736", rotulo: Ampliado }
+
+  - titulo: Serviços (volume)
+    transformacao: mom
+    series:
+      - { dado: "BR-009:t5906/v7167,7168/c11046=56725,56726@7168.56726", rotulo: Volume de serviços }
+
+  - titulo: PIB nominal em 12 meses
+    transformacao: nivel
+    series:
+      - { dado: "BR-005:4382", rotulo: PIB nominal (R$ milhões) }
+
+  - titulo: Focus, PIB por ano
+    transformacao: nivel
+    series:
+      - { dado: "BR-014:ExpectativasMercadoAnuais · Indicador='PIB Total'@{ano}", rotulo: "{ano}" }
+      - { dado: "BR-014:ExpectativasMercadoAnuais · Indicador='PIB Total'@{ano+1}", rotulo: "{ano+1}" }

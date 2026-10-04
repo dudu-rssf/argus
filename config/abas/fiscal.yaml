@@ -1,0 +1,53 @@
+# Aba Fiscal (Fase 4).
+id: fiscal
+titulo: Fiscal
+grupo: Brasil
+ordem: 5
+paineis:
+  - titulo: Resultado primário, setor público consolidado (12 meses, % do PIB)
+    transformacao: nivel
+    series:
+      - { dado: "BR-069:5793", rotulo: Primário }
+
+  - titulo: Resultado nominal e juros (12 meses, % do PIB)
+    transformacao: nivel
+    series:
+      - { dado: "BR-070:5727", rotulo: Nominal }
+      - { dado: "BR-070:5760", rotulo: Juros nominais }
+
+  - titulo: Primário por esfera (12 meses, % do PIB)
+    transformacao: nivel
+    series:
+      - { dado: "BR-069:5793", rotulo: Setor público consolidado }
+      - { dado: "BR-071:5783", rotulo: Governo Federal e BC }
+      - { dado: "BR-071:5789", rotulo: Estatais }
+
+  - titulo: Dívida bruta e líquida (% do PIB)
+    transformacao: nivel
+    series:
+      - { dado: "BR-072:13762", rotulo: Dívida bruta (DBGG) }
+      - { dado: "BR-073:4513", rotulo: Dívida líquida (DLSP) }
+
+  - titulo: Governo Central, receita líquida e despesa (12 meses, R$ milhões)
+    transformacao: soma12
+    series:
+      - { dado: "BR-074:rtn=10.01.2", rotulo: Receita líquida }
+      - { dado: "BR-074:rtn=10.03.1", rotulo: Despesa total }
+
+  - titulo: Governo Central, primário e nominal (12 meses, R$ milhões)
+    transformacao: soma12
+    series:
+      - { dado: "BR-074:rtn=10.04.1", rotulo: Primário }
+      - { dado: "BR-074:rtn=10.09.1", rotulo: Nominal }
+
+  - titulo: Focus, resultado primário por ano (% do PIB)
+    transformacao: nivel
+    series:
+      - { dado: "BR-077:ExpectativasMercadoAnuais · Indicador='Resultado primário'@{ano}", rotulo: "{ano}" }
+      - { dado: "BR-077:ExpectativasMercadoAnuais · Indicador='Resultado primário'@{ano+1}", rotulo: "{ano+1}" }
+
+  - titulo: Focus, dívida líquida por ano (% do PIB)
+    transformacao: nivel
+    series:
+      - { dado: "BR-077:ExpectativasMercadoAnuais · Indicador='Dívida líquida do setor público'@{ano}", rotulo: "{ano}" }
+      - { dado: "BR-077:ExpectativasMercadoAnuais · Indicador='Dívida líquida do setor público'@{ano+1}", rotulo: "{ano+1}" }
