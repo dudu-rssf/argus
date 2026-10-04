@@ -102,14 +102,15 @@ series:
   bloco: Copom
   indicador: Comunicados e atas (texto)
   fonte: BCB site (API Copom)
-  codigo: api/servico/sitebcb/copom/comunicados · /atas
+  codigo: comunicados ; atas
   frequencia: Por reunião
   unidade: Texto
   tipo: Texto
   fase: MVP
   status: Verificado
-  observacao: API do site, não documentada; respondeu com a 281ª reunião (set/2026). Teste de contrato obrigatório
-  acesso: manual
+  observacao: API do site do BCB, não documentada (copom/comunicados, copom/atas e *_detalhes); texto convertido para texto
+    puro na tabela events; comunicados desde a 46ª reunião (2000)
+  acesso: copom
 - id: BR-059
   bloco: Agregados
   indicador: M1 (saldo fim de período, SA)
