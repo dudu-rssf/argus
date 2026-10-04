@@ -32,6 +32,12 @@ export const ROTULOS: Record<IdTransformacao, string> = {
   soma12: "Soma 12 meses",
 };
 
+/** Rótulo da transformação; o "nível" de uma variação mensal é a própria variação. */
+export function rotulo(id: IdTransformacao, tipo: TipoSerie): string {
+  if (id === "nivel" && tipo === "Var % mensal") return "Variação mensal (%)";
+  return ROTULOS[id];
+}
+
 /** Transformações válidas por tipo de série. Trimestrais trocam MoM por QoQ. */
 export function transformacoesValidas(tipo: TipoSerie, frequencia: string): IdTransformacao[] {
   const trimestral = ehTrimestral(frequencia);

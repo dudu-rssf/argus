@@ -19,12 +19,14 @@
   --cor-baixa: #e06a5f;
   --cor-alerta: #d9a03f;
 
-  /* Séries de gráfico: a primeira é sempre a dourada; as demais, frias. */
-  --serie-1: #c8a24a;
-  --serie-2: #7fa7d9;
-  --serie-3: #b4bfd0;
-  --serie-4: #5c80ab;
-  --serie-5: #8e7bc4;
+  /* Séries de gráfico, nesta ordem fixa (nunca reciclada). Validadas contra o painel
+     (#0d1a2e): faixa de luminosidade, croma, separação para daltonismo e contraste. */
+  --serie-1: #b58d2c;
+  --serie-2: #3f86d6;
+  --serie-3: #d0704f;
+  --serie-4: #239d95;
+  --serie-5: #9b7fe0;
+  --grade: #172a45;
 
   --raio-painel: 6px;
   --raio-controle: 4px;
