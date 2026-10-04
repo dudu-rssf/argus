@@ -243,7 +243,7 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
       <footer className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-linha px-4 py-2 text-xs text-texto-3">
         <span>
           Fonte: {[...new Set(painel.series.map((s) => s.fonte))].join(", ")}
-          {" "}({painel.series.map((s) => s.serie).join(", ")})
+          {" "}({[...new Set(painel.series.map((s) => s.serie))].join(", ")})
         </span>
         <span className="flex gap-3">
           <button type="button" onClick={() => setTabela((t) => !t)} className="hover:text-texto">
