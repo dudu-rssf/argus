@@ -124,6 +124,8 @@ def source_kind(fonte: str, codigo: str) -> str:
         return "tesouro"
     if fonte.startswith("B3") and codigo.startswith("indice="):
         return "b3"
+    if "Copom" in fonte and re.fullmatch(r"(comunicados|atas)( ; (comunicados|atas))*", codigo.strip()):
+        return "copom"
     return "manual"
 
 
