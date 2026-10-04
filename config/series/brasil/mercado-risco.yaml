@@ -6,14 +6,15 @@ series:
   bloco: Bolsa
   indicador: Ibovespa
   fonte: B3 (oficial) / Yahoo (alternativa)
-  codigo: B3 IndexCall/GetPortfolioDay IBOV · Yahoo ^BVSP
+  codigo: indice=IBOV · yahoo=^BVSP
   frequencia: Diária
   unidade: Pontos
   tipo: Índice
   fase: MVP
   status: Verificado
-  observacao: FMP grátis não inclui Ibovespa (HTTP 402); SGS 7 descontinuada em 2019
-  acesso: manual
+  observacao: 'Fechamento diário desde 1998 (antes, reescalonamentos ÷10 sem ajuste na fonte: v2). Yahoo cobre a janela recente
+    se a B3 falhar; FMP grátis não inclui Ibovespa (HTTP 402)'
+  acesso: b3
 - id: BR-107
   bloco: Juros
   indicador: Curva DI futuro (vértices)
