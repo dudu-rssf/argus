@@ -163,11 +163,24 @@ def _conferir_metadados(spec: Spec, meta: dict) -> int:
     return len(spec.categorias)
 
 
+def _metadados(client: httpx.Client, tabela: str) -> dict:
+    try:
+        return json.loads(_get(client, f"{BASE}/{tabela}/metadados"))
+    except ValueError as e:
+        raise AdapterError(f"SIDRA t{tabela}: metadados inesperados ({e})") from e
+
+
+def metadados(tabela: str) -> dict:
+    """Metadados oficiais da tabela (variáveis, classificações, categorias e níveis)."""
+    with httpx.Client(timeout=120, headers=UA, follow_redirects=True) as client:
+        return _metadados(client, tabela)
+
+
 def fetch(codigo: str, desde: date | None) -> list[Observacao]:
     spec = parse_codigo(codigo)
     with httpx.Client(timeout=120, headers=UA, follow_redirects=True) as client:
+        meta = _metadados(client, spec.tabela)
         try:
-            meta = json.loads(_get(client, f"{BASE}/{spec.tabela}/metadados"))
             per = meta["periodicidade"]
             freq, inicio, fim = per["frequencia"], int(per["inicio"]), int(per["fim"])
         except (ValueError, KeyError) as e:

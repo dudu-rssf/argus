@@ -170,3 +170,10 @@ def test_variavel_fora_da_tabela_vira_adapter_error():
     respx.get(url__regex=r".*/agregados/8888/metadados$").respond(text=_ler("sidra_meta_8888.json"))
     with pytest.raises(AdapterError, match="99999"):
         sidra.fetch("t8888/v99999", date(2026, 1, 1))
+
+
+@respx.mock
+def test_metadados():
+    respx.get(url__regex=r".*/agregados/7060/metadados$").respond(text=_ler("sidra_meta_7060.json"))
+    meta = sidra.metadados("7060")
+    assert meta["classificacoes"][0]["id"] == 315
