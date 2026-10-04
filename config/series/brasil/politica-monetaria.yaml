@@ -101,14 +101,14 @@ series:
 - id: BR-058
   bloco: Copom
   indicador: Comunicados e atas (texto)
-  fonte: BCB site
-  codigo: API do site (não documentada) + RSS
+  fonte: BCB site (API Copom)
+  codigo: api/servico/sitebcb/copom/comunicados · /atas
   frequencia: Por reunião
   unidade: Texto
   tipo: Texto
   fase: MVP
-  status: Confirmar
-  observacao: Base para o agregador e, depois, análise de linguagem
+  status: Verificado
+  observacao: API do site, não documentada; respondeu com a 281ª reunião (set/2026). Teste de contrato obrigatório
   acesso: manual
 - id: BR-059
   bloco: Agregados

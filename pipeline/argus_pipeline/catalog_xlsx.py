@@ -19,6 +19,7 @@ _BR, _US = _ler("brasil"), _ler("eua")
 BR = [tuple(r[1:9] + r[10:13]) for r in _BR]
 US = [tuple(r[1:9] + r[10:13]) for r in _US]
 TRANSF_LINHA = {r[0]: r[9] for r in _BR + _US}
+IDS = {"BR": [r[0] for r in _BR], "US": [r[0] for r in _US]}
 CENTRAL = [tuple(r) for r in _ler("central")]
 FONTES = [tuple(r) for r in _ler("fontes")]
 TRANSF = {}
@@ -76,7 +77,7 @@ def catalog(ws, prefix, data, t, s):
                "Unidade", "Tipo", "Transformações válidas", "Fase", "Status", "Observação"]
     rows = []
     for n, (aba, bloco, ind, fonte, cod, freq, un, tipo, fase, st, obs) in enumerate(data, 1):
-        rid = f"{prefix}-{n:03d}"
+        rid = IDS[prefix][n - 1]  # ID vem do CSV, nunca da posição
         rows.append([rid, aba, bloco, ind, fonte, cod, freq, un, tipo,
                      TRANSF_LINHA.get(rid, ""), fase, st, obs])
     header_block(ws, t, s, len(headers))

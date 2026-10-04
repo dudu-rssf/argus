@@ -12,7 +12,10 @@ TSE Dados Abertos,CSV,Nenhuma,Arquivos grandes por eleição,Baixo,Grátis
 ANBIMA / B3,Arquivos diários no site,Nenhuma (API ANBIMA é paga),Formatos mudam sem aviso,Alto,Grátis / pago
 FRED / ALFRED,REST,Chave grátis,120 req/min; vintages via ALFRED,Baixo,Grátis
 BEA / Census / BLS,REST,Chave grátis,BLS: limite diário por chave,Baixo,Grátis
-Financial Modeling Prep,REST,Chave,Grátis 250 chamadas/dia; Starter US$ 22/mês,Baixo,Grátis / pago
+Financial Modeling Prep,REST,Chave,"Grátis 250 chamadas/dia, só ações dos EUA: Ibovespa e EWZ dão HTTP 402. Fora do MVP",Baixo,Grátis / pago
 GDELT,REST,Nenhuma,Volume alto; filtrar por tema/país,Médio,Grátis
 "RSS (BCB, Fed, IBGE, imprensa)",RSS/Atom,Nenhuma,Exibir só título + link de veículos de imprensa,Baixo,Grátis
 Claude API,REST,Chave,Para resumo de notícias e análise de texto (v2+),Baixo,Pago por uso
+B3 (IndexCall),JSON (sistemaswebb3-listados.b3.com.br),Nenhuma,"Endpoint do site da B3, não documentado; fechamentos diários por ano",Médio,Grátis
+Yahoo Finance,JSON (query1.finance.yahoo.com),Nenhuma,Não oficial; só como alternativa,Alto,Grátis
+BCB site (API Copom),JSON (www.bcb.gov.br/api/servico/sitebcb),Nenhuma,Não documentada; comunicados e atas do Copom,Médio,Grátis

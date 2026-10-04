@@ -96,7 +96,8 @@ series:
   tipo: Var % mensal
   fase: MVP
   status: Verificado
-  observacao: ''
+  observacao: 'Há dois códigos com título EX2: 16121 ("ex2") e 27838 ("EX2"); confirmar qual é a série vigente antes da Fase
+    3'
   acesso: sgs
 - id: BR-033
   bloco: Núcleos
@@ -114,14 +115,26 @@ series:
   bloco: Núcleos
   indicador: Núcleos EX3 e P55
   fonte: BCB SGS
-  codigo: A mapear
+  codigo: 27839 / 28750
   frequencia: Mensal
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: A mapear
-  observacao: Não encontrados no portal do BCB por "núcleo ex3" nem "p55" (busca de 2026-10-04); localizar no SGS
-  acesso: pendente
+  status: Verificado
+  observacao: 'Títulos SGS: "Núcleo por exclusão - EX3" (27839) e "Núcleo Percentil 55" (28750); sondagem 2026-10-04'
+  acesso: sgs
+- id: BR-126
+  bloco: Núcleos
+  indicador: Núcleo ex-alimentação e energia (EX-FE)
+  fonte: BCB SGS
+  codigo: '28751'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: 'Título SGS 28751: "Núcleo Ex-alimentação e energia (EX-FE)"; comparável ao core dos EUA'
+  acesso: sgs
 - id: BR-035
   bloco: Aberturas
   indicador: Preços livres

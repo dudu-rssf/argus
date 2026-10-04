@@ -66,13 +66,13 @@ series:
   bloco: Gov. Central
   indicador: Receitas e despesas do Governo Central (RTN)
   fonte: Tesouro Transparente
-  codigo: RTN (xlsx/CKAN)
+  codigo: CKAN resultado-do-tesouro-nacional (XLSX série histórica)
   frequencia: Mensal
   unidade: R$ mi
   tipo: Fluxo
   fase: MVP
-  status: Confirmar
-  observacao: Abertura por rubrica; despesa real deflacionada
+  status: Verificado
+  observacao: Planilha atualizada em 2026-08-27; layout mutável, teste de contrato obrigatório
   acesso: manual
 - id: BR-075
   bloco: Gov. Central

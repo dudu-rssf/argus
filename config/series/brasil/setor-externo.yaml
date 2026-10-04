@@ -6,24 +6,24 @@ series:
   bloco: Balança
   indicador: Exportações, importações e saldo
   fonte: ComexStat (MDIC)
-  codigo: API ComexStat
+  codigo: POST api-comexstat.mdic.gov.br/general
   frequencia: Mensal
   unidade: US$ mi
   tipo: Fluxo
   fase: MVP
-  status: Confirmar
-  observacao: Também semanal
+  status: Verificado
+  observacao: Dados até 2026-08 (sondagem 2026-10-04). Também semanal
   acesso: comexstat
 - id: BR-080
   bloco: Balança
   indicador: Exportações por produto e destino (China, EUA, UE)
   fonte: ComexStat (MDIC)
-  codigo: API ComexStat
+  codigo: POST api-comexstat.mdic.gov.br/general (por NCM/país)
   frequencia: Mensal
   unidade: US$ mi
   tipo: Fluxo
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Exposição a China e tarifas
   acesso: comexstat
 - id: BR-081

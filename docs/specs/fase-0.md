@@ -1,6 +1,6 @@
 # Fase 0 — Aprendizado, fundação e validador
 
-**Duração estimada:** 3–4 semanas · **Status:** em andamento · fundação, configuração e validador prontos
+**Duração estimada:** 3–4 semanas · **Status:** critérios 1 e 2 cumpridos (2026-10-04); falta o critério 3 (trilha de aprendizado)
 
 ## Objetivo
 
@@ -22,10 +22,10 @@ Sair desta fase com: ambiente pronto, contas criadas, catálogo convertido em co
 
 ### 0.3 Contas e chaves
 - [x] Neon: projeto `argus`, região São Paulo, string de conexão com pooling (segredo `DATABASE`; conexão testada pelo workflow "Testar conexões")
-- [ ] Vercel: conta ligada ao GitHub
+- [x] Vercel: conta ligada ao GitHub
 - [x] FRED: chave de API
 - [x] FMP: chave de API (plano grátis)
-- [ ] Segredos cadastrados nos GitHub Secrets do repositório
+- [x] Segredos cadastrados nos GitHub Secrets do repositório (`DATABASE`, `FRED_API_KEY`, `FMP_API_KEY`)
 
 ### 0.4 Catálogo como configuração
 - [x] Definir o schema de série (`pipeline/argus_pipeline/catalog.py`)
@@ -39,7 +39,7 @@ Sair desta fase com: ambiente pronto, contas criadas, catálogo convertido em co
     - compara título oficial × nome do catálogo e grava relatório em `docs/catalogo/validacao.md`.
 - [x] Primeira revisão: 63 séries `Verificado` (ver `docs/catalogo/revisao-2026-10-04.md`)
 - [x] Ferramenta de busca (workflow "Buscar séries"); 7 pendências mapeadas e verificadas (70 no total)
-- [ ] Restam 7 do MVP: núcleos EX3/P55 (localizar no SGS), comunicados do BCB, RTN, ComexStat (2), commodities no FRED e Ibovespa (dependem de chaves e dos adapters da Fase 1)
+- [x] Pendências do MVP resolvidas por sondagem: núcleos EX3/P55 (+ EX-FE), comunicados do Copom, RTN, ComexStat, commodities (FRED) e Ibovespa (B3)
 - [x] Cadastrar `FRED_API_KEY` nos GitHub Secrets e validar as séries dos EUA (50 verificadas)
 
 ## Critério de pronto

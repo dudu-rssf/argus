@@ -5,14 +5,14 @@ series:
 - id: BR-106
   bloco: Bolsa
   indicador: Ibovespa
-  fonte: FMP / B3
-  codigo: ^BVSP
+  fonte: B3 (oficial) / Yahoo (alternativa)
+  codigo: B3 IndexCall/GetPortfolioDay IBOV · Yahoo ^BVSP
   frequencia: Diária
   unidade: Pontos
   tipo: Índice
   fase: MVP
-  status: Confirmar
-  observacao: Faixa da aba Central
+  status: Verificado
+  observacao: FMP grátis não inclui Ibovespa (HTTP 402); SGS 7 descontinuada em 2019
   acesso: manual
 - id: BR-107
   bloco: Juros
