@@ -2,6 +2,11 @@ name: Saúde do banco
 
 on:
   workflow_dispatch:
+    inputs:
+      filtro:
+        description: "Prefixos de série separados por espaço (ex.: BR-079 BR-080); vazio = todas"
+        required: false
+        default: ""
 
 jobs:
   resumo:
@@ -16,4 +21,5 @@ jobs:
       - run: uv sync --locked
       - env:
           DATABASE_URL: ${{ secrets.DATABASE }}
-        run: uv run python -m argus_pipeline.health
+          FILTRO: ${{ inputs.filtro }}
+        run: uv run python -m argus_pipeline.health $FILTRO
