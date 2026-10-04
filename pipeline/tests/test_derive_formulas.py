@@ -58,3 +58,23 @@ def test_neutro_sem_par_completo_fica_de_fora():
 
 def test_diferenca_asof():
     assert f.diferenca_asof([(D(9, 26), 8.0)], [(D(9, 25), 5.0)]) == [(D(9, 26), 3.0)]
+
+
+def test_percentil_ponderado_primeiro_item_que_atinge():
+    # ordenado: -0,5 (20%), 0,1 (30%) -> acumulado 50%, 0,4 (25%), 1,2 (25%)
+    itens = [(0.4, 25), (1.2, 25), (-0.5, 20), (0.1, 30)]
+    assert f.percentil_ponderado(itens, 0.50) == 0.1
+    assert f.percentil_ponderado(itens, 0.55) == 0.4
+    assert f.percentil_ponderado(itens, 0.20) == -0.5
+
+
+def test_percentil_ignora_peso_zero_e_exige_itens():
+    assert f.percentil_ponderado([(9.0, 0), (1.0, 1)], 0.5) == 1.0
+    with pytest.raises(ValueError):
+        f.percentil_ponderado([(1.0, 0)], 0.5)
+
+
+def test_percentil_mensal_casa_variacao_e_peso_do_mesmo_mes():
+    var = {"a": [(D(1), 0.1), (D(2), 0.9)], "b": [(D(1), 0.5), (D(2), 0.2)]}
+    pes = {"a": [(D(1), 60.0), (D(2), 40.0)], "b": [(D(1), 40.0), (D(2), 60.0)]}
+    assert f.percentil_mensal(var, pes, 0.5) == [(D(1), 0.1), (D(2), 0.2)]

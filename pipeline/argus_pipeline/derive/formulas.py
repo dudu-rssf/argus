@@ -71,3 +71,33 @@ def neutro_focus(selic_anual: dict[str, Serie], ipca_anual: dict[str, Serie], an
 def diferenca_asof(base: Serie, outra: Serie) -> Serie:
     """base − último valor da outra até a mesma data."""
     return [(d, v - o) for d, v, o in asof(base, outra)]
+
+
+def percentil_ponderado(itens: list[tuple[float, float]], p: float) -> float:
+    """Variação do item em que o peso acumulado atinge p (método do P55 do BCB, NT 57).
+
+    `itens`: (variação, peso). Ordena pela variação; o valor é o do primeiro item k com
+    peso acumulado (normalizado) >= p, sem interpolação.
+    """
+    validos = sorted((v, w) for v, w in itens if w > 0)
+    total = sum(w for _, w in validos)
+    if not validos or total <= 0:
+        raise ValueError("sem itens com peso positivo")
+    acumulado = 0.0
+    for v, w in validos:
+        acumulado += w / total
+        if acumulado >= p - 1e-12:
+            return v
+    return validos[-1][0]
+
+
+def percentil_mensal(variacoes: dict[str, Serie], pesos: dict[str, Serie], p: float) -> Serie:
+    """Aplica `percentil_ponderado` mês a mês, com variação e peso do mesmo mês."""
+    por_mes: dict[date, list[tuple[float, float]]] = {}
+    pesos_map = {(item, d): w for item, s in pesos.items() for d, w in s}
+    for item, s in variacoes.items():
+        for d, v in s:
+            w = pesos_map.get((item, d))
+            if w is not None:
+                por_mes.setdefault(d, []).append((v, w))
+    return [(d, percentil_ponderado(por_mes[d], p)) for d in sorted(por_mes)]
