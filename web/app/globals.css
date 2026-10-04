@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "../styles/tokens/tokens.css";
+
+@theme inline {
+  --color-fundo: var(--cor-fundo);
+  --color-painel: var(--cor-painel);
+  --color-painel-alto: var(--cor-painel-alto);
+  --color-linha: var(--cor-linha);
+  --color-linha-forte: var(--cor-linha-forte);
+  --color-texto: var(--cor-texto);
+  --color-texto-2: var(--cor-texto-2);
+  --color-texto-3: var(--cor-texto-3);
+  --color-ouro: var(--cor-ouro);
+  --color-ouro-forte: var(--cor-ouro-forte);
+  --color-ouro-tenue: var(--cor-ouro-tenue);
+  --color-alta: var(--cor-alta);
+  --color-baixa: var(--cor-baixa);
+  --color-alerta: var(--cor-alerta);
+  --font-sans: var(--fonte-sans), system-ui, sans-serif;
+  --font-mono: var(--fonte-mono), ui-monospace, monospace;
+  --radius-painel: var(--raio-painel);
+  --radius-controle: var(--raio-controle);
+}
+
+html { color-scheme: dark; }
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1;
+}
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--cor-ouro); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,32 @@
+/*
+ * Design tokens do Argus — única fonte de cores, tipos e espaços (CLAUDE.md, regra 7).
+ * Navy profundo como base, dourado como único destaque, cinzas frios para o secundário;
+ * verde e vermelho só para variação (plano.md, Identidade visual).
+ */
+:root {
+  --cor-fundo: #08111f;
+  --cor-painel: #0d1a2e;
+  --cor-painel-alto: #13233d;
+  --cor-linha: #1e3150;
+  --cor-linha-forte: #2c4469;
+  --cor-texto: #e4e9f1;
+  --cor-texto-2: #94a3ba;
+  --cor-texto-3: #64758f;
+  --cor-ouro: #c8a24a;
+  --cor-ouro-forte: #dcb85e;
+  --cor-ouro-tenue: rgba(200, 162, 74, 0.14);
+  --cor-alta: #4fb286;
+  --cor-baixa: #e06a5f;
+  --cor-alerta: #d9a03f;
+
+  /* Séries de gráfico: a primeira é sempre a dourada; as demais, frias. */
+  --serie-1: #c8a24a;
+  --serie-2: #7fa7d9;
+  --serie-3: #b4bfd0;
+  --serie-4: #5c80ab;
+  --serie-5: #8e7bc4;
+
+  --raio-painel: 6px;
+  --raio-controle: 4px;
+  --largura-menu: 232px;
+}
