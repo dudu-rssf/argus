@@ -1,0 +1,21 @@
+name: Conferir amostra contra as fontes
+
+# Sorteia valores de cada aba do site e compara com a fonte oficial na hora.
+on:
+  workflow_dispatch:
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - env:
+          DATABASE_URL: ${{ secrets.DATABASE }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: uv run python -m argus_pipeline.conferir_amostra
