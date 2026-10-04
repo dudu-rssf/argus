@@ -1,6 +1,6 @@
 # Fase 1 — Coleta automática
 
-**Duração estimada:** 2–3 semanas · **Status:** aprovada em 2026-10-04 · em andamento (passos 1–5 concluídos; BCB SGS em produção)
+**Duração estimada:** 2–3 semanas · **Status:** aprovada em 2026-10-04 · em andamento (passos 1–5 concluídos; SGS, Focus e SIDRA em produção)
 
 ## Objetivo
 
@@ -51,7 +51,7 @@ config/series/*.yaml ──► pipeline/argus_pipeline/
 
 Cada adapter: (a) fixture real gravada e completa de um intervalo curto, (b) teste de contrato que lê a fixture, (c) teste de normalização (datas ISO, número como número), (d) erro vira `ingestion_items.status = 'erro'`, nunca exceção que derruba a execução inteira.
 
-**Pendência do catálogo que esta fase resolve:** as tabelas SIDRA estão catalogadas só pelo número (`t1621`). Para coletar é preciso fixar variável e classificação (ex.: PIB → setor; PNAD → total). Uma tarefa dedicada usa a API de metadados para propor e eu confiro cada uma.
+**Resolvido (passo 6b):** cada série SIDRA tem no catálogo o recorte completo, `t<tabela>/v<variáveis>/c<classificação>=<categorias>` (ex.: `t8888/v12606,12607/c544=129314,129315,129316`), conferido contra os metadados oficiais. Cada combinação variável × categoria vira uma sub-série `@<variável>.<categoria>`.
 
 ## Séries derivadas
 
@@ -90,7 +90,10 @@ Workflow `coleta.yml`:
 3. [x] Orquestrador (`collect.py`) + registro em `ingestion_runs/items`, com adapter falso
 4. [x] Adapter SGS → primeira carga real no Neon: 65 séries, 58.687 observações (execução 1, 2026-10-04)
 5. [x] Workflow `coleta.yml` (agenda + manual + concurrency)
-6. Adapters Focus, SIDRA (com mapeamento de variáveis), FRED, ComexStat, Tesouro, B3, Copom — um commit cada
+6. Adapters — um commit cada
+   - [x] 6a Focus (execução 2: 7 séries)
+   - [x] 6b SIDRA, com variável e classificação de cada tabela no catálogo (execução 3: 16 recortes, ~81 mil observações)
+   - [ ] 6c FRED · 6d ComexStat · 6e Tesouro · 6f B3 · 6g Copom
 7. Séries derivadas
 8. Proteção dos 60 dias e resumo semanal
 
