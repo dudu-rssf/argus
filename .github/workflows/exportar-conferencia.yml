@@ -1,0 +1,29 @@
+name: Exportar dados de conferência
+
+# Séries oficiais usadas nos testes do site que conferem as transformações.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  exportar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - env:
+          DATABASE_URL: ${{ secrets.DATABASE }}
+        run: uv run python -m argus_pipeline.exportar_conferencia
+      - run: |
+          git config user.name "argus-bot"
+          git config user.email "argus-bot@users.noreply.github.com"
+          git add ../web/tests/fixtures/oficiais.json
+          git diff --cached --quiet || git commit -m "Dados oficiais de conferência para os testes do site"
+          git pull --rebase -q && git push
