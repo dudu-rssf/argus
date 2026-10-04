@@ -6,6 +6,9 @@ on:
       sgs_candidatos:
         description: "Códigos SGS para testar (separados por espaço)"
         default: ""
+      urls:
+        description: "URLs sem chave para testar (separadas por espaço)"
+        default: ""
       so_sgs:
         description: "Testar só os códigos SGS (1 = sim)"
         default: ""
@@ -25,4 +28,5 @@ jobs:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
           SGS_CANDIDATOS: ${{ inputs.sgs_candidatos }}
           SO_SGS: ${{ inputs.so_sgs }}
+          URLS: ${{ inputs.urls }}
         run: uv run python -m argus_pipeline.probe_fontes

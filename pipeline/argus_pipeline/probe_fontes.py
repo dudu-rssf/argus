@@ -39,6 +39,9 @@ def main() -> None:
         from argus_pipeline.validate.checks import _sgs_soap
         for cod in os.environ.get("SGS_CANDIDATOS", "").split():
             tentar(f"SGS {cod}", lambda cod=cod: "{} | última obs {}".format(*_sgs_soap(cod, c)))
+        # URLs livres (sem chave) para testar
+        for url in os.environ.get("URLS", "").split():
+            tentar(f"URL {url[:70]}", lambda url=url: (lambda r: f"HTTP {r.status_code}, {len(r.text)} bytes, {r.headers.get('content-type','')[:30]}, inicio={r.text[:160]!r}")(c.get(url)))
         if os.environ.get("SO_SGS"):
             return
 
