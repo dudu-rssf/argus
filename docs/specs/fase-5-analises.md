@@ -18,7 +18,7 @@ A aba Análises é o único lugar com interpretação (decisão 0003). Por isso 
 
 **Regra dos episódios** (parâmetro único, visível na página):
 - **Ciclo de corte / de alta:** começa no primeiro movimento numa direção e reúne os movimentos seguintes na mesma direção, desde que o intervalo entre dois movimentos seja menor que **6 meses**. Termina no último movimento antes de uma inversão ou de uma pausa de 6 meses ou mais.
-- **Manutenção:** o intervalo de 6 meses ou mais sem mudança entre dois ciclos (nunca no meio de um ciclo). Pausas menores que 6 meses ficam dentro do ciclo.
+- **Manutenção:** todo intervalo sem mudança entre dois ciclos (nunca no meio de um ciclo). Pausas menores que 6 meses entre movimentos na mesma direção ficam dentro do ciclo; entre direções opostas, viram manutenção (ex.: mai–set/2024).
 - O episódio em curso aparece como "em andamento", com fim em hoje.
 
 **Para cada episódio:**
