@@ -35,6 +35,13 @@ def main() -> None:
     fmp = os.environ.get("FMP_API_KEY", "")
     with httpx.Client(headers=UA, timeout=60, follow_redirects=True) as c:
 
+        # 0. Códigos candidatos no SGS (títulos via SOAP getUltimoValorVO)
+        from argus_pipeline.validate.checks import _sgs_soap
+        for cod in os.environ.get("SGS_CANDIDATOS", "").split():
+            tentar(f"SGS {cod}", lambda cod=cod: "{} | última obs {}".format(*_sgs_soap(cod, c)))
+        if os.environ.get("SO_SGS"):
+            return
+
         # 1. Núcleos do IPCA no portal do BCB: lista todos os títulos com "núcleo"
         def nucleos():
             achados = set()
