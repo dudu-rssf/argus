@@ -5,7 +5,7 @@ BCB Portal de Dados Abertos,Site / CKAN,Nenhuma,Limita requisições em rajada (
 IBGE SIDRA,REST (apisidra.ibge.gov.br),Nenhuma,Sintaxe verbosa; tabelas mudam de número em revisões de base,Médio,Grátis
 IBGE API de calendário,REST (servicodados.ibge.gov.br),Nenhuma,Agenda de divulgações,Baixo,Grátis
 ComexStat (MDIC),REST,Nenhuma,"Consultas por NCM, país, período",Médio,Grátis
-Tesouro Transparente,CKAN / CSV / xlsx,Nenhuma,RTN e RMD em planilhas com layout mutável,Médio,Grátis
+Tesouro Transparente,"API Séries Temporais (RTN, JSON) · CKAN / xlsx",Nenhuma,RTN por API JSON paginada (decisão 0010); RMD ainda em planilha,Baixo,Grátis
 Ipeadata,OData REST,Nenhuma,Agrega séries de terceiros; conferir atualização,Médio,Grátis
 Câmara / Senado Dados Abertos,REST,Nenhuma,—,Baixo,Grátis
 TSE Dados Abertos,CSV,Nenhuma,Arquivos grandes por eleição,Baixo,Grátis

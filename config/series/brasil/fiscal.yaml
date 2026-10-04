@@ -65,15 +65,16 @@ series:
 - id: BR-074
   bloco: Gov. Central
   indicador: Receitas e despesas do Governo Central (RTN)
-  fonte: Tesouro Transparente
-  codigo: CKAN resultado-do-tesouro-nacional (XLSX série histórica)
+  fonte: Tesouro Nacional (API RTN)
+  codigo: rtn=10.01.1 ; rtn=10.02.1 ; rtn=10.01.2 ; rtn=10.03.1 ; rtn=10.04.1 ; rtn=10.08.1 ; rtn=10.09.1
   frequencia: Mensal
   unidade: R$ mi
   tipo: Fluxo
   fase: MVP
   status: Verificado
-  observacao: Planilha atualizada em 2026-08-27; layout mutável, teste de contrato obrigatório
-  acesso: manual
+  observacao: 'API Séries Temporais do RTN (decisão 0010): receita total, transferências, receita líquida, despesa total,
+    primário, juros e nominal; R$ milhões correntes'
+  acesso: tesouro
 - id: BR-075
   bloco: Gov. Central
   indicador: Meta de primário e bandas do arcabouço
