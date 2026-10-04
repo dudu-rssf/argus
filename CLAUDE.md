@@ -52,4 +52,9 @@ No GitHub Actions (aba Actions → workflow → Run workflow):
 - **Validar catálogo**: confere códigos contra os títulos oficiais e atualiza `docs/catalogo/validacao.md`.
 - **Resumo semanal**: grava `docs/status/coleta.md` toda segunda (proteção dos 60 dias).
 
-O site (Fase 2) ainda não existe.
+Site (a partir de `web/`):
+
+- Testes: `npm test` (transformações, conferência contra BCB/IBGE, login, configuração) e `npm run e2e` (Playwright; antes, `npm run build`).
+- Sem internet para o Google Fonts, o build local usa `NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$PWD/tests/fontes/mock-google-fonts.cjs`.
+- Abas novas: um YAML em `config/abas/`; o build recusa série fora do catálogo ou não verificada.
+- Dados oficiais dos testes de conferência: workflow **Exportar dados de conferência**.

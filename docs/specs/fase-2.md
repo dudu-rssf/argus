@@ -109,22 +109,22 @@ Uma mudança em relação à decisão 0004: login próprio com `jose` + `bcryptj
 
 ## A sua parte (eu guio passo a passo quando chegar a hora)
 
-1. **Neon:** criar o usuário `argus_site` com uma senha e me avisar o nome (sem a senha). As permissões de leitura eu dou por migração.
+1. **Neon:** criar o usuário `argus_site` pelo SQL Editor (não pelo menu Roles: lá o usuário nasce com poder de administrador). As permissões de leitura são dadas pelo pipeline.
 2. **GitHub:** criar um token "fine-grained" só para o repositório `argus`, com a permissão Actions: Read and write.
-3. **Vercel:** importar o repositório (pasta `web`) e cadastrar 4 variáveis: `DATABASE_URL` (do `argus_site`), `AUTH_SECRET`, `ARGUS_SENHA_HASH` e `GITHUB_TOKEN`. Eu te passo um comando para gerar o hash da sua senha no seu computador, sem ela passar por mim.
+3. **Vercel:** importar o repositório (pasta `web`) e cadastrar 4 variáveis: `DATABASE_URL` (do `argus_site`), `GITHUB_TOKEN`, `AUTH_SECRET` e `ARGUS_SENHA_HASH`. As duas últimas são geradas na página `/configurar` do próprio site, no navegador, sem a senha passar por ninguém.
 4. **Domínio:** apontar o domínio já comprado para a Vercel (opcional nesta fase).
 
 ## Passos e commits
 
-1. Migração 002: usuário `argus_site` só com SELECT; séries de conferência do IBGE no catálogo.
-2. Esqueleto Next.js + tokens + layout base.
-3. Login com falha fechada (testes primeiro).
-4. `lib/transform.ts` com testes unitários.
-5. Testes contra número oficial (banco de teste com dados reais gravados).
-6. Leitor de configuração + motor de gráfico.
-7. Data Health.
-8. Aba de teste "Inflação (prévia)" só por YAML.
-9. Botão "Atualizar".
+1. [x] Permissões só de leitura para `argus_site` (reaplicadas a cada coleta, `db/permissoes.sql`); recortes de conferência do IBGE no catálogo.
+2. [x] Esqueleto Next.js + tokens + layout base.
+3. [x] Login com falha fechada (testes primeiro).
+4. [x] `lib/transform.ts` com testes unitários.
+5. [x] Testes contra número oficial (banco de teste com dados reais gravados).
+6. [x] Leitor de configuração + motor de gráfico.
+7. [x] Data Health.
+8. [x] Aba de teste "Inflação (prévia)" só por YAML.
+9. [x] Botão "Atualizar".
 10. Deploy na Vercel + teste ponta a ponta no ar.
 
 ## Critério de pronto
