@@ -231,3 +231,15 @@ series:
   status: Derivado
   observacao: Equivalente ao NFCI
   acesso: derivado
+- id: BR-132
+  bloco: Expectativas
+  indicador: Focus — Selic fim de ano (ano corrente a +3)
+  fonte: BCB Olinda (Focus)
+  codigo: ExpectativasMercadoAnuais · Indicador='Selic'
+  frequencia: Semanal
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Insumo do juro neutro implícito (BR-117); sub-série por ano de referência
+  acesso: focus

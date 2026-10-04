@@ -122,3 +122,15 @@ series:
   status: Derivado
   observacao: Depende da SA própria
   acesso: derivado
+- id: BR-133
+  bloco: Formal
+  indicador: Saldo mensal do Novo CAGED (variação do estoque)
+  fonte: Argus
+  codigo: Δ(28763)
+  frequencia: Mensal
+  unidade: Postos
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Variação mensal do estoque BR-022; só entre meses consecutivos
+  acesso: derivado
