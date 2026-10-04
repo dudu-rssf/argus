@@ -37,6 +37,7 @@ def main() -> None:
                 por_aba.setdefault(u.split(" / ")[0], []).append(dado)
 
     total = ok = 0
+    resumo: dict[str, list[int]] = {}
     with db.connect(os.environ["DATABASE_URL"]) as conn, conn.cursor() as cur:
         for aba, dados in por_aba.items():
             for _ in range(args.por_aba):
@@ -58,12 +59,17 @@ def main() -> None:
                     continue
                 fonte = {o[0]: o[1] for o in obs if (o[2] if len(o) > 2 else "") == sub}
                 total += 1
+                r = resumo.setdefault(aba, [0, 0])
+                r[1] += 1
                 v = fonte.get(ref)
                 if v is not None and abs(v - valor_banco) <= TOLERANCIA:
                     ok += 1
-                    print(f"::notice::OK {aba}: {dado} em {ref} = {valor_banco} (fonte {v})")
+                    r[0] += 1
+                    print(f"OK {aba}: {dado} em {ref} = {valor_banco} (fonte {v})")
                 else:
                     print(f"::warning::DIFERENTE {aba}: {dado} em {ref}: banco {valor_banco}, fonte {v}")
+    for aba, (a, t) in resumo.items():
+        print(f"::notice::{aba}: {a} de {t} iguais à fonte")
     print(f"::notice::Conferência: {ok} de {total} valores sorteados iguais à fonte oficial (semente {args.semente})")
 
 
