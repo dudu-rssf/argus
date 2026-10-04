@@ -129,7 +129,7 @@ Uma mudança em relação à decisão 0004: login próprio com `jose` + `bcryptj
 7. [x] Data Health.
 8. [x] Aba de teste "Inflação (prévia)" só por YAML.
 9. [x] Botão "Atualizar".
-10. Deploy na Vercel + teste ponta a ponta no ar.
+10. [x] Deploy na Vercel (argus-liard-eight.vercel.app); acesso ao banco configurado pelo workflow "Configurar site" (usuário só de leitura conferido: lê e não escreve).
 
 ## Critério de pronto
 

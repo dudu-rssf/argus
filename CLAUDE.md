@@ -51,6 +51,7 @@ No GitHub Actions (aba Actions → workflow → Run workflow):
 - **Gravar fixtures**: grava respostas reais em `pipeline/tests/fixtures/real/` (pares `nome=URL`; chave só como `{FRED_API_KEY}`; POST com `#post=<JSON em base64>`).
 - **Validar catálogo**: confere códigos contra os títulos oficiais e atualiza `docs/catalogo/validacao.md`.
 - **Resumo semanal**: grava `docs/status/coleta.md` toda segunda (proteção dos 60 dias).
+- **Configurar site**: recria a senha do usuário só de leitura `argus_site`, grava `DATABASE_URL` na Vercel e publica de novo (segredos `DATABASE` e `VERCEL_TOKEN`). Use também para trocar a senha do banco do site.
 
 Site (a partir de `web/`):
 
