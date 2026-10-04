@@ -1,6 +1,6 @@
 # Fase 1 — Coleta automática
 
-**Duração estimada:** 2–3 semanas · **Status:** aprovada em 2026-10-04 · em andamento (passos 1–5 concluídos; SGS, Focus, SIDRA, FRED e ComexStat em produção)
+**Duração estimada:** 2–3 semanas · **Status:** aprovada em 2026-10-04 · em andamento (passos 1–5 concluídos; SGS, Focus, SIDRA, FRED, ComexStat e Tesouro em produção)
 
 ## Objetivo
 
@@ -45,7 +45,7 @@ config/series/*.yaml ──► pipeline/argus_pipeline/
 | 3 | IBGE SIDRA | API `agregados/{tabela}/periodos/…/variaveis/…` | ~10 | **Antes:** mapear variável e classificação de cada tabela (ver abaixo) |
 | 4 | FRED | API `series/observations` | 3 | Commodities |
 | 5 | ComexStat | `POST /general` | 2 | |
-| 6 | Tesouro (RTN) | CKAN → XLSX | 1 | Layout de planilha: teste de contrato rígido |
+| 6 | Tesouro (RTN) | API Séries Temporais (JSON) — decisão 0010 | 1 | Antes previsto via planilha XLSX |
 | 7 | B3 | `IndexCall/GetPortfolioDay` (Yahoo como alternativa) | 1 | Ibovespa |
 | 8 | BCB site | `copom/comunicados`, `copom/atas` | texto → `events` | |
 
@@ -95,7 +95,8 @@ Workflow `coleta.yml`:
    - [x] 6b SIDRA, com variável e classificação de cada tabela no catálogo (execução 3: 16 recortes, ~81 mil observações)
    - [x] 6c FRED (execução 4: 3 commodities)
    - [x] 6d ComexStat (execução 5: 5 recortes, jan/1997 a ago/2026 sem buraco; o período da API é recorte ano × mês, por isso o adapter divide os pedidos)
-   - [ ] 6e Tesouro · 6f B3 · 6g Copom
+   - [x] 6e Tesouro pela API Séries Temporais do RTN, não pela planilha (decisão 0010; execução 6: 7 séries, jan/1997 a ago/2026)
+   - [ ] 6f B3 · 6g Copom
 7. Séries derivadas
 8. Proteção dos 60 dias e resumo semanal
 
