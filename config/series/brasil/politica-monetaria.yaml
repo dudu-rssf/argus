@@ -11,8 +11,8 @@ series:
   unidade: '% a.a.'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
-  observacao: Fonte dos ciclos do Copom
+  status: Verificado
+  observacao: Fonte dos ciclos do Copom; o SGS registra a meta vigente até a próxima reunião (data futura é normal)
   acesso: sgs
 - id: BR-051
   bloco: Juros
@@ -83,7 +83,7 @@ series:
   unidade: '% a.a.'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Equivalente ao WIRP/dotplot
   acesso: focus
 - id: BR-057
@@ -179,7 +179,7 @@ series:
   unidade: R$ mi
   tipo: Fluxo
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-065
@@ -191,7 +191,7 @@ series:
   unidade: '% a.a.'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-066
@@ -203,7 +203,7 @@ series:
   unidade: p.p.
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-067

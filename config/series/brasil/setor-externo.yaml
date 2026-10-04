@@ -30,12 +30,12 @@ series:
   bloco: BP
   indicador: Transações correntes
   fonte: BCB SGS
-  codigo: 22701 (a confirmar)
+  codigo: '22701'
   frequencia: Mensal
   unidade: US$ mi
   tipo: Fluxo
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-082
@@ -54,12 +54,12 @@ series:
   bloco: BP
   indicador: Investimento direto no país (IDP)
   fonte: BCB SGS
-  codigo: 22885 (a confirmar)
+  codigo: '22885'
   frequencia: Mensal
   unidade: US$ mi
   tipo: Fluxo
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-084
@@ -76,26 +76,26 @@ series:
   acesso: sgs
 - id: BR-085
   bloco: Câmbio
-  indicador: USD/BRL PTAX venda
+  indicador: Taxa de câmbio livre — dólar americano (venda)
   fonte: BCB SGS
   codigo: '1'
   frequencia: Diária
   unidade: R$/US$
   tipo: Índice
   fase: MVP
-  status: Confirmar
-  observacao: ''
+  status: Verificado
+  observacao: 'Título oficial SGS 1: "Taxa de câmbio - Livre - Dólar americano (venda) - diário"'
   acesso: sgs
 - id: BR-086
   bloco: Câmbio
   indicador: Taxa de câmbio efetiva real
   fonte: BCB SGS
-  codigo: 11752 (a confirmar)
+  codigo: '11752'
   frequencia: Mensal
   unidade: Índice
   tipo: Índice
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-087
@@ -119,7 +119,7 @@ series:
   unidade: R$/US$
   tipo: Índice
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: focus
 - id: BR-089

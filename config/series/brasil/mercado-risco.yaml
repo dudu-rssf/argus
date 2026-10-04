@@ -42,7 +42,7 @@ series:
   bloco: Risco-país
   indicador: EMBI+ Brasil
   fonte: Ipeadata
-  codigo: JPM366_EMBI366 (a confirmar)
+  codigo: JPM366_EMBI366
   frequencia: Diária
   unidade: bps
   tipo: Taxa

@@ -6,24 +6,24 @@ series:
   bloco: Balanço
   indicador: Endividamento das famílias com o SFN (% renda 12m)
   fonte: BCB SGS
-  codigo: 29037 (a confirmar)
+  codigo: '29037'
   frequencia: Mensal
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: 'Ex-habitacional: 29038'
   acesso: sgs
 - id: BR-092
   bloco: Balanço
   indicador: Comprometimento de renda com serviço da dívida
   fonte: BCB SGS
-  codigo: 29034 (a confirmar)
+  codigo: '29034'
   frequencia: Mensal
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Equivalente a debt service % DPI
   acesso: sgs
 - id: BR-093

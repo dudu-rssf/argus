@@ -11,7 +11,7 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Acumulados são encadeados, nunca somados
   acesso: sgs
 - id: BR-026
@@ -23,7 +23,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Conferência do cálculo próprio
   acesso: sgs
 - id: BR-027
@@ -35,7 +35,7 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Prévia
   acesso: sgs
 - id: BR-028
@@ -155,7 +155,7 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-038
@@ -167,7 +167,7 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-039
@@ -191,7 +191,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-041
@@ -203,7 +203,7 @@ series:
   unidade: '% m/m e peso'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Base para calcular serviços subjacentes, supercore BR e aberturas próprias
   acesso: sidra
 - id: BR-042
@@ -227,7 +227,7 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Equivalente ao PPI na ótica de preços ao produtor
   acesso: sgs
 - id: BR-044
@@ -246,12 +246,12 @@ series:
   bloco: Atacado
   indicador: IC-Br — índice de commodities BCB (total, agro, metal, energia)
   fonte: BCB SGS
-  codigo: 27574–27577 (a confirmar)
+  codigo: 27574–27577
   frequencia: Mensal
   unidade: Índice
   tipo: Índice
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Equivalente a container freight/commodities como indicador antecedente
   acesso: sgs
 - id: BR-046
@@ -263,7 +263,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: focus
 - id: BR-047
@@ -275,7 +275,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Usado no juro real ex-ante
   acesso: focus
 - id: BR-048

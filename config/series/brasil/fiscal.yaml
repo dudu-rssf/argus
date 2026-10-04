@@ -6,12 +6,12 @@ series:
   bloco: Resultado
   indicador: Resultado primário do setor público consolidado — 12m % PIB
   fonte: BCB SGS
-  codigo: 5793 (a confirmar)
+  codigo: '5793'
   frequencia: Mensal
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-070
@@ -47,7 +47,7 @@ series:
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-073
@@ -59,7 +59,7 @@ series:
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: sgs
 - id: BR-074
@@ -107,7 +107,7 @@ series:
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: focus
 - id: BR-078

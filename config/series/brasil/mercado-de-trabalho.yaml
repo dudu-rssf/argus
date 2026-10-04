@@ -11,7 +11,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Série oficial sem ajuste sazonal; SA própria (X-13) na v2
   acesso: sgs
 - id: BR-016
@@ -54,12 +54,12 @@ series:
   bloco: PNAD
   indicador: Rendimento médio real habitual
   fonte: IBGE SIDRA
-  codigo: t6390 (a confirmar)
+  codigo: t6390
   frequencia: Mensal (trim. móvel)
   unidade: R$
   tipo: Índice
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Equivalente a AHE/real wage dos EUA
   acesso: sidra
 - id: BR-020
@@ -88,15 +88,15 @@ series:
   acesso: manual
 - id: BR-022
   bloco: Formal
-  indicador: Novo CAGED — saldo de empregos formais
+  indicador: Estoque de empregos formais (Novo CAGED)
   fonte: BCB SGS / MTE PDET
-  codigo: 28763 (a confirmar)
+  codigo: '28763'
   frequencia: Mensal
   unidade: Postos
-  tipo: Fluxo
+  tipo: Estoque
   fase: MVP
-  status: Confirmar
-  observacao: Equivalente ao payroll; por setor via microdados MTE (v2)
+  status: Verificado
+  observacao: Saldo mensal do CAGED = variação do estoque (série derivada); por setor via microdados MTE (v2)
   acesso: sgs
 - id: BR-023
   bloco: Formal

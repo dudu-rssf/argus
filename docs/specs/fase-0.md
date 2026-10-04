@@ -1,6 +1,6 @@
 # Fase 0 — Aprendizado, fundação e validador
 
-**Duração estimada:** 3–4 semanas · **Status:** em andamento
+**Duração estimada:** 3–4 semanas · **Status:** em andamento · fundação, configuração e validador prontos
 
 ## Objetivo
 
@@ -28,16 +28,18 @@ Sair desta fase com: ambiente pronto, contas criadas, catálogo convertido em co
 - [ ] Segredos cadastrados nos GitHub Secrets do repositório
 
 ### 0.4 Catálogo como configuração
-- [ ] Definir o schema YAML de série (fonte, código, nome oficial, unidade, frequência, tipo, SA, fase, aba, bloco)
-- [ ] Gerar `config/series/brasil/*.yaml`, um arquivo por subaba, a partir de `docs/catalogo/brasil.csv`
-- [ ] Teste que falha se algum YAML tiver campo obrigatório vazio ou tipo inválido
+- [x] Definir o schema de série (`pipeline/argus_pipeline/catalog.py`)
+- [x] Gerar `config/series/<país>/*.yaml`, um arquivo por subaba, a partir dos CSVs
+- [x] Testes de schema; o CI falha se a configuração gerada estiver desatualizada
 
 ### 0.5 Validador de códigos
-- [ ] Script `pipeline/validate_catalog.py` que, para cada série:
+- [x] Validador `argus_pipeline.validate.run` (workflow "Validar catálogo") que, para cada série:
     - busca o título oficial na fonte (SGS: metadados; SIDRA: descrição da tabela/variável; Focus: indicador existente; FRED: `series` endpoint);
     - busca a última observação e sua data;
     - compara título oficial × nome do catálogo e grava relatório em `docs/catalogo/validacao.md`.
-- [ ] Atualizar status no catálogo: `Verificado` quando o título bate e a série está ativa; caso contrário, corrigir o código ou mover para v2.
+- [x] Primeira revisão: 63 séries `Verificado` (ver `docs/catalogo/revisao-2026-10-04.md`)
+- [ ] Mapear as 14 pendências do MVP
+- [ ] Cadastrar `FRED_API_KEY` nos GitHub Secrets e validar as séries dos EUA
 
 ## Critério de pronto
 
