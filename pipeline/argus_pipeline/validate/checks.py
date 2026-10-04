@@ -84,6 +84,40 @@ def _sgs_titulo_portal(code: str, client: httpx.Client) -> str | None:
     return None
 
 
+def parse_sgs_soap(xml: str) -> tuple[str | None, date | None]:
+    """Lê a resposta SOAP-encoded do SGS (getUltimoValorVO).
+
+    Os campos vêm como referências (<ano href="#id13"/>) a nós <multiRef id="id13">,
+    então cada valor é resolvido pelo id.
+    """
+    raiz = ElementTree.fromstring(xml)
+    por_id = {el.get("id"): el for el in raiz.iter() if el.get("id")}
+
+    def local(el):
+        return el.tag.split("}")[-1]
+
+    def valor(el):
+        ref = el.get("href")
+        alvo = por_id.get(ref[1:]) if ref else el
+        return alvo.text.strip() if alvo is not None and alvo.text else None
+
+    serie = next((el for el in raiz.iter() if el.get("id") and any(local(c) == "nomeCompleto" for c in el)), None)
+    if serie is None:
+        return None, None
+    campos = {local(c): c for c in serie}
+    titulo = valor(campos["nomeCompleto"]) if "nomeCompleto" in campos else None
+    data = None
+    if "ultimoValor" in campos:
+        uv = campos["ultimoValor"]
+        uv = por_id.get(uv.get("href", "#")[1:], uv)
+        partes = {local(c): valor(c) for c in uv}
+        try:
+            data = date(int(partes["ano"]), int(partes["mes"]), int(partes["dia"]))
+        except (KeyError, TypeError, ValueError):
+            data = None
+    return titulo, data
+
+
 def _sgs_soap(code: str, client: httpx.Client) -> tuple[str | None, date | None]:
     """Serviço legado do SGS: devolve (nome completo, data do último valor)."""
     resp = client.post(
@@ -94,15 +128,7 @@ def _sgs_soap(code: str, client: httpx.Client) -> tuple[str | None, date | None]
     )
     time.sleep(PAUSA_S)
     resp.raise_for_status()
-    campos: dict[str, str] = {}
-    for el in ElementTree.fromstring(resp.text).iter():
-        nome = el.tag.split("}")[-1]
-        if el.text and el.text.strip() and nome in ("nomeCompleto", "ano", "mes", "dia"):
-            campos.setdefault(nome, el.text.strip())
-    data = None
-    if {"ano", "mes", "dia"} <= campos.keys():
-        data = date(int(campos["ano"]), int(campos["mes"]), int(campos["dia"]))
-    return campos.get("nomeCompleto"), data
+    return parse_sgs_soap(resp.text)
 
 
 def check_sgs(code: str, client: httpx.Client) -> CheckResult:

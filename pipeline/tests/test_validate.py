@@ -14,6 +14,7 @@ import respx
 from argus_pipeline.validate import checks
 from argus_pipeline.validate.checks import (
     CheckResult,
+    parse_sgs_soap,
     check_fred,
     check_focus,
     check_sgs,
@@ -23,6 +24,12 @@ from argus_pipeline.validate.checks import (
 )
 
 HOJE = date(2026, 10, 4)
+
+
+def _soap_real() -> str:
+    """Resposta SOAP verdadeira do SGS para a série 433, gravada em 2026-10-04."""
+    from pathlib import Path
+    return (Path(__file__).parent / "fixtures" / "real" / "sgs_soap_433.xml").read_text(encoding="utf-8")
 
 
 @pytest.fixture
@@ -60,15 +67,10 @@ def test_sgs_titulo_pelo_portal_e_ultima_obs(client):
 @respx.mock
 def test_sgs_cai_no_soap_quando_portal_nao_acha(client):
     respx.get(url__regex=r".*package_search.*").respond(json={"success": True, "result": {"results": []}})
-    respx.post(url__regex=r".*FachadaWSSGS.*").respond(text=(
-        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">'
-        "<soapenv:Body><getUltimoValorVOReturn>"
-        "<nomeCompleto>Taxa de juros - Meta Selic definida pelo Copom</nomeCompleto>"
-        "</getUltimoValorVOReturn></soapenv:Body></soapenv:Envelope>"
-    ))
-    respx.get(url__regex=r".*bcdata\.sgs\.432/.*").respond(json=[{"data": "18/09/2026", "valor": "14.25"}])
-    r = check_sgs("432", client)
-    assert r.titulo_oficial == "Taxa de juros - Meta Selic definida pelo Copom"
+    respx.post(url__regex=r".*FachadaWSSGS.*").respond(text=_soap_real())
+    respx.get(url__regex=r".*bcdata\.sgs\.433/.*").respond(json=[{"data": "01/08/2026", "valor": "0.23"}])
+    r = check_sgs("433", client)
+    assert r.titulo_oficial == "Índice nacional de preços ao consumidor-amplo (IPCA)"
     assert r.origem_titulo == "soap"
 
 
@@ -170,13 +172,7 @@ def test_sgs_ultima_obs_pelo_soap_quando_api_rest_falha(client):
     respx.get(url__regex=r".*package_search.*").respond(json={"success": True, "result": {"results": [
         {"name": "433-ipca", "title": "Índice nacional de preços ao consumidor-amplo (IPCA)"}]}})
     respx.get(url__regex=r".*bcdata\.sgs\.433/.*").mock(side_effect=httpx.ConnectError("Name or service not known"))
-    respx.post(url__regex=r".*FachadaWSSGS.*").respond(text=(
-        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">'
-        "<soapenv:Body><getUltimoValorVOReturn>"
-        "<nomeCompleto>Índice nacional de preços ao consumidor-amplo (IPCA)</nomeCompleto>"
-        "<ultimoValor><ano>2026</ano><mes>8</mes><dia>1</dia><valor>0.23</valor></ultimoValor>"
-        "</getUltimoValorVOReturn></soapenv:Body></soapenv:Envelope>"
-    ))
+    respx.post(url__regex=r".*FachadaWSSGS.*").respond(text=_soap_real())
     r = check_sgs("433", client)
     assert r.ok
     assert r.ultima_obs == date(2026, 8, 1)
@@ -196,3 +192,27 @@ def test_sidra_trimestre_movel_e_mensal(client):
 def test_defasagem_normal_do_ibge_nao_e_desatualizada():
     """PMC/PMS de julho divulgadas em setembro: em 4/out ainda são o dado mais recente."""
     assert is_stale("Mensal", date(2026, 7, 1), hoje=HOJE) is False
+
+
+# ---------- contrato com resposta real gravada (tests/fixtures/real) ----------
+
+REAL = __import__("pathlib").Path(__file__).parent / "fixtures" / "real"
+
+
+def test_soap_real_do_sgs_433():
+    titulo, data = parse_sgs_soap((REAL / "sgs_soap_433.xml").read_text(encoding="utf-8"))
+    assert titulo == "Índice nacional de preços ao consumidor-amplo (IPCA)"
+    assert data is not None and data.day == 1 and data.year >= 2026
+
+
+def test_sidra_real_1621():
+    import json
+    meta = json.loads((REAL / "sidra_metadados_1621.json").read_text(encoding="utf-8"))
+    assert meta["nome"].startswith("Série encadeada")
+    assert meta["periodicidade"]["frequencia"] == "trimestral"
+
+
+def test_focus_real_selic():
+    import json
+    v = json.loads((REAL / "focus_selic_top1.json").read_text(encoding="utf-8"))["value"][0]
+    assert {"Indicador", "Data", "Reuniao", "Mediana"} <= v.keys()
