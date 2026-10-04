@@ -53,3 +53,23 @@ def test_valor_e_numerico_e_data_e_date(conn):
         tipos = dict(cur.fetchall())
     assert tipos["value"] == "numeric"
     assert tipos["ref_date"] == "date"
+
+
+def test_usuario_do_site_so_le(conn):
+    with conn.cursor() as cur:
+        cur.execute("do $$ begin if not exists (select 1 from pg_roles where rolname='argus_site') "
+                    "then create role argus_site login; end if; end $$;")
+    conn.commit()
+    db.apply_migrations(conn)
+    with conn.cursor() as cur:
+        cur.execute("""select has_table_privilege('argus_site', 'observations', 'select'),
+                              has_table_privilege('argus_site', 'observations', 'insert'),
+                              has_table_privilege('argus_site', 'events', 'delete')""")
+        assert cur.fetchone() == (True, False, False)
+
+
+def test_sem_usuario_do_site_nao_quebra(conn):
+    with conn.cursor() as cur:
+        cur.execute("select count(*) from pg_roles where rolname='argus_nao_existe'")
+        assert cur.fetchone()[0] == 0
+    db.apply_migrations(conn)  # permissões só valem se o usuário existir

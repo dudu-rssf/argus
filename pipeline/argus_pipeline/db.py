@@ -6,6 +6,7 @@ from pathlib import Path
 import psycopg
 
 MIGRACOES = Path(__file__).resolve().parents[2] / "db" / "migrations"
+PERMISSOES = MIGRACOES.parent / "permissoes.sql"
 
 
 def connect(url: str) -> psycopg.Connection:
@@ -26,6 +27,8 @@ def apply_migrations(conn: psycopg.Connection, pasta: Path = MIGRACOES) -> list[
             cur.execute(arq.read_text(encoding="utf-8"))
             cur.execute("insert into schema_migrations(nome) values (%s)", (arq.name,))
             aplicadas.append(arq.name)
+        if PERMISSOES.exists():
+            cur.execute(PERMISSOES.read_text(encoding="utf-8"))
     conn.commit()
     return aplicadas
 
