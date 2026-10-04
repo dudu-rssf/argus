@@ -95,8 +95,9 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
-  observacao: 'NT 57 (dez/2025, Tabela 11): EX1 = 16121 e EX2 = 27838; o título SGS de 16121 (''ex2'') é enganoso'
+  status: Verificado
+  observacao: 'NT 57 (dez/2025, Tabela 11): EX1 = 16121 e EX2 = 27838; o título SGS de 16121 (''ex2'') é enganoso; validador
+    2026-10-04: título oficial confere'
   acesso: sgs
 - id: BR-033
   bloco: Núcleos
@@ -156,7 +157,8 @@ series:
   tipo: Derivado
   fase: MVP
   status: Derivado
-  observacao: Complementa o P55 oficial; documentar metodologia em docs/metodologia
+  observacao: Método do P55 do BCB (NT 57) em 50%; o mesmo cálculo em 55% reproduz o SGS 28750 em 80 de 80 meses (2020-2026).
+    Desde 2020 (tabela 7060)
   acesso: derivado
 - id: BR-129
   bloco: Núcleos
@@ -167,8 +169,9 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
-  observacao: 'Série oficial do BCB desde a NT 57 (dez/2025, Tabela 11): antes era cálculo próprio'
+  status: Verificado
+  observacao: 'Série oficial do BCB desde a NT 57 (dez/2025, Tabela 11): antes era cálculo próprio; validador 2026-10-04:
+    título oficial confere'
   acesso: sgs
 - id: BR-130
   bloco: Núcleos
@@ -287,8 +290,9 @@ series:
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Confirmar
-  observacao: 'Série oficial do BCB desde a NT 57 (dez/2025, Tabela 11): antes era cálculo próprio'
+  status: Verificado
+  observacao: 'Série oficial do BCB desde a NT 57 (dez/2025, Tabela 11): antes era cálculo próprio; validador 2026-10-04:
+    título oficial confere'
   acesso: sgs
 - id: BR-043
   bloco: Atacado
