@@ -90,14 +90,13 @@ series:
   bloco: Núcleos
   indicador: Núcleo por exclusão EX2
   fonte: BCB SGS
-  codigo: '16121'
+  codigo: '27838'
   frequencia: Mensal
   unidade: '% m/m'
   tipo: Var % mensal
   fase: MVP
-  status: Verificado
-  observacao: 'Há dois códigos com título EX2: 16121 ("ex2") e 27838 ("EX2"); confirmar qual é a série vigente antes da Fase
-    3'
+  status: Confirmar
+  observacao: 'NT 57 (dez/2025, Tabela 11): EX1 = 16121 e EX2 = 27838; o título SGS de 16121 (''ex2'') é enganoso'
   acesso: sgs
 - id: BR-033
   bloco: Núcleos
@@ -161,16 +160,16 @@ series:
   acesso: derivado
 - id: BR-129
   bloco: Núcleos
-  indicador: Bens industriais subjacentes
-  fonte: Argus
-  codigo: 'f(t7060): metodologia BCB (industriais ex-voláteis)'
+  indicador: Bens industriais subjacentes (EX3 Industriais)
+  fonte: BCB SGS
+  codigo: '29684'
   frequencia: Mensal
   unidade: '% m/m'
-  tipo: Derivado
+  tipo: Var % mensal
   fase: MVP
-  status: Derivado
-  observacao: Par de serviços subjacentes; conferir contra boxes do RPM
-  acesso: derivado
+  status: Confirmar
+  observacao: 'Série oficial do BCB desde a NT 57 (dez/2025, Tabela 11): antes era cálculo próprio'
+  acesso: sgs
 - id: BR-130
   bloco: Núcleos
   indicador: Serviços intensivos em trabalho
@@ -281,16 +280,16 @@ series:
   acesso: sidra
 - id: BR-042
   bloco: Aberturas
-  indicador: Serviços subjacentes / supercore BR
-  fonte: Argus
-  codigo: f(t7060)
+  indicador: Serviços subjacentes (EX3 Serviços)
+  fonte: BCB SGS
+  codigo: '29683'
   frequencia: Mensal
   unidade: '% m/m'
-  tipo: Derivado
+  tipo: Var % mensal
   fase: MVP
-  status: Derivado
-  observacao: Recalcular com a metodologia do BCB e validar contra o RPM
-  acesso: derivado
+  status: Confirmar
+  observacao: 'Série oficial do BCB desde a NT 57 (dez/2025, Tabela 11): antes era cálculo próprio'
+  acesso: sgs
 - id: BR-043
   bloco: Atacado
   indicador: IGP-M e IGP-DI
