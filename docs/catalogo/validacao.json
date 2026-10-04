@@ -57,7 +57,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-006",
@@ -69,7 +69,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-007",
@@ -92,7 +92,7 @@
   "titulo_oficial": "Índice e variação da receita nominal e do volume de vendas no comércio varejista (2022 = 100)",
   "origem_titulo": "sidra",
   "ultima_obs": "2026-07-01",
-  "situacao": "Desatualizada",
+  "situacao": "OK",
   "detalhe": ""
  },
  {
@@ -104,7 +104,7 @@
   "titulo_oficial": "Índice e variação da receita nominal e do volume de vendas no comércio varejista ampliado (2022 = 100)",
   "origem_titulo": "sidra",
   "ultima_obs": "2026-07-01",
-  "situacao": "Desatualizada",
+  "situacao": "OK",
   "detalhe": ""
  },
  {
@@ -116,7 +116,7 @@
   "titulo_oficial": "Índice e variação da receita nominal e do volume de serviços (2022 = 100)",
   "origem_titulo": "sidra",
   "ultima_obs": "2026-07-01",
-  "situacao": "Desatualizada",
+  "situacao": "OK",
   "detalhe": ""
  },
  {
@@ -141,7 +141,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-016",
@@ -187,9 +187,9 @@
   "codigo": "t6390",
   "titulo_oficial": "Rendimento médio mensal real e nominal das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos - Total, coeficiente de variação, variações em relação aos três trimestres móveis anteriores e ao mesmo trimestre móvel do ano anterior",
   "origem_titulo": "sidra",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sidra: month must be in 1..12"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-020",
@@ -213,7 +213,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-025",
@@ -225,7 +225,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-026",
@@ -237,7 +237,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-027",
@@ -249,7 +249,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-029",
@@ -261,7 +261,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-030",
@@ -273,7 +273,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-031",
@@ -285,7 +285,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-032",
@@ -297,7 +297,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-033",
@@ -309,7 +309,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-034",
@@ -333,7 +333,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-036",
@@ -345,7 +345,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-037",
@@ -357,7 +357,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-038",
@@ -369,7 +369,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-038",
@@ -381,7 +381,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-040",
@@ -393,7 +393,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-041",
@@ -429,7 +429,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-043",
@@ -441,7 +441,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -453,7 +453,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -465,7 +465,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -477,7 +477,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -489,7 +489,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-046",
@@ -537,7 +537,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-052",
@@ -549,7 +549,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-053",
@@ -561,7 +561,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-055",
@@ -621,7 +621,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-060",
@@ -633,7 +633,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-061",
@@ -645,7 +645,7 @@
   "origem_titulo": "portal",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-061",
@@ -654,10 +654,10 @@
   "frequencia": "Mensal",
   "codigo": "27815",
   "titulo_oficial": "Meios de pagamento amplos - M4 (saldo em final de periodo) - Novo",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-062",
@@ -666,10 +666,10 @@
   "frequencia": "Mensal",
   "codigo": "20539",
   "titulo_oficial": "Saldo da carteira de crédito - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-062",
@@ -678,10 +678,10 @@
   "frequencia": "Mensal",
   "codigo": "20541",
   "titulo_oficial": "Saldo da carteira de crédito - Pessoas físicas - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-062",
@@ -690,10 +690,10 @@
   "frequencia": "Mensal",
   "codigo": "20540",
   "titulo_oficial": "Saldo da carteira de crédito - Pessoas jurídicas - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-063",
@@ -702,10 +702,10 @@
   "frequencia": "Mensal",
   "codigo": "20542",
   "titulo_oficial": "Saldo da carteira de crédito com recursos livres - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-063",
@@ -714,10 +714,10 @@
   "frequencia": "Mensal",
   "codigo": "20593",
   "titulo_oficial": "Saldo da carteira de crédito com recursos direcionados - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-064",
@@ -726,10 +726,10 @@
   "frequencia": "Mensal",
   "codigo": "20631",
   "titulo_oficial": "Concessões de crédito - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-064",
@@ -738,10 +738,10 @@
   "frequencia": "Mensal",
   "codigo": "20633",
   "titulo_oficial": "Concessões de crédito - Pessoas físicas - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-064",
@@ -750,10 +750,10 @@
   "frequencia": "Mensal",
   "codigo": "20632",
   "titulo_oficial": "Concessões de crédito - Pessoas jurídicas - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-065",
@@ -762,10 +762,10 @@
   "frequencia": "Mensal",
   "codigo": "20714",
   "titulo_oficial": "Taxa média de juros das operações de crédito - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-065",
@@ -774,10 +774,10 @@
   "frequencia": "Mensal",
   "codigo": "20716",
   "titulo_oficial": "Taxa média de juros das operações de crédito - Pessoas físicas - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-065",
@@ -786,10 +786,10 @@
   "frequencia": "Mensal",
   "codigo": "20715",
   "titulo_oficial": "Taxa média de juros das operações de crédito - Pessoas jurídicas - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-066",
@@ -798,10 +798,10 @@
   "frequencia": "Mensal",
   "codigo": "20783",
   "titulo_oficial": "Spread médio das operações de crédito - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-069",
@@ -810,10 +810,10 @@
   "frequencia": "Mensal",
   "codigo": "5793",
   "titulo_oficial": "NFSP sem desvalorização cambial (% PIB) - Fluxo acumulado em 12 meses - Resultado primário - Total - Setor público consolidado",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-070",
@@ -846,10 +846,10 @@
   "frequencia": "Mensal",
   "codigo": "13762",
   "titulo_oficial": "Dívida bruta do governo geral (% PIB) - Metodologia utilizada a partir de 2008",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-073",
@@ -858,10 +858,10 @@
   "frequencia": "Mensal",
   "codigo": "4513",
   "titulo_oficial": "Dívida Líquida do Setor Público (% PIB) - Total - Setor público consolidado",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-074",
@@ -930,10 +930,10 @@
   "frequencia": "Mensal",
   "codigo": "22701",
   "titulo_oficial": "Transações correntes - mensal - saldo",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-082",
@@ -954,10 +954,10 @@
   "frequencia": "Mensal",
   "codigo": "22885",
   "titulo_oficial": "Investimentos diretos no país - IDP - mensal - líquido",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-084",
@@ -965,11 +965,11 @@
   "acesso": "sgs",
   "frequencia": "Diária",
   "codigo": "13621",
-  "titulo_oficial": "Reservas internacionais - Conceito caixa - Total - diária",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Reservas internacionais - Total - diária",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-085",
@@ -981,7 +981,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-086",
@@ -993,7 +993,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-088",
@@ -1050,10 +1050,10 @@
   "frequencia": "Mensal",
   "codigo": "29037",
   "titulo_oficial": "Endividamento das famílias com o Sistema Financeiro Nacional em relação à renda acumulada dos últimos doze meses (RNDBF)",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-092",
@@ -1062,10 +1062,10 @@
   "frequencia": "Mensal",
   "codigo": "29034",
   "titulo_oficial": "Comprometimento de renda das famílias com o serviço da dívida com o Sistema Financeiro Nacional - Com ajuste sazonal (RNDBF)",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-093",
@@ -1074,10 +1074,10 @@
   "frequencia": "Mensal",
   "codigo": "20590",
   "titulo_oficial": "Saldo da carteira de crédito com recursos livres - Pessoas físicas - Cartão de crédito total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-094",
@@ -1086,10 +1086,10 @@
   "frequencia": "Mensal",
   "codigo": "20580",
   "titulo_oficial": "Saldo da carteira de crédito com recursos livres - Pessoas físicas - Crédito pessoal total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-095",
@@ -1098,10 +1098,10 @@
   "frequencia": "Mensal",
   "codigo": "20612",
   "titulo_oficial": "Saldo da carteira de crédito com recursos direcionados - Pessoas físicas - Financiamento imobiliário total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-096",
@@ -1110,10 +1110,10 @@
   "frequencia": "Mensal",
   "codigo": "21084",
   "titulo_oficial": "Inadimplência da carteira de crédito - Pessoas físicas - Total",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "última observação: [Errno -2] Name or service not known"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-097",
