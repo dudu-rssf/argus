@@ -63,6 +63,8 @@ def test_tipo_invalido_e_rejeitado():
         ("FRED (BLS)", "PAYEMS", "fred"),
         ("FRED", "SAHMREALTIME", "fred"),
         ("ComexStat (MDIC)", "API ComexStat", "comexstat"),
+        ("Tesouro Nacional (API RTN)", "rtn=10.04.1 ; rtn=10.08.1", "tesouro"),
+        ("Tesouro / LDO", "Curado", "manual"),
         ("Argus", "f(432, Focus IPCA 12m)", "derivado"),
         ("BCB SGS", "A mapear", "pendente"),
         ("FGV IBRE", "—", "manual"),

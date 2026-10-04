@@ -120,6 +120,8 @@ def source_kind(fonte: str, codigo: str) -> str:
         return "fred"
     if "ComexStat" in fonte:
         return "comexstat"
+    if "Tesouro" in fonte and "rtn=" in codigo:
+        return "tesouro"
     return "manual"
 
 
