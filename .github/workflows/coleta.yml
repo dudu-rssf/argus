@@ -1,0 +1,41 @@
+name: Coleta
+
+on:
+  schedule:
+    # Horários de Brasília (decisão 0008), dias úteis; cron em UTC (BRT = UTC-3)
+    - cron: "45 11 * * 1-5"            # 08:45
+    - cron: "30 12,15,18,22 * * 1-5"   # 09:30, 12:30, 15:30, 19:30
+  workflow_dispatch:
+    inputs:
+      gatilho:
+        description: "Origem da execução"
+        default: manual
+        type: choice
+        options: [manual, botao]
+      fontes:
+        description: "Limitar a fontes (ex.: 'sgs focus'); vazio = todas"
+        default: ""
+
+concurrency:
+  group: coleta
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    name: Coletar séries do MVP
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - name: Coletar
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          GATILHO: ${{ github.event_name == 'schedule' && 'agenda' || inputs.gatilho }}
+          FONTES: ${{ inputs.fontes }}
+        run: uv run python -m argus_pipeline.collect --gatilho "$GATILHO" ${FONTES:+--fontes $FONTES}
