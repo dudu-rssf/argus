@@ -38,4 +38,18 @@ O dono do projeto é iniciante em programação. Explique o que cada mudança fa
 
 ## Comandos
 
-Ainda não há código. Esta seção é preenchida na Fase 1 (pipeline) e na Fase 2 (site).
+Pipeline (a partir de `pipeline/`):
+
+- Testes: `uv run pytest -q` (os de banco precisam de `TEST_DATABASE_URL` apontando para um Postgres de teste, nunca o Neon).
+- Regenerar a configuração depois de mudar o catálogo: `uv run python -m argus_pipeline.catalog` e `uv run python -m argus_pipeline.catalog_xlsx`.
+- Coleta local: `uv run python -m argus_pipeline.collect --gatilho manual [--fontes sgs focus sidra fred comexstat tesouro b3 copom derivado]` (com `DATABASE_URL`).
+
+No GitHub Actions (aba Actions → workflow → Run workflow):
+
+- **Coleta**: roda sozinha 5× por dia útil; manual com `fontes` opcional.
+- **Saúde do banco**: resumo por série; `filtro` aceita prefixos (ex.: `BR-079 BR-080`).
+- **Gravar fixtures**: grava respostas reais em `pipeline/tests/fixtures/real/` (pares `nome=URL`; chave só como `{FRED_API_KEY}`; POST com `#post=<JSON em base64>`).
+- **Validar catálogo**: confere códigos contra os títulos oficiais e atualiza `docs/catalogo/validacao.md`.
+- **Resumo semanal**: grava `docs/status/coleta.md` toda segunda (proteção dos 60 dias).
+
+O site (Fase 2) ainda não existe.
