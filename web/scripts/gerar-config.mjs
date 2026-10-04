@@ -11,6 +11,7 @@ import { parse } from "yaml";
 const AQUI = dirname(fileURLToPath(import.meta.url));
 const RAIZ = join(AQUI, "..", "..");
 const TIPOS = ["Índice", "Var % mensal", "Taxa", "Fluxo", "Estoque", "Derivado"];
+const EVENTOS = ["copom_comunicado", "copom_ata"];
 const TRANSF = ["nivel", "mom", "qoq", "yoy", "acum3", "acum6", "acum12", "anual3", "anual6",
   "dpp1", "dpp3", "dpp12", "soma3", "soma12"];
 
@@ -42,9 +43,16 @@ export function montarConfig(arquivosSeries, arquivosAbas) {
       if (!p.titulo) erros.push(`${ondeP}: falta titulo`);
       const transf = [p.transformacao, p.combinado?.barras, p.combinado?.linha].filter(Boolean);
       for (const t of transf) if (!TRANSF.includes(t)) erros.push(`${ondeP}: transformação desconhecida "${t}"`);
+      if (p.eventos) {
+        if (!EVENTOS.includes(p.eventos)) erros.push(`${ondeP}: tipo de evento desconhecido "${p.eventos}"`);
+        if (p.series?.length) erros.push(`${ondeP}: painel de eventos não leva séries`);
+        return { titulo: p.titulo, eventos: p.eventos, quantidade: p.quantidade ?? 3, series: [] };
+      }
       if (!p.series?.length) erros.push(`${ondeP}: sem séries`);
       const series = (p.series ?? []).map((s) => {
         const id = String(s.dado ?? "").split(":")[0];
+        const molde = String(s.dado ?? "").match(/@\{[^}]*\}/g) ?? [];
+        for (const m of molde) if (!/^@\{ano(\+\d)?\}$/.test(m)) erros.push(`${ondeP}: molde inválido ${m} (use {ano} ou {ano+N})`);
         const cat = catalogo[id];
         if (!cat) { erros.push(`${ondeP}: "${s.dado}" não está no catálogo`); return null; }
         if (!["Verificado", "Derivado"].includes(cat.status))
@@ -58,7 +66,7 @@ export function montarConfig(arquivosSeries, arquivosAbas) {
           frequencia: cat.frequencia, unidade: cat.unidade, fonte: cat.fonte, codigo: cat.codigo,
         };
       }).filter(Boolean);
-      return { titulo: p.titulo, transformacao: p.transformacao ?? "nivel", combinado: p.combinado ?? null, series };
+      return { titulo: p.titulo, transformacao: p.transformacao ?? "nivel", combinado: p.combinado ?? null, eventos: null, series };
     });
     return { id: a.id, titulo: a.titulo, grupo: a.grupo, ordem: a.ordem ?? 99, paineis };
   });

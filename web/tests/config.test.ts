@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 // @ts-expect-error módulo JavaScript sem tipos
 import { montarConfig } from "../scripts/gerar-config.mjs";
+import { resolverAno } from "@/lib/config";
 
 const series = [{ pais: "BR", aba: "Inflação", series: [
   { id: "BR-025", indicador: "IPCA", fonte: "BCB SGS", codigo: "433", frequencia: "Mensal", unidade: "% m/m", tipo: "Var % mensal", status: "Verificado" },
@@ -24,5 +25,18 @@ describe("configuração das abas", () => {
     expect(() => montarConfig(series, aba([{ titulo: "X", series: [{ dado: "BR-099:?" }] }]))).toThrow(/status "Confirmar"/);
     expect(() => montarConfig(series, aba([{ titulo: "X", transformacao: "xyz", series: [{ dado: "BR-025:433" }] }]))).toThrow(/desconhecida/);
     expect(() => montarConfig(series, aba([{ titulo: "X", series: [{ dado: "BR-025:433", tipo: "Taxa" }] }]))).toThrow(/só vale para derivadas/);
+  });
+});
+
+describe("moldes de ano e eventos", () => {
+  it("resolve {ano} e {ano+N}", () => {
+    expect(resolverAno("BR-046:X@{ano+1}", 2026)).toBe("BR-046:X@2027");
+    expect(resolverAno("IPCA {ano}", 2026)).toBe("IPCA 2026");
+  });
+  it("recusa molde desconhecido e aceita painel de eventos", () => {
+    expect(() => montarConfig(series, aba([{ titulo: "X", series: [{ dado: "BR-025:433@{mes}" }] }]))).toThrow(/molde inválido/);
+    const { abas } = montarConfig(series, aba([{ titulo: "Comunicados", eventos: "copom_comunicado" }]));
+    expect(abas[0].paineis[0]).toMatchObject({ eventos: "copom_comunicado", quantidade: 3 });
+    expect(() => montarConfig(series, aba([{ titulo: "X", eventos: "noticia" }]))).toThrow(/evento desconhecido/);
   });
 });
