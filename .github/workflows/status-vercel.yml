@@ -1,0 +1,19 @@
+name: Status da Vercel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: uv run python -m argus_pipeline.vercel_status
