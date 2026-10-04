@@ -8,11 +8,13 @@ from __future__ import annotations
 import argparse
 import os
 from datetime import date
+from typing import Callable
 
 import psycopg
 
-from argus_pipeline.adapters.base import AdapterError, Fetcher
+from argus_pipeline.adapters.base import AdapterError, Evento, Fetcher
 from argus_pipeline.catalog import Series
+from argus_pipeline.load.events import upsert_events
 from argus_pipeline.load.observations import ultima_data, upsert_observations
 from argus_pipeline.load.series import data_codes, sync_catalog
 from argus_pipeline.validate.checks import redigir
@@ -39,6 +41,13 @@ def _garantir_sub_serie(conn, sub_id: str, series_id: str, codigo: str) -> None:
                     "on conflict (id) do nothing", (sub_id, series_id, codigo))
 
 
+def _ultima_data_eventos(conn, sid: str) -> date | None:
+    """Eventos não têm observações: a última data vem das execuções anteriores."""
+    with conn.cursor() as cur:
+        cur.execute("select max(ultima_data) from ingestion_items where series_id = %s and status <> 'erro'", (sid,))
+        return cur.fetchone()[0]
+
+
 def _registrar_item(conn, run_id, sid, status, linhas=0, ultima=None, erro=None):
     with conn.cursor() as cur:
         cur.execute(
@@ -55,8 +64,11 @@ def run_collection(
     gatilho: str,
     hoje: date | None = None,
     fases: tuple[str, ...] = ("MVP",),
+    eventos: dict[str, Callable[[str, date | None], list[Evento]]] | None = None,
 ) -> int:
-    alvo = [s for s in series if s.fase in fases and s.status in COLETAVEIS and s.kind in adapters]
+    eventos = eventos or {}
+    alvo = [s for s in series if s.fase in fases and s.status in COLETAVEIS
+            and (s.kind in adapters or s.kind in eventos)]
     sync_catalog(conn, alvo)
     with conn.cursor() as cur:
         cur.execute("insert into ingestion_runs (gatilho) values (%s) returning id", (gatilho,))
@@ -65,9 +77,23 @@ def run_collection(
 
     erros = oks = 0
     for s in alvo:
-        fetch = adapters[s.kind]
         for cod in data_codes(s):
             sid = f"{s.id}:{cod}"
+            if s.kind in eventos:
+                try:
+                    evs = eventos[s.kind](cod, janela_inicio(_ultima_data_eventos(conn, sid), "Contínua"))
+                    mudou = upsert_events(conn, evs)
+                    _registrar_item(conn, run_id, sid, "ok" if mudou else "sem_novidade", mudou,
+                                    max((e.data_ref for e in evs), default=_ultima_data_eventos(conn, sid)))
+                    conn.commit()
+                    oks += 1
+                except (AdapterError, psycopg.DataError, ValueError) as e:
+                    conn.rollback()
+                    _registrar_item(conn, run_id, sid, "erro", erro=redigir(str(e))[:1000])
+                    conn.commit()
+                    erros += 1
+                continue
+            fetch = adapters[s.kind]
             try:
                 desde = janela_inicio(ultima_data(conn, sid), s.frequencia)
                 linhas = fetch(cod, desde)
@@ -111,13 +137,14 @@ def main() -> None:
 
     repo = Path(__file__).resolve().parents[2]
     series = load_catalog(repo / "docs" / "catalogo" / "brasil.csv", pais="BR")
-    adapters = registry.ADAPTERS
+    adapters, eventos = registry.ADAPTERS, registry.EVENTOS
     if args.fontes:
         adapters = {k: v for k, v in adapters.items() if k in args.fontes}
+        eventos = {k: v for k, v in eventos.items() if k in args.fontes}
 
     with db.connect(os.environ["DATABASE_URL"]) as conn:
         db.apply_migrations(conn)
-        run_id = run_collection(conn, series, adapters, gatilho=args.gatilho)
+        run_id = run_collection(conn, series, adapters, gatilho=args.gatilho, eventos=eventos)
         with conn.cursor() as cur:
             cur.execute("select status, count(*) from ingestion_items where run_id=%s group by 1", (run_id,))
             resumo = dict(cur.fetchall())

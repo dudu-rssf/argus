@@ -5,7 +5,7 @@ from datetime import date
 import pytest
 
 from argus_pipeline import db
-from argus_pipeline.adapters.base import AdapterError
+from argus_pipeline.adapters.base import AdapterError, Evento
 from argus_pipeline.catalog import Series
 from argus_pipeline.collect import janela_inicio, run_collection
 
@@ -140,3 +140,35 @@ def test_janela_considera_as_sub_series(conn):
     run_collection(conn, [s], {"focus": falso}, gatilho="teste", hoje=HOJE)
     run_collection(conn, [s], {"focus": falso}, gatilho="teste", hoje=HOJE)
     assert pedidos == [None, date(2026, 6, 27)]  # 90 dias antes da última pesquisa
+
+
+# ---------- eventos (comunicados e atas do Copom) ----------
+
+def _copom():
+    return Series(id="BR-058", pais="BR", aba="A", bloco="B", indicador="Comunicados e atas",
+                  fonte="BCB site (API Copom)", codigo="comunicados ; atas", frequencia="Por reunião",
+                  unidade="Texto", tipo="Texto", fase="MVP", status="Verificado")
+
+
+def test_eventos_gravam_em_events_e_usam_janela(conn):
+    pedidos = []
+
+    def falso(codigo, desde):
+        pedidos.append((codigo, desde))
+        return [Evento(f"copom-{codigo}-281", codigo, date(2026, 9, 16), "281ª", None, "texto")]
+
+    run_collection(conn, [_copom()], {}, gatilho="teste", hoje=HOJE, eventos={"copom": falso})
+    run_id = run_collection(conn, [_copom()], {}, gatilho="teste", hoje=HOJE, eventos={"copom": falso})
+    assert _q(conn, "select count(*) from events")[0][0] == 2
+    assert pedidos[:2] == [("comunicados", None), ("atas", None)]
+    assert pedidos[2][1] == date(2026, 6, 18)  # 90 dias antes da última reunião
+    assert dict(_q(conn, "select series_id, status from ingestion_items where run_id=%s", run_id)) == {
+        "BR-058:comunicados": "sem_novidade", "BR-058:atas": "sem_novidade"}
+
+
+def test_falha_de_eventos_vira_registro(conn):
+    def falso(codigo, desde):
+        raise AdapterError("site fora")
+
+    run_id = run_collection(conn, [_copom()], {}, gatilho="teste", hoje=HOJE, eventos={"copom": falso})
+    assert _q(conn, "select status from ingestion_runs where id=%s", run_id)[0][0] == "erro"
