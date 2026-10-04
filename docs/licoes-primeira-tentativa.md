@@ -7,7 +7,7 @@ Repositório analisado em 04/10/2026. Projeto construído em 16–17/05/2026 com
 1. **Coleta agendada desativada pelo GitHub.** O workflow `refresh-macro-data.yml` rodou com sucesso 122 vezes (2× ao dia). Depois de 60 dias sem commits, o GitHub desativa workflows agendados em **repositórios públicos**: "This scheduled workflow is disabled because there hasn't been activity in this repository for at least 60 days."
 2. **Banco pausado por inatividade.** Sem a coleta escrevendo, o Supabase grátis pausou o projeto após 7 dias de baixa atividade. Todas as páginas dependiam do banco, então o site caiu.
 
-**Antídoto no Argus:** repositório privado (a regra dos 60 dias não se aplica), Neon (não pausa por inatividade) e aba Data Health mostrando a última coleta bem-sucedida.
+**Antídoto no Argus:** coleta que gera atividade no repositório (decisão 0007), Neon (não pausa por inatividade) e aba Data Health mostrando a última coleta bem-sucedida.
 
 ## Dados errados exibidos sem ninguém perceber
 

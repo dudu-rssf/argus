@@ -21,7 +21,7 @@ Acesso: site online, atrás de senha, para um único usuário.
 | --- | --- |
 | Pipeline | Python, `uv`, `httpx`, `pydantic`, `pytest` |
 | Banco | Neon (Postgres), plano grátis |
-| Agendamento | GitHub Actions (cron), repositório privado |
+| Agendamento | GitHub Actions (cron), repositório público com proteção contra desligamento do cron (decisão 0007) |
 | Site | Next.js + TypeScript + Tailwind + shadcn/ui |
 | Gráficos | Apache ECharts (macro) + TradingView Lightweight Charts (preços) |
 | Login | Auth.js, usuário único, falha fechada |
