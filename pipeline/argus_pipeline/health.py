@@ -27,11 +27,15 @@ def main(prefixos: list[str]) -> None:
         total, n_series = cur.fetchone()
         cur.execute("select id, gatilho, status, iniciado_em, terminado_em from ingestion_runs order by id desc limit 3")
         runs = cur.fetchall()
+        cur.execute("select tipo, count(*), min(data_ref), max(data_ref), min(length(texto)) from events group by 1 order by 1")
+        eventos = cur.fetchall()
         cur.execute(RESUMO, {"prefixos": [p + "%" for p in prefixos]})
         linhas = cur.fetchall()
     print(f"::notice::Banco: {total} observações em {n_series} séries de dados")
     for r in runs:
         print(f"::notice::Execução {r[0]} ({r[1]}): {r[2]}, {r[3]:%Y-%m-%d %H:%M} → {r[4]:%H:%M}" if r[4] else f"::notice::Execução {r[0]}: {r[2]}")
+    for tipo, n, ini, fim, menor in eventos:
+        print(f"::notice::Eventos {tipo}: {n} de {ini} a {fim}; menor texto {menor} caracteres")
     # GitHub limita anotações por passo: agrupa várias séries por linha
     bloco = []
     linhas = [x for x in linhas if x[2]]  # séries-mãe vazias (só sub-séries têm dados) ficam de fora
