@@ -65,6 +65,7 @@ def test_tipo_invalido_e_rejeitado():
         ("ComexStat (MDIC)", "API ComexStat", "comexstat"),
         ("Tesouro Nacional (API RTN)", "rtn=10.04.1 ; rtn=10.08.1", "tesouro"),
         ("Tesouro / LDO", "Curado", "manual"),
+        ("B3 (oficial) / Yahoo (alternativa)", "indice=IBOV · yahoo=^BVSP", "b3"),
         ("Argus", "f(432, Focus IPCA 12m)", "derivado"),
         ("BCB SGS", "A mapear", "pendente"),
         ("FGV IBRE", "—", "manual"),

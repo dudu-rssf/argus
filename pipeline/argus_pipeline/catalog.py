@@ -122,6 +122,8 @@ def source_kind(fonte: str, codigo: str) -> str:
         return "comexstat"
     if "Tesouro" in fonte and "rtn=" in codigo:
         return "tesouro"
+    if fonte.startswith("B3") and codigo.startswith("indice="):
+        return "b3"
     return "manual"
 
 
