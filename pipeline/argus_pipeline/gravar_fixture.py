@@ -4,9 +4,12 @@ Uso: uv run python -m argus_pipeline.gravar_fixture "nome1.json=URL1" "nome2.jso
 Só aceita URLs sem chave de API. Para fontes com chave, a URL usa o marcador
 {FRED_API_KEY}, trocado aqui pela variável de ambiente; a chave nunca vai para
 a fixture (o arquivo é conferido antes de gravar). Grava em tests/fixtures/real/.
+POST com corpo JSON: termine a URL com `#post=<JSON em base64 url-safe>`.
 """
 from __future__ import annotations
 
+import base64
+import json
 import os
 import sys
 from pathlib import Path
@@ -40,7 +43,11 @@ def main(pares: list[str]) -> None:
             for k in CHAVES:
                 url = url.replace("{" + k + "}", os.environ.get(k, ""))
             try:
-                r = c.get(url)
+                url, _, corpo = url.partition("#post=")
+                if corpo:
+                    r = c.post(url, json=json.loads(base64.urlsafe_b64decode(corpo + "=" * (-len(corpo) % 4))))
+                else:
+                    r = c.get(url)
                 texto = r.text[:LIMITE]
                 if any(seg in texto for seg in segredos):
                     print(f"::error::{nome}: resposta contém a chave; não gravada")
