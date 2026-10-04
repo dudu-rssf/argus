@@ -62,7 +62,7 @@ def soap(client: httpx.Client, op: str, args: str, arquivo: str) -> None:
         r = client.post(SGS_SOAP, content=_ENV.format(op=op, args=args),
                         headers={"Content-Type": "text/xml; charset=utf-8", "SOAPAction": ""})
         texto = r.text
-        (FIX / arquivo).write_text(texto[:30000], encoding="utf-8")
+        (FIX / arquivo).write_text(texto if "curto" in arquivo or "inexistente" in arquivo else texto[:30000], encoding="utf-8")
         # conta observações: getValoresSeriesXML devolve XML escapado com <ITEM>; VO devolve <item>
         n_item = texto.count("&lt;ITEM&gt;") + texto.count("<ITEM>")
         n_vo = texto.count("WSValorSerieVO")
@@ -88,6 +88,15 @@ def main() -> None:
              _ARRAY.format(code=433)
              + '<in1 xsi:type="xsd:string">01/01/1980</in1><in2 xsi:type="xsd:string">01/10/2026</in2>',
              "sgs_soap_valoresvo_433.xml")
+        # amostras curtas e completas para testes de contrato (fixtures)
+        for cod, ini, fim, arq in [
+            (433, "01/01/2025", "01/10/2026", "sgs_xml_433_curto.xml"),
+            (1, "01/09/2026", "03/10/2026", "sgs_xml_1_curto.xml"),
+            (999999, "01/01/2026", "01/10/2026", "sgs_xml_inexistente.xml"),
+        ]:
+            soap(client, "getValoresSeriesXML",
+                 _ARRAY.format(code=cod)
+                 + f'<in1 xsi:type="xsd:string">{ini}</in1><in2 xsi:type="xsd:string">{fim}</in2>', arq)
         # série diária longa: Selic meta desde 1999
         soap(client, "getValoresSeriesXML",
              _ARRAY.format(code=432)
