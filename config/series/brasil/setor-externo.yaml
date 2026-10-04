@@ -42,14 +42,14 @@ series:
   bloco: BP
   indicador: Transações correntes — 12m % PIB
   fonte: BCB SGS
-  codigo: A mapear
+  codigo: '23079'
   frequencia: Mensal
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: A mapear
-  observacao: ''
-  acesso: pendente
+  status: Confirmar
+  observacao: Transações correntes acumulado em 12 meses em relação ao PIB
+  acesso: sgs
 - id: BR-083
   bloco: BP
   indicador: Investimento direto no país (IDP)

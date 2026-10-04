@@ -120,7 +120,7 @@ series:
   tipo: Var % mensal
   fase: MVP
   status: A mapear
-  observacao: Não apareceram na busca do portal; localizar no SGS
+  observacao: Não encontrados no portal do BCB por "núcleo ex3" nem "p55" (busca de 2026-10-04); localizar no SGS
   acesso: pendente
 - id: BR-035
   bloco: Aberturas

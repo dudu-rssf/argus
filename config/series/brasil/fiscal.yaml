@@ -18,26 +18,26 @@ series:
   bloco: Resultado
   indicador: Resultado nominal e juros nominais — 12m % PIB
   fonte: BCB SGS
-  codigo: A mapear
+  codigo: 5727 / 5760
   frequencia: Mensal
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: A mapear
-  observacao: ''
-  acesso: pendente
+  status: Confirmar
+  observacao: 5727 resultado nominal, 5760 juros nominais; NFSP sem desvalorização cambial, 12m % PIB
+  acesso: sgs
 - id: BR-071
   bloco: Resultado
   indicador: Primário por esfera (Gov. Central, regionais, estatais)
   fonte: BCB SGS
-  codigo: A mapear
+  codigo: 5783 / 5789
   frequencia: Mensal
-  unidade: R$ mi
-  tipo: Fluxo
+  unidade: '% PIB'
+  tipo: Taxa
   fase: MVP
-  status: A mapear
-  observacao: ''
-  acesso: pendente
+  status: Confirmar
+  observacao: '5783 Governo Federal e BC, 5789 estatais (12m % PIB); governos regionais: código a localizar'
+  acesso: sgs
 - id: BR-072
   bloco: Dívida
   indicador: Dívida bruta do governo geral (DBGG) % PIB

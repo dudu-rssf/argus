@@ -18,38 +18,38 @@ series:
   bloco: PNAD
   indicador: Taxa de participação e nível de ocupação
   fonte: IBGE SIDRA
-  codigo: PNAD Contínua mensal (tabela a mapear)
+  codigo: t5944 / t6379
   frequencia: Mensal (trim. móvel)
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: A mapear
-  observacao: ''
-  acesso: pendente
+  status: Confirmar
+  observacao: 'PNAD Contínua mensal: t5944 participação, t6379 nível da ocupação'
+  acesso: sidra
 - id: BR-017
   bloco: PNAD
   indicador: População ocupada (total, formal, informal)
   fonte: IBGE SIDRA
-  codigo: PNAD Contínua mensal (tabela a mapear)
+  codigo: t8501
   frequencia: Mensal (trim. móvel)
   unidade: Mil pessoas
   tipo: Estoque
   fase: MVP
-  status: A mapear
-  observacao: Informalidade = derivada
-  acesso: pendente
+  status: Confirmar
+  observacao: PNAD Contínua mensal, por situação de informalidade
+  acesso: sidra
 - id: BR-018
   bloco: PNAD
   indicador: Taxa de informalidade
   fonte: IBGE SIDRA
-  codigo: PNAD Contínua mensal (tabela a mapear)
+  codigo: t8513
   frequencia: Mensal (trim. móvel)
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: A mapear
-  observacao: ''
-  acesso: pendente
+  status: Confirmar
+  observacao: PNAD Contínua mensal
+  acesso: sidra
 - id: BR-019
   bloco: PNAD
   indicador: Rendimento médio real habitual
@@ -66,14 +66,14 @@ series:
   bloco: PNAD
   indicador: Massa de rendimento real habitual
   fonte: IBGE SIDRA
-  codigo: PNAD Contínua mensal (tabela a mapear)
+  codigo: t6392
   frequencia: Mensal (trim. móvel)
   unidade: R$ mi
   tipo: Fluxo
   fase: MVP
-  status: A mapear
-  observacao: Liga Trabalho a Consumo
-  acesso: pendente
+  status: Confirmar
+  observacao: PNAD Contínua mensal, habitualmente recebido; liga Trabalho a Consumo
+  acesso: sidra
 - id: BR-021
   bloco: PNAD
   indicador: Subutilização, desalentados, desemprego de longo prazo
