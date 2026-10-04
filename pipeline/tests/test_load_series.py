@@ -25,6 +25,7 @@ def _s(id, fonte, codigo, status="Verificado", indicador="Ind"):
     (_s("BR-6", "FGV IBRE", "—", status="Sem API"), []),
     (_s("BR-7", "ComexStat (MDIC)", "fluxo=export/pais=160 ; fluxo=export/bloco=22"),
      ["fluxo=export/pais=160", "fluxo=export/bloco=22"]),
+    (_s("BR-9", "B3 (oficial) / Yahoo (alternativa)", "indice=IBOV · yahoo=^BVSP"), ["indice=IBOV · yahoo=^BVSP"]),
     (_s("BR-8", "Tesouro Nacional (API RTN)", "rtn=10.01.1 ; rtn=10.04.1"), ["rtn=10.01.1", "rtn=10.04.1"]),
 ])
 def test_data_codes(serie, esperado):
