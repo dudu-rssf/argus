@@ -106,7 +106,7 @@ Workflow `coleta.yml`:
 
 ## Critério de pronto
 
-1. Três dias seguidos com todas as execuções agendadas concluídas.
+1. Três dias seguidos com todas as execuções agendadas concluídas. **Feito junto com a Fase 2, com o site no ar (decisão 0011).**
 2. Toda série MVP `Verificado`/`Derivado` com observações no banco e última data compatível com a fonte.
 3. Uma consulta mostra, por série, última atualização e último erro (base da aba Data Health).
 4. Dez valores sorteados conferem com a fonte oficial.
