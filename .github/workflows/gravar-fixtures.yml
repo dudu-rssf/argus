@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       pares:
-        description: "Pares nome=URL separados por espaço (URLs sem chave)"
+        description: "Pares nome=URL separados por espaço (chave só como marcador {FRED_API_KEY})"
         required: true
 
 permissions:
@@ -23,6 +23,7 @@ jobs:
       - run: uv sync --locked
       - env:
           PARES: ${{ inputs.pares }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: uv run python -m argus_pipeline.gravar_fixture $PARES
       - run: |
           if grep -rEn "(api_key|apikey|token)=[A-Za-z0-9]{8,}" tests/fixtures; then exit 1; fi
