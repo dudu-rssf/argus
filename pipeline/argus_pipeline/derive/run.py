@@ -11,10 +11,12 @@ from typing import Callable
 import psycopg
 
 from argus_pipeline.derive import formulas as f
+from argus_pipeline.derive.subitens import carregar as carregar_subitens
 
 FOCUS_IPCA_12M = "ExpectativasMercadoInflacao12Meses · Indicador='IPCA'"
 FOCUS_SELIC_ANUAL = "ExpectativasMercadoAnuais · Indicador='Selic'"
 FOCUS_IPCA_ANUAL = "ExpectativasMercadoAnuais · Indicador='IPCA'"
+IPCA_SUBITENS = "t7060/v63,66/c315=all"  # variação mensal (63) e peso (66) por categoria
 NUCLEOS_COPOM = ["11427", "27839", "4466", "16122", "28750"]  # EX0, EX3, MS, DP, P55
 
 
@@ -64,10 +66,29 @@ def _neutro(conn):
     return f.neutro_focus(ler_subs(conn, FOCUS_SELIC_ANUAL), ler_subs(conn, FOCUS_IPCA_ANUAL))
 
 
+def variacoes_e_pesos(conn) -> tuple[dict[str, f.Serie], dict[str, f.Serie]]:
+    """Variação mensal e peso de cada subitem do IPCA (só subitens, nível 4)."""
+    subitens = {s["id"] for s in carregar_subitens()}
+    var, pes = {}, {}
+    for sub, serie in ler_subs(conn, IPCA_SUBITENS).items():
+        variavel, _, cat = sub.partition(".")
+        if cat in subitens:
+            (var if variavel == "63" else pes if variavel == "66" else {})[cat] = serie
+    if not var or not pes:
+        raise DerivacaoError("subitens do IPCA sem variação ou peso no banco")
+    return var, pes
+
+
+def percentil_ipca(conn, p: float) -> f.Serie:
+    var, pes = variacoes_e_pesos(conn)
+    return f.percentil_mensal(var, pes, p)
+
+
 DERIVADAS: dict[str, Callable[[psycopg.Connection], f.Serie]] = {
     "BR-127": lambda c: f.media([ler(c, cod) for cod in NUCLEOS_COPOM]),
     "BR-133": lambda c: f.variacao_mensal(ler(c, "28763")),
     "BR-055": _juro_real,
     "BR-117": _neutro,
     "BR-118": lambda c: f.diferenca_asof(_juro_real(c), _neutro(c)),
+    "BR-128": lambda c: percentil_ipca(c, 0.50),
 }

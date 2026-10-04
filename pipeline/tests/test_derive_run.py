@@ -86,3 +86,17 @@ def test_insumo_ausente_vira_erro_registrado(conn):
     status, erro = _q(conn, "select status, erro from ingestion_items where run_id=%s", run_id)[0]
     assert status == "erro" and "28763" in erro
     assert _q(conn, "select count(*) from observations")[0][0] == 0
+
+
+def test_p50_pelos_subitens_do_ipca(conn, monkeypatch):
+    from argus_pipeline.derive import run
+    monkeypatch.setattr(run, "carregar_subitens", lambda: [{"id": "7173"}, {"id": "7175"}, {"id": "7176"}])
+    linhas = [(date(2026, 8, 1), v, sub) for v, sub in [
+        (0.5, "63.7173"), (-0.2, "63.7175"), (0.1, "63.7176"), (-0.3, "63.7169"),   # 7169 = índice geral
+        (30.0, "66.7173"), (40.0, "66.7175"), (30.0, "66.7176"), (100.0, "66.7169")]]
+    series = [_s("BR-041", "IBGE SIDRA", "t7060/v63,66/c315=all"),
+              _s("BR-128", "Argus", "f(t7060)", status="Derivado")]
+    run_collection(conn, series, {"sidra": lambda cod, desde: linhas}, gatilho="teste", hoje=HOJE,
+                   derivadas=DERIVADAS)
+    # ordenado: -0,2 (40%) -> 0,1 (70%): P50 = 0,1; o índice geral não entra
+    assert _valores(conn, "BR-128:derivado") == [(date(2026, 8, 1), 0.1)]

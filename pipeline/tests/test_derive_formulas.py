@@ -78,3 +78,10 @@ def test_percentil_mensal_casa_variacao_e_peso_do_mesmo_mes():
     var = {"a": [(D(1), 0.1), (D(2), 0.9)], "b": [(D(1), 0.5), (D(2), 0.2)]}
     pes = {"a": [(D(1), 60.0), (D(2), 40.0)], "b": [(D(1), 40.0), (D(2), 60.0)]}
     assert f.percentil_mensal(var, pes, 0.5) == [(D(1), 0.1), (D(2), 0.2)]
+
+
+def test_comparar_reproducao_do_p55():
+    from argus_pipeline.derive.conferir import comparar
+    r = comparar([(D(1), 0.31), (D(2), 0.40), (D(3), 0.5)], [(D(1), 0.31), (D(2), 0.45)])
+    assert r["meses"] == 2 and r["max_dif"] == pytest.approx(0.05)
+    assert [d for d, *_ in r["divergentes"]] == [D(2)]
