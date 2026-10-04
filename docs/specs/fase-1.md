@@ -1,6 +1,6 @@
 # Fase 1 — Coleta automática
 
-**Duração estimada:** 2–3 semanas · **Status:** proposta, aguardando aprovação
+**Duração estimada:** 2–3 semanas · **Status:** aprovada em 2026-10-04 · em andamento (passos 1–5 concluídos; BCB SGS em produção)
 
 ## Objetivo
 
@@ -85,11 +85,11 @@ Workflow `coleta.yml`:
 
 ## Passos e commits
 
-1. Migrações + script de aplicação + teste no Postgres do CI
-2. Espelho do catálogo na tabela `series`
-3. Orquestrador (`run.py`) + registro em `ingestion_runs/items`, com adapter falso
-4. Adapter SGS → primeira carga real no Neon
-5. Workflow `coleta.yml` (agenda + manual + concurrency)
+1. [x] Migrações + script de aplicação + teste no Postgres do CI
+2. [x] Espelho do catálogo na tabela `series` (+ `series_data`, um registro por código da fonte)
+3. [x] Orquestrador (`collect.py`) + registro em `ingestion_runs/items`, com adapter falso
+4. [x] Adapter SGS → primeira carga real no Neon: 65 séries, 58.687 observações (execução 1, 2026-10-04)
+5. [x] Workflow `coleta.yml` (agenda + manual + concurrency)
 6. Adapters Focus, SIDRA (com mapeamento de variáveis), FRED, ComexStat, Tesouro, B3, Copom — um commit cada
 7. Séries derivadas
 8. Proteção dos 60 dias e resumo semanal
