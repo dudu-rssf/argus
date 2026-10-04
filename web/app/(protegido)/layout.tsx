@@ -14,6 +14,7 @@ function grupos(): GrupoMenu[] {
     if (!porGrupo.has(a.grupo)) porGrupo.set(a.grupo, { titulo: a.grupo, itens: [] });
     porGrupo.get(a.grupo)!.itens.push({ rotulo: a.titulo, href: `/aba/${a.id}` });
   }
+  porGrupo.get("Brasil")?.itens.push({ rotulo: "Análises", href: "/analises" });
   return [
     { titulo: "Visão geral", itens: [{ rotulo: "Central", href: "/" }] },
     ...porGrupo.values(),
