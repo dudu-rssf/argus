@@ -26,6 +26,8 @@ def upsert_observations(conn: psycopg.Connection, series_data_id: str, linhas: l
 
 
 def ultima_data(conn: psycopg.Connection, series_data_id: str) -> date | None:
+    """Última data da série, incluindo suas sub-séries ('<id>@<sub>')."""
     with conn.cursor() as cur:
-        cur.execute("select max(ref_date) from observations where series_id = %s", (series_data_id,))
+        cur.execute("select max(ref_date) from observations where series_id = %s or starts_with(series_id, %s)",
+                    (series_data_id, series_data_id + "@"))
         return cur.fetchone()[0]

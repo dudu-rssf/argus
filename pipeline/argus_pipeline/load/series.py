@@ -19,7 +19,10 @@ def data_codes(s: Series) -> list[str]:
     if kind == "fred":
         return fred_codes(s.codigo)
     if kind == "focus":
-        return [s.codigo]
+        # "Endpoint · Indicador='A' ; Indicador='B'" -> um código por indicador
+        endpoint, _, filtros = s.codigo.partition("·")
+        partes = [f.strip() for f in filtros.split(";") if f.strip()]
+        return [f"{endpoint.strip()} · {f}" for f in partes] or [endpoint.strip()]
     if kind == "derivado":
         return ["derivado"]
     return []

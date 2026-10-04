@@ -110,3 +110,33 @@ def test_segunda_carga_pede_so_a_janela_recente(conn):
     run_collection(conn, [_s("BR-1", "433")], {"sgs": falso}, gatilho="teste", hoje=HOJE)
     run_collection(conn, [_s("BR-1", "433")], {"sgs": falso}, gatilho="teste", hoje=HOJE)
     assert pedidos == [None, date(2024, 8, 1)]
+
+
+# ---------- sub-séries (ex.: Focus por ano de referência) ----------
+
+def test_sub_series_viram_series_de_dados_proprias(conn):
+    def falso(codigo, desde):
+        return [(date(2026, 9, 25), 4.99, "2026"), (date(2026, 9, 25), 4.31, "2027")]
+
+    s = Series(id="BR-46", pais="BR", aba="A", bloco="B", indicador="Focus IPCA", fonte="BCB Olinda (Focus)",
+               codigo="ExpectativasMercadoAnuais · Indicador='IPCA'", frequencia="Semanal", unidade="%",
+               tipo="Taxa", fase="MVP", status="Verificado")
+    run_collection(conn, [s], {"focus": falso}, gatilho="teste", hoje=HOJE)
+    ids = {r[0] for r in _q(conn, "select series_id from observations")}
+    assert ids == {"BR-46:ExpectativasMercadoAnuais · Indicador='IPCA'@2026",
+                   "BR-46:ExpectativasMercadoAnuais · Indicador='IPCA'@2027"}
+
+
+def test_janela_considera_as_sub_series(conn):
+    pedidos = []
+
+    def falso(codigo, desde):
+        pedidos.append(desde)
+        return [(date(2026, 9, 25), 4.99, "2026")]
+
+    s = Series(id="BR-46", pais="BR", aba="A", bloco="B", indicador="Focus", fonte="BCB Olinda (Focus)",
+               codigo="ExpectativasMercadoAnuais · Indicador='IPCA'", frequencia="Semanal", unidade="%",
+               tipo="Taxa", fase="MVP", status="Verificado")
+    run_collection(conn, [s], {"focus": falso}, gatilho="teste", hoje=HOJE)
+    run_collection(conn, [s], {"focus": falso}, gatilho="teste", hoje=HOJE)
+    assert pedidos == [None, date(2026, 6, 27)]  # 90 dias antes da última pesquisa

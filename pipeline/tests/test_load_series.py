@@ -68,3 +68,12 @@ def test_sync_nao_apaga_observacoes_existentes(conn):
     conn.commit()
     sync_catalog(conn, [_s("BR-1", "BCB SGS", "433")])
     assert _contar(conn, "observations") == 1
+
+
+def test_focus_com_varios_indicadores():
+    s = _s("BR-77", "BCB Olinda (Focus)",
+           "ExpectativasMercadoAnuais · Indicador='Resultado primário' ; Indicador='Dívida líquida do setor público'")
+    assert data_codes(s) == [
+        "ExpectativasMercadoAnuais · Indicador='Resultado primário'",
+        "ExpectativasMercadoAnuais · Indicador='Dívida líquida do setor público'",
+    ]

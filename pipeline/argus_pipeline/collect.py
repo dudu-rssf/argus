@@ -33,6 +33,12 @@ def janela_inicio(ultima: date | None, frequencia: str) -> date | None:
     return date(ano, mes, 1)
 
 
+def _garantir_sub_serie(conn, sub_id: str, series_id: str, codigo: str) -> None:
+    with conn.cursor() as cur:
+        cur.execute("insert into series_data (id, series_id, codigo_fonte) values (%s,%s,%s) "
+                    "on conflict (id) do nothing", (sub_id, series_id, codigo))
+
+
 def _registrar_item(conn, run_id, sid, status, linhas=0, ultima=None, erro=None):
     with conn.cursor() as cur:
         cur.execute(
@@ -65,9 +71,17 @@ def run_collection(
             try:
                 desde = janela_inicio(ultima_data(conn, sid), s.frequencia)
                 linhas = fetch(cod, desde)
-                mudou = upsert_observations(conn, sid, linhas)
+                grupos: dict[str, list] = {}
+                for linha in linhas:
+                    alvo_id = f"{sid}@{linha[2]}" if len(linha) > 2 else sid
+                    grupos.setdefault(alvo_id, []).append((linha[0], linha[1]))
+                mudou = 0
+                for alvo_id, obs in grupos.items():
+                    if alvo_id != sid:
+                        _garantir_sub_serie(conn, alvo_id, s.id, cod)
+                    mudou += upsert_observations(conn, alvo_id, obs)
                 _registrar_item(conn, run_id, sid, "ok" if mudou else "sem_novidade", mudou,
-                                max((d for d, _ in linhas), default=None))
+                                max((linha[0] for linha in linhas), default=None))
                 conn.commit()
                 oks += 1
             except (AdapterError, psycopg.DataError, ValueError) as e:

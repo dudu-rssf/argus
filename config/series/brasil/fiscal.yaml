@@ -102,7 +102,7 @@ series:
   bloco: Projeções
   indicador: Focus — primário e dívida líquida
   fonte: BCB Olinda (Focus)
-  codigo: ExpectativasMercadoAnuais
+  codigo: ExpectativasMercadoAnuais · Indicador='Resultado primário' ; Indicador='Dívida líquida do setor público'
   frequencia: Semanal
   unidade: '% PIB'
   tipo: Taxa

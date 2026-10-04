@@ -343,13 +343,13 @@ series:
   bloco: Expectativas
   indicador: Focus — IPCA 12 meses à frente
   fonte: BCB Olinda (Focus)
-  codigo: ExpectativasMercadoInflacao12Meses
+  codigo: ExpectativasMercadoInflacao12Meses · Indicador='IPCA'
   frequencia: Diária
   unidade: '%'
   tipo: Taxa
   fase: MVP
   status: Verificado
-  observacao: Usado no juro real ex-ante
+  observacao: Série suavizada; usada no juro real ex-ante
   acesso: focus
 - id: BR-048
   bloco: Expectativas
