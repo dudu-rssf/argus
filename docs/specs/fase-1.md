@@ -1,6 +1,6 @@
 # Fase 1 — Coleta automática
 
-**Duração estimada:** 2–3 semanas · **Status:** aprovada em 2026-10-04 · em andamento (passos 1–5 concluídos; SGS, Focus, SIDRA, FRED, ComexStat e Tesouro em produção)
+**Duração estimada:** 2–3 semanas · **Status:** aprovada em 2026-10-04 · em andamento (passos 1–5 concluídos; SGS, Focus, SIDRA, FRED, ComexStat, Tesouro e B3 em produção)
 
 ## Objetivo
 
@@ -96,7 +96,8 @@ Workflow `coleta.yml`:
    - [x] 6c FRED (execução 4: 3 commodities)
    - [x] 6d ComexStat (execução 5: 5 recortes, jan/1997 a ago/2026 sem buraco; o período da API é recorte ano × mês, por isso o adapter divide os pedidos)
    - [x] 6e Tesouro pela API Séries Temporais do RTN, não pela planilha (decisão 0010; execução 6: 7 séries, jan/1997 a ago/2026)
-   - [ ] 6f B3 · 6g Copom
+   - [x] 6f Ibovespa pela B3, Yahoo só como alternativa na janela recente (execução 7: 7.125 pregões desde 1998; antes disso há reescalonamentos sem ajuste na fonte, v2)
+   - [ ] 6g Copom
 7. Séries derivadas
 8. Proteção dos 60 dias e resumo semanal
 
