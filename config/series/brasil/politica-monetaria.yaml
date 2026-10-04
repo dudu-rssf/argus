@@ -240,6 +240,7 @@ series:
   unidade: '% a.a.'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
-  observacao: Insumo do juro neutro implícito (BR-117); sub-série por ano de referência
+  status: Verificado
+  observacao: 'Insumo do juro neutro implícito (BR-117); sub-série por ano de referência; validador 2026-10-04: última pesquisa
+    2026-09-25'
   acesso: focus
