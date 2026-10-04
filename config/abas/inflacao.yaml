@@ -1,0 +1,82 @@
+# Aba Inflação (Fase 3). Só configuração: cada painel lista séries do banco.
+id: inflacao
+titulo: Inflação
+grupo: Brasil
+ordem: 3
+paineis:
+  - titulo: IPCA, mês a mês e em 12 meses
+    combinado: { barras: nivel, linha: acum12 }
+    series:
+      - { dado: "BR-025:433", rotulo: IPCA }
+
+  - titulo: IPCA-15
+    combinado: { barras: nivel, linha: acum12 }
+    series:
+      - { dado: "BR-027:7478", rotulo: IPCA-15 }
+
+  - titulo: Núcleos acompanhados pelo Copom
+    transformacao: acum12
+    series:
+      - { dado: "BR-031:11427", rotulo: EX0 }
+      - { dado: "BR-034:27839", rotulo: EX3 }
+      - { dado: "BR-030:4466", rotulo: MS }
+      - { dado: "BR-033:16122", rotulo: DP }
+      - { dado: "BR-034:28750", rotulo: P55 }
+
+  - titulo: Sínteses dos núcleos
+    transformacao: acum12
+    series:
+      - { dado: "BR-127:derivado", rotulo: Média dos 5 núcleos, tipo: Var % mensal }
+      - { dado: "BR-128:derivado", rotulo: Mediana ponderada (P50), tipo: Var % mensal }
+      - { dado: "BR-126:28751", rotulo: EX-FE }
+
+  - titulo: Preços livres e monitorados
+    transformacao: acum12
+    series:
+      - { dado: "BR-035:11428", rotulo: Livres }
+      - { dado: "BR-036:4449", rotulo: Monitorados }
+
+  - titulo: Serviços, bens industriais e alimentação no domicílio
+    transformacao: acum12
+    series:
+      - { dado: "BR-037:10844", rotulo: Serviços }
+      - { dado: "BR-038:27863", rotulo: Bens industriais }
+      - { dado: "BR-038:27864", rotulo: Alimentação no domicílio }
+
+  - titulo: Serviços e industriais subjacentes
+    transformacao: acum12
+    series:
+      - { dado: "BR-042:29683", rotulo: Serviços subjacentes }
+      - { dado: "BR-129:29684", rotulo: Industriais subjacentes }
+
+  - titulo: Índice de difusão
+    transformacao: nivel
+    series:
+      - { dado: "BR-040:21379", rotulo: Difusão }
+
+  - titulo: IGP-M e IGP-DI
+    transformacao: acum12
+    series:
+      - { dado: "BR-043:189", rotulo: IGP-M }
+      - { dado: "BR-043:190", rotulo: IGP-DI }
+
+  - titulo: Índice de commodities do BC (IC-Br)
+    transformacao: yoy
+    series:
+      - { dado: "BR-045:27574", rotulo: Total }
+      - { dado: "BR-045:27575", rotulo: Agropecuária }
+      - { dado: "BR-045:27576", rotulo: Metal }
+      - { dado: "BR-045:27577", rotulo: Energia }
+
+  - titulo: Focus, IPCA por ano
+    transformacao: nivel
+    series:
+      - { dado: "BR-046:ExpectativasMercadoAnuais · Indicador='IPCA'@{ano}", rotulo: "{ano}" }
+      - { dado: "BR-046:ExpectativasMercadoAnuais · Indicador='IPCA'@{ano+1}", rotulo: "{ano+1}" }
+      - { dado: "BR-046:ExpectativasMercadoAnuais · Indicador='IPCA'@{ano+2}", rotulo: "{ano+2}" }
+      - { dado: "BR-046:ExpectativasMercadoAnuais · Indicador='IPCA'@{ano+3}", rotulo: "{ano+3}" }
+
+  - titulo: Focus, IPCA 12 meses à frente
+    transformacao: nivel
+    series:
+      - { dado: "BR-047:ExpectativasMercadoInflacao12Meses · Indicador='IPCA'", rotulo: Mediana Focus }

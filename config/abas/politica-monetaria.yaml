@@ -1,0 +1,76 @@
+# Aba Política Monetária (Fase 3).
+id: politica-monetaria
+titulo: Política Monetária
+grupo: Brasil
+ordem: 4
+paineis:
+  - titulo: Meta Selic
+    transformacao: nivel
+    series:
+      - { dado: "BR-050:432", rotulo: Meta Selic }
+
+  - titulo: Juro real ex-ante e neutro implícito no Focus
+    transformacao: nivel
+    series:
+      - { dado: "BR-055:derivado", rotulo: Juro real ex-ante, tipo: Taxa }
+      - { dado: "BR-117:derivado", rotulo: Neutro implícito (Focus t+3), tipo: Taxa }
+
+  - titulo: Juro real menos neutro implícito
+    transformacao: nivel
+    series:
+      - { dado: "BR-118:derivado", rotulo: Diferença, tipo: Taxa }
+
+  - titulo: Focus, Selic no fim de cada ano
+    transformacao: nivel
+    series:
+      - { dado: "BR-132:ExpectativasMercadoAnuais · Indicador='Selic'@{ano}", rotulo: "{ano}" }
+      - { dado: "BR-132:ExpectativasMercadoAnuais · Indicador='Selic'@{ano+1}", rotulo: "{ano+1}" }
+      - { dado: "BR-132:ExpectativasMercadoAnuais · Indicador='Selic'@{ano+2}", rotulo: "{ano+2}" }
+
+  - titulo: Comunicados do Copom
+    eventos: copom_comunicado
+    quantidade: 4
+
+  - titulo: Atas do Copom
+    eventos: copom_ata
+    quantidade: 4
+
+  - titulo: Saldo de crédito
+    transformacao: yoy
+    series:
+      - { dado: "BR-062:20539", rotulo: Total }
+      - { dado: "BR-062:20541", rotulo: Pessoas físicas }
+      - { dado: "BR-062:20540", rotulo: Pessoas jurídicas }
+
+  - titulo: Crédito livre e direcionado
+    transformacao: yoy
+    series:
+      - { dado: "BR-063:20542", rotulo: Livre }
+      - { dado: "BR-063:20593", rotulo: Direcionado }
+
+  - titulo: Concessões de crédito
+    transformacao: yoy
+    series:
+      - { dado: "BR-064:20631", rotulo: Total }
+      - { dado: "BR-064:20633", rotulo: Pessoas físicas }
+      - { dado: "BR-064:20632", rotulo: Pessoas jurídicas }
+
+  - titulo: Taxa média de juros do crédito
+    transformacao: nivel
+    series:
+      - { dado: "BR-065:20714", rotulo: Total }
+      - { dado: "BR-065:20716", rotulo: Pessoas físicas }
+      - { dado: "BR-065:20715", rotulo: Pessoas jurídicas }
+
+  - titulo: Spread médio
+    transformacao: nivel
+    series:
+      - { dado: "BR-066:20783", rotulo: Spread }
+
+  - titulo: Meios de pagamento
+    transformacao: yoy
+    series:
+      - { dado: "BR-059:27841", rotulo: M1 }
+      - { dado: "BR-060:27842", rotulo: M2 }
+      - { dado: "BR-061:27813", rotulo: M3 }
+      - { dado: "BR-061:27815", rotulo: M4 }
