@@ -1,0 +1,20 @@
+name: Conferir derivadas
+
+# Reproduz o núcleo P55 oficial (SGS 28750) com o método usado no P50 (BR-128).
+on:
+  workflow_dispatch:
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - env:
+          DATABASE_URL: ${{ secrets.DATABASE }}
+        run: uv run python -m argus_pipeline.derive.conferir
