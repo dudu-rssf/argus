@@ -12,6 +12,8 @@ import { DataZoomComponent, GridComponent, TooltipComponent } from "echarts/comp
 import { CanvasRenderer } from "echarts/renderers";
 import type { Painel } from "@/lib/config";
 import { fmtData, fmtNumero } from "@/lib/formato";
+import { lerTrajetoria } from "@/lib/leitura";
+import { FaixaLeitura } from "./faixa-leitura";
 import { aplicar, rotulo, transformacoesValidas, type IdTransformacao, type Ponto } from "@/lib/transform";
 
 echarts.use([LineChart, BarChart, GridComponent, TooltipComponent, DataZoomComponent, CanvasRenderer]);
@@ -139,6 +141,16 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
 
   const ultimos = visiveis.map((l) => ({ ...l, ultimo: l.pontos.at(-1) }));
 
+  // Trajetória sobre a série inteira (não só o horizonte visível) da medida mostrada.
+  const leituras = useMemo(() => {
+    const medida = painel.combinado ? painel.combinado.linha : transf;
+    const s0 = painel.series[0];
+    const emPontos = medida !== "nivel" || s0.tipo === "Taxa" || s0.tipo === "Var % mensal" || /%/.test(s0.unidade);
+    const alvo = painel.combinado ? linhas.filter((l) => l.tipo === "line") : linhas;
+    return alvo.map((l) => ({ rotulo: l.rotulo, leitura: lerTrajetoria(l.pontos, emPontos, freq) }))
+      .filter((x) => x.leitura !== null);
+  }, [linhas, painel, transf, freq]);
+
   return (
     <article className="flex flex-col rounded-painel border border-linha bg-painel">
       <header className="flex flex-wrap items-start justify-between gap-3 border-b border-linha px-4 py-3">
@@ -217,6 +229,15 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
         </div>
       ) : (
         <div key="grafico" ref={ref} className="h-72 w-full px-2" role="img" aria-label={`Gráfico: ${painel.titulo}`} />
+      )}
+
+      {leituras.length > 0 && (
+        <section aria-label="Trajetória" className="divide-y divide-linha border-t border-linha">
+          {leituras.map((x) => (
+            <FaixaLeitura key={x.rotulo} rotulo={leituras.length > 1 ? x.rotulo : undefined}
+              leitura={x.leitura!} freq={freq} casas={casas} />
+          ))}
+        </section>
       )}
 
       <footer className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-linha px-4 py-2 text-xs text-texto-3">
