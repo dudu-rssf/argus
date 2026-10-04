@@ -35,6 +35,9 @@ jobs:
         run: uv run python -m argus_pipeline.validate.search --sgs "$SGS" --sidra "$SIDRA" --sidra-pesquisa "$SIDRA_PESQUISA"
       - name: Gravar resultado
         run: |
+          if grep -rEn "(api_key|apikey|token)=[A-Za-z0-9]{8,}" ../docs tests/fixtures 2>/dev/null; then
+            echo "::error::possível chave de API nos arquivos; envio bloqueado" && exit 1
+          fi
           git config user.name "argus-bot"
           git config user.email "argus-bot@users.noreply.github.com"
           git add ../docs/catalogo/busca.md

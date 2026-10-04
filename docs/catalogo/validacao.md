@@ -16,8 +16,8 @@ Confira se o **título oficial** corresponde ao **indicador do catálogo**. Só 
 | BR-018 | Taxa de informalidade | `t8513` | — | — | Erro | sidra: timed out |
 | BR-019 | Rendimento médio real habitual | `t6390` | — | — | Erro | sidra: timed out |
 | BR-020 | Massa de rendimento real habitual | `t6392` | — | — | Erro | sidra: timed out |
-| US-039 | Pesquisas regionais do Fed (Philly, Empire, Dallas) | `GACDFSA` | — | — | Erro | fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=GACDFSA&api_key=687c3ba93 |
-| US-087 | Strategic Petroleum Reserve | `WCSSTUS1` | — | — | Erro | fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=WCSSTUS1&api_key=687c3ba9 |
+| US-039 | Pesquisas regionais do Fed (Philly, Empire, Dallas) | `GACDFSA` | — | — | Erro | fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=GACDFSA&api_key=*** |
+| US-087 | Strategic Petroleum Reserve | `WCSSTUS1` | — | — | Erro | fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=WCSSTUS1&api_key=*** |
 | US-055 | Median Sales Price e Case-Shiller | `MSPUS` | Median Sales Price of New Houses Sold for the United States | 2026-04-01 | Desatualizada | — |
 | US-080 | Federal Debt % GDP | `GFDEGDQ188S` | Federal Debt: Total Public Debt as Percent of Gross Domestic Product | 2026-01-01 | Desatualizada | — |
 | BR-001 | PIB real — índice de volume (SA) | `t1621` | Série encadeada do índice de volume trimestral com ajuste sazonal (Base: média 1995 = 100) | 2026-04-01 | OK | — |

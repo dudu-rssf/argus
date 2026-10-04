@@ -28,6 +28,7 @@ from argus_pipeline.validate.checks import (
     check_sidra,
     fred_codes,
     is_stale,
+    redigir,
 )
 
 REPO = Path(__file__).resolve().parents[3]
@@ -83,7 +84,7 @@ def validar(
             linhas.append(Linha(
                 s.id, s.indicador, kind, s.frequencia, cod, r.titulo_oficial, r.origem_titulo,
                 r.ultima_obs.isoformat() if r.ultima_obs else None,
-                _situacao(r, s.frequencia, hoje), r.erro or "",
+                _situacao(r, s.frequencia, hoje), redigir(r.erro or ""),
             ))
     return linhas
 

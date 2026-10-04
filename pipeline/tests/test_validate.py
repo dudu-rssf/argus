@@ -216,3 +216,20 @@ def test_focus_real_selic():
     import json
     v = json.loads((REAL / "focus_selic_top1.json").read_text(encoding="utf-8"))["value"][0]
     assert {"Indicador", "Data", "Reuniao", "Mediana"} <= v.keys()
+
+
+# ---------- segurança: chave nunca aparece em mensagem de erro ----------
+
+@respx.mock
+def test_erro_do_fred_nao_expoe_a_chave(client):
+    respx.get(url__regex=r".*fred/series\?.*").respond(status_code=400)
+    r = check_fred("NAOEXISTE", client, api_key="segredo123abc")
+    assert r.erro
+    assert "segredo123abc" not in r.erro
+
+
+def test_redigir_cobre_formatos_comuns():
+    from argus_pipeline.validate.checks import redigir
+    t = "url?series_id=X&api_key=abc123&file_type=json e apikey=zzz"
+    assert "abc123" not in redigir(t) and "zzz" not in redigir(t)
+    assert "series_id=X" in redigir(t)

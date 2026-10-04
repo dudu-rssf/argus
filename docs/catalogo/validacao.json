@@ -1689,7 +1689,7 @@
   "origem_titulo": null,
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=GACDFSA&api_key=687c3ba9351229c29642ab2b7ebf00c2&file_type=json'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+  "detalhe": "fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=GACDFSA&api_key=***&file_type=json'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
  },
  {
   "id": "US-040",
@@ -2217,7 +2217,7 @@
   "origem_titulo": null,
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=WCSSTUS1&api_key=687c3ba9351229c29642ab2b7ebf00c2&file_type=json'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+  "detalhe": "fred: Client error '400 Bad Request' for url 'https://api.stlouisfed.org/fred/series?series_id=WCSSTUS1&api_key=***&file_type=json'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
  },
  {
   "id": "US-089",

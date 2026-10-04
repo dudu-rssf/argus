@@ -42,6 +42,14 @@ _LIMITE_DIAS = {
 }
 
 
+_SEGREDO_RE = re.compile(r"(api_key|apikey|token|key)=[^&\s'\"]+", re.IGNORECASE)
+
+
+def redigir(texto: str) -> str:
+    """Remove chaves de API de URLs em mensagens (o relatório é público)."""
+    return _SEGREDO_RE.sub(r"\1=***", texto)
+
+
 @dataclass
 class CheckResult:
     codigo: str
@@ -236,6 +244,8 @@ def check_fred(code: str, client: httpx.Client, api_key: str | None) -> CheckRes
         r.titulo_oficial = serie["title"]
         r.origem_titulo = "fred"
         r.ultima_obs = date.fromisoformat(serie["observation_end"])
+    except httpx.HTTPStatusError as e:
+        r.erro = f"fred: HTTP {e.response.status_code} (série inexistente ou inválida)"
     except (httpx.HTTPError, ValueError, KeyError, IndexError) as e:
-        r.erro = f"fred: {e}"
+        r.erro = redigir(f"fred: {e}")
     return r
