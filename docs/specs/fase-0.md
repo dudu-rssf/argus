@@ -38,7 +38,8 @@ Sair desta fase com: ambiente pronto, contas criadas, catálogo convertido em co
     - busca a última observação e sua data;
     - compara título oficial × nome do catálogo e grava relatório em `docs/catalogo/validacao.md`.
 - [x] Primeira revisão: 63 séries `Verificado` (ver `docs/catalogo/revisao-2026-10-04.md`)
-- [ ] Mapear as 14 pendências do MVP
+- [x] Ferramenta de busca (workflow "Buscar séries"); 7 pendências mapeadas e verificadas (70 no total)
+- [ ] Restam 7 do MVP: núcleos EX3/P55 (localizar no SGS), comunicados do BCB, RTN, ComexStat (2), commodities no FRED e Ibovespa (dependem de chaves e dos adapters da Fase 1)
 - [ ] Cadastrar `FRED_API_KEY` nos GitHub Secrets e validar as séries dos EUA
 
 ## Critério de pronto

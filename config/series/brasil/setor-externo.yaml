@@ -47,7 +47,7 @@ series:
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: Transações correntes acumulado em 12 meses em relação ao PIB
   acesso: sgs
 - id: BR-083

@@ -23,7 +23,7 @@ series:
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: 5727 resultado nominal, 5760 juros nominais; NFSP sem desvalorização cambial, 12m % PIB
   acesso: sgs
 - id: BR-071
@@ -35,7 +35,7 @@ series:
   unidade: '% PIB'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: '5783 Governo Federal e BC, 5789 estatais (12m % PIB); governos regionais: código a localizar'
   acesso: sgs
 - id: BR-072

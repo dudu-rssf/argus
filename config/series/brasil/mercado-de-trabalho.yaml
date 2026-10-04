@@ -23,7 +23,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: 'PNAD Contínua mensal: t5944 participação, t6379 nível da ocupação'
   acesso: sidra
 - id: BR-017
@@ -35,7 +35,7 @@ series:
   unidade: Mil pessoas
   tipo: Estoque
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: PNAD Contínua mensal, por situação de informalidade
   acesso: sidra
 - id: BR-018
@@ -47,7 +47,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: PNAD Contínua mensal
   acesso: sidra
 - id: BR-019
@@ -71,7 +71,7 @@ series:
   unidade: R$ mi
   tipo: Fluxo
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: PNAD Contínua mensal, habitualmente recebido; liga Trabalho a Consumo
   acesso: sidra
 - id: BR-021
