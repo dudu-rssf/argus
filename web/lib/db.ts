@@ -110,3 +110,14 @@ export async function ultimaAtualizacao(): Promise<{ quando: string | null; falh
       quando: string | null; falhas: number }[];
   return l;
 }
+
+export type Evento = { id: string; tipo: string; data_ref: string; titulo: string; url: string | null; texto: string };
+
+/** Últimos eventos de um tipo (ex.: comunicados do Copom), do mais recente para o mais antigo. */
+export async function lerEventos(tipo: string, quantidade: number): Promise<Evento[]> {
+  const fx = await fixture();
+  if (fx) return ((fx.eventos as Evento[] | undefined) ?? []).filter((e) => e.tipo === tipo).slice(0, quantidade);
+  return (await sql()`
+    select id, tipo, to_char(data_ref, 'YYYY-MM-DD') as data_ref, titulo, url, texto
+    from events where tipo = ${tipo} order by data_ref desc, id desc limit ${quantidade}`) as Evento[];
+}
