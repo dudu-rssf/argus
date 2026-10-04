@@ -10,6 +10,7 @@ Um adapter é uma função `fetch(codigo, desde) -> list[(data, valor)]`:
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import date
 from typing import Callable
 
@@ -19,3 +20,17 @@ Fetcher = Callable[[str, "date | None"], list[Observacao]]
 
 class AdapterError(Exception):
     """Falha da fonte: indisponível, formato inesperado, série inexistente."""
+
+
+@dataclass(frozen=True)
+class Evento:
+    """Registro de texto datado (ex.: comunicado do Copom), gravado na tabela `events`.
+
+    Adapters de eventos têm a assinatura `fetch(codigo, desde) -> list[Evento]`.
+    """
+    id: str
+    tipo: str
+    data_ref: date
+    titulo: str
+    url: str | None
+    texto: str

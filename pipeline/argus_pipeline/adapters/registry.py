@@ -1,5 +1,5 @@
 """Adapters disponíveis por forma de acesso (campo 'acesso' do catálogo)."""
-from argus_pipeline.adapters import b3, comexstat, focus, fred, sgs, sidra, tesouro
+from argus_pipeline.adapters import b3, comexstat, copom, focus, fred, sgs, sidra, tesouro
 
 ADAPTERS = {
     "sgs": sgs.fetch,
@@ -9,4 +9,9 @@ ADAPTERS = {
     "comexstat": comexstat.fetch,
     "tesouro": tesouro.fetch,
     "b3": b3.fetch,
+}
+
+# Adapters de eventos (texto datado -> tabela events)
+EVENTOS = {
+    "copom": copom.fetch,
 }
