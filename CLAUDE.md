@@ -14,7 +14,7 @@ O dono do projeto é iniciante em programação. Explique o que cada mudança fa
 ## Arquitetura (não negociável)
 
 - **Três camadas que nunca se misturam:** pipeline Python agendado (coleta e valida) → Postgres (Neon) → site Next.js (só lê o banco).
-- **Nenhuma chamada a API externa fora de `pipeline/adapters/`.** O site nunca chama BCB, IBGE, FRED, RSS etc. diretamente, nem em rota de API.
+- **Nenhuma chamada a fonte de dados fora de `pipeline/adapters/`.** O site nunca chama BCB, IBGE, FRED, RSS etc. diretamente, nem em rota de API. A única chamada externa do site é à API do GitHub, para o botão "Atualizar" disparar a coleta (decisão 0008).
 - **Séries são configuração, não código.** Uma série nova entra em `config/series/*.yaml`; o motor de gráfico e as abas leem a configuração.
 - **Todo código de série vem do catálogo** (`docs/catalogo/`) e só entra em produção com status `Verificado`, confirmado pelo validador contra o título oficial da fonte.
 

@@ -52,6 +52,10 @@ Navegação de topo por país. Mesma taxonomia de subabas em todos os países.
 
 O catálogo completo, série por série, está em `docs/catalogo/`.
 
+## Atualização dos dados
+
+Coleta automática 5 vezes ao dia, perto dos horários de divulgação, e botão "Atualizar" no site que dispara a mesma coleta na hora (decisão 0008).
+
 ## Notícias (aba Central)
 
 - **MVP:** RSS oficial (BCB, Fed, Tesouro, Agência IBGE) e manchetes de imprensa (título, veículo, link), filtradas por palavra-chave e fonte. Sem IA.
