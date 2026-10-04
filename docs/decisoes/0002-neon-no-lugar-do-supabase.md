@@ -11,3 +11,6 @@ Neon (Postgres), plano grátis: a computação "dorme" após 5 minutos parada e 
 ## Consequências
 - Primeira consulta após inatividade tem latência extra de partida a frio.
 - Login não vem do banco: usa Auth.js (ver 0004).
+
+## Nota operacional
+A string de conexão está no GitHub Secrets com o nome **`DATABASE`**. Os workflows a expõem ao código como variável `DATABASE_URL` (`DATABASE_URL: ${{ secrets.DATABASE }}`).

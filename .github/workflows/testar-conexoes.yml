@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Banco (Neon)
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE }}  # segredo cadastrado como DATABASE
         run: |
           if [ -z "$DATABASE_URL" ]; then echo "::error::DATABASE_URL não cadastrada"; exit 1; fi
           psql "$DATABASE_URL" -tA -c "select 'conectado: ' || version();" | cut -c1-60
