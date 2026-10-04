@@ -1,0 +1,1135 @@
+# Gerado por argus_pipeline.derive.subitens a partir dos metadados oficiais da
+# tabela SIDRA 7060 (classificação 315, nível 4). Não editar à mão.
+tabela: '7060'
+subitens:
+- id: '7173'
+  codigo: '1101002'
+  nome: Arroz
+- id: '7175'
+  codigo: '1101051'
+  nome: Feijão - mulatinho
+- id: '7176'
+  codigo: '1101052'
+  nome: Feijão - preto
+- id: '47617'
+  codigo: '1101053'
+  nome: Feijão - macáçar (fradinho)
+- id: '12222'
+  codigo: '1101073'
+  nome: Feijão - carioca (rajado)
+- id: '47618'
+  codigo: '1101079'
+  nome: Milho (em grão)
+- id: '7185'
+  codigo: '1102001'
+  nome: Farinha de arroz
+- id: '7187'
+  codigo: '1102006'
+  nome: Macarrão
+- id: '7188'
+  codigo: '1102008'
+  nome: Fubá de milho
+- id: '7190'
+  codigo: '1102010'
+  nome: Flocos de milho
+- id: '7191'
+  codigo: '1102012'
+  nome: Farinha de trigo
+- id: '7195'
+  codigo: '1102023'
+  nome: Farinha de mandioca
+- id: '107608'
+  codigo: '1102029'
+  nome: Massa semipreparada
+- id: '47619'
+  codigo: '1102061'
+  nome: Macarrão instantâneo
+- id: '7201'
+  codigo: '1103002'
+  nome: Batata-doce
+- id: '7202'
+  codigo: '1103003'
+  nome: Batata-inglesa
+- id: '7203'
+  codigo: '1103004'
+  nome: Inhame
+- id: '7204'
+  codigo: '1103005'
+  nome: Mandioca (aipim)
+- id: '7206'
+  codigo: '1103020'
+  nome: Abobrinha
+- id: '7209'
+  codigo: '1103025'
+  nome: Pepino
+- id: '7210'
+  codigo: '1103026'
+  nome: Pimentão
+- id: '7212'
+  codigo: '1103028'
+  nome: Tomate
+- id: '7215'
+  codigo: '1103043'
+  nome: Cebola
+- id: '7216'
+  codigo: '1103044'
+  nome: Cenoura
+- id: '7220'
+  codigo: '1104003'
+  nome: Açúcar refinado
+- id: '7221'
+  codigo: '1104004'
+  nome: Açúcar cristal
+- id: '12224'
+  codigo: '1104018'
+  nome: Balas
+- id: '107609'
+  codigo: '1104023'
+  nome: Chocolate em barra e bombom
+- id: '7230'
+  codigo: '1104032'
+  nome: Sorvete
+- id: '107611'
+  codigo: '1104052'
+  nome: Chocolate e achocolatado em pó
+- id: '7233'
+  codigo: '1104060'
+  nome: Doce de frutas em pasta
+- id: '47620'
+  codigo: '1104067'
+  nome: Açúcar demerara
+- id: '7242'
+  codigo: '1105001'
+  nome: Alface
+- id: '7244'
+  codigo: '1105004'
+  nome: Coentro
+- id: '7245'
+  codigo: '1105005'
+  nome: Couve
+- id: '7246'
+  codigo: '1105006'
+  nome: Couve-flor
+- id: '7248'
+  codigo: '1105010'
+  nome: Repolho
+- id: '7249'
+  codigo: '1105012'
+  nome: Cheiro-verde
+- id: '7253'
+  codigo: '1105019'
+  nome: Brócolis
+- id: '7255'
+  codigo: '1106001'
+  nome: Banana-da-terra
+- id: '7256'
+  codigo: '1106003'
+  nome: Abacaxi
+- id: '7257'
+  codigo: '1106004'
+  nome: Abacate
+- id: '7258'
+  codigo: '1106005'
+  nome: Banana - d'água
+- id: '7259'
+  codigo: '1106006'
+  nome: Banana - maçã
+- id: '7260'
+  codigo: '1106008'
+  nome: Banana - prata
+- id: '7262'
+  codigo: '1106011'
+  nome: Laranja - baía
+- id: '7263'
+  codigo: '1106012'
+  nome: Laranja - lima
+- id: '7265'
+  codigo: '1106015'
+  nome: Limão
+- id: '7266'
+  codigo: '1106017'
+  nome: Maçã
+- id: '7267'
+  codigo: '1106018'
+  nome: Mamão
+- id: '7268'
+  codigo: '1106019'
+  nome: Manga
+- id: '7269'
+  codigo: '1106020'
+  nome: Maracujá
+- id: '7270'
+  codigo: '1106021'
+  nome: Melancia
+- id: '7271'
+  codigo: '1106022'
+  nome: Melão
+- id: '7272'
+  codigo: '1106023'
+  nome: Pera
+- id: '7275'
+  codigo: '1106027'
+  nome: Tangerina
+- id: '7276'
+  codigo: '1106028'
+  nome: Uva
+- id: '7279'
+  codigo: '1106039'
+  nome: Laranja - pera
+- id: '7280'
+  codigo: '1106051'
+  nome: Morango
+- id: '7281'
+  codigo: '1106084'
+  nome: Goiaba
+- id: '7285'
+  codigo: '1107009'
+  nome: Fígado
+- id: '7287'
+  codigo: '1107018'
+  nome: Carne de porco
+- id: '7288'
+  codigo: '1107031'
+  nome: Carne de carneiro
+- id: '7290'
+  codigo: '1107081'
+  nome: Cupim
+- id: '7291'
+  codigo: '1107084'
+  nome: Contrafilé
+- id: '7292'
+  codigo: '1107085'
+  nome: Filé-mignon
+- id: '7293'
+  codigo: '1107087'
+  nome: Chã de dentro
+- id: '7294'
+  codigo: '1107088'
+  nome: Alcatra
+- id: '7295'
+  codigo: '1107089'
+  nome: Patinho
+- id: '7296'
+  codigo: '1107090'
+  nome: Lagarto redondo
+- id: '12294'
+  codigo: '1107091'
+  nome: Lagarto comum
+- id: '7298'
+  codigo: '1107093'
+  nome: Músculo
+- id: '7299'
+  codigo: '1107094'
+  nome: Pá
+- id: '7300'
+  codigo: '1107095'
+  nome: Acém
+- id: '7301'
+  codigo: '1107096'
+  nome: Peito
+- id: '101448'
+  codigo: '1107097'
+  nome: Capa de filé
+- id: '7302'
+  codigo: '1107099'
+  nome: Costela
+- id: '47621'
+  codigo: '1107208'
+  nome: Picanha
+- id: '7305'
+  codigo: '1108002'
+  nome: Peixe - anchova
+- id: '7306'
+  codigo: '1108004'
+  nome: Peixe - corvina
+- id: '7309'
+  codigo: '1108011'
+  nome: Peixe - tainha
+- id: '7310'
+  codigo: '1108012'
+  nome: Peixe - sardinha
+- id: '7311'
+  codigo: '1108013'
+  nome: Camarão
+- id: '7313'
+  codigo: '1108019'
+  nome: Peixe - cavala
+- id: '107615'
+  codigo: '1108029'
+  nome: Peixe - cação
+- id: '107616'
+  codigo: '1108031'
+  nome: Peixe - merluza
+- id: '7317'
+  codigo: '1108032'
+  nome: Peixe - serra
+- id: '7320'
+  codigo: '1108038'
+  nome: Peixe - pescada
+- id: '7323'
+  codigo: '1108045'
+  nome: Caranguejo
+- id: '12300'
+  codigo: '1108049'
+  nome: Peixe - castanha
+- id: '12301'
+  codigo: '1108052'
+  nome: Peixe - palombeta
+- id: '101466'
+  codigo: '1108072'
+  nome: Peixe - curimatã
+- id: '12431'
+  codigo: '1108075'
+  nome: Peixe - salmão
+- id: '12302'
+  codigo: '1108080'
+  nome: Peixe - tilápia
+- id: '41129'
+  codigo: '1108087'
+  nome: Peixe - tambaqui
+- id: '7333'
+  codigo: '1108088'
+  nome: Peixe - dourada
+- id: '47623'
+  codigo: '1108092'
+  nome: Peixe - filhote
+- id: '8874'
+  codigo: '1108096'
+  nome: Peixe - peroá
+- id: '31694'
+  codigo: '1108112'
+  nome: Peixe - pintado
+- id: '47624'
+  codigo: '1108125'
+  nome: Peixe - aruanã
+- id: '7336'
+  codigo: '1109002'
+  nome: Presunto
+- id: '12304'
+  codigo: '1109007'
+  nome: Salsicha
+- id: '7339'
+  codigo: '1109008'
+  nome: Linguiça
+- id: '7341'
+  codigo: '1109010'
+  nome: Mortadela
+- id: '12305'
+  codigo: '1109012'
+  nome: Salame
+- id: '7343'
+  codigo: '1109023'
+  nome: Bacalhau
+- id: '12379'
+  codigo: '1109056'
+  nome: Carne-seca e de sol
+- id: '7347'
+  codigo: '1109058'
+  nome: Carne de porco salgada e defumada
+- id: '107617'
+  codigo: '1110009'
+  nome: Frango inteiro
+- id: '107618'
+  codigo: '1110010'
+  nome: Frango em pedaços
+- id: '7355'
+  codigo: '1110044'
+  nome: Ovo de galinha
+- id: '12393'
+  codigo: '1111004'
+  nome: Leite longa vida
+- id: '7358'
+  codigo: '1111008'
+  nome: Leite condensado
+- id: '7359'
+  codigo: '1111009'
+  nome: Leite em pó
+- id: '107619'
+  codigo: '1111011'
+  nome: Queijo
+- id: '12394'
+  codigo: '1111019'
+  nome: Iogurte e bebidas lácteas
+- id: '47627'
+  codigo: '1111021'
+  nome: Requeijão
+- id: '7367'
+  codigo: '1111031'
+  nome: Manteiga
+- id: '7368'
+  codigo: '1111038'
+  nome: Leite fermentado
+- id: '7373'
+  codigo: '1112003'
+  nome: Biscoito
+- id: '7375'
+  codigo: '1112015'
+  nome: Pão francês
+- id: '7376'
+  codigo: '1112017'
+  nome: Pão doce
+- id: '7377'
+  codigo: '1112018'
+  nome: Pão de forma
+- id: '7378'
+  codigo: '1112019'
+  nome: Bolo
+- id: '7380'
+  codigo: '1112025'
+  nome: Pão de queijo
+- id: '7385'
+  codigo: '1113013'
+  nome: Óleo de soja
+- id: '7386'
+  codigo: '1113014'
+  nome: Azeite de oliva
+- id: '12395'
+  codigo: '1113040'
+  nome: Margarina
+- id: '7390'
+  codigo: '1114001'
+  nome: Suco de frutas
+- id: '47628'
+  codigo: '1114003'
+  nome: Polpa de fruta (congelada)
+- id: '12396'
+  codigo: '1114004'
+  nome: Açaí (emulsão)
+- id: '7392'
+  codigo: '1114022'
+  nome: Café moído
+- id: '7393'
+  codigo: '1114023'
+  nome: Café solúvel
+- id: '107621'
+  codigo: '1114083'
+  nome: Refrigerante e água mineral
+- id: '7396'
+  codigo: '1114084'
+  nome: Cerveja
+- id: '7397'
+  codigo: '1114085'
+  nome: Outras bebidas alcoólicas
+- id: '7399'
+  codigo: '1114087'
+  nome: Vinho
+- id: '47630'
+  codigo: '1114090'
+  nome: Suco em pó
+- id: '47631'
+  codigo: '1114091'
+  nome: Chá mate (erva mate)
+- id: '107702'
+  codigo: '1115013'
+  nome: Alimento infantil
+- id: '7406'
+  codigo: '1115016'
+  nome: Palmito em conserva
+- id: '7407'
+  codigo: '1115017'
+  nome: Pepino em conserva
+- id: '107624'
+  codigo: '1115039'
+  nome: Sardinha em conserva
+- id: '107625'
+  codigo: '1115050'
+  nome: Salsicha em conserva
+- id: '7411'
+  codigo: '1115056'
+  nome: Sopa desidratada
+- id: '7412'
+  codigo: '1115057'
+  nome: Azeitona
+- id: '107628'
+  codigo: '1115058'
+  nome: Milho-verde em conserva
+- id: '107630'
+  codigo: '1115075'
+  nome: Atum em conserva
+- id: '7416'
+  codigo: '1116001'
+  nome: Leite de coco
+- id: '109463'
+  codigo: '1116005'
+  nome: Atomatado
+- id: '7418'
+  codigo: '1116010'
+  nome: Alho
+- id: '12397'
+  codigo: '1116013'
+  nome: Sal
+- id: '7420'
+  codigo: '1116022'
+  nome: Colorau
+- id: '7421'
+  codigo: '1116023'
+  nome: Caldo de tucupi
+- id: '7422'
+  codigo: '1116026'
+  nome: Fermento
+- id: '7423'
+  codigo: '1116033'
+  nome: Maionese
+- id: '7424'
+  codigo: '1116041'
+  nome: Vinagre
+- id: '7425'
+  codigo: '1116048'
+  nome: Caldo concentrado
+- id: '7428'
+  codigo: '1116071'
+  nome: Tempero misto
+- id: '7434'
+  codigo: '1201001'
+  nome: Refeição
+- id: '7435'
+  codigo: '1201003'
+  nome: Lanche
+- id: '107633'
+  codigo: '1201007'
+  nome: Refrigerante e água mineral
+- id: '7438'
+  codigo: '1201009'
+  nome: Cafezinho
+- id: '7440'
+  codigo: '1201048'
+  nome: Cerveja
+- id: '7443'
+  codigo: '1201051'
+  nome: Outras bebidas alcoólicas
+- id: '47632'
+  codigo: '1201052'
+  nome: Vinho
+- id: '7444'
+  codigo: '1201061'
+  nome: Doces
+- id: '47633'
+  codigo: '1201088'
+  nome: Sorvete
+- id: '7448'
+  codigo: '2101001'
+  nome: Aluguel residencial
+- id: '7449'
+  codigo: '2101002'
+  nome: Condomínio
+- id: '7451'
+  codigo: '2101004'
+  nome: Taxa de água e esgoto
+- id: '7453'
+  codigo: '2101012'
+  nome: Mudança
+- id: '7455'
+  codigo: '2103005'
+  nome: Ferragens
+- id: '7456'
+  codigo: '2103008'
+  nome: Material de eletricidade
+- id: '12433'
+  codigo: '2103012'
+  nome: Vidro
+- id: '7459'
+  codigo: '2103014'
+  nome: Tinta
+- id: '12398'
+  codigo: '2103032'
+  nome: Revestimento de piso e parede
+- id: '47634'
+  codigo: '2103038'
+  nome: Madeira e taco
+- id: '107638'
+  codigo: '2103039'
+  nome: Cimento
+- id: '107639'
+  codigo: '2103040'
+  nome: Tijolo
+- id: '107640'
+  codigo: '2103041'
+  nome: Material hidráulico
+- id: '107641'
+  codigo: '2103042'
+  nome: Mão de obra
+- id: '107642'
+  codigo: '2103048'
+  nome: Areia
+- id: '107643'
+  codigo: '2103049'
+  nome: Pedras
+- id: '12399'
+  codigo: '2103055'
+  nome: Telha
+- id: '7463'
+  codigo: '2104003'
+  nome: Saco para lixo
+- id: '7464'
+  codigo: '2104005'
+  nome: Água sanitária
+- id: '7465'
+  codigo: '2104008'
+  nome: Detergente
+- id: '7466'
+  codigo: '2104009'
+  nome: Sabão em pó
+- id: '7467'
+  codigo: '2104012'
+  nome: Desinfetante
+- id: '7470'
+  codigo: '2104015'
+  nome: Sabão em barra
+- id: '7471'
+  codigo: '2104016'
+  nome: Esponja de limpeza
+- id: '47635'
+  codigo: '2104019'
+  nome: Sabão líquido
+- id: '47636'
+  codigo: '2104020'
+  nome: Limpador multiuso
+- id: '7477'
+  codigo: '2104041'
+  nome: Papel toalha
+- id: '47637'
+  codigo: '2104085'
+  nome: Amaciante e alvejante
+- id: '7481'
+  codigo: '2201003'
+  nome: Carvão vegetal
+- id: '7482'
+  codigo: '2201004'
+  nome: Gás de botijão
+- id: '7483'
+  codigo: '2201005'
+  nome: Gás encanado
+- id: '7485'
+  codigo: '2202003'
+  nome: Energia elétrica residencial
+- id: '7489'
+  codigo: '3101002'
+  nome: Móvel para sala
+- id: '7490'
+  codigo: '3101003'
+  nome: Móvel para quarto
+- id: '7492'
+  codigo: '3101015'
+  nome: Móvel para copa e cozinha
+- id: '12401'
+  codigo: '3101016'
+  nome: Móvel infantil
+- id: '7493'
+  codigo: '3101017'
+  nome: Colchão
+- id: '47638'
+  codigo: '3102001'
+  nome: Artigos de iluminação
+- id: '7497'
+  codigo: '3102005'
+  nome: Tapete
+- id: '7498'
+  codigo: '3102006'
+  nome: Cortina
+- id: '12402'
+  codigo: '3102007'
+  nome: Utensílios de metal
+- id: '12403'
+  codigo: '3102009'
+  nome: Utensílios de vidro e louça
+- id: '107645'
+  codigo: '3102010'
+  nome: Utensílios de plástico
+- id: '7508'
+  codigo: '3102035'
+  nome: Flores naturais
+- id: '47639'
+  codigo: '3102337'
+  nome: Utensílios para bebê
+- id: '7518'
+  codigo: '3103001'
+  nome: Roupa de cama
+- id: '7520'
+  codigo: '3103003'
+  nome: Roupa de banho
+- id: '7523'
+  codigo: '3201001'
+  nome: Refrigerador
+- id: '12434'
+  codigo: '3201002'
+  nome: Ar-condicionado
+- id: '7526'
+  codigo: '3201006'
+  nome: Máquina de lavar roupa
+- id: '7530'
+  codigo: '3201013'
+  nome: Ventilador
+- id: '7531'
+  codigo: '3201021'
+  nome: Fogão
+- id: '7539'
+  codigo: '3201050'
+  nome: Chuveiro elétrico
+- id: '7542'
+  codigo: '3202001'
+  nome: Televisor
+- id: '7543'
+  codigo: '3202003'
+  nome: Aparelho de som
+- id: '47640'
+  codigo: '3202008'
+  nome: Videogame (console)
+- id: '47641'
+  codigo: '3202028'
+  nome: Computador pessoal
+- id: '12405'
+  codigo: '3301002'
+  nome: Conserto de refrigerador
+- id: '107648'
+  codigo: '3301006'
+  nome: Conserto de televisor
+- id: '12406'
+  codigo: '3301015'
+  nome: Conserto de máquina de lavar roupa
+- id: '7555'
+  codigo: '3301022'
+  nome: Reforma de estofado
+- id: '47642'
+  codigo: '3301088'
+  nome: Conserto de aparelho celular
+- id: '47643'
+  codigo: '3301130'
+  nome: Conserto de bicicleta
+- id: '7561'
+  codigo: '4101002'
+  nome: Calça comprida masculina
+- id: '7563'
+  codigo: '4101005'
+  nome: Agasalho masculino
+- id: '47644'
+  codigo: '4101006'
+  nome: Bermuda/short masculino
+- id: '7565'
+  codigo: '4101008'
+  nome: Cueca
+- id: '107649'
+  codigo: '4101009'
+  nome: Camisa/camiseta masculina
+- id: '7573'
+  codigo: '4102002'
+  nome: Calça comprida feminina
+- id: '7574'
+  codigo: '4102003'
+  nome: Agasalho feminino
+- id: '7575'
+  codigo: '4102004'
+  nome: Saia
+- id: '7576'
+  codigo: '4102005'
+  nome: Vestido
+- id: '7577'
+  codigo: '4102008'
+  nome: Blusa
+- id: '7579'
+  codigo: '4102010'
+  nome: Lingerie
+- id: '47645'
+  codigo: '4102013'
+  nome: Bermuda/short feminino
+- id: '12408'
+  codigo: '4103001'
+  nome: Uniforme escolar
+- id: '7589'
+  codigo: '4103002'
+  nome: Calça comprida infantil
+- id: '7590'
+  codigo: '4103005'
+  nome: Agasalho infantil
+- id: '7591'
+  codigo: '4103007'
+  nome: Vestido infantil
+- id: '47646'
+  codigo: '4103008'
+  nome: Bermuda/short infantil
+- id: '107650'
+  codigo: '4103011'
+  nome: Camisa/camiseta infantil
+- id: '12409'
+  codigo: '4103031'
+  nome: Conjunto infantil
+- id: '7606'
+  codigo: '4201002'
+  nome: Sapato masculino
+- id: '7607'
+  codigo: '4201003'
+  nome: Sapato feminino
+- id: '7608'
+  codigo: '4201004'
+  nome: Sapato infantil
+- id: '107652'
+  codigo: '4201015'
+  nome: Bolsa
+- id: '47647'
+  codigo: '4201040'
+  nome: Mochila
+- id: '7614'
+  codigo: '4201063'
+  nome: Tênis
+- id: '47648'
+  codigo: '4201098'
+  nome: Sandália/chinelo
+- id: '7617'
+  codigo: '4301001'
+  nome: Bijuteria
+- id: '7618'
+  codigo: '4301002'
+  nome: Joia
+- id: '7619'
+  codigo: '4301004'
+  nome: Relógio de pulso
+- id: '7622'
+  codigo: '4401001'
+  nome: Tecido
+- id: '7623'
+  codigo: '4401002'
+  nome: Artigos de armarinho
+- id: '7628'
+  codigo: '5101001'
+  nome: Ônibus urbano
+- id: '7629'
+  codigo: '5101002'
+  nome: Táxi
+- id: '7630'
+  codigo: '5101004'
+  nome: Trem
+- id: '7631'
+  codigo: '5101006'
+  nome: Ônibus intermunicipal
+- id: '7632'
+  codigo: '5101007'
+  nome: Ônibus interestadual
+- id: '7634'
+  codigo: '5101010'
+  nome: Passagem aérea
+- id: '7635'
+  codigo: '5101011'
+  nome: Metrô
+- id: '7639'
+  codigo: '5101026'
+  nome: Transporte escolar
+- id: '47649'
+  codigo: '5101051'
+  nome: Transporte por aplicativo
+- id: '47650'
+  codigo: '5101053'
+  nome: Integração transporte público
+- id: '7641'
+  codigo: '5102001'
+  nome: Automóvel novo
+- id: '7642'
+  codigo: '5102004'
+  nome: Emplacamento e licença
+- id: '7643'
+  codigo: '5102005'
+  nome: Seguro voluntário de veículo
+- id: '107653'
+  codigo: '5102006'
+  nome: Multa
+- id: '7644'
+  codigo: '5102007'
+  nome: Óleo lubrificante
+- id: '7645'
+  codigo: '5102009'
+  nome: Acessórios e peças
+- id: '12411'
+  codigo: '5102010'
+  nome: Pneu
+- id: '7647'
+  codigo: '5102011'
+  nome: Conserto de automóvel
+- id: '7648'
+  codigo: '5102013'
+  nome: Estacionamento
+- id: '7649'
+  codigo: '5102015'
+  nome: Pedágio
+- id: '107654'
+  codigo: '5102020'
+  nome: Automóvel usado
+- id: '7653'
+  codigo: '5102037'
+  nome: Pintura de veículo
+- id: '107656'
+  codigo: '5102051'
+  nome: Aluguel de veículo
+- id: '7654'
+  codigo: '5102053'
+  nome: Motocicleta
+- id: '7657'
+  codigo: '5104001'
+  nome: Gasolina
+- id: '7658'
+  codigo: '5104002'
+  nome: Etanol
+- id: '7659'
+  codigo: '5104003'
+  nome: Óleo diesel
+- id: '107657'
+  codigo: '5104005'
+  nome: Gás veicular
+- id: '7663'
+  codigo: '6101001'
+  nome: Anti-infeccioso e antibiótico
+- id: '7664'
+  codigo: '6101002'
+  nome: Analgésico e antitérmico
+- id: '7665'
+  codigo: '6101003'
+  nome: Anti-inflamatório e antirreumático
+- id: '7666'
+  codigo: '6101004'
+  nome: Antigripal e antitussígeno
+- id: '12412'
+  codigo: '6101006'
+  nome: Dermatológico
+- id: '7669'
+  codigo: '6101007'
+  nome: Antialérgico e broncodilatador
+- id: '7670'
+  codigo: '6101009'
+  nome: Gastroprotetor
+- id: '7671'
+  codigo: '6101010'
+  nome: Vitamina e fortificante
+- id: '47651'
+  codigo: '6101011'
+  nome: Hormonal
+- id: '7673'
+  codigo: '6101013'
+  nome: Psicotrópico e anorexígeno
+- id: '7674'
+  codigo: '6101014'
+  nome: Hipotensor e hipocolesterolêmico
+- id: '107659'
+  codigo: '6101051'
+  nome: Oftalmológico
+- id: '7677'
+  codigo: '6101064'
+  nome: Antidiabético
+- id: '47652'
+  codigo: '6101148'
+  nome: Neurológico
+- id: '47653'
+  codigo: '6102012'
+  nome: Óculos de grau
+- id: '7685'
+  codigo: '6201002'
+  nome: Médico
+- id: '7686'
+  codigo: '6201003'
+  nome: Dentista
+- id: '12414'
+  codigo: '6201005'
+  nome: Aparelho ortodôntico
+- id: '12435'
+  codigo: '6201007'
+  nome: Fisioterapeuta
+- id: '12436'
+  codigo: '6201010'
+  nome: Psicólogo
+- id: '7691'
+  codigo: '6202003'
+  nome: Exame de laboratório
+- id: '7692'
+  codigo: '6202004'
+  nome: Hospitalização e cirurgia
+- id: '12416'
+  codigo: '6202006'
+  nome: Exame de imagem
+- id: '7696'
+  codigo: '6203001'
+  nome: Plano de saúde
+- id: '7699'
+  codigo: '6301001'
+  nome: Produto para cabelo
+- id: '12420'
+  codigo: '6301002'
+  nome: Fralda descartável
+- id: '101642'
+  codigo: '6301004'
+  nome: Produto para barba
+- id: '101644'
+  codigo: '6301006'
+  nome: Produto para pele
+- id: '107661'
+  codigo: '6301007'
+  nome: Produto para higiene bucal
+- id: '7703'
+  codigo: '6301010'
+  nome: Produto para unha
+- id: '7704'
+  codigo: '6301011'
+  nome: Perfume
+- id: '7707'
+  codigo: '6301014'
+  nome: Desodorante
+- id: '7708'
+  codigo: '6301015'
+  nome: Absorvente higiênico
+- id: '7709'
+  codigo: '6301016'
+  nome: Sabonete
+- id: '7710'
+  codigo: '6301017'
+  nome: Papel higiênico
+- id: '7711'
+  codigo: '6301020'
+  nome: Artigos de maquiagem
+- id: '7715'
+  codigo: '7101001'
+  nome: Costureira
+- id: '12421'
+  codigo: '7101005'
+  nome: Manicure
+- id: '7720'
+  codigo: '7101010'
+  nome: Empregado doméstico
+- id: '47654'
+  codigo: '7101011'
+  nome: Cabeleireiro e barbeiro
+- id: '7721'
+  codigo: '7101014'
+  nome: Depilação
+- id: '7723'
+  codigo: '7101034'
+  nome: Cartório
+- id: '7724'
+  codigo: '7101036'
+  nome: Despachante
+- id: '7727'
+  codigo: '7101076'
+  nome: Serviço bancário
+- id: '7728'
+  codigo: '7101090'
+  nome: Conselho de classe
+- id: '47655'
+  codigo: '7101144'
+  nome: Sobrancelha
+- id: '7733'
+  codigo: '7201006'
+  nome: Clube
+- id: '7735'
+  codigo: '7201010'
+  nome: Instrumento musical
+- id: '47657'
+  codigo: '7201015'
+  nome: Tratamento de animais (clínica)
+- id: '7736'
+  codigo: '7201019'
+  nome: Bicicleta
+- id: '107666'
+  codigo: '7201020'
+  nome: Alimento para animais
+- id: '7738'
+  codigo: '7201023'
+  nome: Brinquedo
+- id: '47658'
+  codigo: '7201054'
+  nome: Casa noturna
+- id: '107668'
+  codigo: '7201063'
+  nome: Jogos de azar
+- id: '7746'
+  codigo: '7201067'
+  nome: Material de caça e pesca
+- id: '47659'
+  codigo: '7201090'
+  nome: Hospedagem
+- id: '47660'
+  codigo: '7201095'
+  nome: Pacote turístico
+- id: '47661'
+  codigo: '7201256'
+  nome: Serviço de higiene para animais
+- id: '47662'
+  codigo: '7201266'
+  nome: Cinema, teatro e concertos
+- id: '7759'
+  codigo: '7202041'
+  nome: Cigarro
+- id: '7769'
+  codigo: '8101001'
+  nome: Creche
+- id: '47663'
+  codigo: '8101002'
+  nome: Pré-escola
+- id: '107671'
+  codigo: '8101003'
+  nome: Ensino fundamental
+- id: '107672'
+  codigo: '8101004'
+  nome: Ensino médio
+- id: '107673'
+  codigo: '8101005'
+  nome: Ensino superior
+- id: '107674'
+  codigo: '8101006'
+  nome: Pós-graduação
+- id: '47664'
+  codigo: '8101008'
+  nome: Educação de jovens e adultos
+- id: '47665'
+  codigo: '8101045'
+  nome: Curso técnico
+- id: '7778'
+  codigo: '8102001'
+  nome: Jornal diário
+- id: '107676'
+  codigo: '8102004'
+  nome: Revista
+- id: '47666'
+  codigo: '8102007'
+  nome: Livro didático
+- id: '47667'
+  codigo: '8102008'
+  nome: Livro não didático
+- id: '7783'
+  codigo: '8103001'
+  nome: Caderno
+- id: '7785'
+  codigo: '8103014'
+  nome: Artigos de papelaria
+- id: '107679'
+  codigo: '8104001'
+  nome: Curso preparatório
+- id: '107681'
+  codigo: '8104003'
+  nome: Curso de idioma
+- id: '107682'
+  codigo: '8104004'
+  nome: Curso de informática
+- id: '107683'
+  codigo: '8104005'
+  nome: Autoescola
+- id: '12428'
+  codigo: '8104006'
+  nome: Atividades físicas
+- id: '7789'
+  codigo: '9101001'
+  nome: Correio
+- id: '47668'
+  codigo: '9101002'
+  nome: Plano de telefonia fixa
+- id: '47669'
+  codigo: '9101008'
+  nome: Plano de telefonia móvel
+- id: '47670'
+  codigo: '9101010'
+  nome: Tv por assinatura
+- id: '107688'
+  codigo: '9101018'
+  nome: Acesso à internet
+- id: '7794'
+  codigo: '9101019'
+  nome: Aparelho telefônico
+- id: '47671'
+  codigo: '9101115'
+  nome: Serviços de streaming
+- id: '47672'
+  codigo: '9101116'
+  nome: Combo de telefonia, internet e tv por assinatura
