@@ -20,3 +20,13 @@ export function fmtMomento(iso: string | null): string {
     timeZone: "America/Sao_Paulo", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit",
   }).format(new Date(iso));
 }
+
+/** Duração legível: "14 meses", "1 ano e 2 meses". */
+export function duracao(meses: number): string {
+  const m = Math.round(meses);
+  if (m < 1) return "menos de 1 mês";
+  if (m < 12) return `${m} ${m === 1 ? "mês" : "meses"}`;
+  const anos = Math.floor(m / 12), resto = m % 12;
+  return `${anos} ${anos === 1 ? "ano" : "anos"}${resto ? ` e ${resto} ${resto === 1 ? "mês" : "meses"}` : ""}`;
+}
+
