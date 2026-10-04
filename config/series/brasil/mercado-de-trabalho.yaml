@@ -1,0 +1,124 @@
+pais: BR
+aba: Mercado de Trabalho
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-015
+  bloco: PNAD
+  indicador: Taxa de desocupação
+  fonte: BCB SGS / IBGE SIDRA
+  codigo: 24369 / t6381
+  frequencia: Mensal (trim. móvel)
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Série oficial sem ajuste sazonal; SA própria (X-13) na v2
+  acesso: sgs
+- id: BR-016
+  bloco: PNAD
+  indicador: Taxa de participação e nível de ocupação
+  fonte: IBGE SIDRA
+  codigo: PNAD Contínua mensal (tabela a mapear)
+  frequencia: Mensal (trim. móvel)
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: BR-017
+  bloco: PNAD
+  indicador: População ocupada (total, formal, informal)
+  fonte: IBGE SIDRA
+  codigo: PNAD Contínua mensal (tabela a mapear)
+  frequencia: Mensal (trim. móvel)
+  unidade: Mil pessoas
+  tipo: Estoque
+  fase: MVP
+  status: A mapear
+  observacao: Informalidade = derivada
+  acesso: pendente
+- id: BR-018
+  bloco: PNAD
+  indicador: Taxa de informalidade
+  fonte: IBGE SIDRA
+  codigo: PNAD Contínua mensal (tabela a mapear)
+  frequencia: Mensal (trim. móvel)
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: BR-019
+  bloco: PNAD
+  indicador: Rendimento médio real habitual
+  fonte: IBGE SIDRA
+  codigo: t6390 (a confirmar)
+  frequencia: Mensal (trim. móvel)
+  unidade: R$
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Equivalente a AHE/real wage dos EUA
+  acesso: sidra
+- id: BR-020
+  bloco: PNAD
+  indicador: Massa de rendimento real habitual
+  fonte: IBGE SIDRA
+  codigo: PNAD Contínua mensal (tabela a mapear)
+  frequencia: Mensal (trim. móvel)
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: A mapear
+  observacao: Liga Trabalho a Consumo
+  acesso: pendente
+- id: BR-021
+  bloco: PNAD
+  indicador: Subutilização, desalentados, desemprego de longo prazo
+  fonte: IBGE SIDRA
+  codigo: PNAD Contínua trimestral
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: A mapear
+  observacao: Equivalente ao U6 dos EUA
+  acesso: manual
+- id: BR-022
+  bloco: Formal
+  indicador: Novo CAGED — saldo de empregos formais
+  fonte: BCB SGS / MTE PDET
+  codigo: 28763 (a confirmar)
+  frequencia: Mensal
+  unidade: Postos
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: Equivalente ao payroll; por setor via microdados MTE (v2)
+  acesso: sgs
+- id: BR-023
+  bloco: Formal
+  indicador: Requerimentos de seguro-desemprego
+  fonte: MTE
+  codigo: —
+  frequencia: Mensal
+  unidade: Pedidos
+  tipo: Fluxo
+  fase: v2
+  status: Sem API
+  observacao: Equivalente às jobless claims
+  acesso: manual
+- id: BR-024
+  bloco: Indicadores
+  indicador: Recessão tipo Sahm (desocupação SA, MM3)
+  fonte: Argus
+  codigo: f(desocupação SA)
+  frequencia: Mensal
+  unidade: p.p.
+  tipo: Derivado
+  fase: v2
+  status: Derivado
+  observacao: Depende da SA própria
+  acesso: derivado

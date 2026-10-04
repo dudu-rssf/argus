@@ -1,0 +1,124 @@
+pais: US
+aba: Setor Externo & Fiscal
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-080
+  bloco: Dívida
+  indicador: Federal Debt % GDP
+  fonte: FRED
+  codigo: GFDEGDQ188S
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-081
+  bloco: Projeções
+  indicador: CBO deficit projections
+  fonte: CBO
+  codigo: xlsx (manual)
+  frequencia: Semestral
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-082
+  bloco: Projeções
+  indicador: Deficit impact e spending revisions (Kinea)
+  fonte: Kinea
+  codigo: Relatórios (manual)
+  frequencia: Eventual
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: Fonte de terceiro; registrar data do relatório
+  acesso: manual
+- id: US-083
+  bloco: Comércio
+  indicador: Trade Balance
+  fonte: FRED (Census)
+  codigo: BOPGSTB
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-084
+  bloco: Comércio
+  indicador: Current Account % GDP
+  fonte: Argus
+  codigo: IEABC / GDP
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-085
+  bloco: Comércio
+  indicador: Imports — automotive (end-use)
+  fonte: Census API
+  codigo: FT-900 end-use
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: US-086
+  bloco: Comércio
+  indicador: Effective tariff rate
+  fonte: Argus
+  codigo: B235RC1Q027SBEA / IMPGS
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: Customs duties / importações
+  acesso: derivado
+- id: US-087
+  bloco: Energia
+  indicador: Strategic Petroleum Reserve
+  fonte: FRED (EIA)
+  codigo: WCSSTUS1 (a confirmar)
+  frequencia: Semanal
+  unidade: Mil barris
+  tipo: Estoque
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-088
+  bloco: Câmbio
+  indicador: DXY
+  fonte: ICE
+  codigo: —
+  frequencia: Diária
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Pago
+  observacao: Usar DTWEXBGS (broad dollar, FRED)
+  acesso: manual
+- id: US-089
+  bloco: Câmbio
+  indicador: Broad Dollar Index
+  fonte: FRED
+  codigo: DTWEXBGS
+  frequencia: Diária
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: Substituto do DXY
+  acesso: fred

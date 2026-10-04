@@ -1,0 +1,124 @@
+pais: BR
+aba: Análises
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-116
+  bloco: Ciclos
+  indicador: Ciclos do Copom desde 1999 (duração, bps, contexto, ativos)
+  fonte: Argus
+  codigo: f(432, IPCA, câmbio, Ibov)
+  frequencia: Por ciclo
+  unidade: bps / %
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Spec metodológica antes do código
+  acesso: derivado
+- id: BR-117
+  bloco: Juro neutro
+  indicador: Juro neutro implícito no Focus (Selic longa − IPCA longo)
+  fonte: Argus
+  codigo: f(Focus Selic e IPCA t+3)
+  frequencia: Semanal
+  unidade: '% a.a.'
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Leitura de mercado, não estimativa estrutural
+  acesso: derivado
+- id: BR-118
+  bloco: Juro neutro
+  indicador: Juro real ex-ante × neutro (postura monetária)
+  fonte: Argus
+  codigo: f(juro real, neutro)
+  frequencia: Diária
+  unidade: p.p.
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: BR-119
+  bloco: Juro neutro
+  indicador: Estimativas de neutro e hiato do BCB
+  fonte: BCB RPM
+  codigo: Manual (boxes do RPM)
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Curado
+  observacao: ''
+  acesso: manual
+- id: BR-120
+  bloco: Modelos
+  indicador: Regra de Taylor
+  fonte: Argus
+  codigo: f(neutro, hiato, IPCA, meta)
+  frequencia: Mensal
+  unidade: '% a.a.'
+  tipo: Derivado
+  fase: v2
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: BR-121
+  bloco: Modelos
+  indicador: NAIRU e curva de Phillips
+  fonte: Argus
+  codigo: Modelo próprio
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Derivado
+  fase: v2
+  status: Derivado
+  observacao: Documentar especificação
+  acesso: derivado
+- id: BR-122
+  bloco: Modelos
+  indicador: Hiato do produto (próprio, BCB, IFI)
+  fonte: Argus + BCB + IFI
+  codigo: Modelo + manual
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Derivado
+  fase: v2
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: BR-123
+  bloco: Copom
+  indicador: 'Diretores: mandato, indicação, votos por reunião'
+  fonte: BCB
+  codigo: Curado
+  frequencia: Por reunião
+  unidade: —
+  tipo: Evento
+  fase: v2
+  status: Curado
+  observacao: ''
+  acesso: manual
+- id: BR-124
+  bloco: Copom
+  indicador: Tom de discursos por diretor (hawk/dove)
+  fonte: BCB + imprensa
+  codigo: Textos + LLM
+  frequencia: Por evento
+  unidade: Escore
+  tipo: Derivado
+  fase: v3
+  status: Derivado
+  observacao: Exige metodologia validada; custo de API
+  acesso: manual
+- id: BR-125
+  bloco: Análogos
+  indicador: Busca de períodos históricos semelhantes
+  fonte: Argus
+  codigo: f(várias)
+  frequencia: —
+  unidade: —
+  tipo: Derivado
+  fase: v2
+  status: Derivado
+  observacao: ''
+  acesso: derivado

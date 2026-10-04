@@ -1,0 +1,184 @@
+pais: US
+aba: Fed & Juros
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-040
+  bloco: Política
+  indicador: Fed Funds (efetivo e banda)
+  fonte: FRED
+  codigo: DFF / DFEDTARU / DFEDTARL
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-041
+  bloco: Balanço
+  indicador: Total Fed Assets
+  fonte: FRED
+  codigo: WALCL
+  frequencia: Semanal
+  unidade: US$ mi
+  tipo: Estoque
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-042
+  bloco: Comunicação
+  indicador: Press releases e statements do FOMC
+  fonte: Federal Reserve
+  codigo: RSS
+  frequencia: Por evento
+  unidade: Texto
+  tipo: Texto
+  fase: EUA
+  status: Confirmar
+  observacao: Alimenta o agregador
+  acesso: manual
+- id: US-043
+  bloco: Projeções
+  indicador: Dotplot (mediana SEP)
+  fonte: FRED
+  codigo: FEDTARMD (+ FEDTARRH/RL)
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Verificado
+  observacao: Atualizado em 16/09/2026
+  acesso: fred
+- id: US-044
+  bloco: Curva
+  indicador: US Yield Curve (1m–30y) e spreads
+  fonte: FRED
+  codigo: DGS1MO…DGS30 / T10Y2Y / T10Y3M
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-045
+  bloco: Curva
+  indicador: SOFR overnight
+  fonte: FRED
+  codigo: SOFR
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-046
+  bloco: Curva
+  indicador: SOFR 10Y swap
+  fonte: Bloomberg
+  codigo: —
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Pago
+  observacao: ''
+  acesso: manual
+- id: US-047
+  bloco: Mercado
+  indicador: WIRP / probabilidade implícita
+  fonte: Bloomberg / CME FedWatch
+  codigo: —
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Pago
+  observacao: FedWatch só no site
+  acesso: manual
+- id: US-048
+  bloco: Crédito
+  indicador: Mortgage Rate 30y
+  fonte: FRED (Freddie Mac)
+  codigo: MORTGAGE30US
+  frequencia: Semanal
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-049
+  bloco: Agregados
+  indicador: M1 e M2
+  fonte: FRED
+  codigo: M1SL / M2SL
+  frequencia: Mensal
+  unidade: US$ bi
+  tipo: Estoque
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-050
+  bloco: Agregados
+  indicador: M3 e M4
+  fonte: Center for Financial Stability (Divisia)
+  codigo: Download
+  frequencia: Mensal
+  unidade: US$ bi
+  tipo: Estoque
+  fase: v2
+  status: Sem API
+  observacao: Fed descontinuou o M3 em 2006
+  acesso: manual
+- id: US-051
+  bloco: Condições
+  indicador: Chicago Fed NFCI
+  fonte: FRED
+  codigo: NFCI
+  frequencia: Semanal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-052
+  bloco: Condições
+  indicador: St. Louis Fed Financial Stress Index
+  fonte: FRED
+  codigo: STLFSI4
+  frequencia: Semanal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-053
+  bloco: Crédito
+  indicador: SLOOS — net % tightening C&I
+  fonte: FRED
+  codigo: DRTSCILM
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-054
+  bloco: Dívida
+  indicador: '% da dívida federal detida pelo Fed'
+  fonte: Argus
+  codigo: FDHBFRBN / GFDEBTN
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado

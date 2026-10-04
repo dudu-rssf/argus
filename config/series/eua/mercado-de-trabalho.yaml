@@ -1,0 +1,184 @@
+pais: US
+aba: Mercado de Trabalho
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-001
+  bloco: Payroll
+  indicador: Non-farm Payrolls
+  fonte: FRED (BLS)
+  codigo: PAYEMS
+  frequencia: Mensal
+  unidade: Mil
+  tipo: Estoque
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-002
+  bloco: Desemprego
+  indicador: Unemployment Rate (U3)
+  fonte: FRED (BLS)
+  codigo: UNRATE
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-003
+  bloco: Desemprego
+  indicador: Unemployment Breakdown (U6, demografia)
+  fonte: FRED (BLS)
+  codigo: U6RATE + séries LNS140000xx
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-004
+  bloco: Participação
+  indicador: Labour Force Participation (total e 25–54)
+  fonte: FRED (BLS)
+  codigo: CIVPART / LNS11300060
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-005
+  bloco: JOLTS
+  indicador: Job Openings to Unemployed Ratio
+  fonte: Argus
+  codigo: JTSJOL / UNEMPLOY
+  frequencia: Mensal
+  unidade: x
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-006
+  bloco: JOLTS
+  indicador: JOLTS Openings, Hires, Quits, Layoffs
+  fonte: FRED (BLS)
+  codigo: JTSJOL / JTSHIL / JTSQUL / JTSLDL
+  frequencia: Mensal
+  unidade: Mil
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-007
+  bloco: Claims
+  indicador: Jobless Claims (Initial & Continuing)
+  fonte: FRED (DOL)
+  codigo: ICSA / CCSA
+  frequencia: Semanal
+  unidade: Mil
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-008
+  bloco: Pesquisas
+  indicador: Jobs Hard to Find (Conference Board)
+  fonte: Conference Board
+  codigo: —
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Pago
+  observacao: 'Proxy gratuita: nenhuma equivalente direta'
+  acesso: manual
+- id: US-009
+  bloco: Pesquisas
+  indicador: NFIB Job Openings Hard to Fill / Hiring Plans
+  fonte: NFIB
+  codigo: Relatório mensal (PDF)
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-010
+  bloco: Indicadores
+  indicador: Beveridge Curve
+  fonte: Argus
+  codigo: UNRATE × JTSJOR
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-011
+  bloco: Salários
+  indicador: Employment Cost Index
+  fonte: FRED (BLS)
+  codigo: ECIALLCIV
+  frequencia: Trimestral
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-012
+  bloco: Salários
+  indicador: Average Hourly Earnings
+  fonte: FRED (BLS)
+  codigo: CES0500000003
+  frequencia: Mensal
+  unidade: US$
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-013
+  bloco: Salários
+  indicador: Real Wage Growth
+  fonte: Argus
+  codigo: f(CES0500000003, CPIAUCSL)
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-014
+  bloco: Salários
+  indicador: Wage Growth Tracker (job switcher)
+  fonte: Atlanta Fed
+  codigo: Download (xlsx)
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: Não encontrado no FRED com o código testado
+  acesso: manual
+- id: US-015
+  bloco: Indicadores
+  indicador: Sahm Rule (real-time)
+  fonte: FRED
+  codigo: SAHMREALTIME
+  frequencia: Mensal
+  unidade: p.p.
+  tipo: Taxa
+  fase: EUA
+  status: Verificado
+  observacao: 0,00 p.p. em 09/2026
+  acesso: fred

@@ -1,0 +1,304 @@
+pais: BR
+aba: Inflação
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-025
+  bloco: Cheio
+  indicador: IPCA — variação mensal
+  fonte: BCB SGS
+  codigo: '433'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Confirmar
+  observacao: Acumulados são encadeados, nunca somados
+  acesso: sgs
+- id: BR-026
+  bloco: Cheio
+  indicador: IPCA — acumulado 12 meses
+  fonte: BCB SGS
+  codigo: '13522'
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Conferência do cálculo próprio
+  acesso: sgs
+- id: BR-027
+  bloco: Cheio
+  indicador: IPCA-15
+  fonte: BCB SGS
+  codigo: '7478'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Confirmar
+  observacao: Prévia
+  acesso: sgs
+- id: BR-028
+  bloco: Cheio
+  indicador: INPC
+  fonte: BCB SGS
+  codigo: '188'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-029
+  bloco: Núcleos
+  indicador: Núcleo médias aparadas sem suavização (MA)
+  fonte: BCB SGS
+  codigo: '11426'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-030
+  bloco: Núcleos
+  indicador: Núcleo médias aparadas com suavização (MS)
+  fonte: BCB SGS
+  codigo: '4466'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-031
+  bloco: Núcleos
+  indicador: Núcleo por exclusão EX0 (sem monitorados e alim. domicílio)
+  fonte: BCB SGS
+  codigo: '11427'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-032
+  bloco: Núcleos
+  indicador: Núcleo por exclusão EX2
+  fonte: BCB SGS
+  codigo: '16121'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-033
+  bloco: Núcleos
+  indicador: Núcleo de dupla ponderação (DP)
+  fonte: BCB SGS
+  codigo: '16122'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-034
+  bloco: Núcleos
+  indicador: Núcleos EX3 e P55
+  fonte: BCB SGS
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: A mapear
+  observacao: Não apareceram na busca do portal; localizar no SGS
+  acesso: pendente
+- id: BR-035
+  bloco: Aberturas
+  indicador: Preços livres
+  fonte: BCB SGS
+  codigo: '11428'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-036
+  bloco: Aberturas
+  indicador: Preços monitorados
+  fonte: BCB SGS
+  codigo: '4449'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-037
+  bloco: Aberturas
+  indicador: Serviços
+  fonte: BCB SGS
+  codigo: '10844'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-038
+  bloco: Aberturas
+  indicador: Bens industriais e alimentação no domicílio
+  fonte: BCB SGS
+  codigo: 27863 / 27864
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-039
+  bloco: Aberturas
+  indicador: Comercializáveis e não comercializáveis
+  fonte: BCB SGS
+  codigo: 4447 / 4448
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-040
+  bloco: Aberturas
+  indicador: Índice de difusão
+  fonte: BCB SGS
+  codigo: '21379'
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-041
+  bloco: Aberturas
+  indicador: IPCA por subitem e peso
+  fonte: IBGE SIDRA
+  codigo: t7060
+  frequencia: Mensal
+  unidade: '% m/m e peso'
+  tipo: Var % mensal
+  fase: MVP
+  status: Confirmar
+  observacao: Base para calcular serviços subjacentes, supercore BR e aberturas próprias
+  acesso: sidra
+- id: BR-042
+  bloco: Aberturas
+  indicador: Serviços subjacentes / supercore BR
+  fonte: Argus
+  codigo: f(t7060)
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Recalcular com a metodologia do BCB e validar contra o RPM
+  acesso: derivado
+- id: BR-043
+  bloco: Atacado
+  indicador: IGP-M e IGP-DI
+  fonte: BCB SGS
+  codigo: 189 / 190
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Confirmar
+  observacao: Equivalente ao PPI na ótica de preços ao produtor
+  acesso: sgs
+- id: BR-044
+  bloco: Atacado
+  indicador: IPA (atacado) e INCC
+  fonte: BCB SGS
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: v2
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: BR-045
+  bloco: Atacado
+  indicador: IC-Br — índice de commodities BCB (total, agro, metal, energia)
+  fonte: BCB SGS
+  codigo: 27574–27577 (a confirmar)
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Equivalente a container freight/commodities como indicador antecedente
+  acesso: sgs
+- id: BR-046
+  bloco: Expectativas
+  indicador: Focus — IPCA (ano corrente, seguinte, +2, +3)
+  fonte: BCB Olinda (Focus)
+  codigo: ExpectativasMercadoAnuais · Indicador='IPCA'
+  frequencia: Semanal
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: focus
+- id: BR-047
+  bloco: Expectativas
+  indicador: Focus — IPCA 12 meses à frente
+  fonte: BCB Olinda (Focus)
+  codigo: ExpectativasMercadoInflacao12Meses
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Usado no juro real ex-ante
+  acesso: focus
+- id: BR-048
+  bloco: Expectativas
+  indicador: Inflação implícita (breakeven) prefixado × NTN-B
+  fonte: Tesouro Transparente
+  codigo: Taxas históricas do Tesouro Direto (CSV)
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: Equivalente ao 5y5y dos EUA
+  acesso: manual
+- id: BR-049
+  bloco: Meta
+  indicador: Meta de inflação e intervalo de tolerância
+  fonte: BCB / CMN
+  codigo: Curado
+  frequencia: Anual
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Curado
+  observacao: Tabela própria; meta contínua desde 2025
+  acesso: manual

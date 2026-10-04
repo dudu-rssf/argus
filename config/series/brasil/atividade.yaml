@@ -1,0 +1,172 @@
+pais: BR
+aba: Atividade
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-001
+  bloco: PIB
+  indicador: PIB real — índice de volume (SA)
+  fonte: IBGE SIDRA
+  codigo: t1621
+  frequencia: Trimestral
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Série encadeada com ajuste sazonal; base para QoQ SAAR
+  acesso: sidra
+- id: BR-002
+  bloco: PIB
+  indicador: PIB real — taxas (QoQ, YoY, acum. 4T)
+  fonte: IBGE SIDRA
+  codigo: t5932
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Taxas oficiais; usar para conferir cálculo próprio
+  acesso: sidra
+- id: BR-003
+  bloco: PIB
+  indicador: PIB — ótica da oferta (agro, indústria, serviços)
+  fonte: IBGE SIDRA
+  codigo: t1621 (setores)
+  frequencia: Trimestral
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sidra
+- id: BR-004
+  bloco: PIB
+  indicador: PIB — ótica da demanda (C, G, FBCF, X, M)
+  fonte: IBGE SIDRA
+  codigo: t1621 (componentes)
+  frequencia: Trimestral
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Consumo das famílias também alimenta a aba Famílias
+  acesso: sidra
+- id: BR-005
+  bloco: PIB
+  indicador: PIB nominal acumulado 12m (R$)
+  fonte: BCB SGS
+  codigo: '4382'
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: Denominador de todas as razões % PIB
+  acesso: sgs
+- id: BR-006
+  bloco: Mensais
+  indicador: IBC-Br (SA)
+  fonte: BCB SGS
+  codigo: '24364'
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: 'Sem ajuste: 24363'
+  acesso: sgs
+- id: BR-007
+  bloco: Mensais
+  indicador: Produção industrial — PIM-PF (geral, extrativa, transformação)
+  fonte: IBGE SIDRA
+  codigo: t8888
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Tabela nova (base 2022); conferir na Fase 0
+  acesso: sidra
+- id: BR-008
+  bloco: Mensais
+  indicador: Varejo restrito e ampliado — PMC
+  fonte: IBGE SIDRA
+  codigo: t8880 / t8881
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Volume e receita nominal
+  acesso: sidra
+- id: BR-009
+  bloco: Mensais
+  indicador: Volume de serviços — PMS
+  fonte: IBGE SIDRA
+  codigo: t5906
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sidra
+- id: BR-010
+  bloco: Mensais
+  indicador: Utilização da capacidade instalada (NUCI)
+  fonte: FGV IBRE / CNI
+  codigo: —
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: FGV restringe dados; CNI publica xlsx
+  acesso: manual
+- id: BR-011
+  bloco: Confiança
+  indicador: Confiança FGV (consumidor, indústria, serviços, comércio)
+  fonte: FGV IBRE
+  codigo: —
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Sem API
+  observacao: Sem API aberta; download manual ou assinatura
+  acesso: manual
+- id: BR-012
+  bloco: Coincidentes
+  indicador: Produção de veículos (Anfavea)
+  fonte: Anfavea
+  codigo: —
+  frequencia: Mensal
+  unidade: Unidades
+  tipo: Fluxo
+  fase: v2
+  status: Sem API
+  observacao: xlsx no site
+  acesso: manual
+- id: BR-013
+  bloco: Coincidentes
+  indicador: Carga de energia (ONS)
+  fonte: ONS Dados Abertos
+  codigo: —
+  frequencia: Diária
+  unidade: MWmed
+  tipo: Fluxo
+  fase: v2
+  status: A mapear
+  observacao: Proxy de atividade de alta frequência
+  acesso: manual
+- id: BR-014
+  bloco: Expectativas
+  indicador: Focus — PIB (ano corrente e seguinte)
+  fonte: BCB Olinda (Focus)
+  codigo: ExpectativasMercadoAnuais · Indicador='PIB Total'
+  frequencia: Semanal
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Mediana, desvio e nº de respondentes
+  acesso: focus

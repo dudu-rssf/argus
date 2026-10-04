@@ -1,0 +1,76 @@
+pais: BR
+aba: Empresas
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-100
+  bloco: Crédito
+  indicador: Saldo PJ e inadimplência PJ
+  fonte: BCB SGS
+  codigo: 20540 / 21083
+  frequencia: Mensal
+  unidade: R$ mi / %
+  tipo: Estoque
+  fase: v2
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-101
+  bloco: Crédito
+  indicador: Cartão de crédito PJ
+  fonte: BCB SGS
+  codigo: '20564'
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Estoque
+  fase: v2
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-102
+  bloco: Mercado de capitais
+  indicador: Emissões de debêntures e mercado de capitais
+  fonte: ANBIMA
+  codigo: Boletim (xlsx)
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: BR-103
+  bloco: Stress
+  indicador: Recuperações judiciais e falências
+  fonte: Serasa Experian
+  codigo: Indicador público (site)
+  frequencia: Mensal
+  unidade: Pedidos
+  tipo: Fluxo
+  fase: v2
+  status: Sem API
+  observacao: Equivalente ao bankruptcy index
+  acesso: manual
+- id: BR-104
+  bloco: Resultados
+  indicador: Lucro e endividamento de empresas abertas
+  fonte: CVM Dados Abertos
+  codigo: DFP/ITR
+  frequencia: Trimestral
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: v3
+  status: Confirmar
+  observacao: Trabalho pesado de limpeza
+  acesso: manual
+- id: BR-105
+  bloco: Investimento
+  indicador: FBCF
+  fonte: IBGE SIDRA
+  codigo: t1621
+  frequencia: Trimestral
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Já carregada em Atividade
+  acesso: sidra

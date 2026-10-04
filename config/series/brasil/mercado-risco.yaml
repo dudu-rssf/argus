@@ -1,0 +1,76 @@
+pais: BR
+aba: Mercado & Risco
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-106
+  bloco: Bolsa
+  indicador: Ibovespa
+  fonte: FMP / B3
+  codigo: ^BVSP
+  frequencia: Diária
+  unidade: Pontos
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: Faixa da aba Central
+  acesso: manual
+- id: BR-107
+  bloco: Juros
+  indicador: Curva DI futuro (vértices)
+  fonte: ANBIMA ETTJ / B3
+  codigo: Arquivos diários
+  frequencia: Diária
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: 'Formato instável: precisa de teste de contrato'
+  acesso: manual
+- id: BR-108
+  bloco: Juros
+  indicador: Taxas de títulos públicos (pré e NTN-B)
+  fonte: Tesouro Transparente
+  codigo: Taxas históricas (CSV)
+  frequencia: Diária
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: BR-109
+  bloco: Risco-país
+  indicador: EMBI+ Brasil
+  fonte: Ipeadata
+  codigo: JPM366_EMBI366 (a confirmar)
+  frequencia: Diária
+  unidade: bps
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: Conferir se ainda é atualizado
+  acesso: manual
+- id: BR-110
+  bloco: Risco-país
+  indicador: CDS 5 anos Brasil
+  fonte: Bloomberg / LSEG
+  codigo: —
+  frequencia: Diária
+  unidade: bps
+  tipo: Taxa
+  fase: v2
+  status: Pago
+  observacao: Sem fonte gratuita confiável
+  acesso: manual
+- id: BR-111
+  bloco: Fluxo
+  indicador: Fluxo estrangeiro na B3
+  fonte: B3
+  codigo: Site (scraping)
+  frequencia: Diária
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: v3
+  status: Sem API
+  observacao: Alto risco técnico
+  acesso: manual

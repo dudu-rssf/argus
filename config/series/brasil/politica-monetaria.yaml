@@ -1,0 +1,232 @@
+pais: BR
+aba: Política Monetária
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-050
+  bloco: Juros
+  indicador: Meta Selic definida pelo Copom
+  fonte: BCB SGS
+  codigo: '432'
+  frequencia: Diária
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Fonte dos ciclos do Copom
+  acesso: sgs
+- id: BR-051
+  bloco: Juros
+  indicador: Selic efetiva diária
+  fonte: BCB SGS
+  codigo: '11'
+  frequencia: Diária
+  unidade: '% a.d.'
+  tipo: Taxa
+  fase: v2
+  status: Verificado
+  observacao: Confirmado no portal BCB
+  acesso: sgs
+- id: BR-052
+  bloco: Juros
+  indicador: Selic anualizada base 252
+  fonte: BCB SGS
+  codigo: '1178'
+  frequencia: Diária
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: MVP
+  status: Verificado
+  observacao: Confirmado no portal BCB; limite de 10 anos por consulta
+  acesso: sgs
+- id: BR-053
+  bloco: Juros
+  indicador: Selic acumulada no mês anualizada
+  fonte: BCB SGS
+  codigo: '4189'
+  frequencia: Mensal
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: MVP
+  status: Verificado
+  observacao: Respondeu 13,83 em 09/2026
+  acesso: sgs
+- id: BR-054
+  bloco: Juros
+  indicador: CDI anualizado base 252
+  fonte: BCB SGS
+  codigo: '4389'
+  frequencia: Diária
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-055
+  bloco: Juros
+  indicador: Juro real ex-ante (proxy)
+  fonte: Argus
+  codigo: f(432, Focus IPCA 12m)
+  frequencia: Diária
+  unidade: '% a.a.'
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: 'v2: trocar por swap DI 360 deflacionado'
+  acesso: derivado
+- id: BR-056
+  bloco: Expectativas
+  indicador: Focus — Selic por reunião do Copom
+  fonte: BCB Olinda (Focus)
+  codigo: ExpectativasMercadoSelic
+  frequencia: Semanal
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Equivalente ao WIRP/dotplot
+  acesso: focus
+- id: BR-057
+  bloco: Copom
+  indicador: Histórico de decisões (data, decisão, bps, unanimidade)
+  fonte: BCB + SGS 432
+  codigo: Curado
+  frequencia: Por reunião
+  unidade: bps
+  tipo: Evento
+  fase: MVP
+  status: Curado
+  observacao: Dataset próprio, conferido contra o SGS
+  acesso: manual
+- id: BR-058
+  bloco: Copom
+  indicador: Comunicados e atas (texto)
+  fonte: BCB site
+  codigo: API do site (não documentada) + RSS
+  frequencia: Por reunião
+  unidade: Texto
+  tipo: Texto
+  fase: MVP
+  status: Confirmar
+  observacao: Base para o agregador e, depois, análise de linguagem
+  acesso: manual
+- id: BR-059
+  bloco: Agregados
+  indicador: M1 (saldo fim de período, SA)
+  fonte: BCB SGS
+  codigo: '27841'
+  frequencia: Mensal
+  unidade: R$ mil
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: 'Sem ajuste: 27791'
+  acesso: sgs
+- id: BR-060
+  bloco: Agregados
+  indicador: M2 (saldo fim de período, SA)
+  fonte: BCB SGS
+  codigo: '27842'
+  frequencia: Mensal
+  unidade: R$ mil
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: 'Sem ajuste: 27810'
+  acesso: sgs
+- id: BR-061
+  bloco: Agregados
+  indicador: M3 e M4 (saldo fim de período)
+  fonte: BCB SGS
+  codigo: 27813 / 27815
+  frequencia: Mensal
+  unidade: R$ mil
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-062
+  bloco: Crédito
+  indicador: Saldo de crédito total, PF e PJ
+  fonte: BCB SGS
+  codigo: 20539 / 20541 / 20540
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-063
+  bloco: Crédito
+  indicador: Saldo livre × direcionado
+  fonte: BCB SGS
+  codigo: 20542 / 20593
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: Transmissão da Selic ocorre no livre
+  acesso: sgs
+- id: BR-064
+  bloco: Crédito
+  indicador: Concessões total, PF e PJ
+  fonte: BCB SGS
+  codigo: 20631 / 20633 / 20632
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-065
+  bloco: Crédito
+  indicador: Taxa média de juros total, PF e PJ
+  fonte: BCB SGS
+  codigo: 20714 / 20716 / 20715
+  frequencia: Mensal
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-066
+  bloco: Crédito
+  indicador: Spread médio total
+  fonte: BCB SGS
+  codigo: '20783'
+  frequencia: Mensal
+  unidade: p.p.
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-067
+  bloco: Crédito
+  indicador: Indicador de custo do crédito (ICC)
+  fonte: BCB SGS
+  codigo: '25351'
+  frequencia: Mensal
+  unidade: '% a.a.'
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-068
+  bloco: Condições
+  indicador: Índice de condições financeiras BR
+  fonte: Argus
+  codigo: f(juros, câmbio, bolsa, spread)
+  frequencia: Diária
+  unidade: Índice
+  tipo: Derivado
+  fase: v2
+  status: Derivado
+  observacao: Equivalente ao NFCI
+  acesso: derivado

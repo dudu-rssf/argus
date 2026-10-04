@@ -1,0 +1,112 @@
+pais: BR
+aba: Famílias
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-091
+  bloco: Balanço
+  indicador: Endividamento das famílias com o SFN (% renda 12m)
+  fonte: BCB SGS
+  codigo: 29037 (a confirmar)
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: 'Ex-habitacional: 29038'
+  acesso: sgs
+- id: BR-092
+  bloco: Balanço
+  indicador: Comprometimento de renda com serviço da dívida
+  fonte: BCB SGS
+  codigo: 29034 (a confirmar)
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: Equivalente a debt service % DPI
+  acesso: sgs
+- id: BR-093
+  bloco: Crédito
+  indicador: Cartão de crédito total (PF)
+  fonte: BCB SGS
+  codigo: '20590'
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-094
+  bloco: Crédito
+  indicador: Crédito pessoal total (PF)
+  fonte: BCB SGS
+  codigo: '20580'
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-095
+  bloco: Crédito
+  indicador: Financiamento imobiliário (PF)
+  fonte: BCB SGS
+  codigo: '20612'
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-096
+  bloco: Crédito
+  indicador: Inadimplência PF
+  fonte: BCB SGS
+  codigo: '21084'
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Verificado
+  observacao: ''
+  acesso: sgs
+- id: BR-097
+  bloco: Renda
+  indicador: Massa salarial real e consumo das famílias
+  fonte: IBGE SIDRA
+  codigo: ver Trabalho e Atividade
+  frequencia: —
+  unidade: —
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Reaproveita séries das outras abas
+  acesso: manual
+- id: BR-098
+  bloco: Confiança
+  indicador: Confiança do consumidor FGV
+  fonte: FGV IBRE
+  codigo: —
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: BR-099
+  bloco: Poupança
+  indicador: Captação líquida da poupança
+  fonte: BCB SGS
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: v2
+  status: A mapear
+  observacao: ''
+  acesso: pendente

@@ -1,0 +1,148 @@
+pais: BR
+aba: Setor Externo
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-079
+  bloco: Balança
+  indicador: Exportações, importações e saldo
+  fonte: ComexStat (MDIC)
+  codigo: API ComexStat
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: Também semanal
+  acesso: comexstat
+- id: BR-080
+  bloco: Balança
+  indicador: Exportações por produto e destino (China, EUA, UE)
+  fonte: ComexStat (MDIC)
+  codigo: API ComexStat
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: Exposição a China e tarifas
+  acesso: comexstat
+- id: BR-081
+  bloco: BP
+  indicador: Transações correntes
+  fonte: BCB SGS
+  codigo: 22701 (a confirmar)
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-082
+  bloco: BP
+  indicador: Transações correntes — 12m % PIB
+  fonte: BCB SGS
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: MVP
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: BR-083
+  bloco: BP
+  indicador: Investimento direto no país (IDP)
+  fonte: BCB SGS
+  codigo: 22885 (a confirmar)
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-084
+  bloco: Reservas
+  indicador: Reservas internacionais (conceito caixa, diária)
+  fonte: BCB SGS
+  codigo: '13621'
+  frequencia: Diária
+  unidade: US$ mi
+  tipo: Estoque
+  fase: MVP
+  status: Verificado
+  observacao: Confirmado no portal BCB
+  acesso: sgs
+- id: BR-085
+  bloco: Câmbio
+  indicador: USD/BRL PTAX venda
+  fonte: BCB SGS
+  codigo: '1'
+  frequencia: Diária
+  unidade: R$/US$
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-086
+  bloco: Câmbio
+  indicador: Taxa de câmbio efetiva real
+  fonte: BCB SGS
+  codigo: 11752 (a confirmar)
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-087
+  bloco: Câmbio
+  indicador: Fluxo cambial (comercial e financeiro)
+  fonte: BCB SGS
+  codigo: A mapear
+  frequencia: Semanal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: v2
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: BR-088
+  bloco: Câmbio
+  indicador: Focus — câmbio fim de ano
+  fonte: BCB Olinda (Focus)
+  codigo: ExpectativasMercadoAnuais · Indicador='Câmbio'
+  frequencia: Semanal
+  unidade: R$/US$
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: focus
+- id: BR-089
+  bloco: Commodities
+  indicador: Minério de ferro, petróleo Brent, soja
+  fonte: FRED
+  codigo: PIORECRUSDM / DCOILBRENTEU / PSOYBUSDM
+  frequencia: Mensal/Diária
+  unidade: US$
+  tipo: Índice
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: BR-090
+  bloco: Commodities
+  indicador: Termos de troca
+  fonte: FUNCEX / Ipeadata
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: A mapear
+  observacao: ''
+  acesso: pendente

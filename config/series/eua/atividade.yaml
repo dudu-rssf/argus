@@ -1,0 +1,160 @@
+pais: US
+aba: Atividade
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-027
+  bloco: PIB
+  indicador: Real GDP (nível, QoQ SAAR)
+  fonte: FRED (BEA)
+  codigo: GDPC1 / A191RL1Q225SBEA
+  frequencia: Trimestral
+  unidade: US$ bi 2017
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-028
+  bloco: PIB
+  indicador: Real GDP change (US$ tri) × Unemployment
+  fonte: Argus
+  codigo: Δ GDPC1 × UNRATE
+  frequencia: Trimestral
+  unidade: US$ tri
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-029
+  bloco: PIB
+  indicador: GDP goods × services
+  fonte: BEA API
+  codigo: NIPA T10206 (a confirmar)
+  frequencia: Trimestral
+  unidade: US$ bi
+  tipo: Índice
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: US-030
+  bloco: PIB
+  indicador: GDPNow
+  fonte: FRED (Atlanta Fed)
+  codigo: GDPNOW
+  frequencia: Contínua
+  unidade: '% SAAR'
+  tipo: Taxa
+  fase: EUA
+  status: Verificado
+  observacao: 3,7% para 3T26 na verificação
+  acesso: fred
+- id: US-031
+  bloco: Consumo
+  indicador: Retail Sales (nominal e real)
+  fonte: FRED (Census)
+  codigo: RSAFS / RRSFS
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-032
+  bloco: Consumo
+  indicador: Real PCE e Private Consumption YoY
+  fonte: FRED (BEA)
+  codigo: PCEC96
+  frequencia: Mensal
+  unidade: US$ bi
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-033
+  bloco: Vendas
+  indicador: Wholesale Sales
+  fonte: FRED (Census)
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: v2
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: US-034
+  bloco: Vendas
+  indicador: Selected Services Revenue
+  fonte: Census QSS
+  codigo: API Census
+  frequencia: Trimestral
+  unidade: US$ mi
+  tipo: Fluxo
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: US-035
+  bloco: Estoques
+  indicador: Change in Private Inventories
+  fonte: FRED (BEA)
+  codigo: CBIC1
+  frequencia: Trimestral
+  unidade: US$ bi
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-036
+  bloco: Estoques
+  indicador: Manufacturers Inventories/Sales
+  fonte: FRED (Census)
+  codigo: MNFCTRIRSA
+  frequencia: Mensal
+  unidade: x
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: Proxy para excess inventory
+  acesso: fred
+- id: US-037
+  bloco: Indústria
+  indicador: Industrial Production
+  fonte: FRED (Fed)
+  codigo: INDPRO
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: Adicionado
+  acesso: fred
+- id: US-038
+  bloco: PMI
+  indicador: ISM Manufacturing e Services PMI
+  fonte: ISM
+  codigo: —
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Pago
+  observacao: Licenciado; saiu do FRED
+  acesso: manual
+- id: US-039
+  bloco: PMI
+  indicador: Pesquisas regionais do Fed (Philly, Empire, Dallas)
+  fonte: FRED
+  codigo: GACDFSA e equivalentes
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: Substituto gratuito do ISM
+  acesso: fred

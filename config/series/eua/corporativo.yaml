@@ -1,0 +1,100 @@
+pais: US
+aba: Corporativo
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-072
+  bloco: Lucros
+  indicador: Corporate Profits
+  fonte: FRED (BEA)
+  codigo: CP
+  frequencia: Trimestral
+  unidade: US$ bi
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-073
+  bloco: Lucros
+  indicador: Corporate Profits × S&P 500
+  fonte: Argus + FMP
+  codigo: CP × ^GSPC
+  frequencia: Trimestral
+  unidade: Índice
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: S&P 500 no FRED tem só 10 anos
+  acesso: derivado
+- id: US-074
+  bloco: Lucros
+  indicador: EPS estimates S&P 500
+  fonte: S&P DJI / FactSet
+  codigo: xlsx S&P (manual)
+  frequencia: Trimestral
+  unidade: US$
+  tipo: Fluxo
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-075
+  bloco: Valuation
+  indicador: Market Cap to GDP (Buffett)
+  fonte: Argus
+  codigo: NCBEILQ027S / GDP
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-076
+  bloco: Investimento
+  indicador: Fixed Investment (privado não residencial)
+  fonte: FRED (BEA)
+  codigo: PNFIC1
+  frequencia: Trimestral
+  unidade: US$ bi
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-077
+  bloco: Investimento
+  indicador: Capex Plans (NFIB e Fed regionais)
+  fonte: NFIB / Fed regionais
+  codigo: PDF / FRED
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-078
+  bloco: Caixa
+  indicador: Corporate cash on hand
+  fonte: FRED (Z.1)
+  codigo: A mapear
+  frequencia: Trimestral
+  unidade: US$ bi
+  tipo: Estoque
+  fase: v2
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: US-079
+  bloco: Stress
+  indicador: Bankruptcy index
+  fonte: Bloomberg / US Courts
+  codigo: —
+  frequencia: Mensal
+  unidade: Nº
+  tipo: Fluxo
+  fase: v2
+  status: Pago
+  observacao: US Courts publica estatística trimestral gratuita
+  acesso: manual

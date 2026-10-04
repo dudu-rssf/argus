@@ -36,3 +36,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+
+# uv
+pipeline/.venv/

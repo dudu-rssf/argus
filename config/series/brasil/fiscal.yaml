@@ -1,0 +1,124 @@
+pais: BR
+aba: Fiscal
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-069
+  bloco: Resultado
+  indicador: Resultado primário do setor público consolidado — 12m % PIB
+  fonte: BCB SGS
+  codigo: 5793 (a confirmar)
+  frequencia: Mensal
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-070
+  bloco: Resultado
+  indicador: Resultado nominal e juros nominais — 12m % PIB
+  fonte: BCB SGS
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: MVP
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: BR-071
+  bloco: Resultado
+  indicador: Primário por esfera (Gov. Central, regionais, estatais)
+  fonte: BCB SGS
+  codigo: A mapear
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: A mapear
+  observacao: ''
+  acesso: pendente
+- id: BR-072
+  bloco: Dívida
+  indicador: Dívida bruta do governo geral (DBGG) % PIB
+  fonte: BCB SGS
+  codigo: '13762'
+  frequencia: Mensal
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-073
+  bloco: Dívida
+  indicador: Dívida líquida do setor público (DLSP) % PIB
+  fonte: BCB SGS
+  codigo: '4513'
+  frequencia: Mensal
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: sgs
+- id: BR-074
+  bloco: Gov. Central
+  indicador: Receitas e despesas do Governo Central (RTN)
+  fonte: Tesouro Transparente
+  codigo: RTN (xlsx/CKAN)
+  frequencia: Mensal
+  unidade: R$ mi
+  tipo: Fluxo
+  fase: MVP
+  status: Confirmar
+  observacao: Abertura por rubrica; despesa real deflacionada
+  acesso: manual
+- id: BR-075
+  bloco: Gov. Central
+  indicador: Meta de primário e bandas do arcabouço
+  fonte: Tesouro / LDO
+  codigo: Curado
+  frequencia: Anual
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: MVP
+  status: Curado
+  observacao: ''
+  acesso: manual
+- id: BR-076
+  bloco: Dívida
+  indicador: Composição e prazo médio da DPF
+  fonte: Tesouro Transparente
+  codigo: RMD (xlsx)
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: BR-077
+  bloco: Projeções
+  indicador: Focus — primário e dívida líquida
+  fonte: BCB Olinda (Focus)
+  codigo: ExpectativasMercadoAnuais
+  frequencia: Semanal
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: MVP
+  status: Confirmar
+  observacao: ''
+  acesso: focus
+- id: BR-078
+  bloco: Projeções
+  indicador: Projeções da IFI (cenários)
+  fonte: IFI / Senado
+  codigo: Relatórios (manual)
+  frequencia: Mensal
+  unidade: '% PIB'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: Equivalente às projeções do CBO
+  acesso: manual

@@ -1,0 +1,88 @@
+pais: US
+aba: Risco & Mercado
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-090
+  bloco: Vol
+  indicador: VIX
+  fonte: FRED (CBOE)
+  codigo: VIXCLS
+  frequencia: Diária
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-091
+  bloco: Vol
+  indicador: MOVE Index
+  fonte: ICE
+  codigo: —
+  frequencia: Diária
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Pago
+  observacao: ''
+  acesso: manual
+- id: US-092
+  bloco: Crédito
+  indicador: ICE BofA High Yield OAS
+  fonte: FRED
+  codigo: BAMLH0A0HYM2
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: Conferir profundidade do histórico disponível
+  acesso: fred
+- id: US-093
+  bloco: Valuation
+  indicador: Equity Risk Premium
+  fonte: Argus / Damodaran
+  codigo: Earnings yield − DFII10
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-094
+  bloco: Crédito
+  indicador: Implied Default (a partir do HY spread)
+  fonte: Argus
+  codigo: f(BAMLH0A0HYM2, recovery)
+  frequencia: Diária
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-095
+  bloco: Recessão
+  indicador: Recession probability (Piger)
+  fonte: FRED
+  codigo: RECPROUSM156N
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-096
+  bloco: Bolsa
+  indicador: Russell 2000
+  fonte: FMP
+  codigo: ^RUT / IWM
+  frequencia: Diária
+  unidade: Pontos
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: Não está no FRED
+  acesso: manual

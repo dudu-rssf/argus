@@ -1,0 +1,136 @@
+pais: US
+aba: Inflação
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-016
+  bloco: CPI
+  indicador: CPI Headline e Core
+  fonte: FRED (BLS)
+  codigo: CPIAUCSL / CPILFESL
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-017
+  bloco: CPI
+  indicador: Supercore (services less rent of shelter)
+  fonte: FRED (BLS)
+  codigo: CUSR0000SASL2RS
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Verificado
+  observacao: Proxy; supercore estrito exclui também energia
+  acesso: fred
+- id: US-018
+  bloco: CPI
+  indicador: Rent CPI e Owner Equivalent Rent
+  fonte: FRED (BLS)
+  codigo: CUSR0000SEHA / CUSR0000SEHC
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-019
+  bloco: PCE
+  indicador: PCE e Core PCE
+  fonte: FRED (BEA)
+  codigo: PCEPI / PCEPILFE
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-020
+  bloco: PCE
+  indicador: Trimmed Mean PCE (Dallas Fed, 12m)
+  fonte: FRED
+  codigo: PCETRIM12M159SFRBDAL
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-021
+  bloco: PPI
+  indicador: PPI Final Demand
+  fonte: FRED (BLS)
+  codigo: PPIFIS
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-022
+  bloco: Expectativas
+  indicador: 5y5y Forward Inflation Expectation
+  fonte: FRED
+  codigo: T5YIFR
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: Substitui o FRA 5Y5Y SOFR
+  acesso: fred
+- id: US-023
+  bloco: Expectativas
+  indicador: FRA 5Y5Y SOFR / inflation swaps
+  fonte: Bloomberg
+  codigo: —
+  frequencia: Diária
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Pago
+  observacao: Usar T5YIFR
+  acesso: manual
+- id: US-024
+  bloco: Expectativas
+  indicador: Michigan 1y inflation expectations
+  fonte: FRED
+  codigo: MICH
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: Adicionado
+  acesso: fred
+- id: US-025
+  bloco: Antecedentes
+  indicador: Manheim Used Vehicle Value Index
+  fonte: Cox Automotive
+  codigo: Download (site)
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-026
+  bloco: Antecedentes
+  indicador: Container freight (Drewry / Freightos)
+  fonte: Drewry / Freightos
+  codigo: —
+  frequencia: Semanal
+  unidade: US$/FEU
+  tipo: Índice
+  fase: v2
+  status: Pago
+  observacao: ''
+  acesso: manual

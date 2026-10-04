@@ -1,0 +1,88 @@
+pais: US
+aba: Imobiliário
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-055
+  bloco: Preços
+  indicador: Median Sales Price e Case-Shiller
+  fonte: FRED
+  codigo: MSPUS / CSUSHPISA
+  frequencia: Mensal/Trim.
+  unidade: US$ / Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: Case-Shiller adicionado
+  acesso: fred
+- id: US-056
+  bloco: Oferta
+  indicador: Months' Supply, Starts, Permits, Completions
+  fonte: FRED (Census)
+  codigo: MSACSR / HOUST / PERMIT / COMPUTSA
+  frequencia: Mensal
+  unidade: Mil / meses
+  tipo: Fluxo
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-057
+  bloco: Vendas
+  indicador: Existing e Pending Home Sales
+  fonte: NAR
+  codigo: EXHOSLUSM495S (histórico curto)
+  frequencia: Mensal
+  unidade: Mil
+  tipo: Fluxo
+  fase: v2
+  status: Pago
+  observacao: FRED exibe só os últimos meses por licença
+  acesso: manual
+- id: US-058
+  bloco: Vacância
+  indicador: Rental e Homeowner Vacancy
+  fonte: FRED (Census)
+  codigo: RRVRUSQ156N / RHVRUSQ156N
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-059
+  bloco: Sentimento
+  indicador: NAHB Housing Market Index
+  fonte: NAHB
+  codigo: Download (site)
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-060
+  bloco: Acessibilidade
+  indicador: Housing Affordability Index
+  fonte: NAR / FRED
+  codigo: FIXHAI (a confirmar)
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: US-061
+  bloco: Crédito
+  indicador: Mortgage LTV
+  fonte: FHFA / ICE
+  codigo: —
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual

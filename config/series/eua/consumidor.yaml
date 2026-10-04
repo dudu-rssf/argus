@@ -1,0 +1,124 @@
+pais: US
+aba: Consumidor
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: US-062
+  bloco: Confiança
+  indicador: Michigan Consumer Sentiment
+  fonte: FRED
+  codigo: UMCSENT
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: EUA
+  status: Confirmar
+  observacao: Substitui Conference Board (pago)
+  acesso: fred
+- id: US-063
+  bloco: Confiança
+  indicador: Small Business Optimism (NFIB)
+  fonte: NFIB
+  codigo: Relatório (PDF)
+  frequencia: Mensal
+  unidade: Índice
+  tipo: Índice
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-064
+  bloco: Balanço
+  indicador: Household Net Worth
+  fonte: FRED (Z.1)
+  codigo: TNWBSHNO (a confirmar)
+  frequencia: Trimestral
+  unidade: US$ bi
+  tipo: Estoque
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-065
+  bloco: Renda
+  indicador: Personal Saving Rate e Real Disposable Income
+  fonte: FRED (BEA)
+  codigo: PSAVERT / DSPIC96
+  frequencia: Mensal
+  unidade: '% / US$ bi'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-066
+  bloco: Balanço
+  indicador: Liabilities/Assets
+  fonte: Argus
+  codigo: Z.1 passivos / ativos
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Derivado
+  fase: EUA
+  status: Derivado
+  observacao: ''
+  acesso: derivado
+- id: US-067
+  bloco: Balanço
+  indicador: Debt Service % DPI
+  fonte: FRED
+  codigo: TDSP
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-068
+  bloco: Desigualdade
+  indicador: Assets by Wealth Percentile
+  fonte: Fed DFA
+  codigo: Download CSV / FRED (séries DFA)
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: US-069
+  bloco: Crédito
+  indicador: Credit Card / Revolving Credit
+  fonte: FRED (G.19)
+  codigo: REVOLSL
+  frequencia: Mensal
+  unidade: US$ bi
+  tipo: Estoque
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred
+- id: US-070
+  bloco: Crédito
+  indicador: Expected application rate (cartão)
+  fonte: NY Fed SCE
+  codigo: Download
+  frequencia: Quadrimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Sem API
+  observacao: ''
+  acesso: manual
+- id: US-071
+  bloco: Crédito
+  indicador: Delinquencies (all loans e cartões)
+  fonte: FRED
+  codigo: DRALACBS / DRCCLACBS
+  frequencia: Trimestral
+  unidade: '%'
+  tipo: Taxa
+  fase: EUA
+  status: Confirmar
+  observacao: ''
+  acesso: fred

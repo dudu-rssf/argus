@@ -1,0 +1,52 @@
+pais: BR
+aba: Política
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-112
+  bloco: Congresso
+  indicador: Agenda, proposições e votações da Câmara
+  fonte: Câmara Dados Abertos
+  codigo: API v2
+  frequencia: Diária
+  unidade: Texto
+  tipo: Evento
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: BR-113
+  bloco: Congresso
+  indicador: Agenda e votações do Senado
+  fonte: Senado Dados Abertos
+  codigo: API
+  frequencia: Diária
+  unidade: Texto
+  tipo: Evento
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: BR-114
+  bloco: Eleições
+  indicador: Resultados eleitorais
+  fonte: TSE Dados Abertos
+  codigo: CSV
+  frequencia: Por eleição
+  unidade: Votos
+  tipo: Evento
+  fase: v2
+  status: Confirmar
+  observacao: ''
+  acesso: manual
+- id: BR-115
+  bloco: Opinião
+  indicador: Aprovação do governo e pesquisas eleitorais
+  fonte: Institutos (Quaest, Datafolha etc.)
+  codigo: Curado
+  frequencia: Mensal
+  unidade: '%'
+  tipo: Taxa
+  fase: v2
+  status: Curado
+  observacao: Sem API; tabela própria com fonte por linha
+  acesso: manual
