@@ -1,0 +1,42 @@
+name: Buscar séries
+
+on:
+  workflow_dispatch:
+    inputs:
+      sgs:
+        description: "Buscas no BCB SGS, separadas por ';'"
+        default: ""
+      sidra:
+        description: "Buscas no IBGE SIDRA, separadas por ';'"
+        default: ""
+      sidra_pesquisa:
+        description: "Filtro da pesquisa IBGE (ex.: 'pnad continua')"
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - name: Buscar
+        env:
+          SGS: ${{ inputs.sgs }}
+          SIDRA: ${{ inputs.sidra }}
+          SIDRA_PESQUISA: ${{ inputs.sidra_pesquisa }}
+        run: uv run python -m argus_pipeline.validate.search --sgs "$SGS" --sidra "$SIDRA" --sidra-pesquisa "$SIDRA_PESQUISA"
+      - name: Gravar resultado
+        run: |
+          git config user.name "argus-bot"
+          git config user.email "argus-bot@users.noreply.github.com"
+          git add ../docs/catalogo/busca.md
+          git diff --cached --quiet || git commit -m "Resultado de busca de séries"
+          git pull --rebase -q && git push
