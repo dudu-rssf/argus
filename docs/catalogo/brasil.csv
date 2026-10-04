@@ -1,0 +1,126 @@
+ID,Aba,Bloco,Indicador,Fonte,Código / endpoint,Frequência,Unidade,Tipo,Transformações válidas,Fase,Status,Observação
+BR-001,Atividade,PIB,PIB real — índice de volume (SA),IBGE SIDRA,t1621,Trimestral,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Série encadeada com ajuste sazonal; base para QoQ SAAR
+BR-002,Atividade,PIB,"PIB real — taxas (QoQ, YoY, acum. 4T)",IBGE SIDRA,t5932,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Taxas oficiais; usar para conferir cálculo próprio
+BR-003,Atividade,PIB,"PIB — ótica da oferta (agro, indústria, serviços)",IBGE SIDRA,t1621 (setores),Trimestral,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,
+BR-004,Atividade,PIB,"PIB — ótica da demanda (C, G, FBCF, X, M)",IBGE SIDRA,t1621 (componentes),Trimestral,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Consumo das famílias também alimenta a aba Famílias
+BR-005,Atividade,PIB,PIB nominal acumulado 12m (R$),BCB SGS,4382,Mensal,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,Denominador de todas as razões % PIB
+BR-006,Atividade,Mensais,IBC-Br (SA),BCB SGS,24364,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Sem ajuste: 24363
+BR-007,Atividade,Mensais,"Produção industrial — PIM-PF (geral, extrativa, transformação)",IBGE SIDRA,t8888,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Tabela nova (base 2022); conferir na Fase 0
+BR-008,Atividade,Mensais,Varejo restrito e ampliado — PMC,IBGE SIDRA,t8880 / t8881,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Volume e receita nominal
+BR-009,Atividade,Mensais,Volume de serviços — PMS,IBGE SIDRA,t5906,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,
+BR-010,Atividade,Mensais,Utilização da capacidade instalada (NUCI),FGV IBRE / CNI,—,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,FGV restringe dados; CNI publica xlsx
+BR-011,Atividade,Confiança,"Confiança FGV (consumidor, indústria, serviços, comércio)",FGV IBRE,—,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Sem API,Sem API aberta; download manual ou assinatura
+BR-012,Atividade,Coincidentes,Produção de veículos (Anfavea),Anfavea,—,Mensal,Unidades,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Sem API,xlsx no site
+BR-013,Atividade,Coincidentes,Carga de energia (ONS),ONS Dados Abertos,—,Diária,MWmed,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,A mapear,Proxy de atividade de alta frequência
+BR-014,Atividade,Expectativas,Focus — PIB (ano corrente e seguinte),BCB Olinda (Focus),ExpectativasMercadoAnuais · Indicador='PIB Total',Semanal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,"Mediana, desvio e nº de respondentes"
+BR-015,Mercado de Trabalho,PNAD,Taxa de desocupação,BCB SGS / IBGE SIDRA,24369 / t6381,Mensal (trim. móvel),%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Série oficial sem ajuste sazonal; SA própria (X-13) na v2
+BR-016,Mercado de Trabalho,PNAD,Taxa de participação e nível de ocupação,IBGE SIDRA,PNAD Contínua mensal (tabela a mapear),Mensal (trim. móvel),%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,A mapear,
+BR-017,Mercado de Trabalho,PNAD,"População ocupada (total, formal, informal)",IBGE SIDRA,PNAD Contínua mensal (tabela a mapear),Mensal (trim. móvel),Mil pessoas,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,A mapear,Informalidade = derivada
+BR-018,Mercado de Trabalho,PNAD,Taxa de informalidade,IBGE SIDRA,PNAD Contínua mensal (tabela a mapear),Mensal (trim. móvel),%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,A mapear,
+BR-019,Mercado de Trabalho,PNAD,Rendimento médio real habitual,IBGE SIDRA,t6390 (a confirmar),Mensal (trim. móvel),R$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Equivalente a AHE/real wage dos EUA
+BR-020,Mercado de Trabalho,PNAD,Massa de rendimento real habitual,IBGE SIDRA,PNAD Contínua mensal (tabela a mapear),Mensal (trim. móvel),R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,A mapear,Liga Trabalho a Consumo
+BR-021,Mercado de Trabalho,PNAD,"Subutilização, desalentados, desemprego de longo prazo",IBGE SIDRA,PNAD Contínua trimestral,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,A mapear,Equivalente ao U6 dos EUA
+BR-022,Mercado de Trabalho,Formal,Novo CAGED — saldo de empregos formais,BCB SGS / MTE PDET,28763 (a confirmar),Mensal,Postos,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,Equivalente ao payroll; por setor via microdados MTE (v2)
+BR-023,Mercado de Trabalho,Formal,Requerimentos de seguro-desemprego,MTE,—,Mensal,Pedidos,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Sem API,Equivalente às jobless claims
+BR-024,Mercado de Trabalho,Indicadores,"Recessão tipo Sahm (desocupação SA, MM3)",Argus,f(desocupação SA),Mensal,p.p.,Derivado,Conforme definição da fórmula,v2,Derivado,Depende da SA própria
+BR-025,Inflação,Cheio,IPCA — variação mensal,BCB SGS,433,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Confirmar,"Acumulados são encadeados, nunca somados"
+BR-026,Inflação,Cheio,IPCA — acumulado 12 meses,BCB SGS,13522,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Conferência do cálculo próprio
+BR-027,Inflação,Cheio,IPCA-15,BCB SGS,7478,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Confirmar,Prévia
+BR-028,Inflação,Cheio,INPC,BCB SGS,188,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",v2,Confirmar,
+BR-029,Inflação,Núcleos,Núcleo médias aparadas sem suavização (MA),BCB SGS,11426,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Verificado,
+BR-030,Inflação,Núcleos,Núcleo médias aparadas com suavização (MS),BCB SGS,4466,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Verificado,
+BR-031,Inflação,Núcleos,Núcleo por exclusão EX0 (sem monitorados e alim. domicílio),BCB SGS,11427,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Verificado,
+BR-032,Inflação,Núcleos,Núcleo por exclusão EX2,BCB SGS,16121,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Verificado,
+BR-033,Inflação,Núcleos,Núcleo de dupla ponderação (DP),BCB SGS,16122,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Verificado,
+BR-034,Inflação,Núcleos,Núcleos EX3 e P55,BCB SGS,A mapear,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,A mapear,Não apareceram na busca do portal; localizar no SGS
+BR-035,Inflação,Aberturas,Preços livres,BCB SGS,11428,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Verificado,
+BR-036,Inflação,Aberturas,Preços monitorados,BCB SGS,4449,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Verificado,
+BR-037,Inflação,Aberturas,Serviços,BCB SGS,10844,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Confirmar,
+BR-038,Inflação,Aberturas,Bens industriais e alimentação no domicílio,BCB SGS,27863 / 27864,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Confirmar,
+BR-039,Inflação,Aberturas,Comercializáveis e não comercializáveis,BCB SGS,4447 / 4448,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",v2,Confirmar,
+BR-040,Inflação,Aberturas,Índice de difusão,BCB SGS,21379,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-041,Inflação,Aberturas,IPCA por subitem e peso,IBGE SIDRA,t7060,Mensal,% m/m e peso,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Confirmar,"Base para calcular serviços subjacentes, supercore BR e aberturas próprias"
+BR-042,Inflação,Aberturas,Serviços subjacentes / supercore BR,Argus,f(t7060),Mensal,% m/m,Derivado,Conforme definição da fórmula,MVP,Derivado,Recalcular com a metodologia do BCB e validar contra o RPM
+BR-043,Inflação,Atacado,IGP-M e IGP-DI,BCB SGS,189 / 190,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",MVP,Confirmar,Equivalente ao PPI na ótica de preços ao produtor
+BR-044,Inflação,Atacado,IPA (atacado) e INCC,BCB SGS,A mapear,Mensal,% m/m,Var % mensal,"Mensal, acum. 3/6/9/12m (encadeado), 3m/6m anualizado, YoY via 12m",v2,A mapear,
+BR-045,Inflação,Atacado,"IC-Br — índice de commodities BCB (total, agro, metal, energia)",BCB SGS,27574–27577 (a confirmar),Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Equivalente a container freight/commodities como indicador antecedente
+BR-046,Inflação,Expectativas,"Focus — IPCA (ano corrente, seguinte, +2, +3)",BCB Olinda (Focus),ExpectativasMercadoAnuais · Indicador='IPCA',Semanal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-047,Inflação,Expectativas,Focus — IPCA 12 meses à frente,BCB Olinda (Focus),ExpectativasMercadoInflacao12Meses,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Usado no juro real ex-ante
+BR-048,Inflação,Expectativas,Inflação implícita (breakeven) prefixado × NTN-B,Tesouro Transparente,Taxas históricas do Tesouro Direto (CSV),Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,Equivalente ao 5y5y dos EUA
+BR-049,Inflação,Meta,Meta de inflação e intervalo de tolerância,BCB / CMN,Curado,Anual,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Curado,Tabela própria; meta contínua desde 2025
+BR-050,Política Monetária,Juros,Meta Selic definida pelo Copom,BCB SGS,432,Diária,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Fonte dos ciclos do Copom
+BR-051,Política Monetária,Juros,Selic efetiva diária,BCB SGS,11,Diária,% a.d.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Verificado,Confirmado no portal BCB
+BR-052,Política Monetária,Juros,Selic anualizada base 252,BCB SGS,1178,Diária,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Verificado,Confirmado no portal BCB; limite de 10 anos por consulta
+BR-053,Política Monetária,Juros,Selic acumulada no mês anualizada,BCB SGS,4189,Mensal,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Verificado,"Respondeu 13,83 em 09/2026"
+BR-054,Política Monetária,Juros,CDI anualizado base 252,BCB SGS,4389,Diária,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,
+BR-055,Política Monetária,Juros,Juro real ex-ante (proxy),Argus,"f(432, Focus IPCA 12m)",Diária,% a.a.,Derivado,Conforme definição da fórmula,MVP,Derivado,v2: trocar por swap DI 360 deflacionado
+BR-056,Política Monetária,Expectativas,Focus — Selic por reunião do Copom,BCB Olinda (Focus),ExpectativasMercadoSelic,Semanal,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Equivalente ao WIRP/dotplot
+BR-057,Política Monetária,Copom,"Histórico de decisões (data, decisão, bps, unanimidade)",BCB + SGS 432,Curado,Por reunião,bps,Evento,—,MVP,Curado,"Dataset próprio, conferido contra o SGS"
+BR-058,Política Monetária,Copom,Comunicados e atas (texto),BCB site,API do site (não documentada) + RSS,Por reunião,Texto,Texto,—,MVP,Confirmar,"Base para o agregador e, depois, análise de linguagem"
+BR-059,Política Monetária,Agregados,"M1 (saldo fim de período, SA)",BCB SGS,27841,Mensal,R$ mil,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,Sem ajuste: 27791
+BR-060,Política Monetária,Agregados,"M2 (saldo fim de período, SA)",BCB SGS,27842,Mensal,R$ mil,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,Sem ajuste: 27810
+BR-061,Política Monetária,Agregados,M3 e M4 (saldo fim de período),BCB SGS,27813 / 27815,Mensal,R$ mil,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,
+BR-062,Política Monetária,Crédito,"Saldo de crédito total, PF e PJ",BCB SGS,20539 / 20541 / 20540,Mensal,R$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,
+BR-063,Política Monetária,Crédito,Saldo livre × direcionado,BCB SGS,20542 / 20593,Mensal,R$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,Transmissão da Selic ocorre no livre
+BR-064,Política Monetária,Crédito,"Concessões total, PF e PJ",BCB SGS,20631 / 20633 / 20632,Mensal,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,
+BR-065,Política Monetária,Crédito,"Taxa média de juros total, PF e PJ",BCB SGS,20714 / 20716 / 20715,Mensal,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-066,Política Monetária,Crédito,Spread médio total,BCB SGS,20783,Mensal,p.p.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-067,Política Monetária,Crédito,Indicador de custo do crédito (ICC),BCB SGS,25351,Mensal,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,
+BR-068,Política Monetária,Condições,Índice de condições financeiras BR,Argus,"f(juros, câmbio, bolsa, spread)",Diária,Índice,Derivado,Conforme definição da fórmula,v2,Derivado,Equivalente ao NFCI
+BR-069,Fiscal,Resultado,Resultado primário do setor público consolidado — 12m % PIB,BCB SGS,5793 (a confirmar),Mensal,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-070,Fiscal,Resultado,Resultado nominal e juros nominais — 12m % PIB,BCB SGS,A mapear,Mensal,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,A mapear,
+BR-071,Fiscal,Resultado,"Primário por esfera (Gov. Central, regionais, estatais)",BCB SGS,A mapear,Mensal,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,A mapear,
+BR-072,Fiscal,Dívida,Dívida bruta do governo geral (DBGG) % PIB,BCB SGS,13762,Mensal,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-073,Fiscal,Dívida,Dívida líquida do setor público (DLSP) % PIB,BCB SGS,4513,Mensal,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-074,Fiscal,Gov. Central,Receitas e despesas do Governo Central (RTN),Tesouro Transparente,RTN (xlsx/CKAN),Mensal,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,Abertura por rubrica; despesa real deflacionada
+BR-075,Fiscal,Gov. Central,Meta de primário e bandas do arcabouço,Tesouro / LDO,Curado,Anual,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Curado,
+BR-076,Fiscal,Dívida,Composição e prazo médio da DPF,Tesouro Transparente,RMD (xlsx),Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,
+BR-077,Fiscal,Projeções,Focus — primário e dívida líquida,BCB Olinda (Focus),ExpectativasMercadoAnuais,Semanal,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,
+BR-078,Fiscal,Projeções,Projeções da IFI (cenários),IFI / Senado,Relatórios (manual),Mensal,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,Equivalente às projeções do CBO
+BR-079,Setor Externo,Balança,"Exportações, importações e saldo",ComexStat (MDIC),API ComexStat,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,Também semanal
+BR-080,Setor Externo,Balança,"Exportações por produto e destino (China, EUA, UE)",ComexStat (MDIC),API ComexStat,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,Exposição a China e tarifas
+BR-081,Setor Externo,BP,Transações correntes,BCB SGS,22701 (a confirmar),Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,
+BR-082,Setor Externo,BP,Transações correntes — 12m % PIB,BCB SGS,A mapear,Mensal,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,A mapear,
+BR-083,Setor Externo,BP,Investimento direto no país (IDP),BCB SGS,22885 (a confirmar),Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",MVP,Confirmar,
+BR-084,Setor Externo,Reservas,"Reservas internacionais (conceito caixa, diária)",BCB SGS,13621,Diária,US$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,Confirmado no portal BCB
+BR-085,Setor Externo,Câmbio,USD/BRL PTAX venda,BCB SGS,1,Diária,R$/US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,
+BR-086,Setor Externo,Câmbio,Taxa de câmbio efetiva real,BCB SGS,11752 (a confirmar),Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,
+BR-087,Setor Externo,Câmbio,Fluxo cambial (comercial e financeiro),BCB SGS,A mapear,Semanal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,A mapear,
+BR-088,Setor Externo,Câmbio,Focus — câmbio fim de ano,BCB Olinda (Focus),ExpectativasMercadoAnuais · Indicador='Câmbio',Semanal,R$/US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,
+BR-089,Setor Externo,Commodities,"Minério de ferro, petróleo Brent, soja",FRED,PIORECRUSDM / DCOILBRENTEU / PSOYBUSDM,Mensal/Diária,US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,
+BR-090,Setor Externo,Commodities,Termos de troca,FUNCEX / Ipeadata,A mapear,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,A mapear,
+BR-091,Famílias,Balanço,Endividamento das famílias com o SFN (% renda 12m),BCB SGS,29037 (a confirmar),Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Ex-habitacional: 29038
+BR-092,Famílias,Balanço,Comprometimento de renda com serviço da dívida,BCB SGS,29034 (a confirmar),Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Confirmar,Equivalente a debt service % DPI
+BR-093,Famílias,Crédito,Cartão de crédito total (PF),BCB SGS,20590,Mensal,R$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,
+BR-094,Famílias,Crédito,Crédito pessoal total (PF),BCB SGS,20580,Mensal,R$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,
+BR-095,Famílias,Crédito,Financiamento imobiliário (PF),BCB SGS,20612,Mensal,R$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",MVP,Verificado,
+BR-096,Famílias,Crédito,Inadimplência PF,BCB SGS,21084,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Verificado,
+BR-097,Famílias,Renda,Massa salarial real e consumo das famílias,IBGE SIDRA,ver Trabalho e Atividade,—,—,Derivado,Conforme definição da fórmula,MVP,Derivado,Reaproveita séries das outras abas
+BR-098,Famílias,Confiança,Confiança do consumidor FGV,FGV IBRE,—,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Sem API,
+BR-099,Famílias,Poupança,Captação líquida da poupança,BCB SGS,A mapear,Mensal,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,A mapear,
+BR-100,Empresas,Crédito,Saldo PJ e inadimplência PJ,BCB SGS,20540 / 21083,Mensal,R$ mi / %,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",v2,Verificado,
+BR-101,Empresas,Crédito,Cartão de crédito PJ,BCB SGS,20564,Mensal,R$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",v2,Verificado,
+BR-102,Empresas,Mercado de capitais,Emissões de debêntures e mercado de capitais,ANBIMA,Boletim (xlsx),Mensal,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Sem API,
+BR-103,Empresas,Stress,Recuperações judiciais e falências,Serasa Experian,Indicador público (site),Mensal,Pedidos,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Sem API,Equivalente ao bankruptcy index
+BR-104,Empresas,Resultados,Lucro e endividamento de empresas abertas,CVM Dados Abertos,DFP/ITR,Trimestral,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v3,Confirmar,Trabalho pesado de limpeza
+BR-105,Empresas,Investimento,FBCF,IBGE SIDRA,t1621,Trimestral,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Já carregada em Atividade
+BR-106,Mercado & Risco,Bolsa,Ibovespa,FMP / B3,^BVSP,Diária,Pontos,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,Faixa da aba Central
+BR-107,Mercado & Risco,Juros,Curva DI futuro (vértices),ANBIMA ETTJ / B3,Arquivos diários,Diária,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,Formato instável: precisa de teste de contrato
+BR-108,Mercado & Risco,Juros,Taxas de títulos públicos (pré e NTN-B),Tesouro Transparente,Taxas históricas (CSV),Diária,% a.a.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,
+BR-109,Mercado & Risco,Risco-país,EMBI+ Brasil,Ipeadata,JPM366_EMBI366 (a confirmar),Diária,bps,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,Conferir se ainda é atualizado
+BR-110,Mercado & Risco,Risco-país,CDS 5 anos Brasil,Bloomberg / LSEG,—,Diária,bps,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Pago,Sem fonte gratuita confiável
+BR-111,Mercado & Risco,Fluxo,Fluxo estrangeiro na B3,B3,Site (scraping),Diária,R$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v3,Sem API,Alto risco técnico
+BR-112,Política,Congresso,"Agenda, proposições e votações da Câmara",Câmara Dados Abertos,API v2,Diária,Texto,Evento,—,v2,Confirmar,
+BR-113,Política,Congresso,Agenda e votações do Senado,Senado Dados Abertos,API,Diária,Texto,Evento,—,v2,Confirmar,
+BR-114,Política,Eleições,Resultados eleitorais,TSE Dados Abertos,CSV,Por eleição,Votos,Evento,—,v2,Confirmar,
+BR-115,Política,Opinião,Aprovação do governo e pesquisas eleitorais,"Institutos (Quaest, Datafolha etc.)",Curado,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Curado,Sem API; tabela própria com fonte por linha
+BR-116,Análises,Ciclos,"Ciclos do Copom desde 1999 (duração, bps, contexto, ativos)",Argus,"f(432, IPCA, câmbio, Ibov)",Por ciclo,bps / %,Derivado,Conforme definição da fórmula,MVP,Derivado,Spec metodológica antes do código
+BR-117,Análises,Juro neutro,Juro neutro implícito no Focus (Selic longa − IPCA longo),Argus,f(Focus Selic e IPCA t+3),Semanal,% a.a.,Derivado,Conforme definição da fórmula,MVP,Derivado,"Leitura de mercado, não estimativa estrutural"
+BR-118,Análises,Juro neutro,Juro real ex-ante × neutro (postura monetária),Argus,"f(juro real, neutro)",Diária,p.p.,Derivado,Conforme definição da fórmula,MVP,Derivado,
+BR-119,Análises,Juro neutro,Estimativas de neutro e hiato do BCB,BCB RPM,Manual (boxes do RPM),Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Curado,
+BR-120,Análises,Modelos,Regra de Taylor,Argus,"f(neutro, hiato, IPCA, meta)",Mensal,% a.a.,Derivado,Conforme definição da fórmula,v2,Derivado,
+BR-121,Análises,Modelos,NAIRU e curva de Phillips,Argus,Modelo próprio,Trimestral,%,Derivado,Conforme definição da fórmula,v2,Derivado,Documentar especificação
+BR-122,Análises,Modelos,"Hiato do produto (próprio, BCB, IFI)",Argus + BCB + IFI,Modelo + manual,Trimestral,%,Derivado,Conforme definição da fórmula,v2,Derivado,
+BR-123,Análises,Copom,"Diretores: mandato, indicação, votos por reunião",BCB,Curado,Por reunião,—,Evento,—,v2,Curado,
+BR-124,Análises,Copom,Tom de discursos por diretor (hawk/dove),BCB + imprensa,Textos + LLM,Por evento,Escore,Derivado,Conforme definição da fórmula,v3,Derivado,Exige metodologia validada; custo de API
+BR-125,Análises,Análogos,Busca de períodos históricos semelhantes,Argus,f(várias),—,—,Derivado,Conforme definição da fórmula,v2,Derivado,

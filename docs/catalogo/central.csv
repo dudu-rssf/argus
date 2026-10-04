@@ -1,0 +1,13 @@
+Bloco,Componente,Conteúdo,Fonte,Fase,Observação
+Faixa de mercado,Ticker no topo,"Ibovespa, USD/BRL, S&P 500, UST 10Y, Broad Dollar, Brent, ouro, VIX",FMP + FRED + BCB SGS,MVP,Atualização diária; intraday só com plano pago
+Regime,Cartões Brasil,"Selic × neutro implícito, IPCA 12m × meta, desocupação, Focus IPCA/Selic",Abas Brasil (derivados),MVP,Cada cartão leva à aba de origem
+Regime,Cartões EUA,"Fed funds, Core PCE, desemprego, curva 10y-2y, GDPNow",Aba EUA,EUA,
+Agenda,Próximos 7 dias,"Divulgações do IBGE, BCB, BLS/BEA; reuniões de Copom e FOMC",IBGE API de calendário + FRED releases + curado,MVP,Calendário de Copom/FOMC curado manualmente
+Última divulgação,O que saiu,Último dado × anterior × Focus (quando houver),Derivado,MVP,Consenso para os EUA não tem fonte gratuita
+Notícias,Feed oficial,"Comunicados e notas de BCB, Fed, Tesouro, IBGE (Agência de Notícias)",RSS oficiais,MVP,"Fonte primária, zero risco jurídico"
+Notícias,Feed de imprensa,Manchetes de veículos selecionados (título + link),RSS de veículos + Google News RSS por consulta,MVP,"Só título, fonte e link; marcação por país/tema via palavra-chave"
+Notícias,Eventos globais,Volume de notícias por país/tema (geopolítica),GDELT DOC API,v2,
+Notícias,Resumo do dia,Síntese automática das notícias por tema,Claude API (modelo leve),v2,Custo de API: alguns US$/mês
+Monitor,Saúde dos dados,Fontes com falha ou atrasadas,Tabela ingestion_runs,MVP,
+Monitor,Teses,Teses ativas e gatilhos próximos de disparar,Aba Teses,v2,
+Monitor,Alertas,Alertas disparados nas últimas 24h,Motor de alertas,v3,
