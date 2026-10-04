@@ -57,7 +57,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-006",
@@ -66,10 +66,10 @@
   "frequencia": "Mensal",
   "codigo": "24364",
   "titulo_oficial": "Índice de Atividade Econômica do Banco Central (IBC-Br) - com ajuste sazonal",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-007",
@@ -141,7 +141,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-016",
@@ -213,7 +213,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-025",
@@ -225,7 +225,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-026",
@@ -237,7 +237,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-027",
@@ -249,7 +249,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-029",
@@ -257,11 +257,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "11426",
-  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo médias aparadas sem suavização",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo médias aparadas sem suavização",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-030",
@@ -269,11 +269,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "4466",
-  "titulo_oficial": "Índice nacional de preços ao consumidor-Amplo (IPCA) - Núcleo médias aparadas com suavização",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo médias aparadas com suavização",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-031",
@@ -281,11 +281,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "11427",
-  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo por exclusão - Sem monitorados e alimentos no domicílio",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo por exclusão - EX0",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-032",
@@ -293,11 +293,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "16121",
-  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo por exclusão - ex2",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo por exclusão - EX1",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-033",
@@ -305,11 +305,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "16122",
-  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo de dupla ponderação",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo de dupla ponderação",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-034",
@@ -329,11 +329,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "11428",
-  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Itens livres",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Itens livres",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-036",
@@ -341,11 +341,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "4449",
-  "titulo_oficial": "Índice nacional de preços ao consumidor-Amplo (IPCA) - Preços monitorados - Total",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Administrados",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-037",
@@ -353,11 +353,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "10844",
-  "titulo_oficial": "Índice de Preços ao Consumidor-Amplo (IPCA) - Serviços",
-  "origem_titulo": "portal",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Serviços",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-038",
@@ -369,7 +369,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-038",
@@ -381,7 +381,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-040",
@@ -390,10 +390,10 @@
   "frequencia": "Mensal",
   "codigo": "21379",
   "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Índice de difusão",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-041",
@@ -429,7 +429,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-043",
@@ -441,7 +441,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -453,7 +453,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -465,7 +465,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -477,7 +477,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-045",
@@ -489,7 +489,7 @@
   "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-046",
@@ -534,10 +534,10 @@
   "frequencia": "Diária",
   "codigo": "432",
   "titulo_oficial": "Taxa de juros - Meta Selic definida pelo Copom",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-052",
@@ -546,10 +546,10 @@
   "frequencia": "Diária",
   "codigo": "1178",
   "titulo_oficial": "Taxa de juros - Selic anualizada base 252",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-053",
@@ -558,10 +558,10 @@
   "frequencia": "Mensal",
   "codigo": "4189",
   "titulo_oficial": "Taxa de juros - Selic acumulada no mês anualizada base 252",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-055",
@@ -618,10 +618,10 @@
   "frequencia": "Mensal",
   "codigo": "27841",
   "titulo_oficial": "Meios de pagamento - M1 (saldo em final de período) - Novo - sazonalmente ajustado",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-060",
@@ -630,10 +630,10 @@
   "frequencia": "Mensal",
   "codigo": "27842",
   "titulo_oficial": "Meios de pagamento amplos - M2 (saldo em final de período) - Novo - sazonalmente ajustado",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-061",
@@ -642,10 +642,10 @@
   "frequencia": "Mensal",
   "codigo": "27813",
   "titulo_oficial": "Meios de pagamento amplos - M3 (saldo em final de período) - Novo",
-  "origem_titulo": "portal",
+  "origem_titulo": "soap",
   "ultima_obs": null,
   "situacao": "Erro",
-  "detalhe": "api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
  },
  {
   "id": "BR-061",
@@ -1186,1085 +1186,5 @@
   "ultima_obs": null,
   "situacao": "Não verificável",
   "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-001",
-  "indicador": "Non-farm Payrolls",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PAYEMS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-002",
-  "indicador": "Unemployment Rate (U3)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "UNRATE",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-003",
-  "indicador": "Unemployment Breakdown (U6, demografia)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "U6RATE",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-004",
-  "indicador": "Labour Force Participation (total e 25–54)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "CIVPART",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-004",
-  "indicador": "Labour Force Participation (total e 25–54)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "LNS11300060",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-005",
-  "indicador": "Job Openings to Unemployed Ratio",
-  "acesso": "derivado",
-  "frequencia": "Mensal",
-  "codigo": "JTSJOL / UNEMPLOY",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-006",
-  "indicador": "JOLTS Openings, Hires, Quits, Layoffs",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "JTSJOL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-006",
-  "indicador": "JOLTS Openings, Hires, Quits, Layoffs",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "JTSHIL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-006",
-  "indicador": "JOLTS Openings, Hires, Quits, Layoffs",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "JTSQUL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-006",
-  "indicador": "JOLTS Openings, Hires, Quits, Layoffs",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "JTSLDL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-007",
-  "indicador": "Jobless Claims (Initial & Continuing)",
-  "acesso": "fred",
-  "frequencia": "Semanal",
-  "codigo": "ICSA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-007",
-  "indicador": "Jobless Claims (Initial & Continuing)",
-  "acesso": "fred",
-  "frequencia": "Semanal",
-  "codigo": "CCSA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-010",
-  "indicador": "Beveridge Curve",
-  "acesso": "derivado",
-  "frequencia": "Mensal",
-  "codigo": "UNRATE × JTSJOR",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-011",
-  "indicador": "Employment Cost Index",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "ECIALLCIV",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-012",
-  "indicador": "Average Hourly Earnings",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "CES0500000003",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-013",
-  "indicador": "Real Wage Growth",
-  "acesso": "derivado",
-  "frequencia": "Mensal",
-  "codigo": "f(CES0500000003, CPIAUCSL)",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-015",
-  "indicador": "Sahm Rule (real-time)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "SAHMREALTIME",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-016",
-  "indicador": "CPI Headline e Core",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "CPIAUCSL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-016",
-  "indicador": "CPI Headline e Core",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "CPILFESL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-017",
-  "indicador": "Supercore (services less rent of shelter)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "CUSR0000SASL2RS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-018",
-  "indicador": "Rent CPI e Owner Equivalent Rent",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "CUSR0000SEHA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-018",
-  "indicador": "Rent CPI e Owner Equivalent Rent",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "CUSR0000SEHC",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-019",
-  "indicador": "PCE e Core PCE",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PCEPI",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-019",
-  "indicador": "PCE e Core PCE",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PCEPILFE",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-020",
-  "indicador": "Trimmed Mean PCE (Dallas Fed, 12m)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PCETRIM12M159SFRBDAL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-021",
-  "indicador": "PPI Final Demand",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PPIFIS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-022",
-  "indicador": "5y5y Forward Inflation Expectation",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "T5YIFR",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-024",
-  "indicador": "Michigan 1y inflation expectations",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "MICH",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-027",
-  "indicador": "Real GDP (nível, QoQ SAAR)",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "GDPC1",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-027",
-  "indicador": "Real GDP (nível, QoQ SAAR)",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "A191RL1Q225SBEA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-028",
-  "indicador": "Real GDP change (US$ tri) × Unemployment",
-  "acesso": "derivado",
-  "frequencia": "Trimestral",
-  "codigo": "Δ GDPC1 × UNRATE",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-030",
-  "indicador": "GDPNow",
-  "acesso": "fred",
-  "frequencia": "Contínua",
-  "codigo": "GDPNOW",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-031",
-  "indicador": "Retail Sales (nominal e real)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "RSAFS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-031",
-  "indicador": "Retail Sales (nominal e real)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "RRSFS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-032",
-  "indicador": "Real PCE e Private Consumption YoY",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PCEC96",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-035",
-  "indicador": "Change in Private Inventories",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "CBIC1",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-036",
-  "indicador": "Manufacturers Inventories/Sales",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "MNFCTRIRSA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-037",
-  "indicador": "Industrial Production",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "INDPRO",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-039",
-  "indicador": "Pesquisas regionais do Fed (Philly, Empire, Dallas)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "GACDFSA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-040",
-  "indicador": "Fed Funds (efetivo e banda)",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "DFF",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-040",
-  "indicador": "Fed Funds (efetivo e banda)",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "DFEDTARU",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-040",
-  "indicador": "Fed Funds (efetivo e banda)",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "DFEDTARL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-041",
-  "indicador": "Total Fed Assets",
-  "acesso": "fred",
-  "frequencia": "Semanal",
-  "codigo": "WALCL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-042",
-  "indicador": "Press releases e statements do FOMC",
-  "acesso": "manual",
-  "frequencia": "Por evento",
-  "codigo": "RSS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'manual': revisão manual"
- },
- {
-  "id": "US-043",
-  "indicador": "Dotplot (mediana SEP)",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "FEDTARMD",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-043",
-  "indicador": "Dotplot (mediana SEP)",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "FEDTARRH",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-044",
-  "indicador": "US Yield Curve (1m–30y) e spreads",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "DGS1MO",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-044",
-  "indicador": "US Yield Curve (1m–30y) e spreads",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "DGS30",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-044",
-  "indicador": "US Yield Curve (1m–30y) e spreads",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "T10Y2Y",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-044",
-  "indicador": "US Yield Curve (1m–30y) e spreads",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "T10Y3M",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-045",
-  "indicador": "SOFR overnight",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "SOFR",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-048",
-  "indicador": "Mortgage Rate 30y",
-  "acesso": "fred",
-  "frequencia": "Semanal",
-  "codigo": "MORTGAGE30US",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-049",
-  "indicador": "M1 e M2",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "M1SL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-049",
-  "indicador": "M1 e M2",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "M2SL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-051",
-  "indicador": "Chicago Fed NFCI",
-  "acesso": "fred",
-  "frequencia": "Semanal",
-  "codigo": "NFCI",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-052",
-  "indicador": "St. Louis Fed Financial Stress Index",
-  "acesso": "fred",
-  "frequencia": "Semanal",
-  "codigo": "STLFSI4",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-053",
-  "indicador": "SLOOS — net % tightening C&I",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "DRTSCILM",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-054",
-  "indicador": "% da dívida federal detida pelo Fed",
-  "acesso": "derivado",
-  "frequencia": "Trimestral",
-  "codigo": "FDHBFRBN / GFDEBTN",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-055",
-  "indicador": "Median Sales Price e Case-Shiller",
-  "acesso": "fred",
-  "frequencia": "Mensal/Trim.",
-  "codigo": "MSPUS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-055",
-  "indicador": "Median Sales Price e Case-Shiller",
-  "acesso": "fred",
-  "frequencia": "Mensal/Trim.",
-  "codigo": "CSUSHPISA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-056",
-  "indicador": "Months' Supply, Starts, Permits, Completions",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "MSACSR",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-056",
-  "indicador": "Months' Supply, Starts, Permits, Completions",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "HOUST",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-056",
-  "indicador": "Months' Supply, Starts, Permits, Completions",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PERMIT",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-056",
-  "indicador": "Months' Supply, Starts, Permits, Completions",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "COMPUTSA",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-058",
-  "indicador": "Rental e Homeowner Vacancy",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "RRVRUSQ156N",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-058",
-  "indicador": "Rental e Homeowner Vacancy",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "RHVRUSQ156N",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-062",
-  "indicador": "Michigan Consumer Sentiment",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "UMCSENT",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-064",
-  "indicador": "Household Net Worth",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "TNWBSHNO",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-065",
-  "indicador": "Personal Saving Rate e Real Disposable Income",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "PSAVERT",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-065",
-  "indicador": "Personal Saving Rate e Real Disposable Income",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "DSPIC96",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-066",
-  "indicador": "Liabilities/Assets",
-  "acesso": "derivado",
-  "frequencia": "Trimestral",
-  "codigo": "Z.1 passivos / ativos",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-067",
-  "indicador": "Debt Service % DPI",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "TDSP",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-069",
-  "indicador": "Credit Card / Revolving Credit",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "REVOLSL",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-071",
-  "indicador": "Delinquencies (all loans e cartões)",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "DRALACBS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-071",
-  "indicador": "Delinquencies (all loans e cartões)",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "DRCCLACBS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-073",
-  "indicador": "Corporate Profits × S&P 500",
-  "acesso": "derivado",
-  "frequencia": "Trimestral",
-  "codigo": "CP × ^GSPC",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-075",
-  "indicador": "Market Cap to GDP (Buffett)",
-  "acesso": "derivado",
-  "frequencia": "Trimestral",
-  "codigo": "NCBEILQ027S / GDP",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-076",
-  "indicador": "Fixed Investment (privado não residencial)",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "PNFIC1",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-080",
-  "indicador": "Federal Debt % GDP",
-  "acesso": "fred",
-  "frequencia": "Trimestral",
-  "codigo": "GFDEGDQ188S",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-083",
-  "indicador": "Trade Balance",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "BOPGSTB",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-084",
-  "indicador": "Current Account % GDP",
-  "acesso": "derivado",
-  "frequencia": "Trimestral",
-  "codigo": "IEABC / GDP",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-086",
-  "indicador": "Effective tariff rate",
-  "acesso": "derivado",
-  "frequencia": "Trimestral",
-  "codigo": "B235RC1Q027SBEA / IMPGS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-087",
-  "indicador": "Strategic Petroleum Reserve",
-  "acesso": "fred",
-  "frequencia": "Semanal",
-  "codigo": "WCSSTUS1",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-089",
-  "indicador": "Broad Dollar Index",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "DTWEXBGS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-090",
-  "indicador": "VIX",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "VIXCLS",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-092",
-  "indicador": "ICE BofA High Yield OAS",
-  "acesso": "fred",
-  "frequencia": "Diária",
-  "codigo": "BAMLH0A0HYM2",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-093",
-  "indicador": "Equity Risk Premium",
-  "acesso": "derivado",
-  "frequencia": "Mensal",
-  "codigo": "Earnings yield − DFII10",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-094",
-  "indicador": "Implied Default (a partir do HY spread)",
-  "acesso": "derivado",
-  "frequencia": "Diária",
-  "codigo": "f(BAMLH0A0HYM2, recovery)",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
- },
- {
-  "id": "US-095",
-  "indicador": "Recession probability (Piger)",
-  "acesso": "fred",
-  "frequencia": "Mensal",
-  "codigo": "RECPROUSM156N",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sem FRED_API_KEY configurada"
- },
- {
-  "id": "US-096",
-  "indicador": "Russell 2000",
-  "acesso": "manual",
-  "frequencia": "Diária",
-  "codigo": "^RUT / IWM",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'manual': revisão manual"
  }
 ]

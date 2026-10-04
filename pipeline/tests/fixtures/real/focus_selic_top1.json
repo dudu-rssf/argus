@@ -1,0 +1,1 @@
+{"@odata.context":"https://was-p.bcnet.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata$metadata#ExpectativasMercadoSelic","value":[{"Indicador":"Selic","Data":"2026-09-25","Reuniao":"R6/2028","Media":10.7880,"Mediana":10.5000,"DesvioPadrao":0.9310,"Minimo":8.5000,"Maximo":13.0000,"numeroRespondentes":46,"baseCalculo":1}]}
