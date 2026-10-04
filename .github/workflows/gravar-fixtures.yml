@@ -1,0 +1,33 @@
+name: Gravar fixtures
+
+on:
+  workflow_dispatch:
+    inputs:
+      pares:
+        description: "Pares nome=URL separados por espaço (URLs sem chave)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  gravar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - env:
+          PARES: ${{ inputs.pares }}
+        run: uv run python -m argus_pipeline.gravar_fixture $PARES
+      - run: |
+          if grep -rEn "(api_key|apikey|token)=[A-Za-z0-9]{8,}" tests/fixtures; then exit 1; fi
+          git config user.name "argus-bot"
+          git config user.email "argus-bot@users.noreply.github.com"
+          git add tests/fixtures/real
+          git diff --cached --quiet || git commit -m "Fixtures reais gravadas"
+          git pull --rebase -q && git push
