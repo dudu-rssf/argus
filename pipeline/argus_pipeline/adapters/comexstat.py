@@ -24,7 +24,7 @@ BASE = "https://api-comexstat.mdic.gov.br"
 UA = {"User-Agent": "argus-coleta/0.1 (projeto pessoal; github.com/dudu-rssf/argus)"}
 INICIO = "1997-01"
 INTERVALO = 10.5   # segundos entre pedidos
-TENTATIVAS = 4
+TENTATIVAS = 6
 
 _CODIGO = re.compile(r"^fluxo=(export|import)(?:/(pais|bloco)=(\d+))?$")
 _FILTRO = {"pais": "country", "bloco": "economicBlock"}
@@ -84,7 +84,7 @@ def _pedir(client: httpx.Client, metodo: str, url: str, **kw) -> str:
         finally:
             _ultimo_pedido = time.monotonic()
         if r.status_code == 429 and tentativa < TENTATIVAS - 1:
-            _dormir(INTERVALO)
+            _dormir(INTERVALO * (tentativa + 1))  # espera crescente: 10, 21, 31 s...
             continue
         if r.status_code != 200:
             raise AdapterError(f"ComexStat HTTP {r.status_code}: {r.text[:200]}")
