@@ -55,9 +55,9 @@
   "codigo": "4382",
   "titulo_oficial": "PIB acumulado dos últimos 12 meses - Valores correntes (R$ milhões)",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-006",
@@ -67,9 +67,9 @@
   "codigo": "24364",
   "titulo_oficial": "Índice de Atividade Econômica do Banco Central (IBC-Br) - com ajuste sazonal",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-07-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-007",
@@ -77,11 +77,11 @@
   "acesso": "sidra",
   "frequencia": "Mensal",
   "codigo": "t8888",
-  "titulo_oficial": "Produção Física Industrial, por seções e atividades industriais",
-  "origem_titulo": "sidra",
-  "ultima_obs": "2026-08-01",
-  "situacao": "OK",
-  "detalhe": ""
+  "titulo_oficial": null,
+  "origem_titulo": null,
+  "ultima_obs": null,
+  "situacao": "Erro",
+  "detalhe": "sidra: timed out"
  },
  {
   "id": "BR-008",
@@ -139,9 +139,9 @@
   "codigo": "24369",
   "titulo_oficial": "Taxa de desocupação - PNADC",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-016",
@@ -211,9 +211,9 @@
   "codigo": "28763",
   "titulo_oficial": "Estoque de empregos formais - Total",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-025",
@@ -223,9 +223,9 @@
   "codigo": "433",
   "titulo_oficial": "Índice nacional de preços ao consumidor-amplo (IPCA)",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-026",
@@ -235,9 +235,9 @@
   "codigo": "13522",
   "titulo_oficial": "Índice nacional de preços ao consumidor - amplo (IPCA) - em 12 meses",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-027",
@@ -247,9 +247,9 @@
   "codigo": "7478",
   "titulo_oficial": "Índice de Preços ao Consumidor-Amplo (IPCA) - 15",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-09-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-029",
@@ -257,11 +257,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "11426",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo médias aparadas sem suavização",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo médias aparadas sem suavização",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-030",
@@ -269,11 +269,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "4466",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo médias aparadas com suavização",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice nacional de preços ao consumidor-Amplo (IPCA) - Núcleo médias aparadas com suavização",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-031",
@@ -281,11 +281,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "11427",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo por exclusão - EX0",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo por exclusão - Sem monitorados e alimentos no domicílio",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-032",
@@ -293,11 +293,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "16121",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo por exclusão - EX1",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo por exclusão - ex2",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-033",
@@ -305,11 +305,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "16122",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo de dupla ponderação",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo de dupla ponderação",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-034",
@@ -329,11 +329,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "11428",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Itens livres",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Itens livres",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-036",
@@ -341,11 +341,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "4449",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Administrados",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice nacional de preços ao consumidor-Amplo (IPCA) - Preços monitorados - Total",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-037",
@@ -353,11 +353,11 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "10844",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Serviços",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Índice de Preços ao Consumidor-Amplo (IPCA) - Serviços",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-038",
@@ -367,9 +367,9 @@
   "codigo": "27863",
   "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Industriais",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-038",
@@ -379,9 +379,9 @@
   "codigo": "27864",
   "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Alimentação no domicílio",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-040",
@@ -390,10 +390,10 @@
   "frequencia": "Mensal",
   "codigo": "21379",
   "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Índice de difusão",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-041",
@@ -427,9 +427,9 @@
   "codigo": "189",
   "titulo_oficial": "Índice geral de preços do mercado (IGP-M)",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-09-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-043",
@@ -439,9 +439,9 @@
   "codigo": "190",
   "titulo_oficial": "Índice geral de preços-disponibilidade interna (IGP-DI)",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-045",
@@ -451,9 +451,9 @@
   "codigo": "27574",
   "titulo_oficial": "Índice de Commodities - Brasil",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-045",
@@ -463,9 +463,9 @@
   "codigo": "27575",
   "titulo_oficial": "Índice de Commodities - Brasil - Agropecuária",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-045",
@@ -475,9 +475,9 @@
   "codigo": "27576",
   "titulo_oficial": "Índice de Commodities - Brasil - Metal",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-045",
@@ -487,9 +487,9 @@
   "codigo": "27577",
   "titulo_oficial": "Índice de Commodities - Brasil - Energia",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-046",
@@ -534,10 +534,10 @@
   "frequencia": "Diária",
   "codigo": "432",
   "titulo_oficial": "Taxa de juros - Meta Selic definida pelo Copom",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-11-04",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-052",
@@ -546,10 +546,10 @@
   "frequencia": "Diária",
   "codigo": "1178",
   "titulo_oficial": "Taxa de juros - Selic anualizada base 252",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-10-02",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-053",
@@ -558,10 +558,10 @@
   "frequencia": "Mensal",
   "codigo": "4189",
   "titulo_oficial": "Taxa de juros - Selic acumulada no mês anualizada base 252",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-10-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-055",
@@ -618,10 +618,10 @@
   "frequencia": "Mensal",
   "codigo": "27841",
   "titulo_oficial": "Meios de pagamento - M1 (saldo em final de período) - Novo - sazonalmente ajustado",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-060",
@@ -630,10 +630,10 @@
   "frequencia": "Mensal",
   "codigo": "27842",
   "titulo_oficial": "Meios de pagamento amplos - M2 (saldo em final de período) - Novo - sazonalmente ajustado",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-061",
@@ -642,10 +642,10 @@
   "frequencia": "Mensal",
   "codigo": "27813",
   "titulo_oficial": "Meios de pagamento amplos - M3 (saldo em final de período) - Novo",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-061",
@@ -654,10 +654,10 @@
   "frequencia": "Mensal",
   "codigo": "27815",
   "titulo_oficial": "Meios de pagamento amplos - M4 (saldo em final de periodo) - Novo",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-062",
@@ -666,10 +666,10 @@
   "frequencia": "Mensal",
   "codigo": "20539",
   "titulo_oficial": "Saldo da carteira de crédito - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-062",
@@ -678,10 +678,10 @@
   "frequencia": "Mensal",
   "codigo": "20541",
   "titulo_oficial": "Saldo da carteira de crédito - Pessoas físicas - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-062",
@@ -690,10 +690,10 @@
   "frequencia": "Mensal",
   "codigo": "20540",
   "titulo_oficial": "Saldo da carteira de crédito - Pessoas jurídicas - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-063",
@@ -702,10 +702,10 @@
   "frequencia": "Mensal",
   "codigo": "20542",
   "titulo_oficial": "Saldo da carteira de crédito com recursos livres - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-063",
@@ -714,10 +714,10 @@
   "frequencia": "Mensal",
   "codigo": "20593",
   "titulo_oficial": "Saldo da carteira de crédito com recursos direcionados - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-064",
@@ -726,10 +726,10 @@
   "frequencia": "Mensal",
   "codigo": "20631",
   "titulo_oficial": "Concessões de crédito - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-064",
@@ -738,10 +738,10 @@
   "frequencia": "Mensal",
   "codigo": "20633",
   "titulo_oficial": "Concessões de crédito - Pessoas físicas - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-064",
@@ -750,10 +750,10 @@
   "frequencia": "Mensal",
   "codigo": "20632",
   "titulo_oficial": "Concessões de crédito - Pessoas jurídicas - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-065",
@@ -762,10 +762,10 @@
   "frequencia": "Mensal",
   "codigo": "20714",
   "titulo_oficial": "Taxa média de juros das operações de crédito - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-065",
@@ -774,10 +774,10 @@
   "frequencia": "Mensal",
   "codigo": "20716",
   "titulo_oficial": "Taxa média de juros das operações de crédito - Pessoas físicas - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-065",
@@ -786,10 +786,10 @@
   "frequencia": "Mensal",
   "codigo": "20715",
   "titulo_oficial": "Taxa média de juros das operações de crédito - Pessoas jurídicas - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-066",
@@ -798,10 +798,10 @@
   "frequencia": "Mensal",
   "codigo": "20783",
   "titulo_oficial": "Spread médio das operações de crédito - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-069",
@@ -810,10 +810,10 @@
   "frequencia": "Mensal",
   "codigo": "5793",
   "titulo_oficial": "NFSP sem desvalorização cambial (% PIB) - Fluxo acumulado em 12 meses - Resultado primário - Total - Setor público consolidado",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-070",
@@ -846,10 +846,10 @@
   "frequencia": "Mensal",
   "codigo": "13762",
   "titulo_oficial": "Dívida bruta do governo geral (% PIB) - Metodologia utilizada a partir de 2008",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-073",
@@ -858,10 +858,10 @@
   "frequencia": "Mensal",
   "codigo": "4513",
   "titulo_oficial": "Dívida Líquida do Setor Público (% PIB) - Total - Setor público consolidado",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-074",
@@ -930,10 +930,10 @@
   "frequencia": "Mensal",
   "codigo": "22701",
   "titulo_oficial": "Transações correntes - mensal - saldo",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-082",
@@ -954,10 +954,10 @@
   "frequencia": "Mensal",
   "codigo": "22885",
   "titulo_oficial": "Investimentos diretos no país - IDP - mensal - líquido",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-084",
@@ -965,11 +965,11 @@
   "acesso": "sgs",
   "frequencia": "Diária",
   "codigo": "13621",
-  "titulo_oficial": "Reservas internacionais - Total - diária",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "titulo_oficial": "Reservas internacionais - Conceito caixa - Total - diária",
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-10-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-085",
@@ -979,9 +979,9 @@
   "codigo": "1",
   "titulo_oficial": "Taxa de câmbio - Livre - Dólar americano (venda) - diário",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-10-02",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-086",
@@ -991,9 +991,9 @@
   "codigo": "11752",
   "titulo_oficial": "Índice da taxa de câmbio real efetiva (IPCA) - Jun/1994=100",
   "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "ultima_obs": "2026-07-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-088",
@@ -1050,10 +1050,10 @@
   "frequencia": "Mensal",
   "codigo": "29037",
   "titulo_oficial": "Endividamento das famílias com o Sistema Financeiro Nacional em relação à renda acumulada dos últimos doze meses (RNDBF)",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-07-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-092",
@@ -1062,10 +1062,10 @@
   "frequencia": "Mensal",
   "codigo": "29034",
   "titulo_oficial": "Comprometimento de renda das famílias com o serviço da dívida com o Sistema Financeiro Nacional - Com ajuste sazonal (RNDBF)",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-07-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-093",
@@ -1074,10 +1074,10 @@
   "frequencia": "Mensal",
   "codigo": "20590",
   "titulo_oficial": "Saldo da carteira de crédito com recursos livres - Pessoas físicas - Cartão de crédito total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-094",
@@ -1086,10 +1086,10 @@
   "frequencia": "Mensal",
   "codigo": "20580",
   "titulo_oficial": "Saldo da carteira de crédito com recursos livres - Pessoas físicas - Crédito pessoal total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-095",
@@ -1098,10 +1098,10 @@
   "frequencia": "Mensal",
   "codigo": "20612",
   "titulo_oficial": "Saldo da carteira de crédito com recursos direcionados - Pessoas físicas - Financiamento imobiliário total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-096",
@@ -1110,10 +1110,10 @@
   "frequencia": "Mensal",
   "codigo": "21084",
   "titulo_oficial": "Inadimplência da carteira de crédito - Pessoas físicas - Total",
-  "origem_titulo": "soap",
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "portal: Expecting value: line 1 column 1 (char 0); api rest: [Errno -2] Name or service not known; última observação não encontrada"
+  "origem_titulo": "portal",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-097",
