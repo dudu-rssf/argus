@@ -100,7 +100,8 @@ Workflow `coleta.yml`:
    - [x] 6g Comunicados (236, desde 2000) e atas (261, desde 1998) do Copom na tabela `events`, em texto puro; atas antigas sem texto na API ficam só com o link do PDF (execução 8)
 7. Séries derivadas
    - [x] 7a Média dos núcleos, saldo do CAGED, juro real ex-ante, neutro implícito no Focus, postura (execução 9)
-   - [ ] 7b Derivadas do IPCA por subitem (P50, industriais e serviços subjacentes, serviços intensivos em trabalho): proposta em `fase-1-derivadas-ipca.md`, aguarda aprovação
+   - [x] 7b Aprovado em 2026-10-04. Serviços e industriais subjacentes viraram séries oficiais do SGS (29683 e 29684, NT 57), não cálculo próprio. P50 calculado com o método do P55, que reproduz o SGS 28750 em 80 de 80 meses (execução 10)
+   - [ ] 7c Serviços intensivos em trabalho (BR-130): o BCB não publica lista; precisa de lista curada e aprovada
 8. [x] Proteção dos 60 dias: workflow "Resumo semanal" grava `docs/status/coleta.md` toda segunda
 
 ## Critério de pronto

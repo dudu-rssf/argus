@@ -1,6 +1,6 @@
 # Fase 1, passo 7b — Derivadas do IPCA por subitem (proposta)
 
-**Status:** proposta · 2026-10-04 · aguarda aprovação antes do código
+**Status:** aprovada em 2026-10-04 · executada, exceto BR-130
 
 ## O que já está pronto (passo 7a)
 
@@ -46,3 +46,10 @@ Quatro séries dependem de **listas de subitens** do IPCA. Essas listas são esc
 
 1. Pode seguir com as listas transcritas do BCB e a validação acima?
 2. Histórico das quatro séries só a partir de 2020 no MVP: ok?
+
+## Resultado (2026-10-04)
+
+- A Nota Técnica 57 do BCB (dez/2025, Tabela 11) passou a publicar **EX3 Serviços (29683)** e **EX3 Industriais (29684)** no SGS. BR-042 e BR-129 deixaram de ser cálculo próprio e foram verificadas pelo validador.
+- A mesma tabela resolve a pendência do EX2: **EX1 = 16121, EX2 = 27838**. BR-032 passou para 27838. As observações antigas de 16121 continuam no banco (nunca são apagadas), mas não pertencem mais ao BR-032.
+- **BR-128 (P50):** a NT 57 descreve o P55 como o primeiro subitem cujo peso acumulado atinge 55%, sem suavização. A mesma rotina em 55% reproduz o SGS 28750 em 80 de 80 meses (diferença máxima 0,0). Os subitens vêm de `config/derivadas/ipca_subitens_t7060.yaml`, gerado dos metadados oficiais.
+- **BR-130 (serviços intensivos em trabalho):** a NT 57 não traz essa classificação. Fica pendente até existir uma lista curada e aprovada.
