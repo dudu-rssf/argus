@@ -135,6 +135,66 @@ series:
   status: Verificado
   observacao: 'Título SGS 28751: "Núcleo Ex-alimentação e energia (EX-FE)"; comparável ao core dos EUA'
   acesso: sgs
+- id: BR-127
+  bloco: Núcleos
+  indicador: Média dos 5 núcleos do Copom (EX0, EX3, MS, DP, P55)
+  fonte: Argus
+  codigo: média(11427, 27839, 4466, 16122, 28750)
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Leitura-síntese citada pelo Copom; recalcular e conferir contra o RPM
+  acesso: derivado
+- id: BR-128
+  bloco: Núcleos
+  indicador: Mediana ponderada do IPCA (P50)
+  fonte: Argus
+  codigo: 'f(t7060): subitens ordenados por variação, peso acumulado = 50%'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Complementa o P55 oficial; documentar metodologia em docs/metodologia
+  acesso: derivado
+- id: BR-129
+  bloco: Núcleos
+  indicador: Bens industriais subjacentes
+  fonte: Argus
+  codigo: 'f(t7060): metodologia BCB (industriais ex-voláteis)'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Par de serviços subjacentes; conferir contra boxes do RPM
+  acesso: derivado
+- id: BR-130
+  bloco: Núcleos
+  indicador: Serviços intensivos em trabalho
+  fonte: Argus
+  codigo: 'f(t7060): subitens de serviços com alto peso de mão de obra'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Derivado
+  fase: MVP
+  status: Derivado
+  observacao: Lista de subitens curada a partir da classificação do BCB; ligação com Mercado de Trabalho
+  acesso: derivado
+- id: BR-131
+  bloco: Núcleos
+  indicador: Preços rígidos × flexíveis (sticky/flexible)
+  fonte: Argus
+  codigo: f(t7060 + classificação por frequência de reajuste)
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Derivado
+  fase: v2
+  status: Derivado
+  observacao: Estilo Fed de Atlanta; exige montar a classificação de subitens
+  acesso: derivado
 - id: BR-035
   bloco: Aberturas
   indicador: Preços livres
