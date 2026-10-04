@@ -21,6 +21,8 @@ def data_codes(s: Series) -> list[str]:
         # "fluxo=export ; fluxo=import", "rtn=10.01.1 ; rtn=10.03.1" -> um código por recorte
         prefixo = {"comexstat": "fluxo=", "tesouro": "rtn="}[kind]
         return [c.strip() for c in s.codigo.split(";") if c.strip().startswith(prefixo)]
+    if kind == "copom":
+        return [c.strip() for c in s.codigo.split(";") if c.strip()]
     if kind == "b3":
         return [s.codigo.strip()]
     if kind == "fred":
