@@ -23,6 +23,8 @@ def _s(id, fonte, codigo, status="Verificado", indicador="Ind"):
     (_s("BR-4", "FRED", "PIORECRUSDM / DCOILBRENTEU"), ["PIORECRUSDM", "DCOILBRENTEU"]),
     (_s("BR-5", "Argus", "média(11427, 27839)", status="Derivado"), ["derivado"]),
     (_s("BR-6", "FGV IBRE", "—", status="Sem API"), []),
+    (_s("BR-7", "ComexStat (MDIC)", "fluxo=export/pais=160 ; fluxo=export/bloco=22"),
+     ["fluxo=export/pais=160", "fluxo=export/bloco=22"]),
 ])
 def test_data_codes(serie, esperado):
     assert data_codes(serie) == esperado
