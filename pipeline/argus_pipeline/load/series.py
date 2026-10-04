@@ -15,7 +15,8 @@ def data_codes(s: Series) -> list[str]:
     if kind == "sgs":
         return sgs_codes(s.codigo)
     if kind == "sidra":
-        return re.findall(r"t\d+", s.codigo)
+        # "t5944/v4096 ; t6379/v4097" -> um código por tabela/recorte
+        return [c.strip() for c in s.codigo.split(";") if re.match(r"\s*t\d+", c)]
     if kind == "fred":
         return fred_codes(s.codigo)
     if kind == "focus":
@@ -45,10 +46,19 @@ def sync_catalog(conn: psycopg.Connection, series: list[Series]) -> None:
                 (s.id, s.pais, s.aba, s.bloco, s.indicador, s.fonte, s.codigo, s.frequencia,
                  s.unidade, s.tipo, s.fase, s.status, s.kind),
             )
-            for cod in data_codes(s):
+            ids = [f"{s.id}:{cod}" for cod in data_codes(s)]
+            for sid, cod in zip(ids, data_codes(s)):
                 cur.execute(
                     """insert into series_data (id, series_id, codigo_fonte) values (%s, %s, %s)
                        on conflict (id) do nothing""",
-                    (f"{s.id}:{cod}", s.id, cod),
+                    (sid, s.id, cod),
                 )
+            # Código trocado no catálogo: remove a série de dados antiga só se ela nunca
+            # recebeu observações (o que já foi coletado nunca é apagado).
+            cur.execute(
+                """delete from series_data d
+                   where d.series_id = %s and d.id <> all(%s)
+                     and not exists (select 1 from observations o where o.series_id = d.id)""",
+                (s.id, ids),
+            )
     conn.commit()

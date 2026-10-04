@@ -17,7 +17,7 @@ def _s(id, fonte, codigo, status="Verificado", indicador="Ind"):
 
 @pytest.mark.parametrize("serie,esperado", [
     (_s("BR-1", "BCB SGS", "20539 / 20541"), ["20539", "20541"]),
-    (_s("BR-2", "IBGE SIDRA", "t5944 / t6379"), ["t5944", "t6379"]),
+    (_s("BR-2", "IBGE SIDRA", "t5944/v4096 ; t6379/v4097"), ["t5944/v4096", "t6379/v4097"]),
     (_s("BR-3", "BCB Olinda (Focus)", "ExpectativasMercadoAnuais · Indicador='IPCA'"),
      ["ExpectativasMercadoAnuais · Indicador='IPCA'"]),
     (_s("BR-4", "FRED", "PIORECRUSDM / DCOILBRENTEU"), ["PIORECRUSDM", "DCOILBRENTEU"]),
@@ -77,3 +77,14 @@ def test_focus_com_varios_indicadores():
         "ExpectativasMercadoAnuais · Indicador='Resultado primário'",
         "ExpectativasMercadoAnuais · Indicador='Dívida líquida do setor público'",
     ]
+
+
+def test_codigo_trocado_remove_serie_de_dados_vazia_e_preserva_a_com_dados(conn):
+    sync_catalog(conn, [_s("BR-1", "BCB SGS", "433 / 13522")])
+    with conn.cursor() as cur:
+        cur.execute("insert into observations(series_id, ref_date, value) values ('BR-1:433', '2026-08-01', 0.23)")
+    conn.commit()
+    sync_catalog(conn, [_s("BR-1", "BCB SGS", "10844")])
+    with conn.cursor() as cur:
+        cur.execute("select id from series_data order by id")
+        assert [r[0] for r in cur.fetchall()] == ["BR-1:10844", "BR-1:433"]
