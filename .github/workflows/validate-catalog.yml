@@ -1,0 +1,35 @@
+name: Validar catálogo
+
+on:
+  workflow_dispatch:
+    inputs:
+      fases:
+        description: "Fases a validar (separadas por espaço)"
+        default: "MVP EUA"
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    name: Conferir códigos contra as fontes oficiais
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - name: Rodar validador
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: uv run python -m argus_pipeline.validate.run --fases ${{ inputs.fases }}
+      - name: Gravar relatório no repositório
+        run: |
+          git config user.name "argus-bot"
+          git config user.email "argus-bot@users.noreply.github.com"
+          git add ../docs/catalogo/validacao.md ../docs/catalogo/validacao.json
+          git diff --cached --quiet || git commit -m "Relatório de validação do catálogo"
+          git push

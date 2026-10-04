@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pipeline-tests:
+    name: Testes do pipeline
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - run: uv run pytest -q
+      - name: Configuração gerada está em dia com o catálogo
+        run: |
+          uv run python -m argus_pipeline.catalog
+          git diff --exit-code -- ../config/series || (echo "::error::config/series desatualizado: rode 'uv run python -m argus_pipeline.catalog' e commite" && exit 1)
