@@ -75,6 +75,10 @@ As variações publicadas pelo IBGE que ainda não estão no banco (v11602, v116
 
 **Controles:** horizonte (1A, 3A, 5A, 10A, Máx, zoom), transformação (só as válidas para o tipo), gráfico combinado barras MoM + linha YoY, tabela de valores e exportação para CSV. Cada gráfico mostra a fonte, o código e a data da última observação.
 
+## Leitura de trajetória (decisão 0013)
+
+Abaixo de cada gráfico: curto prazo (3 meses), médio (12 meses) e longo (posição nos últimos 10 anos), por regra fixa e sem juízo de bom ou ruim. Testada com dados reais (IPCA 12m de ago/2026: caiu 0,50 p.p. desde mai/2026 e 0,91 p.p. desde ago/2025).
+
 ## Data Health
 
 Uma linha por série de dados:
