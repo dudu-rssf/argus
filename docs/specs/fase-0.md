@@ -21,10 +21,10 @@ Sair desta fase com: ambiente pronto, contas criadas, catálogo convertido em co
 - [ ] Clonar o repositório no WSL (`~/argus`, nunca em `C:\`)
 
 ### 0.3 Contas e chaves
-- [ ] Neon: projeto `argus`, região São Paulo, string de conexão com pooling
+- [x] Neon: projeto `argus`, região São Paulo, string de conexão com pooling (segredo `DATABASE`; conexão testada pelo workflow "Testar conexões")
 - [ ] Vercel: conta ligada ao GitHub
-- [ ] FRED: chave de API
-- [ ] FMP: chave de API (plano grátis)
+- [x] FRED: chave de API
+- [x] FMP: chave de API (plano grátis)
 - [ ] Segredos cadastrados nos GitHub Secrets do repositório
 
 ### 0.4 Catálogo como configuração
@@ -40,7 +40,7 @@ Sair desta fase com: ambiente pronto, contas criadas, catálogo convertido em co
 - [x] Primeira revisão: 63 séries `Verificado` (ver `docs/catalogo/revisao-2026-10-04.md`)
 - [x] Ferramenta de busca (workflow "Buscar séries"); 7 pendências mapeadas e verificadas (70 no total)
 - [ ] Restam 7 do MVP: núcleos EX3/P55 (localizar no SGS), comunicados do BCB, RTN, ComexStat (2), commodities no FRED e Ibovespa (dependem de chaves e dos adapters da Fase 1)
-- [ ] Cadastrar `FRED_API_KEY` nos GitHub Secrets e validar as séries dos EUA
+- [x] Cadastrar `FRED_API_KEY` nos GitHub Secrets e validar as séries dos EUA (50 verificadas)
 
 ## Critério de pronto
 
