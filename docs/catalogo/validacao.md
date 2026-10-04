@@ -1,15 +1,11 @@
 # Validação do catálogo
 
-Gerado em 2026-10-04 por `argus_pipeline.validate.run`. Erro: 5 · Não verificável: 19 · OK: 86.
+Gerado em 2026-10-04 por `argus_pipeline.validate.run`. Erro: 1 · Não verificável: 17 · OK: 92.
 
 Confira se o **título oficial** corresponde ao **indicador do catálogo**. Só então mude o status da série para `Verificado` no catálogo.
 
 | ID | Indicador (catálogo) | Código | Título oficial | Última obs. | Situação | Detalhe |
 | --- | --- | --- | --- | --- | --- | --- |
-| BR-007 | Produção industrial — PIM-PF (geral, extrativa, transformação) | `t8888` | — | — | Erro | sidra: timed out |
-| BR-008 | Varejo restrito e ampliado — PMC | `t8880` | — | — | Erro | sidra: timed out |
-| BR-008 | Varejo restrito e ampliado — PMC | `t8881` | — | — | Erro | sidra: timed out |
-| BR-009 | Volume de serviços — PMS | `t5906` | — | — | Erro | sidra: timed out |
 | BR-077 | Focus — primário e dívida líquida | `ExpectativasMercadoAnuais · Indicador='Resultado primário' ; Indicador='Dívida líquida do setor público'` | ExpectativasMercadoAnuais | — | Erro | focus: Client error '400 Bad Request' for url 'https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/Exp |
 | BR-001 | PIB real — índice de volume (SA) | `t1621` | Série encadeada do índice de volume trimestral com ajuste sazonal (Base: média 1995 = 100) | 2026-04-01 | OK | — |
 | BR-002 | PIB real — taxas (QoQ, YoY, acum. 4T) | `t5932` | Taxa de variação do índice de volume trimestral | 2026-04-01 | OK | — |
@@ -17,6 +13,10 @@ Confira se o **título oficial** corresponde ao **indicador do catálogo**. Só 
 | BR-004 | PIB — ótica da demanda (C, G, FBCF, X, M) | `t1621` | Série encadeada do índice de volume trimestral com ajuste sazonal (Base: média 1995 = 100) | 2026-04-01 | OK | — |
 | BR-005 | PIB nominal acumulado 12m (R$) | `4382` | PIB acumulado dos últimos 12 meses - Valores correntes (R$ milhões) | 2026-08-01 | OK | — |
 | BR-006 | IBC-Br (SA) | `24364` | Índice de Atividade Econômica do Banco Central (IBC-Br) - com ajuste sazonal | 2026-07-01 | OK | — |
+| BR-007 | Produção industrial — PIM-PF (geral, extrativa, transformação) | `t8888` | Produção Física Industrial, por seções e atividades industriais | 2026-08-01 | OK | — |
+| BR-008 | Varejo restrito e ampliado — PMC | `t8880` | Índice e variação da receita nominal e do volume de vendas no comércio varejista (2022 = 100) | 2026-07-01 | OK | — |
+| BR-008 | Varejo restrito e ampliado — PMC | `t8881` | Índice e variação da receita nominal e do volume de vendas no comércio varejista ampliado (2022 = 100) | 2026-07-01 | OK | — |
+| BR-009 | Volume de serviços — PMS | `t5906` | Índice e variação da receita nominal e do volume de serviços (2022 = 100) | 2026-07-01 | OK | — |
 | BR-014 | Focus — PIB (ano corrente e seguinte) | `ExpectativasMercadoAnuais · Indicador='PIB Total'` | ExpectativasMercadoAnuais | 2026-09-25 | OK | — |
 | BR-015 | Taxa de desocupação | `24369` | Taxa de desocupação - PNADC | 2026-08-01 | OK | — |
 | BR-016 | Taxa de participação e nível de ocupação | `t5944` | Taxa de participação na força de trabalho, na semana de referência, das pessoas de 14 anos ou mais de idade - Total, coeficiente de variação, variações em relação aos três trimestres móveis anteriores e ao mesmo trimestre móvel do ano anterior | 2026-08-01 | OK | — |
@@ -32,17 +32,18 @@ Confira se o **título oficial** corresponde ao **indicador do catálogo**. Só 
 | BR-029 | Núcleo médias aparadas sem suavização (MA) | `11426` | Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo médias aparadas sem suavização | 2026-08-01 | OK | — |
 | BR-030 | Núcleo médias aparadas com suavização (MS) | `4466` | Índice nacional de preços ao consumidor-Amplo (IPCA) - Núcleo médias aparadas com suavização | 2026-08-01 | OK | — |
 | BR-031 | Núcleo por exclusão EX0 (sem monitorados e alim. domicílio) | `11427` | Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo por exclusão - Sem monitorados e alimentos no domicílio | 2026-08-01 | OK | — |
-| BR-032 | Núcleo por exclusão EX2 | `16121` | Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo por exclusão - ex2 | 2026-08-01 | OK | — |
-| BR-033 | Núcleo de dupla ponderação (DP) | `16122` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo de dupla ponderação | 2026-08-01 | OK | — |
+| BR-032 | Núcleo por exclusão EX2 | `27838` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo por exclusão - EX2 | 2026-08-01 | OK | — |
+| BR-033 | Núcleo de dupla ponderação (DP) | `16122` | Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo de dupla ponderação | 2026-08-01 | OK | — |
 | BR-034 | Núcleos EX3 e P55 | `27839` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo por exclusão - EX3 | 2026-08-01 | OK | — |
 | BR-034 | Núcleos EX3 e P55 | `28750` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo Percentil 55 | 2026-08-01 | OK | — |
 | BR-035 | Preços livres | `11428` | Índice nacional de preços ao consumidor - Amplo (IPCA) - Itens livres | 2026-08-01 | OK | — |
-| BR-036 | Preços monitorados | `4449` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Administrados | 2026-08-01 | OK | — |
+| BR-036 | Preços monitorados | `4449` | Índice nacional de preços ao consumidor-Amplo (IPCA) - Preços monitorados - Total | 2026-08-01 | OK | — |
 | BR-037 | Serviços | `10844` | Índice de Preços ao Consumidor-Amplo (IPCA) - Serviços | 2026-08-01 | OK | — |
 | BR-038 | Bens industriais e alimentação no domicílio | `27863` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Industriais | 2026-08-01 | OK | — |
 | BR-038 | Bens industriais e alimentação no domicílio | `27864` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Alimentação no domicílio | 2026-08-01 | OK | — |
 | BR-040 | Índice de difusão | `21379` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Índice de difusão | 2026-08-01 | OK | — |
 | BR-041 | IPCA por subitem e peso | `t7060` | IPCA - Variação mensal, acumulada no ano, acumulada em 12 meses e peso mensal, para o índice geral, grupos, subgrupos, itens e subitens de produtos e serviços (a partir de janeiro/2020) | 2026-08-01 | OK | — |
+| BR-042 | Serviços subjacentes (EX3 Serviços) | `29683` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - EX3 Serviços | 2026-08-01 | OK | — |
 | BR-043 | IGP-M e IGP-DI | `189` | Índice geral de preços do mercado (IGP-M) | 2026-09-01 | OK | — |
 | BR-043 | IGP-M e IGP-DI | `190` | Índice geral de preços-disponibilidade interna (IGP-DI) | 2026-08-01 | OK | — |
 | BR-045 | IC-Br — índice de commodities BCB (total, agro, metal, energia) | `27574` | Índice de Commodities - Brasil | 2026-08-01 | OK | — |
@@ -96,8 +97,8 @@ Confira se o **título oficial** corresponde ao **indicador do catálogo**. Só 
 | BR-096 | Inadimplência PF | `21084` | Inadimplência da carteira de crédito - Pessoas físicas - Total | 2026-08-01 | OK | — |
 | BR-105 | FBCF | `t1621` | Série encadeada do índice de volume trimestral com ajuste sazonal (Base: média 1995 = 100) | 2026-04-01 | OK | — |
 | BR-126 | Núcleo ex-alimentação e energia (EX-FE) | `28751` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo Ex-alimentação e energia (EX-FE) | 2026-08-01 | OK | — |
+| BR-129 | Bens industriais subjacentes (EX3 Industriais) | `29684` | Índice Nacional de Preços ao Consumidor Amplo (IPCA) - EX3 Industriais | 2026-08-01 | OK | — |
 | BR-132 | Focus — Selic fim de ano (ano corrente a +3) | `ExpectativasMercadoAnuais · Indicador='Selic'` | ExpectativasMercadoAnuais | 2026-09-25 | OK | — |
-| BR-042 | Serviços subjacentes / supercore BR | `f(t7060)` | — | — | Não verificável | acesso 'derivado': revisão manual |
 | BR-049 | Meta de inflação e intervalo de tolerância | `Curado` | — | — | Não verificável | acesso 'manual': revisão manual |
 | BR-055 | Juro real ex-ante (proxy) | `f(432, Focus IPCA 12m)` | — | — | Não verificável | acesso 'derivado': revisão manual |
 | BR-057 | Histórico de decisões (data, decisão, bps, unanimidade) | `Curado` | — | — | Não verificável | acesso 'manual': revisão manual |
@@ -113,6 +114,5 @@ Confira se o **título oficial** corresponde ao **indicador do catálogo**. Só 
 | BR-118 | Juro real ex-ante × neutro (postura monetária) | `f(juro real, neutro)` | — | — | Não verificável | acesso 'derivado': revisão manual |
 | BR-127 | Média dos 5 núcleos do Copom (EX0, EX3, MS, DP, P55) | `média(11427, 27839, 4466, 16122, 28750)` | — | — | Não verificável | acesso 'derivado': revisão manual |
 | BR-128 | Mediana ponderada do IPCA (P50) | `f(t7060): subitens ordenados por variação, peso acumulado = 50%` | — | — | Não verificável | acesso 'derivado': revisão manual |
-| BR-129 | Bens industriais subjacentes | `f(t7060): metodologia BCB (industriais ex-voláteis)` | — | — | Não verificável | acesso 'derivado': revisão manual |
 | BR-130 | Serviços intensivos em trabalho | `f(t7060): subitens de serviços com alto peso de mão de obra` | — | — | Não verificável | acesso 'derivado': revisão manual |
 | BR-133 | Saldo mensal do Novo CAGED (variação do estoque) | `Δ(28763)` | — | — | Não verificável | acesso 'derivado': revisão manual |

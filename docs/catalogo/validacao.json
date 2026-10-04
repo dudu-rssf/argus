@@ -77,11 +77,11 @@
   "acesso": "sidra",
   "frequencia": "Mensal",
   "codigo": "t8888",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sidra: timed out"
+  "titulo_oficial": "Produção Física Industrial, por seções e atividades industriais",
+  "origem_titulo": "sidra",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-008",
@@ -89,11 +89,11 @@
   "acesso": "sidra",
   "frequencia": "Mensal",
   "codigo": "t8880",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sidra: timed out"
+  "titulo_oficial": "Índice e variação da receita nominal e do volume de vendas no comércio varejista (2022 = 100)",
+  "origem_titulo": "sidra",
+  "ultima_obs": "2026-07-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-008",
@@ -101,11 +101,11 @@
   "acesso": "sidra",
   "frequencia": "Mensal",
   "codigo": "t8881",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sidra: timed out"
+  "titulo_oficial": "Índice e variação da receita nominal e do volume de vendas no comércio varejista ampliado (2022 = 100)",
+  "origem_titulo": "sidra",
+  "ultima_obs": "2026-07-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-009",
@@ -113,11 +113,11 @@
   "acesso": "sidra",
   "frequencia": "Mensal",
   "codigo": "t5906",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Erro",
-  "detalhe": "sidra: timed out"
+  "titulo_oficial": "Índice e variação da receita nominal e do volume de serviços (2022 = 100)",
+  "origem_titulo": "sidra",
+  "ultima_obs": "2026-07-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-014",
@@ -304,9 +304,9 @@
   "indicador": "Núcleo por exclusão EX2",
   "acesso": "sgs",
   "frequencia": "Mensal",
-  "codigo": "16121",
-  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo por exclusão - ex2",
-  "origem_titulo": "portal",
+  "codigo": "27838",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo por exclusão - EX2",
+  "origem_titulo": "soap",
   "ultima_obs": "2026-08-01",
   "situacao": "OK",
   "detalhe": ""
@@ -317,8 +317,8 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "16122",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Núcleo de dupla ponderação",
-  "origem_titulo": "soap",
+  "titulo_oficial": "Índice nacional de preços ao consumidor - Amplo (IPCA) - Núcleo de dupla ponderação",
+  "origem_titulo": "portal",
   "ultima_obs": "2026-08-01",
   "situacao": "OK",
   "detalhe": ""
@@ -385,15 +385,15 @@
  },
  {
   "id": "BR-129",
-  "indicador": "Bens industriais subjacentes",
-  "acesso": "derivado",
+  "indicador": "Bens industriais subjacentes (EX3 Industriais)",
+  "acesso": "sgs",
   "frequencia": "Mensal",
-  "codigo": "f(t7060): metodologia BCB (industriais ex-voláteis)",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
+  "codigo": "29684",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - EX3 Industriais",
+  "origem_titulo": "soap",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-130",
@@ -425,8 +425,8 @@
   "acesso": "sgs",
   "frequencia": "Mensal",
   "codigo": "4449",
-  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Administrados",
-  "origem_titulo": "soap",
+  "titulo_oficial": "Índice nacional de preços ao consumidor-Amplo (IPCA) - Preços monitorados - Total",
+  "origem_titulo": "portal",
   "ultima_obs": "2026-08-01",
   "situacao": "OK",
   "detalhe": ""
@@ -474,7 +474,7 @@
   "frequencia": "Mensal",
   "codigo": "21379",
   "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - Índice de difusão",
-  "origem_titulo": "soap",
+  "origem_titulo": "portal",
   "ultima_obs": "2026-08-01",
   "situacao": "OK",
   "detalhe": ""
@@ -493,15 +493,15 @@
  },
  {
   "id": "BR-042",
-  "indicador": "Serviços subjacentes / supercore BR",
-  "acesso": "derivado",
+  "indicador": "Serviços subjacentes (EX3 Serviços)",
+  "acesso": "sgs",
   "frequencia": "Mensal",
-  "codigo": "f(t7060)",
-  "titulo_oficial": null,
-  "origem_titulo": null,
-  "ultima_obs": null,
-  "situacao": "Não verificável",
-  "detalhe": "acesso 'derivado': revisão manual"
+  "codigo": "29683",
+  "titulo_oficial": "Índice Nacional de Preços ao Consumidor Amplo (IPCA) - EX3 Serviços",
+  "origem_titulo": "soap",
+  "ultima_obs": "2026-08-01",
+  "situacao": "OK",
+  "detalhe": ""
  },
  {
   "id": "BR-043",
@@ -630,7 +630,7 @@
   "frequencia": "Diária",
   "codigo": "1178",
   "titulo_oficial": "Taxa de juros - Selic anualizada base 252",
-  "origem_titulo": "soap",
+  "origem_titulo": "portal",
   "ultima_obs": "2026-10-02",
   "situacao": "OK",
   "detalhe": ""
@@ -738,7 +738,7 @@
   "frequencia": "Mensal",
   "codigo": "27815",
   "titulo_oficial": "Meios de pagamento amplos - M4 (saldo em final de periodo) - Novo",
-  "origem_titulo": "soap",
+  "origem_titulo": "portal",
   "ultima_obs": "2026-08-01",
   "situacao": "OK",
   "detalhe": ""
