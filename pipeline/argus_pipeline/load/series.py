@@ -17,9 +17,10 @@ def data_codes(s: Series) -> list[str]:
     if kind == "sidra":
         # "t5944/v4096 ; t6379/v4097" -> um código por tabela/recorte
         return [c.strip() for c in s.codigo.split(";") if re.match(r"\s*t\d+", c)]
-    if kind == "comexstat":
-        # "fluxo=export ; fluxo=import" -> um código por fluxo/recorte
-        return [c.strip() for c in s.codigo.split(";") if c.strip().startswith("fluxo=")]
+    if kind in ("comexstat", "tesouro"):
+        # "fluxo=export ; fluxo=import", "rtn=10.01.1 ; rtn=10.03.1" -> um código por recorte
+        prefixo = {"comexstat": "fluxo=", "tesouro": "rtn="}[kind]
+        return [c.strip() for c in s.codigo.split(";") if c.strip().startswith(prefixo)]
     if kind == "fred":
         return fred_codes(s.codigo)
     if kind == "focus":
