@@ -10,7 +10,11 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "typecheck": "tsc --noEmit",
-    "hash-senha": "node scripts/hash-senha.mjs"
+    "config": "node scripts/gerar-config.mjs",
+    "predev": "node scripts/gerar-config.mjs",
+    "prebuild": "node scripts/gerar-config.mjs",
+    "pretest": "node scripts/gerar-config.mjs",
+    "pretypecheck": "node scripts/gerar-config.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "1.2.0",
