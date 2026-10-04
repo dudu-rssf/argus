@@ -1,97 +1,97 @@
 ID,Aba,Bloco,Indicador,Fonte,Código / endpoint,Frequência,Unidade,Tipo,Transformações válidas,Fase,Status,Observação
-US-001,Mercado de Trabalho,Payroll,Non-farm Payrolls,FRED (BLS),PAYEMS,Mensal,Mil,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Confirmar,
-US-002,Mercado de Trabalho,Desemprego,Unemployment Rate (U3),FRED (BLS),UNRATE,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
-US-003,Mercado de Trabalho,Desemprego,"Unemployment Breakdown (U6, demografia)",FRED (BLS),U6RATE + séries LNS140000xx,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
-US-004,Mercado de Trabalho,Participação,Labour Force Participation (total e 25–54),FRED (BLS),CIVPART / LNS11300060,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-001,Mercado de Trabalho,Payroll,Non-farm Payrolls,FRED (BLS),PAYEMS,Mensal,Mil,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Verificado,
+US-002,Mercado de Trabalho,Desemprego,Unemployment Rate (U3),FRED (BLS),UNRATE,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
+US-003,Mercado de Trabalho,Desemprego,"Unemployment Breakdown (U6, demografia)",FRED (BLS),U6RATE + séries LNS140000xx,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
+US-004,Mercado de Trabalho,Participação,Labour Force Participation (total e 25–54),FRED (BLS),CIVPART / LNS11300060,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-005,Mercado de Trabalho,JOLTS,Job Openings to Unemployed Ratio,Argus,JTSJOL / UNEMPLOY,Mensal,x,Derivado,Conforme definição da fórmula,EUA,Derivado,
-US-006,Mercado de Trabalho,JOLTS,"JOLTS Openings, Hires, Quits, Layoffs",FRED (BLS),JTSJOL / JTSHIL / JTSQUL / JTSLDL,Mensal,Mil,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
-US-007,Mercado de Trabalho,Claims,Jobless Claims (Initial & Continuing),FRED (DOL),ICSA / CCSA,Semanal,Mil,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-006,Mercado de Trabalho,JOLTS,"JOLTS Openings, Hires, Quits, Layoffs",FRED (BLS),JTSJOL / JTSHIL / JTSQUL / JTSLDL,Mensal,Mil,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
+US-007,Mercado de Trabalho,Claims,Jobless Claims (Initial & Continuing),FRED (DOL),ICSA / CCSA,Semanal,Mil,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
 US-008,Mercado de Trabalho,Pesquisas,Jobs Hard to Find (Conference Board),Conference Board,—,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Pago,Proxy gratuita: nenhuma equivalente direta
 US-009,Mercado de Trabalho,Pesquisas,NFIB Job Openings Hard to Fill / Hiring Plans,NFIB,Relatório mensal (PDF),Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,
 US-010,Mercado de Trabalho,Indicadores,Beveridge Curve,Argus,UNRATE × JTSJOR,Mensal,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
-US-011,Mercado de Trabalho,Salários,Employment Cost Index,FRED (BLS),ECIALLCIV,Trimestral,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
-US-012,Mercado de Trabalho,Salários,Average Hourly Earnings,FRED (BLS),CES0500000003,Mensal,US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
+US-011,Mercado de Trabalho,Salários,Employment Cost Index,FRED (BLS),ECIALLCIV,Trimestral,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
+US-012,Mercado de Trabalho,Salários,Average Hourly Earnings,FRED (BLS),CES0500000003,Mensal,US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
 US-013,Mercado de Trabalho,Salários,Real Wage Growth,Argus,"f(CES0500000003, CPIAUCSL)",Mensal,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
 US-014,Mercado de Trabalho,Salários,Wage Growth Tracker (job switcher),Atlanta Fed,Download (xlsx),Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,Não encontrado no FRED com o código testado
 US-015,Mercado de Trabalho,Indicadores,Sahm Rule (real-time),FRED,SAHMREALTIME,Mensal,p.p.,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,"0,00 p.p. em 09/2026"
-US-016,Inflação,CPI,CPI Headline e Core,FRED (BLS),CPIAUCSL / CPILFESL,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
+US-016,Inflação,CPI,CPI Headline e Core,FRED (BLS),CPIAUCSL / CPILFESL,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
 US-017,Inflação,CPI,Supercore (services less rent of shelter),FRED (BLS),CUSR0000SASL2RS,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,Proxy; supercore estrito exclui também energia
-US-018,Inflação,CPI,Rent CPI e Owner Equivalent Rent,FRED (BLS),CUSR0000SEHA / CUSR0000SEHC,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
-US-019,Inflação,PCE,PCE e Core PCE,FRED (BEA),PCEPI / PCEPILFE,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
-US-020,Inflação,PCE,"Trimmed Mean PCE (Dallas Fed, 12m)",FRED,PCETRIM12M159SFRBDAL,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
-US-021,Inflação,PPI,PPI Final Demand,FRED (BLS),PPIFIS,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
-US-022,Inflação,Expectativas,5y5y Forward Inflation Expectation,FRED,T5YIFR,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,Substitui o FRA 5Y5Y SOFR
+US-018,Inflação,CPI,Rent CPI e Owner Equivalent Rent,FRED (BLS),CUSR0000SEHA / CUSR0000SEHC,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
+US-019,Inflação,PCE,PCE e Core PCE,FRED (BEA),PCEPI / PCEPILFE,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
+US-020,Inflação,PCE,"Trimmed Mean PCE (Dallas Fed, 12m)",FRED,PCETRIM12M159SFRBDAL,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
+US-021,Inflação,PPI,PPI Final Demand,FRED (BLS),PPIFIS,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
+US-022,Inflação,Expectativas,5y5y Forward Inflation Expectation,FRED,T5YIFR,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,Substitui o FRA 5Y5Y SOFR
 US-023,Inflação,Expectativas,FRA 5Y5Y SOFR / inflation swaps,Bloomberg,—,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Pago,Usar T5YIFR
-US-024,Inflação,Expectativas,Michigan 1y inflation expectations,FRED,MICH,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,Adicionado
+US-024,Inflação,Expectativas,Michigan 1y inflation expectations,FRED,MICH,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,Adicionado
 US-025,Inflação,Antecedentes,Manheim Used Vehicle Value Index,Cox Automotive,Download (site),Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Sem API,
 US-026,Inflação,Antecedentes,Container freight (Drewry / Freightos),Drewry / Freightos,—,Semanal,US$/FEU,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Pago,
-US-027,Atividade,PIB,"Real GDP (nível, QoQ SAAR)",FRED (BEA),GDPC1 / A191RL1Q225SBEA,Trimestral,US$ bi 2017,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
+US-027,Atividade,PIB,"Real GDP (nível, QoQ SAAR)",FRED (BEA),GDPC1 / A191RL1Q225SBEA,Trimestral,US$ bi 2017,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
 US-028,Atividade,PIB,Real GDP change (US$ tri) × Unemployment,Argus,Δ GDPC1 × UNRATE,Trimestral,US$ tri,Derivado,Conforme definição da fórmula,EUA,Derivado,
-US-029,Atividade,PIB,GDP goods × services,BEA API,NIPA T10206 (a confirmar),Trimestral,US$ bi,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Confirmar,
+US-029,Atividade,PIB,GDP goods × services,BEA API,NIPA T10206,Trimestral,US$ bi,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Confirmar,
 US-030,Atividade,PIB,GDPNow,FRED (Atlanta Fed),GDPNOW,Contínua,% SAAR,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,"3,7% para 3T26 na verificação"
-US-031,Atividade,Consumo,Retail Sales (nominal e real),FRED (Census),RSAFS / RRSFS,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
-US-032,Atividade,Consumo,Real PCE e Private Consumption YoY,FRED (BEA),PCEC96,Mensal,US$ bi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-031,Atividade,Consumo,Retail Sales (nominal e real),FRED (Census),RSAFS / RRSFS,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
+US-032,Atividade,Consumo,Real PCE e Private Consumption YoY,FRED (BEA),PCEC96,Mensal,US$ bi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
 US-033,Atividade,Vendas,Wholesale Sales,FRED (Census),A mapear,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,A mapear,
 US-034,Atividade,Vendas,Selected Services Revenue,Census QSS,API Census,Trimestral,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Confirmar,
-US-035,Atividade,Estoques,Change in Private Inventories,FRED (BEA),CBIC1,Trimestral,US$ bi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
-US-036,Atividade,Estoques,Manufacturers Inventories/Sales,FRED (Census),MNFCTRIRSA,Mensal,x,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,Proxy para excess inventory
-US-037,Atividade,Indústria,Industrial Production,FRED (Fed),INDPRO,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,Adicionado
+US-035,Atividade,Estoques,Change in Private Inventories,FRED (BEA),CBIC1,Trimestral,US$ bi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
+US-036,Atividade,Estoques,Manufacturers Inventories/Sales,FRED (Census),MNFCTRIRSA,Mensal,x,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,Proxy para excess inventory
+US-037,Atividade,Indústria,Industrial Production,FRED (Fed),INDPRO,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,Adicionado
 US-038,Atividade,PMI,ISM Manufacturing e Services PMI,ISM,—,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Pago,Licenciado; saiu do FRED
-US-039,Atividade,PMI,"Pesquisas regionais do Fed (Philly, Empire, Dallas)",FRED,GACDFSA e equivalentes,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,Substituto gratuito do ISM
-US-040,Fed & Juros,Política,Fed Funds (efetivo e banda),FRED,DFF / DFEDTARU / DFEDTARL,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
-US-041,Fed & Juros,Balanço,Total Fed Assets,FRED,WALCL,Semanal,US$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-039,Atividade,PMI,"Pesquisas regionais do Fed (Philly, Empire, Dallas)",FRED,GACDFSA e equivalentes,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,A mapear,Código GACDFSA não existe no FRED (HTTP 400 na validação de 2026-10-04); localizar o código correto
+US-040,Fed & Juros,Política,Fed Funds (efetivo e banda),FRED,DFF / DFEDTARU / DFEDTARL,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
+US-041,Fed & Juros,Balanço,Total Fed Assets,FRED,WALCL,Semanal,US$ mi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Verificado,
 US-042,Fed & Juros,Comunicação,Press releases e statements do FOMC,Federal Reserve,RSS,Por evento,Texto,Texto,—,EUA,Confirmar,Alimenta o agregador
 US-043,Fed & Juros,Projeções,Dotplot (mediana SEP),FRED,FEDTARMD (+ FEDTARRH/RL),Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,Atualizado em 16/09/2026
-US-044,Fed & Juros,Curva,US Yield Curve (1m–30y) e spreads,FRED,DGS1MO…DGS30 / T10Y2Y / T10Y3M,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
-US-045,Fed & Juros,Curva,SOFR overnight,FRED,SOFR,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-044,Fed & Juros,Curva,US Yield Curve (1m–30y) e spreads,FRED,DGS1MO…DGS30 / T10Y2Y / T10Y3M,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
+US-045,Fed & Juros,Curva,SOFR overnight,FRED,SOFR,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-046,Fed & Juros,Curva,SOFR 10Y swap,Bloomberg,—,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Pago,
 US-047,Fed & Juros,Mercado,WIRP / probabilidade implícita,Bloomberg / CME FedWatch,—,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Pago,FedWatch só no site
-US-048,Fed & Juros,Crédito,Mortgage Rate 30y,FRED (Freddie Mac),MORTGAGE30US,Semanal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
-US-049,Fed & Juros,Agregados,M1 e M2,FRED,M1SL / M2SL,Mensal,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-048,Fed & Juros,Crédito,Mortgage Rate 30y,FRED (Freddie Mac),MORTGAGE30US,Semanal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
+US-049,Fed & Juros,Agregados,M1 e M2,FRED,M1SL / M2SL,Mensal,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Verificado,
 US-050,Fed & Juros,Agregados,M3 e M4,Center for Financial Stability (Divisia),Download,Mensal,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",v2,Sem API,Fed descontinuou o M3 em 2006
-US-051,Fed & Juros,Condições,Chicago Fed NFCI,FRED,NFCI,Semanal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
-US-052,Fed & Juros,Condições,St. Louis Fed Financial Stress Index,FRED,STLFSI4,Semanal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
-US-053,Fed & Juros,Crédito,SLOOS — net % tightening C&I,FRED,DRTSCILM,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-051,Fed & Juros,Condições,Chicago Fed NFCI,FRED,NFCI,Semanal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
+US-052,Fed & Juros,Condições,St. Louis Fed Financial Stress Index,FRED,STLFSI4,Semanal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
+US-053,Fed & Juros,Crédito,SLOOS — net % tightening C&I,FRED,DRTSCILM,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-054,Fed & Juros,Dívida,% da dívida federal detida pelo Fed,Argus,FDHBFRBN / GFDEBTN,Trimestral,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
-US-055,Imobiliário,Preços,Median Sales Price e Case-Shiller,FRED,MSPUS / CSUSHPISA,Mensal/Trim.,US$ / Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,Case-Shiller adicionado
-US-056,Imobiliário,Oferta,"Months' Supply, Starts, Permits, Completions",FRED (Census),MSACSR / HOUST / PERMIT / COMPUTSA,Mensal,Mil / meses,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-055,Imobiliário,Preços,Median Sales Price e Case-Shiller,FRED,MSPUS / CSUSHPISA,Mensal/Trim.,US$ / Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,Case-Shiller adicionado
+US-056,Imobiliário,Oferta,"Months' Supply, Starts, Permits, Completions",FRED (Census),MSACSR / HOUST / PERMIT / COMPUTSA,Mensal,Mil / meses,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
 US-057,Imobiliário,Vendas,Existing e Pending Home Sales,NAR,EXHOSLUSM495S (histórico curto),Mensal,Mil,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Pago,FRED exibe só os últimos meses por licença
-US-058,Imobiliário,Vacância,Rental e Homeowner Vacancy,FRED (Census),RRVRUSQ156N / RHVRUSQ156N,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-058,Imobiliário,Vacância,Rental e Homeowner Vacancy,FRED (Census),RRVRUSQ156N / RHVRUSQ156N,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-059,Imobiliário,Sentimento,NAHB Housing Market Index,NAHB,Download (site),Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Sem API,
-US-060,Imobiliário,Acessibilidade,Housing Affordability Index,NAR / FRED,FIXHAI (a confirmar),Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Confirmar,
+US-060,Imobiliário,Acessibilidade,Housing Affordability Index,NAR / FRED,FIXHAI,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Confirmar,
 US-061,Imobiliário,Crédito,Mortgage LTV,FHFA / ICE,—,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,
-US-062,Consumidor,Confiança,Michigan Consumer Sentiment,FRED,UMCSENT,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,Substitui Conference Board (pago)
+US-062,Consumidor,Confiança,Michigan Consumer Sentiment,FRED,UMCSENT,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,Substitui Conference Board (pago)
 US-063,Consumidor,Confiança,Small Business Optimism (NFIB),NFIB,Relatório (PDF),Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Sem API,
-US-064,Consumidor,Balanço,Household Net Worth,FRED (Z.1),TNWBSHNO (a confirmar),Trimestral,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Confirmar,
-US-065,Consumidor,Renda,Personal Saving Rate e Real Disposable Income,FRED (BEA),PSAVERT / DSPIC96,Mensal,% / US$ bi,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-064,Consumidor,Balanço,Household Net Worth,FRED (Z.1),TNWBSHNO,Trimestral,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Verificado,
+US-065,Consumidor,Renda,Personal Saving Rate e Real Disposable Income,FRED (BEA),PSAVERT / DSPIC96,Mensal,% / US$ bi,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-066,Consumidor,Balanço,Liabilities/Assets,Argus,Z.1 passivos / ativos,Trimestral,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
-US-067,Consumidor,Balanço,Debt Service % DPI,FRED,TDSP,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-067,Consumidor,Balanço,Debt Service % DPI,FRED,TDSP,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-068,Consumidor,Desigualdade,Assets by Wealth Percentile,Fed DFA,Download CSV / FRED (séries DFA),Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Confirmar,
-US-069,Consumidor,Crédito,Credit Card / Revolving Credit,FRED (G.19),REVOLSL,Mensal,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-069,Consumidor,Crédito,Credit Card / Revolving Credit,FRED (G.19),REVOLSL,Mensal,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Verificado,
 US-070,Consumidor,Crédito,Expected application rate (cartão),NY Fed SCE,Download,Quadrimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,
-US-071,Consumidor,Crédito,Delinquencies (all loans e cartões),FRED,DRALACBS / DRCCLACBS,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-071,Consumidor,Crédito,Delinquencies (all loans e cartões),FRED,DRALACBS / DRCCLACBS,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-072,Corporativo,Lucros,Corporate Profits,FRED (BEA),CP,Trimestral,US$ bi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
 US-073,Corporativo,Lucros,Corporate Profits × S&P 500,Argus + FMP,CP × ^GSPC,Trimestral,Índice,Derivado,Conforme definição da fórmula,EUA,Derivado,S&P 500 no FRED tem só 10 anos
 US-074,Corporativo,Lucros,EPS estimates S&P 500,S&P DJI / FactSet,xlsx S&P (manual),Trimestral,US$,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Sem API,
 US-075,Corporativo,Valuation,Market Cap to GDP (Buffett),Argus,NCBEILQ027S / GDP,Trimestral,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
-US-076,Corporativo,Investimento,Fixed Investment (privado não residencial),FRED (BEA),PNFIC1,Trimestral,US$ bi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-076,Corporativo,Investimento,Fixed Investment (privado não residencial),FRED (BEA),PNFIC1,Trimestral,US$ bi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
 US-077,Corporativo,Investimento,Capex Plans (NFIB e Fed regionais),NFIB / Fed regionais,PDF / FRED,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,
 US-078,Corporativo,Caixa,Corporate cash on hand,FRED (Z.1),A mapear,Trimestral,US$ bi,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",v2,A mapear,
 US-079,Corporativo,Stress,Bankruptcy index,Bloomberg / US Courts,—,Mensal,Nº,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Pago,US Courts publica estatística trimestral gratuita
-US-080,Setor Externo & Fiscal,Dívida,Federal Debt % GDP,FRED,GFDEGDQ188S,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-080,Setor Externo & Fiscal,Dívida,Federal Debt % GDP,FRED,GFDEGDQ188S,Trimestral,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-081,Setor Externo & Fiscal,Projeções,CBO deficit projections,CBO,xlsx (manual),Semestral,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,
 US-082,Setor Externo & Fiscal,Projeções,Deficit impact e spending revisions (Kinea),Kinea,Relatórios (manual),Eventual,% PIB,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",v2,Sem API,Fonte de terceiro; registrar data do relatório
-US-083,Setor Externo & Fiscal,Comércio,Trade Balance,FRED (Census),BOPGSTB,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-083,Setor Externo & Fiscal,Comércio,Trade Balance,FRED (Census),BOPGSTB,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",EUA,Verificado,
 US-084,Setor Externo & Fiscal,Comércio,Current Account % GDP,Argus,IEABC / GDP,Trimestral,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
 US-085,Setor Externo & Fiscal,Comércio,Imports — automotive (end-use),Census API,FT-900 end-use,Mensal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,Confirmar,
 US-086,Setor Externo & Fiscal,Comércio,Effective tariff rate,Argus,B235RC1Q027SBEA / IMPGS,Trimestral,%,Derivado,Conforme definição da fórmula,EUA,Derivado,Customs duties / importações
-US-087,Setor Externo & Fiscal,Energia,Strategic Petroleum Reserve,FRED (EIA),WCSSTUS1 (a confirmar),Semanal,Mil barris,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,Confirmar,
+US-087,Setor Externo & Fiscal,Energia,Strategic Petroleum Reserve,FRED (EIA),WCSSTUS1,Semanal,Mil barris,Estoque,"Nível, MoM %, YoY %, real/nominal, % PIB",EUA,A mapear,Código WCSSTUS1 não existe no FRED (HTTP 400 na validação de 2026-10-04); localizar o código correto
 US-088,Setor Externo & Fiscal,Câmbio,DXY,ICE,—,Diária,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Pago,"Usar DTWEXBGS (broad dollar, FRED)"
-US-089,Setor Externo & Fiscal,Câmbio,Broad Dollar Index,FRED,DTWEXBGS,Diária,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,Substituto do DXY
-US-090,Risco & Mercado,Vol,VIX,FRED (CBOE),VIXCLS,Diária,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,
+US-089,Setor Externo & Fiscal,Câmbio,Broad Dollar Index,FRED,DTWEXBGS,Diária,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,Substituto do DXY
+US-090,Risco & Mercado,Vol,VIX,FRED (CBOE),VIXCLS,Diária,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Verificado,
 US-091,Risco & Mercado,Vol,MOVE Index,ICE,—,Diária,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,Pago,
-US-092,Risco & Mercado,Crédito,ICE BofA High Yield OAS,FRED,BAMLH0A0HYM2,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,Conferir profundidade do histórico disponível
+US-092,Risco & Mercado,Crédito,ICE BofA High Yield OAS,FRED,BAMLH0A0HYM2,Diária,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,Conferir profundidade do histórico disponível
 US-093,Risco & Mercado,Valuation,Equity Risk Premium,Argus / Damodaran,Earnings yield − DFII10,Mensal,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
 US-094,Risco & Mercado,Crédito,Implied Default (a partir do HY spread),Argus,"f(BAMLH0A0HYM2, recovery)",Diária,%,Derivado,Conforme definição da fórmula,EUA,Derivado,
-US-095,Risco & Mercado,Recessão,Recession probability (Piger),FRED,RECPROUSM156N,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Confirmar,
+US-095,Risco & Mercado,Recessão,Recession probability (Piger),FRED,RECPROUSM156N,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",EUA,Verificado,
 US-096,Risco & Mercado,Bolsa,Russell 2000,FMP,^RUT / IWM,Diária,Pontos,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",EUA,Confirmar,Não está no FRED

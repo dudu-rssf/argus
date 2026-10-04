@@ -11,7 +11,7 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: Substitui Conference Board (pago)
   acesso: fred
 - id: US-063
@@ -30,12 +30,12 @@ series:
   bloco: Balanço
   indicador: Household Net Worth
   fonte: FRED (Z.1)
-  codigo: TNWBSHNO (a confirmar)
+  codigo: TNWBSHNO
   frequencia: Trimestral
   unidade: US$ bi
   tipo: Estoque
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-065
@@ -47,7 +47,7 @@ series:
   unidade: '% / US$ bi'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-066
@@ -71,7 +71,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-068
@@ -95,7 +95,7 @@ series:
   unidade: US$ bi
   tipo: Estoque
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-070
@@ -119,6 +119,6 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred

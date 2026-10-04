@@ -11,7 +11,7 @@ series:
   unidade: Mil
   tipo: Estoque
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-002
@@ -23,7 +23,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-003
@@ -35,7 +35,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-004
@@ -47,7 +47,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-005
@@ -71,7 +71,7 @@ series:
   unidade: Mil
   tipo: Fluxo
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-007
@@ -83,7 +83,7 @@ series:
   unidade: Mil
   tipo: Fluxo
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-008
@@ -131,7 +131,7 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-012
@@ -143,7 +143,7 @@ series:
   unidade: US$
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-013

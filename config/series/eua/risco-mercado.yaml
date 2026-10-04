@@ -11,7 +11,7 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-091
@@ -35,7 +35,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: Conferir profundidade do histórico disponível
   acesso: fred
 - id: US-093
@@ -71,7 +71,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-096

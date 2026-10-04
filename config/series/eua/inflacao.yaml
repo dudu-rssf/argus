@@ -11,7 +11,7 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-017
@@ -35,7 +35,7 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-019
@@ -47,7 +47,7 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-020
@@ -59,7 +59,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-021
@@ -71,7 +71,7 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-022
@@ -83,7 +83,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: Substitui o FRA 5Y5Y SOFR
   acesso: fred
 - id: US-023
@@ -107,7 +107,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: Adicionado
   acesso: fred
 - id: US-025

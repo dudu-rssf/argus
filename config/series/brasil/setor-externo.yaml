@@ -131,7 +131,7 @@ series:
   unidade: US$
   tipo: Índice
   fase: MVP
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: BR-090

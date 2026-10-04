@@ -11,7 +11,7 @@ series:
   unidade: US$ / Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: Case-Shiller adicionado
   acesso: fred
 - id: US-056
@@ -23,7 +23,7 @@ series:
   unidade: Mil / meses
   tipo: Fluxo
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-057
@@ -47,7 +47,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-059
@@ -66,7 +66,7 @@ series:
   bloco: Acessibilidade
   indicador: Housing Affordability Index
   fonte: NAR / FRED
-  codigo: FIXHAI (a confirmar)
+  codigo: FIXHAI
   frequencia: Mensal
   unidade: Índice
   tipo: Índice

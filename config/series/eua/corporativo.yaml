@@ -59,7 +59,7 @@ series:
   unidade: US$ bi
   tipo: Fluxo
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-077

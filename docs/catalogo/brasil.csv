@@ -87,7 +87,7 @@ BR-085,Setor Externo,Câmbio,Taxa de câmbio livre — dólar americano (venda),
 BR-086,Setor Externo,Câmbio,Taxa de câmbio efetiva real,BCB SGS,11752,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Verificado,
 BR-087,Setor Externo,Câmbio,Fluxo cambial (comercial e financeiro),BCB SGS,A mapear,Semanal,US$ mi,Fluxo,"Nível, soma 3/12m, MoM % (SA), YoY %, real/nominal, % PIB",v2,A mapear,
 BR-088,Setor Externo,Câmbio,Focus — câmbio fim de ano,BCB Olinda (Focus),ExpectativasMercadoAnuais · Indicador='Câmbio',Semanal,R$/US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Verificado,
-BR-089,Setor Externo,Commodities,"Minério de ferro, petróleo Brent, soja",FRED,PIORECRUSDM / DCOILBRENTEU / PSOYBUSDM,Mensal/Diária,US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Confirmar,
+BR-089,Setor Externo,Commodities,"Minério de ferro, petróleo Brent, soja",FRED,PIORECRUSDM / DCOILBRENTEU / PSOYBUSDM,Mensal/Diária,US$,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",MVP,Verificado,
 BR-090,Setor Externo,Commodities,Termos de troca,FUNCEX / Ipeadata,A mapear,Mensal,Índice,Índice,"Nível, MoM, QoQ, YoY, acum. 3/6/9/12m, 3m/6m SAAR, real/nominal",v2,A mapear,
 BR-091,Famílias,Balanço,Endividamento das famílias com o SFN (% renda 12m),BCB SGS,29037,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Verificado,Ex-habitacional: 29038
 BR-092,Famílias,Balanço,Comprometimento de renda com serviço da dívida,BCB SGS,29034,Mensal,%,Taxa,"Nível, Δ p.p. (MoM, YoY, 3/6/12m)",MVP,Verificado,Equivalente a debt service % DPI

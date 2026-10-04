@@ -11,7 +11,7 @@ series:
   unidade: '%'
   tipo: Taxa
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-081
@@ -47,7 +47,7 @@ series:
   unidade: US$ mi
   tipo: Fluxo
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: ''
   acesso: fred
 - id: US-084
@@ -90,13 +90,13 @@ series:
   bloco: Energia
   indicador: Strategic Petroleum Reserve
   fonte: FRED (EIA)
-  codigo: WCSSTUS1 (a confirmar)
+  codigo: WCSSTUS1
   frequencia: Semanal
   unidade: Mil barris
   tipo: Estoque
   fase: EUA
-  status: Confirmar
-  observacao: ''
+  status: A mapear
+  observacao: Código WCSSTUS1 não existe no FRED (HTTP 400 na validação de 2026-10-04); localizar o código correto
   acesso: fred
 - id: US-088
   bloco: Câmbio
@@ -119,6 +119,6 @@ series:
   unidade: Índice
   tipo: Índice
   fase: EUA
-  status: Confirmar
+  status: Verificado
   observacao: Substituto do DXY
   acesso: fred
