@@ -1,0 +1,39 @@
+name: Resumo semanal
+
+# Proteção dos 60 dias (decisão 0007): o commit semanal de docs/status/coleta.md
+# mantém o repositório ativo, para o GitHub não desligar a coleta agendada.
+on:
+  schedule:
+    - cron: "47 11 * * 1"   # segunda, 08:47 em Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: status-semanal
+
+jobs:
+  resumo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - env:
+          DATABASE_URL: ${{ secrets.DATABASE }}
+        run: uv run python -m argus_pipeline.status
+      - name: Commit (com checagem de segredos)
+        run: |
+          if grep -nEi "(api_key|apikey|token|password|senha)=[A-Za-z0-9]{8,}|postgres(ql)?://[^ @]+:[^ @]+@" ../docs/status/coleta.md; then
+            echo "::error::possível segredo no resumo; commit cancelado"; exit 1
+          fi
+          git config user.name "argus-bot"
+          git config user.email "argus-bot@users.noreply.github.com"
+          git add ../docs/status/coleta.md
+          git diff --cached --quiet || git commit -m "Resumo semanal da coleta"
+          git pull --rebase -q && git push
