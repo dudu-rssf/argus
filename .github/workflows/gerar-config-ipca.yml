@@ -1,0 +1,28 @@
+name: Gerar configuração do IPCA
+
+# Lista de subitens do IPCA (SIDRA 7060) usada pelas derivadas por subitem.
+# Rodar quando o IBGE mudar a estrutura do IPCA (nova POF).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - run: uv run python -m argus_pipeline.derive.subitens
+      - run: |
+          git config user.name "argus-bot"
+          git config user.email "argus-bot@users.noreply.github.com"
+          git add ../config/derivadas
+          git diff --cached --quiet || git commit -m "Configuração: subitens do IPCA (SIDRA 7060)"
+          git pull --rebase -q && git push
