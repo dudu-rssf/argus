@@ -14,7 +14,7 @@ export default defineConfig({
       command: "npx next start -p 3100",
       port: 3100,
       reuseExistingServer: false,
-      env: { AUTH_SECRET: SEGREDO_TESTE, ARGUS_SENHA_HASH: HASH_TESTE },
+      env: { AUTH_SECRET: SEGREDO_TESTE, ARGUS_SENHA_HASH: HASH_TESTE, ARGUS_DB_FIXTURE: "e2e/fixture-banco.json" },
     },
     { command: "npx next start -p 3101", port: 3101, reuseExistingServer: false,
       env: { AUTH_SECRET: "", ARGUS_SENHA_HASH: "" } },
