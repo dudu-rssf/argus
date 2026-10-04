@@ -129,7 +129,7 @@ Uma mudança em relação à decisão 0004: login próprio com `jose` + `bcryptj
 
 ## Critério de pronto
 
-1. Todas as conferências da tabela acima batem (diferença ≤ 0,01 p.p.).
+1. Todas as conferências da tabela acima batem: pelo menos 90% dos pontos idênticos nas casas decimais da fonte e nenhum a mais de 1 unidade da última casa (a diferença vem do arredondamento do insumo publicado).
 2. A aba de teste existe só com YAML, sem código específico.
 3. Sem `ARGUS_SENHA_HASH` ou sem `AUTH_SECRET`, o site bloqueia tudo (teste automático).
 4. Site no ar na Vercel. O botão "Atualizar" dispara a coleta e a página mostra o dado novo.
