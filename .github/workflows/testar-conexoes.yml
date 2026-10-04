@@ -1,0 +1,25 @@
+name: Testar conexões
+
+on:
+  workflow_dispatch:
+
+jobs:
+  testar:
+    name: Banco e chaves configurados
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Banco (Neon)
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then echo "::error::DATABASE_URL não cadastrada"; exit 1; fi
+          psql "$DATABASE_URL" -tA -c "select 'conectado: ' || version();" | cut -c1-60
+      - name: Chaves presentes (sem mostrar valores)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: |
+          for v in FRED_API_KEY FMP_API_KEY; do
+            if [ -n "${!v}" ]; then echo "$v: cadastrada"; else echo "$v: ausente"; fi
+          done
