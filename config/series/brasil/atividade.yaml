@@ -6,7 +6,7 @@ series:
   bloco: PIB
   indicador: PIB real — índice de volume (SA)
   fonte: IBGE SIDRA
-  codigo: t1621
+  codigo: t1621/v584/c11255=90707
   frequencia: Trimestral
   unidade: Índice
   tipo: Índice
@@ -18,7 +18,7 @@ series:
   bloco: PIB
   indicador: PIB real — taxas (QoQ, YoY, acum. 4T)
   fonte: IBGE SIDRA
-  codigo: t5932
+  codigo: t5932/v6561,6562,6564/c11255=90707
   frequencia: Trimestral
   unidade: '%'
   tipo: Taxa
@@ -30,7 +30,7 @@ series:
   bloco: PIB
   indicador: PIB — ótica da oferta (agro, indústria, serviços)
   fonte: IBGE SIDRA
-  codigo: t1621 (setores)
+  codigo: t1621/v584/c11255=90687,90691,90696
   frequencia: Trimestral
   unidade: Índice
   tipo: Índice
@@ -42,7 +42,7 @@ series:
   bloco: PIB
   indicador: PIB — ótica da demanda (C, G, FBCF, X, M)
   fonte: IBGE SIDRA
-  codigo: t1621 (componentes)
+  codigo: t1621/v584/c11255=93404,93405,93406,93407,93408
   frequencia: Trimestral
   unidade: Índice
   tipo: Índice
@@ -78,7 +78,7 @@ series:
   bloco: Mensais
   indicador: Produção industrial — PIM-PF (geral, extrativa, transformação)
   fonte: IBGE SIDRA
-  codigo: t8888
+  codigo: t8888/v12606,12607/c544=129314,129315,129316
   frequencia: Mensal
   unidade: Índice
   tipo: Índice
@@ -90,7 +90,7 @@ series:
   bloco: Mensais
   indicador: Varejo restrito e ampliado — PMC
   fonte: IBGE SIDRA
-  codigo: t8880 / t8881
+  codigo: t8880/v7169,7170/c11046=56733,56734 ; t8881/v7169,7170/c11046=56735,56736
   frequencia: Mensal
   unidade: Índice
   tipo: Índice
@@ -102,7 +102,7 @@ series:
   bloco: Mensais
   indicador: Volume de serviços — PMS
   fonte: IBGE SIDRA
-  codigo: t5906
+  codigo: t5906/v7167,7168/c11046=56725,56726
   frequencia: Mensal
   unidade: Índice
   tipo: Índice

@@ -18,7 +18,7 @@ series:
   bloco: PNAD
   indicador: Taxa de participação e nível de ocupação
   fonte: IBGE SIDRA
-  codigo: t5944 / t6379
+  codigo: t5944/v4096 ; t6379/v4097
   frequencia: Mensal (trim. móvel)
   unidade: '%'
   tipo: Taxa
@@ -30,7 +30,7 @@ series:
   bloco: PNAD
   indicador: População ocupada (total, formal, informal)
   fonte: IBGE SIDRA
-  codigo: t8501
+  codigo: t8501/v4090/c1350=57302,57303
   frequencia: Mensal (trim. móvel)
   unidade: Mil pessoas
   tipo: Estoque
@@ -42,7 +42,7 @@ series:
   bloco: PNAD
   indicador: Taxa de informalidade
   fonte: IBGE SIDRA
-  codigo: t8513
+  codigo: t8513/v12466
   frequencia: Mensal (trim. móvel)
   unidade: '%'
   tipo: Taxa
@@ -54,7 +54,7 @@ series:
   bloco: PNAD
   indicador: Rendimento médio real habitual
   fonte: IBGE SIDRA
-  codigo: t6390
+  codigo: t6390/v5933,5929
   frequencia: Mensal (trim. móvel)
   unidade: R$
   tipo: Índice
@@ -66,7 +66,7 @@ series:
   bloco: PNAD
   indicador: Massa de rendimento real habitual
   fonte: IBGE SIDRA
-  codigo: t6392
+  codigo: t6392/v6293,6288
   frequencia: Mensal (trim. móvel)
   unidade: R$ mi
   tipo: Fluxo

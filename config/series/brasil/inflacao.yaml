@@ -271,7 +271,7 @@ series:
   bloco: Aberturas
   indicador: IPCA por subitem e peso
   fonte: IBGE SIDRA
-  codigo: t7060
+  codigo: t7060/v63,66/c315=all
   frequencia: Mensal
   unidade: '% m/m e peso'
   tipo: Var % mensal
