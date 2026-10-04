@@ -23,3 +23,6 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE }}
           FILTRO: ${{ inputs.filtro }}
         run: uv run python -m argus_pipeline.health $FILTRO
+      - env:
+          DATABASE_URL: ${{ secrets.DATABASE }}
+        run: uv run python -m argus_pipeline.conferir_abas
