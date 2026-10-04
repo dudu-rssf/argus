@@ -1,6 +1,6 @@
 # Fase 2 — Site: esqueleto, login, motor de gráfico e Data Health
 
-**Status:** proposta · 2026-10-04 · aguarda aprovação
+**Status:** aprovada em 2026-10-04 (dependências e login próprio, decisão 0012) · em andamento
 
 ## Objetivo
 
@@ -68,10 +68,10 @@ Transformações por tipo de série (tabela do `plano.md`), como funções puras
 | PIM índice NSA → YoY | variação YoY publicada pelo IBGE (t8888 v11602) |
 | PMC índice SA → MoM | variação MoM SA publicada pelo IBGE (t8880 v11708) |
 | PIB índice SA → QoQ | taxa QoQ do IBGE (t5932 v6564) |
-| PIB índice NSA… → acumulado 4T | taxa acumulada em 4 trimestres (t5932 v6562) |
+| PIM índice NSA → acumulado 12m | variação acumulada em 12 meses do IBGE (t8888 v11604) |
 | Δ p.p. da Selic | diferença conferida à mão em 3 datas de reunião do Copom |
 
-As variações publicadas pelo IBGE que ainda não estão no banco (v11602, v11708) entram no catálogo como séries de conferência.
+As variações publicadas pelo IBGE que ainda não estão no banco (v11602, v11604, v11708) entram no catálogo como recortes de conferência das séries BR-007 e BR-008.
 
 **Controles:** horizonte (1A, 3A, 5A, 10A, Máx, zoom), transformação (só as válidas para o tipo), gráfico combinado barras MoM + linha YoY, tabela de valores e exportação para CSV. Cada gráfico mostra a fonte, o código e a data da última observação.
 

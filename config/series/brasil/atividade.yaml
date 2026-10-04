@@ -78,25 +78,26 @@ series:
   bloco: Mensais
   indicador: Produção industrial — PIM-PF (geral, extrativa, transformação)
   fonte: IBGE SIDRA
-  codigo: t8888/v12606,12607/c544=129314,129315,129316
+  codigo: t8888/v12606,12607/c544=129314,129315,129316 ; t8888/v11602,11604/c544=129314
   frequencia: Mensal
   unidade: Índice
   tipo: Índice
   fase: MVP
   status: Verificado
-  observacao: Tabela nova (base 2022); conferir na Fase 0
+  observacao: Tabela nova (base 2022); conferir na Fase 0; v11602 (YoY) e v11604 (12 meses) são as taxas oficiais, usadas
+    para conferir o cálculo do site
   acesso: sidra
 - id: BR-008
   bloco: Mensais
   indicador: Varejo restrito e ampliado — PMC
   fonte: IBGE SIDRA
-  codigo: t8880/v7169,7170/c11046=56733,56734 ; t8881/v7169,7170/c11046=56735,56736
+  codigo: t8880/v7169,7170/c11046=56733,56734 ; t8881/v7169,7170/c11046=56735,56736 ; t8880/v11708/c11046=56734
   frequencia: Mensal
   unidade: Índice
   tipo: Índice
   fase: MVP
   status: Verificado
-  observacao: Volume e receita nominal
+  observacao: Volume e receita nominal; t8880 v11708 (MoM SA oficial) confere o cálculo do site
   acesso: sidra
 - id: BR-009
   bloco: Mensais
