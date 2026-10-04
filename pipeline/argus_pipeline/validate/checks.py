@@ -14,6 +14,8 @@ from xml.etree import ElementTree
 
 import httpx
 
+from argus_pipeline.adapters.sidra import periodo_para_data
+
 PAUSA_S = 0.6  # intervalo entre chamadas para não estourar limite das fontes
 TENTATIVAS = 3
 
@@ -173,19 +175,6 @@ def check_sgs(code: str, client: httpx.Client) -> CheckResult:
 
 # ---------------------------------------------------------------- SIDRA
 
-def _periodo_para_data(periodo: int, frequencia: str) -> date:
-    """Converte o período do SIDRA (AAAA, AAAAMM ou AAAATT) na data de início do período."""
-    periodo = int(periodo)
-    if periodo < 10000:  # anual: AAAA
-        return date(periodo, 1, 1)
-    ano, resto = divmod(periodo, 100)
-    f = frequencia.lower()
-    # "trimestral móvel" (PNAD) é publicado mês a mês: AAAAMM
-    if f.startswith("trimestr") and "móvel" not in f and "movel" not in f:
-        return date(ano, 3 * (resto - 1) + 1, 1)
-    return date(ano, resto, 1)
-
-
 def check_sidra(codigo: str, client: httpx.Client) -> CheckResult:
     tabela = re.search(r"t(\d+)", codigo).group(1)
     r = CheckResult(codigo=f"t{tabela}")
@@ -195,7 +184,7 @@ def check_sidra(codigo: str, client: httpx.Client) -> CheckResult:
         r.origem_titulo = "sidra"
         per = meta.get("periodicidade", {})
         if per.get("fim"):
-            r.ultima_obs = _periodo_para_data(per["fim"], per.get("frequencia", "mensal"))
+            r.ultima_obs = periodo_para_data(per["fim"], per.get("frequencia", "mensal"))
     except (httpx.HTTPError, ValueError, KeyError) as e:
         r.erro = f"sidra: {e}"
     if not r.erro and (r.titulo_oficial is None or r.ultima_obs is None):
