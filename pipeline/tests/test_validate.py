@@ -160,3 +160,39 @@ def test_is_stale(freq, ultima, esperado):
 def test_check_result_resumo():
     r = CheckResult(codigo="1", titulo_oficial="X", ultima_obs=date(2026, 9, 1))
     assert r.ok
+
+
+# ---------- correções após a primeira execução real (2026-10-04) ----------
+
+@respx.mock
+def test_sgs_ultima_obs_pelo_soap_quando_api_rest_falha(client):
+    """No GitHub Actions, api.bcb.gov.br não resolveu DNS; www3 (SOAP) funcionou."""
+    respx.get(url__regex=r".*package_search.*").respond(json={"success": True, "result": {"results": [
+        {"name": "433-ipca", "title": "Índice nacional de preços ao consumidor-amplo (IPCA)"}]}})
+    respx.get(url__regex=r".*bcdata\.sgs\.433/.*").mock(side_effect=httpx.ConnectError("Name or service not known"))
+    respx.post(url__regex=r".*FachadaWSSGS.*").respond(text=(
+        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">'
+        "<soapenv:Body><getUltimoValorVOReturn>"
+        "<nomeCompleto>Índice nacional de preços ao consumidor-amplo (IPCA)</nomeCompleto>"
+        "<ultimoValor><ano>2026</ano><mes>8</mes><dia>1</dia><valor>0.23</valor></ultimoValor>"
+        "</getUltimoValorVOReturn></soapenv:Body></soapenv:Envelope>"
+    ))
+    r = check_sgs("433", client)
+    assert r.ok
+    assert r.ultima_obs == date(2026, 8, 1)
+
+
+@respx.mock
+def test_sidra_trimestre_movel_e_mensal(client):
+    respx.get(url__regex=r".*agregados/6390/metadados.*").respond(json={
+        "id": 6390, "nome": "Rendimento médio",
+        "periodicidade": {"frequencia": "trimestral móvel", "inicio": 201203, "fim": 202608},
+    })
+    r = check_sidra("t6390", client)
+    assert r.ok
+    assert r.ultima_obs == date(2026, 8, 1)
+
+
+def test_defasagem_normal_do_ibge_nao_e_desatualizada():
+    """PMC/PMS de julho divulgadas em setembro: em 4/out ainda são o dado mais recente."""
+    assert is_stale("Mensal", date(2026, 7, 1), hoje=HOJE) is False

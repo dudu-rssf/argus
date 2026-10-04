@@ -35,7 +35,7 @@ _SOAP_BODY = (
 _LIMITE_DIAS = {
     "diária": 10,
     "semanal": 21,
-    "mensal": 75,
+    "mensal": 110,  # IBGE divulga ~40 dias após o mês; data = início do mês
     "trimestral": 270,
     "semestral": 300,
     "anual": 730,
@@ -84,7 +84,8 @@ def _sgs_titulo_portal(code: str, client: httpx.Client) -> str | None:
     return None
 
 
-def _sgs_titulo_soap(code: str, client: httpx.Client) -> str | None:
+def _sgs_soap(code: str, client: httpx.Client) -> tuple[str | None, date | None]:
+    """Serviço legado do SGS: devolve (nome completo, data do último valor)."""
     resp = client.post(
         SGS_SOAP,
         content=_SOAP_BODY.format(code=code),
@@ -93,13 +94,19 @@ def _sgs_titulo_soap(code: str, client: httpx.Client) -> str | None:
     )
     time.sleep(PAUSA_S)
     resp.raise_for_status()
+    campos: dict[str, str] = {}
     for el in ElementTree.fromstring(resp.text).iter():
-        if el.tag.split("}")[-1] == "nomeCompleto" and el.text:
-            return el.text.strip()
-    return None
+        nome = el.tag.split("}")[-1]
+        if el.text and el.text.strip() and nome in ("nomeCompleto", "ano", "mes", "dia"):
+            campos.setdefault(nome, el.text.strip())
+    data = None
+    if {"ano", "mes", "dia"} <= campos.keys():
+        data = date(int(campos["ano"]), int(campos["mes"]), int(campos["dia"]))
+    return campos.get("nomeCompleto"), data
 
 
 def check_sgs(code: str, client: httpx.Client) -> CheckResult:
+    """Título: portal de dados abertos, senão SOAP. Última obs.: API REST, senão SOAP."""
     r = CheckResult(codigo=code)
     erros = []
     try:
@@ -107,21 +114,26 @@ def check_sgs(code: str, client: httpx.Client) -> CheckResult:
         r.origem_titulo = "portal" if r.titulo_oficial else None
     except (httpx.HTTPError, ValueError) as e:
         erros.append(f"portal: {e}")
-    if r.titulo_oficial is None:
-        try:
-            r.titulo_oficial = _sgs_titulo_soap(code, client)
-            r.origem_titulo = "soap" if r.titulo_oficial else None
-        except (httpx.HTTPError, ElementTree.ParseError) as e:
-            erros.append(f"soap: {e}")
     try:
         dados = _get(client, SGS_ULTIMO.format(code=code)).json()
         r.ultima_obs = datetime.strptime(dados[-1]["data"], "%d/%m/%Y").date()
     except (httpx.HTTPError, ValueError, KeyError, IndexError) as e:
-        erros.append(f"última observação: {e}")
+        erros.append(f"api rest: {e}")
+    if r.titulo_oficial is None or r.ultima_obs is None:
+        try:
+            titulo, data = _sgs_soap(code, client)
+            if r.titulo_oficial is None and titulo:
+                r.titulo_oficial, r.origem_titulo = titulo, "soap"
+            r.ultima_obs = r.ultima_obs or data
+        except (httpx.HTTPError, ElementTree.ParseError, ValueError) as e:
+            erros.append(f"soap: {e}")
     if r.titulo_oficial is None:
         erros.append("título oficial não encontrado")
-    if r.ultima_obs is None or erros:
-        r.erro = "; ".join(erros) or "sem dados"
+    if r.ultima_obs is None:
+        erros.append("última observação não encontrada")
+    # Falha de uma via que foi coberta pela outra não é erro
+    if r.titulo_oficial is None or r.ultima_obs is None:
+        r.erro = "; ".join(erros)
     return r
 
 
@@ -133,7 +145,9 @@ def _periodo_para_data(periodo: int, frequencia: str) -> date:
     if periodo < 10000:  # anual: AAAA
         return date(periodo, 1, 1)
     ano, resto = divmod(periodo, 100)
-    if frequencia.lower().startswith("trimestr"):
+    f = frequencia.lower()
+    # "trimestral móvel" (PNAD) é publicado mês a mês: AAAAMM
+    if f.startswith("trimestr") and "móvel" not in f and "movel" not in f:
         return date(ano, 3 * (resto - 1) + 1, 1)
     return date(ano, resto, 1)
 
