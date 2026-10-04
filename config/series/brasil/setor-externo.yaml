@@ -6,9 +6,9 @@ series:
   bloco: Balança
   indicador: Exportações, importações e saldo
   fonte: ComexStat (MDIC)
-  codigo: POST api-comexstat.mdic.gov.br/general
+  codigo: fluxo=export ; fluxo=import
   frequencia: Mensal
-  unidade: US$ mi
+  unidade: US$ FOB
   tipo: Fluxo
   fase: MVP
   status: Verificado
@@ -16,15 +16,15 @@ series:
   acesso: comexstat
 - id: BR-080
   bloco: Balança
-  indicador: Exportações por produto e destino (China, EUA, UE)
+  indicador: Exportações por destino (China, EUA, UE)
   fonte: ComexStat (MDIC)
-  codigo: POST api-comexstat.mdic.gov.br/general (por NCM/país)
+  codigo: fluxo=export/pais=160 ; fluxo=export/pais=249 ; fluxo=export/bloco=22
   frequencia: Mensal
-  unidade: US$ mi
+  unidade: US$ FOB
   tipo: Fluxo
   fase: MVP
   status: Verificado
-  observacao: Exposição a China e tarifas
+  observacao: Exposição a China e tarifas; Abertura por produto (SH4/NCM) fica para a v2
   acesso: comexstat
 - id: BR-081
   bloco: BP
