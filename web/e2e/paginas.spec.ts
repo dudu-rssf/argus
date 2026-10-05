@@ -48,5 +48,6 @@ test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async (
   await expect(page.getByText("Ciclo de corte desde 19/03/2026")).toBeVisible();
   await expect(page.getByRole("cell", { name: "14,25 → 6,50" })).toBeVisible(); // corte de 2016-2018
   await page.getByRole("img", { name: "Gráfico: Ciclos de corte, alinhados no início" }).waitFor();
+  await expect(page.getByRole("heading", { name: "Postura monetária" })).toBeVisible();
   await page.screenshot({ path: "test-results/analises.png", fullPage: true });
 });

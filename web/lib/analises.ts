@@ -9,6 +9,8 @@ export const SERIES_CICLOS = {
   ipca12: "BR-026:13522",
   focus12: "BR-047:ExpectativasMercadoInflacao12Meses · Indicador='IPCA'",
   juroReal: "BR-055:derivado",
+  neutro: "BR-117:derivado",
+  postura: "BR-118:derivado",
   pib: "BR-002:t5932/v6561,6562,6564/c11255=90707@6561",
   ibc: "BR-006:24364",
   desocupacao: "BR-015:24369",
@@ -20,6 +22,8 @@ export const METRICAS: DefMetrica[] = [
   { id: "ipca12", rotulo: "IPCA 12 meses", variacao: "pp", toleranciaDias: 75, unidade: "%" },
   { id: "focus12", rotulo: "Expectativa Focus 12 meses", variacao: "pp", toleranciaDias: 10, unidade: "%" },
   { id: "juroReal", rotulo: "Juro real ex-ante", variacao: "pp", toleranciaDias: 10, unidade: "% a.a." },
+  { id: "neutro", rotulo: "Neutro implícito no Focus (t+3)", variacao: "pp", toleranciaDias: 10, unidade: "% a.a." },
+  { id: "postura", rotulo: "Juro real menos neutro", variacao: "pp", toleranciaDias: 10, unidade: "p.p." },
   { id: "pib", rotulo: "PIB (taxa anual do trimestre)", variacao: "pp", toleranciaDias: 200, unidade: "%" },
   { id: "ibc", rotulo: "IBC-Br (variação anual)", variacao: "pp", toleranciaDias: 75, unidade: "%" },
   { id: "desocupacao", rotulo: "Desocupação", variacao: "pp", toleranciaDias: 75, unidade: "%" },
@@ -36,7 +40,7 @@ export type LinhaCiclo = Episodio & {
 export function analisarCiclos(dados: Record<string, Ponto[]>, hoje: string): LinhaCiclo[] {
   const s = (k: keyof typeof SERIES_CICLOS) => dados[SERIES_CICLOS[k]] ?? [];
   const derivadas: Record<string, Ponto[]> = {
-    ipca12: s("ipca12"), focus12: s("focus12"), juroReal: s("juroReal"), pib: s("pib"),
+    ipca12: s("ipca12"), focus12: s("focus12"), juroReal: s("juroReal"), neutro: s("neutro"), postura: s("postura"), pib: s("pib"),
     ibc: aplicar("yoy", s("ibc"), "Índice", "Mensal"), desocupacao: s("desocupacao"),
     dolar: s("dolar"), ibov: s("ibov"),
   };

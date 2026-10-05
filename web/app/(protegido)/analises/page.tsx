@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SecaoPostura } from "@/components/analises/secao-postura";
 import { GraficoAlinhado, type CicloAlinhado } from "@/components/analises/grafico-alinhado";
 import { TabelaCiclos } from "@/components/analises/tabela-ciclos";
 import { analisarCiclos, SERIES_CICLOS, type LinhaCiclo } from "@/lib/analises";
@@ -23,7 +24,8 @@ function alinhados(linhas: LinhaCiclo[], tipo: "corte" | "alta"): CicloAlinhado[
 
 export default async function Analises() {
   const hoje = hojeEmBrasilia();
-  const linhas = analisarCiclos(await lerSeries(Object.values(SERIES_CICLOS)), hoje);
+  const dados = await lerSeries(Object.values(SERIES_CICLOS));
+  const linhas = analisarCiclos(dados, hoje);
   const atual = linhas.at(-1);
 
   return (
@@ -72,6 +74,12 @@ export default async function Analises() {
           </ul>
         </details>
       </div>
+
+      <SecaoPostura
+        juroReal={dados[SERIES_CICLOS.juroReal] ?? []}
+        neutro={dados[SERIES_CICLOS.neutro] ?? []}
+        postura={dados[SERIES_CICLOS.postura] ?? []}
+      />
     </section>
   );
 }
