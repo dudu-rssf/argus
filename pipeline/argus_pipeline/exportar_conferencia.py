@@ -39,8 +39,14 @@ def main() -> None:
                 raise SystemExit(f"::error::{nome} ({sid}) sem dados no banco")
             saida[nome] = {"series_id": sid, "obs": [[d.isoformat(), v] for d, v in linhas]}
             print(f"::notice::{nome}: {len(linhas)} observações")
+        cur.execute("""select id, to_char(data_ref, 'YYYY-MM-DD'), titulo, texto from events
+                       where tipo = 'copom_comunicado' order by data_ref""")
+        comunicados = [{"id": i, "data_ref": d, "titulo": t, "texto": x} for i, d, t, x in cur.fetchall()]
+        print(f"::notice::comunicados do Copom: {len(comunicados)}")
     DESTINO.parent.mkdir(parents=True, exist_ok=True)
     DESTINO.write_text(json.dumps(saida, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (DESTINO.parent / "copom_comunicados_todos.json").write_text(
+        json.dumps(comunicados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 
 if __name__ == "__main__":

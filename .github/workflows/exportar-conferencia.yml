@@ -24,6 +24,6 @@ jobs:
       - run: |
           git config user.name "argus-bot"
           git config user.email "argus-bot@users.noreply.github.com"
-          git add ../web/tests/fixtures/oficiais.json
+          git add ../web/tests/fixtures/oficiais.json ../web/tests/fixtures/copom_comunicados_todos.json
           git diff --cached --quiet || git commit -m "Dados oficiais de conferência para os testes do site"
           git pull --rebase -q && git push
