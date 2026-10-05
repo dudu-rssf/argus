@@ -6,9 +6,9 @@ A aba Análises é o único lugar com interpretação (decisão 0003). Por isso 
 
 ## Ordem
 
-1. **Ciclos de política monetária** (esta entrega): corte, alta e manutenção desde 1999.
-2. **Postura monetária:** juro real ex-ante × neutro implícito no Focus, alinhado por ciclo; estimativas do BC (curadas) depois.
-3. **Períodos históricos parecidos com hoje.**
+1. [x] **Ciclos de política monetária:** corte, alta e manutenção desde 1999.
+2. [x] **Postura monetária:** juro real ex-ante × neutro implícito no Focus, alinhado por ciclo; estimativas do BC (curadas) depois.
+3. [x] **Períodos históricos parecidos com hoje:** variáveis padronizadas (z-score), distância euclidiana média, variáveis escolhidas na tela; 5 análogos fora dos últimos 24 meses e a 12 meses um do outro; desfecho em 12 meses com mediana.
 4. **Copom por diretor:** votos e dissidências extraídos das atas e comunicados; tabela curada de diretores.
 5. **Regra de Taylor, hiato e NAIRU:** faixa de especificações, com as estimativas do BC e da IFI como referência.
 

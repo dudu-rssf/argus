@@ -2,6 +2,7 @@
  * Monta a análise de ciclos a partir das séries do banco (servidor). A página só exibe.
  */
 import { depois, episodios, medir, trajetoria, type DefMetrica, type Episodio, type ValorMetrica } from "./ciclos";
+import { painelMensal, variacaoAnual, type LinhaMes, type Variavel } from "./analogos";
 import { aplicar, type Ponto } from "./transform";
 
 export const SERIES_CICLOS = {
@@ -57,5 +58,40 @@ export function analisarCiclos(dados: Record<string, Ponto[]>, hoje: string): Li
       },
       trajetoria: ep.tipo === "manutencao" ? [] : trajetoria(s("selic"), ep),
     };
+  });
+}
+
+// ---------------------------------------------------------------- análogos (item 3)
+
+export const VARIAVEIS_ESTADO: (Variavel & { padrao: boolean })[] = [
+  { id: "ipca12", rotulo: "IPCA 12 meses", unidade: "%", padrao: true },
+  { id: "focus12", rotulo: "Expectativa Focus 12 meses", unidade: "%", padrao: true },
+  { id: "selic", rotulo: "Selic", unidade: "%", padrao: true },
+  { id: "selicD6", rotulo: "Δ da Selic em 6 meses", unidade: "p.p.", padrao: true },
+  { id: "juroReal", rotulo: "Juro real ex-ante", unidade: "%", padrao: true },
+  { id: "ibc", rotulo: "IBC-Br (var. anual)", unidade: "%", padrao: true },
+  { id: "dolarYoY", rotulo: "Dólar (var. anual)", unidade: "%", padrao: true },
+  { id: "desocupacao", rotulo: "Desocupação (desde 2012)", unidade: "%", padrao: false },
+];
+
+export function painelAnalogos(dados: Record<string, Ponto[]>, hoje: string): LinhaMes[] {
+  const s = (k: keyof typeof SERIES_CICLOS) => dados[SERIES_CICLOS[k]] ?? [];
+  let painel = painelMensal({
+    ipca12: { pontos: s("ipca12"), toleranciaDias: 40 },
+    focus12: { pontos: s("focus12"), toleranciaDias: 10 },
+    selic: { pontos: s("selic"), toleranciaDias: 7 },
+    juroReal: { pontos: s("juroReal"), toleranciaDias: 10 },
+    ibc: { pontos: aplicar("yoy", s("ibc"), "Índice", "Mensal"), toleranciaDias: 40 },
+    desocupacao: { pontos: s("desocupacao"), toleranciaDias: 40 },
+    dolar: { pontos: s("dolar"), toleranciaDias: 7 },
+    ibov: { pontos: s("ibov"), toleranciaDias: 7 },
+  }, "2001-01-01", hoje);
+  painel = variacaoAnual(painel, "dolar", "dolarYoY");
+  const porMes = new Map(painel.map((l) => [l.mes, l.valores.selic]));
+  return painel.map((l) => {
+    const [a, m] = l.mes.split("-").map(Number);
+    const total = a * 12 + m - 1 - 6;
+    const antes = porMes.get(`${Math.floor(total / 12)}-${String((total % 12) + 1).padStart(2, "0")}`);
+    return { ...l, valores: { ...l.valores, selicD6: l.valores.selic != null && antes != null ? l.valores.selic - antes : null } };
   });
 }

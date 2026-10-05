@@ -49,5 +49,9 @@ test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async (
   await expect(page.getByRole("cell", { name: "14,25 → 6,50" })).toBeVisible(); // corte de 2016-2018
   await page.getByRole("img", { name: "Gráfico: Ciclos de corte, alinhados no início" }).waitFor();
   await expect(page.getByRole("heading", { name: "Postura monetária" })).toBeVisible();
+  // Com só Selic e IPCA na base de teste, compara por essas duas
+  for (const v of ["Expectativa Focus 12 meses", "Juro real ex-ante", "IBC-Br (var. anual)", "Dólar (var. anual)"])
+    await page.getByLabel(v).uncheck();
+  await expect(page.getByText("O que aconteceu nos 12 meses seguintes")).toBeVisible();
   await page.screenshot({ path: "test-results/analises.png", fullPage: true });
 });

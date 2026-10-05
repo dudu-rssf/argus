@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { AnalogosHistoricos } from "@/components/analises/analogos-historicos";
 import { SecaoPostura } from "@/components/analises/secao-postura";
 import { GraficoAlinhado, type CicloAlinhado } from "@/components/analises/grafico-alinhado";
 import { TabelaCiclos } from "@/components/analises/tabela-ciclos";
-import { analisarCiclos, SERIES_CICLOS, type LinhaCiclo } from "@/lib/analises";
+import { analisarCiclos, painelAnalogos, SERIES_CICLOS, VARIAVEIS_ESTADO, type LinhaCiclo } from "@/lib/analises";
 import { PAUSA_PADRAO_MESES } from "@/lib/ciclos";
 import { lerSeries } from "@/lib/db";
 import { duracao, fmtData, fmtNumero } from "@/lib/formato";
@@ -80,6 +81,8 @@ export default async function Analises() {
         neutro={dados[SERIES_CICLOS.neutro] ?? []}
         postura={dados[SERIES_CICLOS.postura] ?? []}
       />
+
+      <AnalogosHistoricos painel={painelAnalogos(dados, hoje)} variaveis={VARIAVEIS_ESTADO} />
     </section>
   );
 }
