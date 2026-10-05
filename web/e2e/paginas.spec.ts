@@ -38,7 +38,7 @@ test("saúde dos dados mostra execuções e falhas", async ({ page }) => {
 test("aba Política Monetária mostra o comunicado do Copom", async ({ page }) => {
   await page.getByRole("link", { name: "Política Monetária" }).click();
   await expect(page.getByText("Copom reduz a taxa Selic para 13,75% a.a.")).toBeVisible();
-  await expect(page.getByText("O ambiente externo permanece incerto.")).toBeVisible();
+  await expect(page.getByText(/O ambiente externo permanece incerto/).first()).toBeVisible();
   await page.screenshot({ path: "test-results/politica.png", fullPage: true });
 });
 
@@ -53,5 +53,7 @@ test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async (
   for (const v of ["Expectativa Focus 12 meses", "Juro real ex-ante", "IBC-Br (var. anual)", "Dólar (var. anual)"])
     await page.getByLabel(v).uncheck();
   await expect(page.getByText("O que aconteceu nos 12 meses seguintes")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Copom por diretor" })).toBeVisible();
+  await expect(page.getByText("Por uma redução de 0,50 ponto percentual:")).toBeVisible();
   await page.screenshot({ path: "test-results/analises.png", fullPage: true });
 });

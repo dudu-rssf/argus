@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { AnalogosHistoricos } from "@/components/analises/analogos-historicos";
+import { SecaoCopom } from "@/components/analises/secao-copom";
 import { SecaoPostura } from "@/components/analises/secao-postura";
 import { GraficoAlinhado, type CicloAlinhado } from "@/components/analises/grafico-alinhado";
 import { TabelaCiclos } from "@/components/analises/tabela-ciclos";
 import { analisarCiclos, painelAnalogos, SERIES_CICLOS, VARIAVEIS_ESTADO, type LinhaCiclo } from "@/lib/analises";
 import { PAUSA_PADRAO_MESES } from "@/lib/ciclos";
-import { lerSeries } from "@/lib/db";
+import { extrairVotos } from "@/lib/copom-votos";
+import { lerEventos, lerSeries } from "@/lib/db";
 import { duracao, fmtData, fmtNumero } from "@/lib/formato";
 
 export const metadata: Metadata = { title: "Análises" };
@@ -25,7 +27,10 @@ function alinhados(linhas: LinhaCiclo[], tipo: "corte" | "alta"): CicloAlinhado[
 
 export default async function Analises() {
   const hoje = hojeEmBrasilia();
-  const dados = await lerSeries(Object.values(SERIES_CICLOS));
+  const [dados, comunicados] = await Promise.all([
+    lerSeries(Object.values(SERIES_CICLOS)),
+    lerEventos("copom_comunicado", 1000),
+  ]);
   const linhas = analisarCiclos(dados, hoje);
   const atual = linhas.at(-1);
 
@@ -83,6 +88,8 @@ export default async function Analises() {
       />
 
       <AnalogosHistoricos painel={painelAnalogos(dados, hoje)} variaveis={VARIAVEIS_ESTADO} />
+
+      <SecaoCopom votos={comunicados.map(extrairVotos)} />
     </section>
   );
 }
