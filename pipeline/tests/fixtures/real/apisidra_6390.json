@@ -1,0 +1,93 @@
+[
+  {
+    "NC": "Nível Territorial (Código)",
+    "NN": "Nível Territorial",
+    "MC": "Unidade de Medida (Código)",
+    "MN": "Unidade de Medida",
+    "V": "Valor",
+    "D1C": "Brasil (Código)",
+    "D1N": "Brasil",
+    "D2C": "Variável (Código)",
+    "D2N": "Variável",
+    "D3C": "Trimestre Móvel (Código)",
+    "D3N": "Trimestre Móvel"
+  },
+  {
+    "NC": "1",
+    "NN": "Brasil",
+    "MC": "38",
+    "MN": "Reais",
+    "V": "3747",
+    "D1C": "1",
+    "D1N": "Brasil",
+    "D2C": "5933",
+    "D2N": "Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+    "D3C": "202606",
+    "D3N": "abr-mai-jun 2026"
+  },
+  {
+    "NC": "1",
+    "NN": "Brasil",
+    "MC": "38",
+    "MN": "Reais",
+    "V": "3760",
+    "D1C": "1",
+    "D1N": "Brasil",
+    "D2C": "5933",
+    "D2N": "Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+    "D3C": "202607",
+    "D3N": "mai-jun-jul 2026"
+  },
+  {
+    "NC": "1",
+    "NN": "Brasil",
+    "MC": "38",
+    "MN": "Reais",
+    "V": "3777",
+    "D1C": "1",
+    "D1N": "Brasil",
+    "D2C": "5933",
+    "D2N": "Rendimento médio mensal real das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+    "D3C": "202608",
+    "D3N": "jun-jul-ago 2026"
+  },
+  {
+    "NC": "1",
+    "NN": "Brasil",
+    "MC": "38",
+    "MN": "Reais",
+    "V": "3738",
+    "D1C": "1",
+    "D1N": "Brasil",
+    "D2C": "5929",
+    "D2N": "Rendimento médio mensal nominal das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+    "D3C": "202606",
+    "D3N": "abr-mai-jun 2026"
+  },
+  {
+    "NC": "1",
+    "NN": "Brasil",
+    "MC": "38",
+    "MN": "Reais",
+    "V": "3762",
+    "D1C": "1",
+    "D1N": "Brasil",
+    "D2C": "5929",
+    "D2N": "Rendimento médio mensal nominal das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+    "D3C": "202607",
+    "D3N": "mai-jun-jul 2026"
+  },
+  {
+    "NC": "1",
+    "NN": "Brasil",
+    "MC": "38",
+    "MN": "Reais",
+    "V": "3777",
+    "D1C": "1",
+    "D1N": "Brasil",
+    "D2C": "5929",
+    "D2N": "Rendimento médio mensal nominal das pessoas de 14 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos",
+    "D3C": "202608",
+    "D3N": "jun-jul-ago 2026"
+  }
+]
