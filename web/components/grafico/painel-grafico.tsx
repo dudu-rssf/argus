@@ -14,6 +14,8 @@ import type { Painel } from "@/lib/config";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import { lerTrajetoria } from "@/lib/leitura";
 import { FaixaLeitura } from "./faixa-leitura";
+import { BotaoFormula, PainelFormula } from "@/components/formula";
+import { FORMULAS_DERIVADAS, formulaTransformacao, type Formula } from "@/lib/formulas";
 import { aplicar, rotulo, transformacoesValidas, valoresNasDatas, type IdTransformacao, type Ponto } from "@/lib/transform";
 
 echarts.use([LineChart, BarChart, GridComponent, TooltipComponent, DataZoomComponent, CanvasRenderer]);
@@ -39,7 +41,9 @@ function casasDecimais(id: IdTransformacao, unidade: string): number {
   return /mil|postos|pessoas|R\$|US\$|pontos/i.test(unidade) ? 0 : 2;
 }
 
-export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record<string, Ponto[]> }) {
+export function PainelGrafico({ painel, dados, formulasExtras = [] }: {
+  painel: Painel; dados: Record<string, Ponto[]>; formulasExtras?: Formula[];
+}) {
   const freq = painel.series[0].frequencia;
   const opcoes = useMemo(() => {
     const listas = painel.series.map((s) => transformacoesValidas(s.tipo, s.frequencia));
@@ -50,6 +54,7 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
     opcoes.includes(painel.transformacao) ? painel.transformacao : "nivel");
   const [horizonte, setHorizonte] = useState<IdHorizonte>("10A");
   const [tabela, setTabela] = useState(false);
+  const [formulaAberta, setFormulaAberta] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const grafico = useRef<echarts.ECharts | null>(null);
 
@@ -143,6 +148,17 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
     a.click();
     URL.revokeObjectURL(a.href);
   }
+
+  // Toda conta mostrada tem fórmula (decisão 0015): a transformação escolhida e as séries derivadas.
+  const formulas = useMemo(() => {
+    const s0 = painel.series[0];
+    const transfs = painel.combinado ? [painel.combinado.barras, painel.combinado.linha] : [transf];
+    const deTransf = transfs.map((t) => formulaTransformacao(t, s0.tipo, s0.frequencia)).filter((f): f is Formula => f !== null);
+    // Com fórmula própria da análise, ela já explica as séries derivadas.
+    const derivadas = formulasExtras.length ? [] : [...new Set(painel.series.filter((s) => s.dado.endsWith(":derivado")).map((s) => s.serie))]
+      .map((id) => FORMULAS_DERIVADAS[id]).filter(Boolean);
+    return [...formulasExtras, ...derivadas, ...deTransf];
+  }, [painel, transf, formulasExtras]);
 
   const ultimos = visiveis.map((l) => ({ ...l, ultimo: l.pontos.at(-1) }));
 
@@ -245,12 +261,15 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
         </section>
       )}
 
+      {formulaAberta && formulas.length > 0 && <PainelFormula formulas={formulas} />}
+
       <footer className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-linha px-4 py-2 text-xs text-texto-3">
         <span>
           Fonte: {[...new Set(painel.series.map((s) => s.fonte))].join(", ")}
           {" "}({[...new Set(painel.series.map((s) => s.serie))].join(", ")})
         </span>
         <span className="flex gap-3">
+          {formulas.length > 0 && <BotaoFormula aberta={formulaAberta} alternar={() => setFormulaAberta((a) => !a)} />}
           <button type="button" onClick={() => setTabela((t) => !t)} className="hover:text-texto">
             {tabela ? "Ver gráfico" : "Ver tabela"}
           </button>

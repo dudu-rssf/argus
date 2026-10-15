@@ -1,6 +1,8 @@
 "use client";
 
 import { Fragment, useState } from "react";
+import { RodapeFormula } from "@/components/formula";
+import { FORMULAS_ANALISES } from "@/lib/formulas";
 import type { LinhaCiclo } from "@/lib/analises";
 import { METRICAS } from "@/lib/analises";
 import { duracao, fmtData, fmtNumero } from "@/lib/formato";
@@ -55,7 +57,8 @@ export function TabelaCiclos({ linhas }: { linhas: LinhaCiclo[] }) {
         ))}
       </div>
 
-      <div className="overflow-x-auto rounded-painel border border-linha">
+      <div className="rounded-painel border border-linha">
+      <div className="overflow-x-auto">
         <table className="w-full whitespace-nowrap text-sm">
           <thead className="bg-painel text-left text-texto-3">
             <tr>
@@ -106,6 +109,8 @@ export function TabelaCiclos({ linhas }: { linhas: LinhaCiclo[] }) {
             })}
           </tbody>
         </table>
+      </div>
+      <RodapeFormula formulas={[FORMULAS_ANALISES.ciclos]}>Clique num episódio para ver o detalhe.</RodapeFormula>
       </div>
     </div>
   );

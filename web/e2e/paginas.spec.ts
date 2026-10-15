@@ -47,6 +47,22 @@ test("Inflação: IPCA 12 meses e meta em degrau", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "IPCA em 12 meses e meta para a inflação" })).toBeVisible();
 });
 
+test("botão Fórmula explica a conta do gráfico", async ({ page }) => {
+  await page.getByRole("link", { name: "Inflação" }).click();
+  const painel = page.locator("article", { has: page.getByRole("heading", { name: "Núcleos acompanhados pelo Copom" }) });
+  await painel.getByRole("button", { name: "Fórmula" }).click();
+  await expect(painel.getByText("Acumulado em 12 meses (encadeado)")).toBeVisible();
+  await expect(painel.getByText(/\(1 \+ mₜ\/100\)/)).toBeVisible();
+  // dado bruto, sem conta: sem botão
+  const meta = page.locator("article", { has: page.getByRole("heading", { name: "IPCA em 12 meses e meta para a inflação" }) });
+  await expect(meta.getByRole("button", { name: "Fórmula" })).toHaveCount(0);
+  await page.getByRole("link", { name: "Análises" }).click();
+  const taylor = page.locator("article", { has: page.getByRole("heading", { name: "Selic efetiva e regra de Taylor" }) });
+  await taylor.getByRole("button", { name: "Fórmula" }).click();
+  await expect(taylor.getByText("Selic da regra = r* + π + a·(π − π*) + b·hiato")).toBeVisible();
+  await taylor.screenshot({ path: "test-results/formula-taylor.png" });
+});
+
 test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async ({ page }) => {
   await page.getByRole("link", { name: "Análises" }).click();
   await expect(page.getByRole("heading", { name: "Ciclos de política monetária" })).toBeVisible();

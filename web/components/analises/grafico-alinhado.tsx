@@ -9,7 +9,9 @@ import * as echarts from "echarts/core";
 import { LineChart } from "echarts/charts";
 import { GridComponent, TooltipComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
+import { RodapeFormula } from "@/components/formula";
 import { fmtNumero } from "@/lib/formato";
+import type { Formula } from "@/lib/formulas";
 
 echarts.use([LineChart, GridComponent, TooltipComponent, CanvasRenderer]);
 
@@ -17,7 +19,7 @@ export type CicloAlinhado = { rotulo: string; destaque: boolean; pontos: { t: nu
 
 const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 
-export function GraficoAlinhado({ titulo, ciclos }: { titulo: string; ciclos: CicloAlinhado[] }) {
+export function GraficoAlinhado({ titulo, ciclos, formula }: { titulo: string; ciclos: CicloAlinhado[]; formula: Formula }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!ref.current) return;
@@ -62,6 +64,7 @@ export function GraficoAlinhado({ titulo, ciclos }: { titulo: string; ciclos: Ci
         </p>
       </header>
       <div ref={ref} className="h-72 w-full px-2" role="img" aria-label={`Gráfico: ${titulo}`} />
+      <RodapeFormula formulas={[formula]} />
     </article>
   );
 }

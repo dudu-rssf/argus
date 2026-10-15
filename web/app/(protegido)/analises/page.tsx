@@ -6,10 +6,10 @@ import { SecaoTaylor } from "@/components/analises/secao-taylor";
 import { GraficoAlinhado, type CicloAlinhado } from "@/components/analises/grafico-alinhado";
 import { TabelaCiclos } from "@/components/analises/tabela-ciclos";
 import { analisarCiclos, analiseItem5, painelAnalogos, SERIES_CICLOS, SERIES_ITEM5, VARIAVEIS_ESTADO, type LinhaCiclo } from "@/lib/analises";
-import { PAUSA_PADRAO_MESES } from "@/lib/ciclos";
 import { extrairVotos } from "@/lib/copom-votos";
 import { lerEventos, lerSeries } from "@/lib/db";
 import { duracao, fmtData, fmtNumero } from "@/lib/formato";
+import { FORMULAS_ANALISES } from "@/lib/formulas";
 
 export const metadata: Metadata = { title: "Análises" };
 
@@ -65,21 +65,10 @@ export default async function Analises() {
         <TabelaCiclos linhas={linhas} />
 
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-          <GraficoAlinhado titulo="Ciclos de corte, alinhados no início" ciclos={alinhados(linhas, "corte")} />
-          <GraficoAlinhado titulo="Ciclos de alta, alinhados no início" ciclos={alinhados(linhas, "alta")} />
+          <GraficoAlinhado titulo="Ciclos de corte, alinhados no início" ciclos={alinhados(linhas, "corte")} formula={FORMULAS_ANALISES.ciclos} />
+          <GraficoAlinhado titulo="Ciclos de alta, alinhados no início" ciclos={alinhados(linhas, "alta")} formula={FORMULAS_ANALISES.ciclos} />
         </div>
 
-        <details className="rounded-painel border border-linha bg-painel px-5 py-4 text-sm text-texto-2">
-          <summary className="cursor-pointer text-texto">Como os episódios são definidos</summary>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5">
-            <li>Fonte: meta Selic definida pelo Copom (BCB SGS 432), desde março de 1999. Cada mudança é uma decisão, na data em que passa a valer.</li>
-            <li>Ciclo de corte ou de alta: movimentos na mesma direção com menos de {PAUSA_PADRAO_MESES} meses entre um e outro. Termina no último movimento antes de uma inversão ou de uma pausa de {PAUSA_PADRAO_MESES} meses ou mais.</li>
-            <li>Manutenção: todo intervalo sem mudança entre dois ciclos. Nunca há manutenção no meio de um ciclo.</li>
-            <li>Métricas no início e no fim usam o último dado disponível até a data, pela data de referência do dado, não pela data em que foi divulgado.</li>
-            <li>Desocupação só existe desde 2012 (PNAD Contínua), Focus 12 meses desde 2001 e Ibovespa desde 1998. Sem dado, o campo aparece vazio.</li>
-            <li>Variações: em pontos percentuais para taxas; em % para dólar e Ibovespa.</li>
-          </ul>
-        </details>
       </div>
 
       <SecaoPostura

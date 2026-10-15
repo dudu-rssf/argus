@@ -1,6 +1,7 @@
 import { PainelGrafico } from "@/components/grafico/painel-grafico";
 import type { Painel, SerieDoPainel } from "@/lib/config";
 import { fmtData, fmtNumero } from "@/lib/formato";
+import { FORMULAS_ANALISES } from "@/lib/formulas";
 import { lerTrajetoria } from "@/lib/leitura";
 import type { Ponto } from "@/lib/transform";
 
@@ -44,17 +45,8 @@ export function SecaoPostura({ juroReal, neutro, postura }: { juroReal: Ponto[];
       )}
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <PainelGrafico painel={painelNivel} dados={{ "BR-055:derivado": juroReal, "BR-117:derivado": neutro }} />
-        <PainelGrafico painel={painelGap} dados={{ "BR-118:derivado": postura }} />
+        <PainelGrafico painel={painelGap} formulasExtras={[FORMULAS_ANALISES.postura]} dados={{ "BR-118:derivado": postura }} />
       </div>
-      <details className="rounded-painel border border-linha bg-painel px-5 py-4 text-sm text-texto-2">
-        <summary className="cursor-pointer text-texto">Como a postura é medida</summary>
-        <ul className="mt-3 list-disc space-y-1.5 pl-5">
-          <li>Juro real ex-ante: meta Selic vigente deflacionada pela expectativa de IPCA 12 meses à frente do Focus, pela fórmula de Fisher: (1 + Selic) / (1 + IPCA esperado) − 1.</li>
-          <li>Neutro implícito: Selic e IPCA esperados pelo Focus para daqui a 3 anos, na mesma pesquisa, pela mesma fórmula. É o juro real que o mercado espera quando os efeitos de curto prazo já passaram; uma leitura de mercado, não uma estimativa estrutural do neutro.</li>
-          <li>Diferença positiva: política acima do neutro implícito (contracionista por essa régua). Negativa: abaixo.</li>
-          <li>As estimativas de neutro do próprio Banco Central entram depois, digitadas dos relatórios, com a fonte.</li>
-        </ul>
-      </details>
     </div>
   );
 }

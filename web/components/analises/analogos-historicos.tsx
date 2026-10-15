@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { RodapeFormula } from "@/components/formula";
+import { FORMULAS_ANALISES } from "@/lib/formulas";
 import { DESFECHOS, encontrarAnalogos, type LinhaMes, type Variavel } from "@/lib/analogos";
 import { fmtData, fmtNumero } from "@/lib/formato";
 
@@ -97,16 +99,9 @@ export function AnalogosHistoricos({ painel, variaveis }: Props) {
         </>
       )}
 
-      <details className="rounded-painel border border-linha bg-painel px-5 py-4 text-sm text-texto-2">
-        <summary className="cursor-pointer text-texto">Como os períodos são comparados</summary>
-        <ul className="mt-3 list-disc space-y-1.5 pl-5">
-          <li>Cada mês desde 2001 vira um retrato com as variáveis marcadas, cada uma padronizada pela média e o desvio-padrão da amostra inteira (todas pesam igual).</li>
-          <li>Semelhança: 100% é idêntico a hoje; cai conforme a distância média entre os retratos, chegando a 0% em 2 desvios-padrão.</li>
-          <li>Os últimos 24 meses ficam de fora (seriam parecidos por proximidade), e os 5 períodos escolhidos ficam a pelo menos 12 meses um do outro.</li>
-          <li>"Hoje" é o último mês com todas as variáveis marcadas disponíveis (o IBC-Br sai com cerca de 2 meses de atraso).</li>
-          <li>O que aconteceu depois não é previsão: são 5 casos, e a mediana de 5 casos tem pouca força estatística.</li>
-        </ul>
-      </details>
+      <div className="rounded-painel border border-linha bg-painel">
+        <RodapeFormula formulas={[FORMULAS_ANALISES.analogos]}>Como os períodos são comparados</RodapeFormula>
+      </div>
     </div>
   );
 }

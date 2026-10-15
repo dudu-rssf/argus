@@ -9,7 +9,9 @@ import * as echarts from "echarts/core";
 import { ScatterChart } from "echarts/charts";
 import { GridComponent, LegendComponent, TooltipComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
+import { RodapeFormula } from "@/components/formula";
 import { fmtData, fmtNumero } from "@/lib/formato";
+import type { Formula } from "@/lib/formulas";
 
 echarts.use([ScatterChart, GridComponent, TooltipComponent, LegendComponent, CanvasRenderer]);
 
@@ -18,9 +20,9 @@ export type Periodo = { rotulo: string; de: string; ate: string };
 
 const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 
-export function GraficoDispersao({ titulo, subtitulo, pontos, periodos, eixoX, eixoY, frequencia }: {
+export function GraficoDispersao({ titulo, subtitulo, pontos, periodos, eixoX, eixoY, frequencia, formula }: {
   titulo: string; subtitulo: string; pontos: PontoDispersao[]; periodos: Periodo[];
-  eixoX: string; eixoY: string; frequencia: string;
+  eixoX: string; eixoY: string; frequencia: string; formula: Formula;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -70,6 +72,7 @@ export function GraficoDispersao({ titulo, subtitulo, pontos, periodos, eixoX, e
       {pontos.length
         ? <div ref={ref} className="h-80 w-full px-2" role="img" aria-label={`Gráfico: ${titulo}`} />
         : <p className="px-4 py-10 text-sm text-texto-3">Sem dados para esta combinação.</p>}
+      <RodapeFormula formulas={[formula]} />
     </article>
   );
 }

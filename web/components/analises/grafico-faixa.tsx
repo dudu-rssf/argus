@@ -9,7 +9,9 @@ import * as echarts from "echarts/core";
 import { LineChart } from "echarts/charts";
 import { DataZoomComponent, GridComponent, LegendComponent, TooltipComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
+import { RodapeFormula } from "@/components/formula";
 import { fmtData, fmtNumero } from "@/lib/formato";
+import type { Formula } from "@/lib/formulas";
 
 echarts.use([LineChart, GridComponent, TooltipComponent, LegendComponent, DataZoomComponent, CanvasRenderer]);
 
@@ -18,7 +20,7 @@ export type PontoFaixa = { mes: string; selic: number | null; minimo: number | n
 const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const HORIZONTES = [{ id: "5A", anos: 5 }, { id: "10A", anos: 10 }, { id: "Máx", anos: 0 }] as const;
 
-export function GraficoFaixa({ titulo, pontos }: { titulo: string; pontos: PontoFaixa[] }) {
+export function GraficoFaixa({ titulo, pontos, formula }: { titulo: string; pontos: PontoFaixa[]; formula: Formula }) {
   const ref = useRef<HTMLDivElement>(null);
   const [horizonte, setHorizonte] = useState<(typeof HORIZONTES)[number]["id"]>("Máx");
   const visiveis = useMemo(() => {
@@ -87,6 +89,7 @@ export function GraficoFaixa({ titulo, pontos }: { titulo: string; pontos: Ponto
         </div>
       </header>
       <div ref={ref} className="h-80 w-full px-2" role="img" aria-label={`Gráfico: ${titulo}`} />
+      <RodapeFormula formulas={[formula]} />
     </article>
   );
 }
