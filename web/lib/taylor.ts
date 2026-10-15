@@ -57,9 +57,10 @@ export function mediana(xs: number[]): number | null {
   return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
-export function faixaTaylor(ins: Insumos, inicio: string, fim: string): LinhaTaylor[] {
-  return meses(inicio, fim).map((mes) => {
-    const d = fimDoMes(mes);
+/** Meses de `inicio` ('AAAA-MM') até o mês de `hoje` ('AAAA-MM-DD'); no mês corrente, os dados até hoje. */
+export function faixaTaylor(ins: Insumos, inicio: string, hoje: string): LinhaTaylor[] {
+  return meses(inicio, hoje.slice(0, 7)).map((mes) => {
+    const d = fimDoMes(mes) < hoje ? fimDoMes(mes) : hoje;
     const v = (k: keyof Insumos) => valorAte(ins[k], d, TOLERANCIA[k]);
     const meta = v("meta")?.valor, neutro = v("neutro")?.valor;
     const especificacoes = ESPECIFICACOES.map((e) => {

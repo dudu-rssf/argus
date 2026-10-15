@@ -30,7 +30,7 @@ describe("regra de Taylor", () => {
   };
 
   it("faixa mensal com mínimo, máximo e mediana das 16", () => {
-    const [jan, fev] = faixaTaylor(ins, "2026-01", "2026-02");
+    const [jan, fev] = faixaTaylor(ins, "2026-01", "2026-02-28");
     expect(jan.selic).toBe(15);
     // menor: Focus 4 + 0,5·1 − 1·1 (Hamilton, b = 1) = 5 + 4 + 0,5 − 1 = 8,5
     expect(jan.minimo).toBeCloseTo(8.5, 10);
@@ -42,13 +42,20 @@ describe("regra de Taylor", () => {
   });
 
   it("sem algum insumo, o mês fica sem faixa (nunca preenche com zero)", () => {
-    const [jan] = faixaTaylor({ ...ins, focus12: [] }, "2026-01", "2026-01");
+    const [jan] = faixaTaylor({ ...ins, focus12: [] }, "2026-01", "2026-01-31");
     expect(jan.minimo).toBeNull();
     expect(jan.especificacoes.filter((x) => x === null)).toHaveLength(8);
   });
 
+  it("no mês corrente usa os dados até hoje, não o fim do mês", () => {
+    const [mar] = faixaTaylor({ ...ins, selic: [...ins.selic, p("2026-03-10", 14)], focus12: [...ins.focus12, p("2026-03-08", 4)],
+      neutro: [...ins.neutro, p("2026-03-08", 5)] }, "2026-03", "2026-03-12");
+    expect(mar.selic).toBe(14);
+    expect(mar.mediana).not.toBeNull();
+  });
+
   it("hiato velho demais não é usado", () => {
-    const [out] = faixaTaylor(ins, "2026-11", "2026-11");
+    const [out] = faixaTaylor(ins, "2026-11", "2026-11-30");
     expect(out.hiatoDe).toBeNull();
     expect(out.mediana).toBeNull();
   });
