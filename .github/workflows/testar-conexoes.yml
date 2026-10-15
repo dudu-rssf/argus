@@ -2,12 +2,16 @@ name: Testar conexões
 
 on:
   workflow_dispatch:
+    inputs:
+      sgs:
+        description: "Códigos SGS para mostrar título oficial e última data (ex.: '433 22099-22110')"
+        default: ""
 
 jobs:
   testar:
     name: Banco e chaves configurados
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Banco (Neon)
         env:
@@ -23,3 +27,45 @@ jobs:
           for v in FRED_API_KEY FMP_API_KEY; do
             if [ -n "${!v}" ]; then echo "$v: cadastrada"; else echo "$v: ausente"; fi
           done
+      - name: Fontes externas respondem?
+        run: |
+          for u in \
+            https://servicodados.ibge.gov.br/api/v3/agregados/1621/metadados \
+            https://apisidra.ibge.gov.br/values/t/1621/n1/all/v/584/p/last%201/c11255/90707 \
+            https://www.ibge.gov.br/ \
+            "https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json" \
+            https://api-comexstat.mdic.gov.br/general/dates/updated ; do
+            r=$(curl -sS -m 20 -o /dev/null -w "%{http_code} em %{time_total}s" "$u" 2>&1 | tail -1)
+            echo "::notice::$(echo "$u" | cut -d/ -f3): $r"
+          done
+      - uses: actions/checkout@v4
+        if: inputs.sgs != ''
+      - uses: astral-sh/setup-uv@v6
+        if: inputs.sgs != ''
+      - name: Títulos oficiais SGS
+        if: inputs.sgs != ''
+        working-directory: pipeline
+        env:
+          SGS: ${{ inputs.sgs }}
+        run: |
+          uv sync --locked -q
+          uv run python - <<'PY'
+          import os, httpx
+          from argus_pipeline.validate.checks import _sgs_soap
+          codigos = []
+          for t in os.environ["SGS"].split():
+              a, _, b = t.partition("-")
+              codigos += [str(c) for c in range(int(a), int(b or a) + 1)]
+          linhas = []
+          with httpx.Client(headers={"User-Agent": "argus-sonda/0.1"}, timeout=30) as c:
+              for code in codigos:
+                  try:
+                      titulo, ultima = _sgs_soap(code, c)
+                  except Exception as e:
+                      titulo, ultima = f"erro {type(e).__name__}", None
+                  linhas.append(f"{code} | {ultima} | {titulo}")
+                  print(linhas[-1], flush=True)
+          # anotações têm limite; junta tudo em poucas mensagens
+          for i in range(0, len(linhas), 12):
+              print("::notice::" + " %0A".join(linhas[i:i + 12]))
+          PY
