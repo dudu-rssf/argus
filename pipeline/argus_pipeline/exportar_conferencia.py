@@ -25,15 +25,24 @@ SERIES = {
     "pib_indice_sa": "BR-001:t1621/v584/c11255=90707",
     "pib_qoq_oficial": "BR-002:t5932/v6561,6562,6564/c11255=90707@6564",
     "selic_meta": "BR-050:432",
+    # Análises, item 5 (hiato, Taylor, Phillips): histórico inteiro
+    "selic_meta_todo": ("BR-050:432", "1999-01-01"),
+    "ipca_12m_todo": ("BR-026:13522", "1999-01-01"),
+    "focus_12m_todo": ("BR-047:ExpectativasMercadoInflacao12Meses · Indicador='IPCA'", "1999-01-01"),
+    "neutro_focus_todo": ("BR-117:derivado", "1999-01-01"),
+    "meta_inflacao_todo": ("BR-134:13521", "1999-01-01"),
+    "desocupacao_todo": ("BR-015:24369", "2012-01-01"),
+    "pib_indice_sa_todo": ("BR-001:t1621/v584/c11255=90707", "1996-01-01"),
 }
 
 
 def main() -> None:
     saida = {}
     with db.connect(os.environ["DATABASE_URL"]) as conn, conn.cursor() as cur:
-        for nome, sid in SERIES.items():
+        for nome, item in SERIES.items():
+            sid, desde = item if isinstance(item, tuple) else (item, DESDE)
             cur.execute("select ref_date, value::float8 from observations where series_id=%s and ref_date >= %s "
-                        "order by ref_date", (sid, DESDE))
+                        "order by ref_date", (sid, desde))
             linhas = cur.fetchall()
             if not linhas:
                 raise SystemExit(f"::error::{nome} ({sid}) sem dados no banco")
