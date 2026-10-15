@@ -52,7 +52,9 @@ import oficiais from "./fixtures/oficiais.json";
 import { painelAnalogos, SERIES_CICLOS } from "@/lib/analises";
 
 describe("análogos com dados reais (Selic e IPCA desde 2015)", () => {
-  const p = (k: keyof typeof oficiais) => oficiais[k].obs.map(([data, valor]) => ({ data: data as string, valor: valor as number }));
+  // Retrato até 04/10/2026 (setembro ainda sem IPCA); a exportação cresce.
+  const p = (k: keyof typeof oficiais) => oficiais[k].obs.map(([data, valor]) => ({ data: data as string, valor: valor as number }))
+    .filter((x) => x.data <= (k === "selic_meta" ? "2026-10-04" : "2026-08-01"));
   const painel = painelAnalogos({ [SERIES_CICLOS.selic]: p("selic_meta"), [SERIES_CICLOS.ipca12]: p("ipca_12m_oficial") }, "2026-10-04");
 
   it("painel mensal com Selic, IPCA 12m e Δ Selic em 6 meses", () => {

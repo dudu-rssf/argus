@@ -3,6 +3,10 @@ import oficiais from "./fixtures/oficiais.json";
 import { lerTrajetoria } from "@/lib/leitura";
 import { aplicar, type Ponto } from "@/lib/transform";
 
+// Os casos com dados reais foram escritos com o retrato até ago/2026; a exportação cresce.
+const ateAgo2026 = (obs: (string | number)[][]): Ponto[] =>
+  obs.map(([data, valor]) => ({ data: data as string, valor: valor as number })).filter((p) => p.data <= "2026-08-01");
+
 const mensal = (valores: number[], inicio = 2016): Ponto[] =>
   valores.map((v, i) => ({ data: `${inicio + Math.floor(i / 12)}-${String((i % 12) + 1).padStart(2, "0")}-01`, valor: v }));
 
@@ -24,7 +28,7 @@ describe("leitura de trajetória", () => {
   });
 
   it("uma crise no histórico não faz uma queda clara virar 'estável'", () => {
-    const ipca = oficiais.ipca_mensal.obs.map(([data, valor]) => ({ data: data as string, valor: valor as number }));
+    const ipca = ateAgo2026(oficiais.ipca_mensal.obs);
     const l = lerTrajetoria(aplicar("acum12", ipca, "Var % mensal", "Mensal"), true, "Mensal")!;
     expect(l.curto!.direcao).toBe("caiu"); // 4,72% em mai/2026 → 4,22% em ago/2026
   });
@@ -40,7 +44,7 @@ describe("leitura de trajetória", () => {
   });
 
   it("IPCA 12m em ago/2026 (dados reais): referências certas", () => {
-    const ipca = oficiais.ipca_mensal.obs.map(([data, valor]) => ({ data: data as string, valor: valor as number }));
+    const ipca = ateAgo2026(oficiais.ipca_mensal.obs);
     const l = lerTrajetoria(aplicar("acum12", ipca, "Var % mensal", "Mensal"), true, "Mensal")!;
     expect(l.ultimo.data).toBe("2026-08-01");
     expect(l.curto!.referencia.data).toBe("2026-05-01");
