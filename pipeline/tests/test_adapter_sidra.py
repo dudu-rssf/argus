@@ -198,6 +198,7 @@ def test_espera_de_conexao_e_curta():
 @respx.mock
 def test_depois_de_falhas_seguidas_de_conexao_nao_tenta_mais_nesta_rodada():
     rota = respx.get(url__regex=r".*/agregados/.*").mock(side_effect=httpx.ConnectTimeout("sem resposta"))
+    respx.get(url__regex=r"https://apisidra.*").mock(side_effect=httpx.ConnectTimeout("sem resposta"))
     for _ in range(sidra.FALHAS_PARA_DESISTIR):
         with pytest.raises(AdapterError, match="indisponível"):
             sidra.fetch("t8888/v12607", date(2026, 1, 1))
@@ -210,6 +211,7 @@ def test_depois_de_falhas_seguidas_de_conexao_nao_tenta_mais_nesta_rodada():
 @respx.mock
 def test_uma_resposta_boa_zera_a_contagem_de_falhas():
     respx.get(url__regex=r".*/agregados/9999/.*").mock(side_effect=httpx.ConnectError("recusado"))
+    respx.get(url__regex=r"https://apisidra.*").respond(400, text="Parâmetro inexistente")
     respx.get(url__regex=r".*/agregados/8888/metadados$").respond(text=_ler("sidra_meta_8888.json"))
     respx.get(url__regex=r".*/agregados/8888/periodos/.*").respond(text=_ler("sidra_val_8888.json"))
     for _ in range(sidra.FALHAS_PARA_DESISTIR - 1):
@@ -228,3 +230,82 @@ def test_erro_http_nao_conta_como_fora_do_ar():
     for _ in range(sidra.FALHAS_PARA_DESISTIR + 1):
         with pytest.raises(AdapterError, match="500"):
             sidra.fetch("t8888/v12607", date(2026, 1, 1))
+
+
+# ---------- endereço reserva do IBGE (apisidra), decisão 0014 ----------
+
+@pytest.mark.parametrize("codigo, v3, reserva, freq", [
+    ("t8888/v12606,12607/c544=129314,129315", "sidra_val_8888.json", "apisidra_8888.json", "mensal"),
+    ("t1621/v584/c11255=90707,90687", "sidra_val_1621.json", "apisidra_1621.json", "trimestral"),
+    ("t6390/v5933,5929", "sidra_val_6390.json", "apisidra_6390.json", "trimestral móvel"),
+    ("t7060/v63,66/c315=7169,7170,7173", "sidra_val_7060.json", "apisidra_7060.json", "mensal"),
+])
+def test_reserva_devolve_exatamente_o_mesmo_que_o_principal(codigo, v3, reserva, freq):
+    """Respostas reais dos dois endereços para os mesmos períodos: valores, datas e sub-séries idênticos."""
+    spec = sidra.parse_codigo(codigo)
+    obs_reserva, freq_reserva = sidra.parse_reserva(_ler(reserva), spec)
+    assert freq_reserva == freq
+    assert obs_reserva == sidra.parse_valores(_ler(v3), spec, freq)
+    assert len(obs_reserva) >= 4
+
+
+def test_reserva_uma_categoria_vira_serie_simples():
+    spec = sidra.parse_codigo("t1621/v584/c11255=90707")
+    obs, freq = sidra.parse_reserva(_ler("apisidra_1621_last.json"), spec)
+    assert freq == "trimestral"
+    assert all(len(o) == 2 for o in obs)
+    assert (date(2025, 10, 1), 195.2) in obs
+
+
+def test_reserva_url_e_periodos():
+    spec = sidra.parse_codigo("t8888/v12606,12607/c544=129314,129315")
+    assert sidra.url_reserva(spec, "all") == (
+        "https://apisidra.ibge.gov.br/values/t/8888/n1/all/v/12606,12607/p/all/c544/129314,129315")
+    assert sidra.url_reserva(sidra.parse_codigo("t6390/v5933"), "last 3").endswith("/v/5933/p/last 3")
+    assert sidra.periodos_reserva(None, date(2026, 10, 15)) == "all"
+    # janela desde ago/2026 em out/2026: 4 últimos períodos cobrem mensal e trimestral
+    assert sidra.periodos_reserva(date(2026, 8, 1), date(2026, 10, 15)) == "last 4"
+
+
+def test_reserva_resposta_estranha_vira_adapter_error():
+    spec = sidra.parse_codigo("t8888/v12607")
+    with pytest.raises(AdapterError, match="reserva"):
+        sidra.parse_reserva(_ler("apisidra_erro.json"), spec)
+    with pytest.raises(AdapterError, match="reserva"):
+        sidra.parse_reserva("[]", spec)
+
+
+@respx.mock
+def test_principal_fora_do_ar_usa_a_reserva():
+    respx.get(url__regex=r".*/agregados/.*").mock(side_effect=httpx.ConnectError("recusado"))
+    rota = respx.get(url__regex=r"https://apisidra.*").respond(text=_ler("apisidra_8888.json"))
+    obs = sidra.fetch("t8888/v12606,12607/c544=129314,129315", None)
+    assert "/p/all/" in str(rota.calls.last.request.url)
+    assert obs == sidra.parse_valores(_ler("sidra_val_8888.json"),
+                                      sidra.parse_codigo("t8888/v12606,12607/c544=129314,129315"), "mensal")
+
+
+@respx.mock
+def test_reserva_respeita_a_janela_desde():
+    respx.get(url__regex=r".*/agregados/.*").mock(side_effect=httpx.ConnectError("recusado"))
+    respx.get(url__regex=r"https://apisidra.*").respond(text=_ler("apisidra_8888.json"))
+    obs = sidra.fetch("t8888/v12606,12607/c544=129314,129315", date(2026, 2, 1))
+    assert {o[0] for o in obs} == {date(2026, 2, 1), date(2026, 3, 1)}
+
+
+@respx.mock
+def test_principal_com_erro_http_nao_usa_a_reserva():
+    """HTTP 500 é resposta do IBGE: o erro é registrado, sem trocar de endereço."""
+    respx.get(url__regex=r".*/agregados/8888/metadados$").respond(500, text="erro")
+    rota = respx.get(url__regex=r"https://apisidra.*").respond(text=_ler("apisidra_8888.json"))
+    with pytest.raises(AdapterError, match="500"):
+        sidra.fetch("t8888/v12607", None)
+    assert rota.call_count == 0
+
+
+@respx.mock
+def test_os_dois_fora_do_ar_vira_um_erro_com_os_dois_motivos():
+    respx.get(url__regex=r".*/agregados/.*").mock(side_effect=httpx.ConnectError("recusado"))
+    respx.get(url__regex=r"https://apisidra.*").respond(400, text=_ler("apisidra_erro.json"))
+    with pytest.raises(AdapterError, match=r"servicodados.*reserva.*99999"):
+        sidra.fetch("t8888/v99999", None)
