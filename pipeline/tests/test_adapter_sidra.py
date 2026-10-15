@@ -2,6 +2,7 @@
 from datetime import date
 from pathlib import Path
 
+import httpx
 import pytest
 import respx
 
@@ -177,3 +178,53 @@ def test_metadados():
     respx.get(url__regex=r".*/agregados/7060/metadados$").respond(text=_ler("sidra_meta_7060.json"))
     meta = sidra.metadados("7060")
     assert meta["classificacoes"][0]["id"] == 315
+
+
+# ---------- IBGE fora do ar: desistir rápido ----------
+
+@pytest.fixture(autouse=True)
+def _circuito_limpo():
+    sidra.reiniciar_circuito()
+    yield
+    sidra.reiniciar_circuito()
+
+
+def test_espera_de_conexao_e_curta():
+    """Se o IBGE não aceita conexão, desistimos em segundos (a leitura de respostas grandes continua longa)."""
+    assert sidra.TIMEOUT.connect <= 15
+    assert sidra.TIMEOUT.read >= 120
+
+
+@respx.mock
+def test_depois_de_falhas_seguidas_de_conexao_nao_tenta_mais_nesta_rodada():
+    rota = respx.get(url__regex=r".*/agregados/.*").mock(side_effect=httpx.ConnectTimeout("sem resposta"))
+    for _ in range(sidra.FALHAS_PARA_DESISTIR):
+        with pytest.raises(AdapterError, match="indisponível"):
+            sidra.fetch("t8888/v12607", date(2026, 1, 1))
+    pedidos = rota.call_count
+    with pytest.raises(AdapterError, match="não foi consultado nesta rodada"):
+        sidra.fetch("t8888/v12607", date(2026, 1, 1))
+    assert rota.call_count == pedidos
+
+
+@respx.mock
+def test_uma_resposta_boa_zera_a_contagem_de_falhas():
+    respx.get(url__regex=r".*/agregados/9999/.*").mock(side_effect=httpx.ConnectError("recusado"))
+    respx.get(url__regex=r".*/agregados/8888/metadados$").respond(text=_ler("sidra_meta_8888.json"))
+    respx.get(url__regex=r".*/agregados/8888/periodos/.*").respond(text=_ler("sidra_val_8888.json"))
+    for _ in range(sidra.FALHAS_PARA_DESISTIR - 1):
+        with pytest.raises(AdapterError):
+            sidra.fetch("t9999/v1", date(2026, 1, 1))
+    sidra.fetch("t8888/v12606,12607/c544=129314,129315", date(2026, 1, 1))
+    for _ in range(sidra.FALHAS_PARA_DESISTIR - 1):
+        with pytest.raises(AdapterError, match="indisponível"):
+            sidra.fetch("t9999/v1", date(2026, 1, 1))
+
+
+@respx.mock
+def test_erro_http_nao_conta_como_fora_do_ar():
+    """HTTP 500 é resposta do IBGE (o servidor está no ar); só falha de conexão abre o circuito."""
+    respx.get(url__regex=r".*/agregados/8888/metadados$").respond(500, text="erro")
+    for _ in range(sidra.FALHAS_PARA_DESISTIR + 1):
+        with pytest.raises(AdapterError, match="500"):
+            sidra.fetch("t8888/v12607", date(2026, 1, 1))

@@ -8,6 +8,11 @@ Sub-séries: quando o código pede mais de uma variável e/ou mais de uma catego
 cada combinação vira uma sub-série `<variável>.<categoria>` (só a parte que varia).
 Sempre Brasil (N1). Valores com marcador do IBGE ('...', '..', 'X') são ausência
 de dado e ficam de fora; '-' é zero absoluto pela convenção do IBGE.
+
+IBGE fora do ar: a conexão desiste em poucos segundos e, depois de
+`FALHAS_PARA_DESISTIR` falhas de conexão seguidas, as demais séries do SIDRA
+nem são pedidas nesta rodada (cada uma vira erro registrado). Assim uma queda do
+IBGE não estoura o tempo da coleta e não derruba as outras fontes.
 """
 from __future__ import annotations
 
@@ -23,6 +28,16 @@ from argus_pipeline.adapters.base import AdapterError, Observacao
 BASE = "https://servicodados.ibge.gov.br/api/v3/agregados"
 UA = {"User-Agent": "argus-coleta/0.1 (projeto pessoal; github.com/dudu-rssf/argus)"}
 MAX_VALORES = 40_000  # a API recusa pedidos acima de 100 mil valores; margem folgada
+TIMEOUT = httpx.Timeout(120, connect=10)  # respostas grandes demoram; conexão recusada, não
+FALHAS_PARA_DESISTIR = 3
+
+_falhas_seguidas = 0
+
+
+def reiniciar_circuito() -> None:
+    """Zera a contagem de falhas de conexão (cada rodada da coleta é um processo novo)."""
+    global _falhas_seguidas
+    _falhas_seguidas = 0
 
 _CODIGO = re.compile(r"^t(\d+)/v(\d+(?:,\d+)*)(?:/c(\d+)=(all|\d+(?:,\d+)*))?$")
 _AUSENTE = {"...", "..", "X", ""}
@@ -134,10 +149,18 @@ def parse_valores(texto: str, spec: Spec, freq: str) -> list[Observacao]:
 # ---------------------------------------------------------------- busca
 
 def _get(client: httpx.Client, url: str) -> str:
+    global _falhas_seguidas
+    if _falhas_seguidas >= FALHAS_PARA_DESISTIR:
+        raise AdapterError(f"SIDRA não foi consultado nesta rodada: {_falhas_seguidas} falhas "
+                           "de conexão seguidas (IBGE fora do ar ou inacessível)")
     try:
         r = client.get(url)
+    except httpx.TransportError as e:
+        _falhas_seguidas += 1
+        raise AdapterError(f"SIDRA indisponível ({type(e).__name__})") from e
     except httpx.HTTPError as e:
         raise AdapterError(f"SIDRA indisponível ({type(e).__name__})") from e
+    _falhas_seguidas = 0
     if r.status_code != 200:
         raise AdapterError(f"SIDRA HTTP {r.status_code}: {r.text[:200]}")
     return r.text
@@ -172,13 +195,13 @@ def _metadados(client: httpx.Client, tabela: str) -> dict:
 
 def metadados(tabela: str) -> dict:
     """Metadados oficiais da tabela (variáveis, classificações, categorias e níveis)."""
-    with httpx.Client(timeout=120, headers=UA, follow_redirects=True) as client:
+    with httpx.Client(timeout=TIMEOUT, headers=UA, follow_redirects=True) as client:
         return _metadados(client, tabela)
 
 
 def fetch(codigo: str, desde: date | None) -> list[Observacao]:
     spec = parse_codigo(codigo)
-    with httpx.Client(timeout=120, headers=UA, follow_redirects=True) as client:
+    with httpx.Client(timeout=TIMEOUT, headers=UA, follow_redirects=True) as client:
         meta = _metadados(client, spec.tabela)
         try:
             per = meta["periodicidade"]
