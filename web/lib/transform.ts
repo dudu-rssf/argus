@@ -50,7 +50,7 @@ export function transformacoesValidas(tipo: TipoSerie, frequencia: string): IdTr
     case "Var % mensal":
       return ["nivel", "acum3", "acum6", "acum12", "anual3", "anual6"];
     case "Taxa":
-      return ["nivel", "dpp1", "dpp3", "dpp12"];
+      return trimestral ? ["nivel", "dpp3", "dpp12"] : ["nivel", "dpp1", "dpp3", "dpp12"]; // trimestral: não há mês anterior
     case "Fluxo":
       return ["nivel", "soma3", "soma12", "yoy"];
     case "Estoque":

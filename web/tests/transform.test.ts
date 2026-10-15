@@ -77,6 +77,9 @@ describe("série anual num painel com séries mais frequentes", () => {
     const datas = ["2022-12-01", "2023-01-01", "2023-06-01", "2023-12-01", "2024-03-01", "2025-01-01"];
     expect(valoresNasDatas(meta, datas, "Anual")).toEqual([null, 3.25, 3.25, 3.25, 3, null]);
   });
+  it("taxa trimestral não oferece Δ de 1 mês", () => {
+    expect(transformacoesValidas("Taxa", "Trimestral")).toEqual(["nivel", "dpp3", "dpp12"]);
+  });
   it("série anual só tem nível", () => {
     expect(transformacoesValidas("Taxa", "Anual")).toEqual(["nivel"]);
   });
