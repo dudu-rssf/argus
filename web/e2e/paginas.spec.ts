@@ -42,6 +42,11 @@ test("aba Política Monetária mostra o comunicado do Copom", async ({ page }) =
   await page.screenshot({ path: "test-results/politica.png", fullPage: true });
 });
 
+test("Inflação: IPCA 12 meses e meta em degrau", async ({ page }) => {
+  await page.getByRole("link", { name: "Inflação" }).click();
+  await expect(page.getByRole("heading", { name: "IPCA em 12 meses e meta para a inflação" })).toBeVisible();
+});
+
 test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async ({ page }) => {
   await page.getByRole("link", { name: "Análises" }).click();
   await expect(page.getByRole("heading", { name: "Ciclos de política monetária" })).toBeVisible();
@@ -51,8 +56,16 @@ test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async (
   await expect(page.getByRole("heading", { name: "Postura monetária" })).toBeVisible();
   // Com só Selic e IPCA na base de teste, compara por essas duas
   for (const v of ["Expectativa Focus 12 meses", "Juro real ex-ante", "IBC-Br (var. anual)", "Dólar (var. anual)"])
-    await page.getByLabel(v).uncheck();
+    await page.getByRole("checkbox", { name: v }).uncheck();
   await expect(page.getByText("O que aconteceu nos 12 meses seguintes")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Hiato do produto, regra de Taylor e curva de Phillips" })).toBeVisible();
+  await expect(page.getByText(/Hiato no 2º tri 2026/)).toBeVisible();
+  await expect(page.getByText(/contra a regra de Taylor/)).toBeVisible();
+  await page.getByRole("img", { name: "Gráfico: Selic efetiva e regra de Taylor" }).waitFor();
+  await page.getByRole("img", { name: "Gráfico: Inflação e desocupação" }).waitFor();
+  await page.getByRole("img", { name: "Gráfico: Inflação acima da meta e hiato" }).waitFor();
+  await page.getByText(/As 16 especificações em/).click();
+  await expect(page.getByRole("cell", { name: "Focus 12m · a = 1 · b = 1 · Hamilton" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Copom por diretor" })).toBeVisible();
   await expect(page.getByText("Por uma redução de 0,50 ponto percentual:")).toBeVisible();
   await page.screenshot({ path: "test-results/analises.png", fullPage: true });

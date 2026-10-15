@@ -1,7 +1,9 @@
 /**
  * Monta a análise de ciclos a partir das séries do banco (servidor). A página só exibe.
  */
-import { depois, episodios, medir, trajetoria, type DefMetrica, type Episodio, type ValorMetrica } from "./ciclos";
+import { depois, episodios, medir, trajetoria, valorAte, type DefMetrica, type Episodio, type ValorMetrica } from "./ciclos";
+import { hiatos, type LinhaHiato } from "./hiato";
+import { faixaTaylor, type LinhaTaylor } from "./taylor";
 import { painelMensal, variacaoAnual, type LinhaMes, type Variavel } from "./analogos";
 import { aplicar, type Ponto } from "./transform";
 
@@ -94,4 +96,53 @@ export function painelAnalogos(dados: Record<string, Ponto[]>, hoje: string): Li
     const antes = porMes.get(`${Math.floor(total / 12)}-${String((total % 12) + 1).padStart(2, "0")}`);
     return { ...l, valores: { ...l.valores, selicD6: l.valores.selic != null && antes != null ? l.valores.selic - antes : null } };
   });
+}
+
+// ---------------------------------------------------------------- hiato, Taylor e Phillips (item 5)
+
+export const SERIES_ITEM5 = {
+  pibSA: "BR-001:t1621/v584/c11255=90707",
+  meta: "BR-134:13521",
+} as const;
+
+export type PontoDispersao = { data: string; x: number; y: number };
+
+export type AnaliseItem5 = {
+  hiatos: LinhaHiato[];
+  faixa: LinhaTaylor[];
+  phillipsDesocupacao: PontoDispersao[];
+  phillipsHiato: PontoDispersao[];
+};
+
+const fimDoTrimestre = (data: string) => {
+  const [a, m] = data.split("-").map(Number);
+  return new Date(Date.UTC(a, m + 2, 0)).toISOString().slice(0, 10);
+};
+
+export function analiseItem5(dados: Record<string, Ponto[]>, hoje: string): AnaliseItem5 {
+  const s = (k: keyof typeof SERIES_CICLOS) => dados[SERIES_CICLOS[k]] ?? [];
+  const pib = dados[SERIES_ITEM5.pibSA] ?? [];
+  const meta = dados[SERIES_ITEM5.meta] ?? [];
+  const tabela = pib.length ? hiatos(pib) : [];
+  const serieDe = (k: "hp" | "hamilton") =>
+    tabela.filter((l) => l[k] !== null).map((l) => ({ data: l.data, valor: l[k] as number }));
+  const hiatoHP = serieDe("hp");
+
+  const faixa = faixaTaylor({
+    selic: s("selic"), ipca12: s("ipca12"), focus12: s("focus12"), neutro: s("neutro"), meta,
+    hiatoHP, hiatoHamilton: serieDe("hamilton"),
+  }, "2001-01", hoje);
+  const primeiro = faixa.findIndex((l) => l.mediana !== null);
+
+  const phillipsDesocupacao = s("desocupacao").flatMap((d) => {
+    const pi = valorAte(s("ipca12"), d.data, 40);
+    return pi && pi.data === d.data ? [{ data: d.data, x: d.valor, y: pi.valor }] : [];
+  });
+  const phillipsHiato = hiatoHP.flatMap((h) => {
+    const fim = fimDoTrimestre(h.data);
+    const pi = valorAte(s("ipca12"), fim, 40), m = valorAte(meta, fim, 400);
+    return pi && m ? [{ data: h.data, x: h.valor, y: pi.valor - m.valor }] : [];
+  });
+
+  return { hiatos: tabela, faixa: primeiro < 0 ? [] : faixa.slice(primeiro), phillipsDesocupacao, phillipsHiato };
 }
