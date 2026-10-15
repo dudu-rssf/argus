@@ -1,7 +1,9 @@
 """Grava respostas reais das fontes em tests/fixtures/real/ (uma amostra por fonte).
 
-Serve para dois fins: (1) inspecionar o formato verdadeiro de cada resposta e
-(2) usar como fixtures nos testes de contrato (CLAUDE.md, regra 2).
+Serve para inspecionar o formato verdadeiro de cada resposta a cada validação.
+Grava em tests/fixtures/amostras-validador/, nunca em tests/fixtures/real/: as
+fixtures dos testes são gravadas de propósito (workflow Gravar fixtures). Antes,
+uma queda do IBGE sobrescreveu uma fixture com a mensagem de erro e quebrou o CI.
 
 Uso: uv run python -m argus_pipeline.validate.capture
 """
@@ -20,7 +22,7 @@ from argus_pipeline.validate.checks import (
     _SOAP_BODY,
 )
 
-DESTINO = Path(__file__).resolve().parents[2] / "tests" / "fixtures" / "real"
+DESTINO = Path(__file__).resolve().parents[2] / "tests" / "fixtures" / "amostras-validador"
 
 
 def main() -> None:

@@ -233,3 +233,9 @@ def test_redigir_cobre_formatos_comuns():
     t = "url?series_id=X&api_key=abc123&file_type=json e apikey=zzz"
     assert "abc123" not in redigir(t) and "zzz" not in redigir(t)
     assert "series_id=X" in redigir(t)
+
+
+def test_captura_do_validador_nao_sobrescreve_fixtures_dos_testes():
+    from argus_pipeline.validate import capture
+    assert capture.DESTINO.name == "amostras-validador"
+    assert capture.DESTINO != REAL

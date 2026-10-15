@@ -29,7 +29,7 @@ jobs:
             echo "== $h"; getent hosts "$h" || echo "DNS falhou"
           done
           curl -sS -m 20 -o /dev/null -w "api.bcb.gov.br HTTP %{http_code}\n" "https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/1?formato=json" || true
-      - name: Gravar respostas reais (fixtures)
+      - name: Gravar amostras das respostas (inspeção; não são fixtures de teste)
         run: uv run python -m argus_pipeline.validate.capture
       - name: Rodar validador
         env:
@@ -42,6 +42,6 @@ jobs:
           fi
           git config user.name "argus-bot"
           git config user.email "argus-bot@users.noreply.github.com"
-          git add ../docs/catalogo/validacao.md ../docs/catalogo/validacao.json tests/fixtures/real
+          git add ../docs/catalogo/validacao.md ../docs/catalogo/validacao.json tests/fixtures/amostras-validador
           git diff --cached --quiet || git commit -m "Relatório de validação do catálogo"
           git pull --rebase -q && git push
