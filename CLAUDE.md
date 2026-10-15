@@ -28,6 +28,7 @@ O dono do projeto é iniciante em programação. Explique o que cada mudança fa
 6. Datas sempre ISO (`AAAA-MM-DD`), texto sempre UTF-8, números como número (nunca string com vírgula).
 7. Design tokens só em `web/styles/tokens`; nenhuma cor solta em componente.
 8. Sem dependência nova sem perguntar.
+9. Todo gráfico ou tabela que mostra uma conta (transformação, série derivada, análise) tem botão "Fórmula" com a conta, as variáveis com fonte e código, a metodologia e as limitações. Os textos ficam em `web/lib/formulas.ts`; os testes quebram se faltar fórmula (decisão 0015).
 
 ## Segurança
 
