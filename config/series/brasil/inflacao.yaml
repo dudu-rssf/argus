@@ -378,3 +378,16 @@ series:
   status: Curado
   observacao: Tabela própria; meta contínua desde 2025
   acesso: manual
+- id: BR-134
+  bloco: Cheio
+  indicador: Meta para a inflação (CMN)
+  fonte: BCB SGS
+  codigo: '13521'
+  frequencia: Anual
+  unidade: '%'
+  tipo: Taxa
+  fase: MVP
+  status: Verificado
+  observacao: Título oficial 'Meta para a inflação' conferido em 2026-10-15; valor central do ano (o intervalo de tolerância
+    não está no SGS). Insumo da regra de Taylor e do desvio da meta
+  acesso: sgs
