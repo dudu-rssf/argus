@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   acumuladoEncadeado, acumuladoIndice, aplicar, anualizado, deltaPP, somaMovel,
-  transformacoesValidas, variacaoPct, type Ponto,
+  transformacoesValidas, valoresNasDatas, variacaoPct, type Ponto,
 } from "@/lib/transform";
 
 const m = (ym: string, valor: number): Ponto => ({ data: `${ym}-01`, valor });
@@ -68,5 +68,20 @@ describe("transformações válidas por tipo", () => {
     const t = transformacoesValidas("Índice", "Trimestral");
     expect(t).toContain("qoq");
     expect(t).not.toContain("mom");
+  });
+});
+
+describe("série anual num painel com séries mais frequentes", () => {
+  const meta = [{ data: "2023-01-01", valor: 3.25 }, { data: "2024-01-01", valor: 3 }];
+  it("vale o ano inteiro (degrau), sem interpolar entre anos", () => {
+    const datas = ["2022-12-01", "2023-01-01", "2023-06-01", "2023-12-01", "2024-03-01", "2025-01-01"];
+    expect(valoresNasDatas(meta, datas, "Anual")).toEqual([null, 3.25, 3.25, 3.25, 3, null]);
+  });
+  it("série anual só tem nível", () => {
+    expect(transformacoesValidas("Taxa", "Anual")).toEqual(["nivel"]);
+  });
+  it("séries não anuais só aparecem na própria data", () => {
+    const ipca = [{ data: "2023-01-01", valor: 5.77 }];
+    expect(valoresNasDatas(ipca, ["2023-01-01", "2023-02-01"], "Mensal")).toEqual([5.77, null]);
   });
 });

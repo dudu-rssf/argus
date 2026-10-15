@@ -14,7 +14,7 @@ import type { Painel } from "@/lib/config";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import { lerTrajetoria } from "@/lib/leitura";
 import { FaixaLeitura } from "./faixa-leitura";
-import { aplicar, rotulo, transformacoesValidas, type IdTransformacao, type Ponto } from "@/lib/transform";
+import { aplicar, rotulo, transformacoesValidas, valoresNasDatas, type IdTransformacao, type Ponto } from "@/lib/transform";
 
 echarts.use([LineChart, BarChart, GridComponent, TooltipComponent, DataZoomComponent, CanvasRenderer]);
 
@@ -23,7 +23,7 @@ const HORIZONTES = [
 ] as const;
 type IdHorizonte = (typeof HORIZONTES)[number]["id"];
 
-type Linha = { rotulo: string; cor: string; tipo: "line" | "bar"; pontos: Ponto[] };
+type Linha = { rotulo: string; cor: string; tipo: "line" | "bar"; pontos: Ponto[]; frequencia: string };
 
 function cssVar(nome: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(nome).trim();
@@ -59,14 +59,14 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
       const s = painel.series[0];
       const base = dados[s.dado] ?? [];
       return [
-        { rotulo: `${s.rotulo}: ${rotulo(painel.combinado.barras, s.tipo).toLowerCase()}`, cor: cores[1], tipo: "bar",
+        { rotulo: `${s.rotulo}: ${rotulo(painel.combinado.barras, s.tipo).toLowerCase()}`, cor: cores[1], tipo: "bar", frequencia: s.frequencia,
           pontos: aplicar(painel.combinado.barras, base, s.tipo, s.frequencia) },
-        { rotulo: `${s.rotulo}: ${rotulo(painel.combinado.linha, s.tipo).toLowerCase()}`, cor: cores[0], tipo: "line",
+        { rotulo: `${s.rotulo}: ${rotulo(painel.combinado.linha, s.tipo).toLowerCase()}`, cor: cores[0], tipo: "line", frequencia: s.frequencia,
           pontos: aplicar(painel.combinado.linha, base, s.tipo, s.frequencia) },
       ];
     }
     return painel.series.map((s, i) => ({
-      rotulo: s.rotulo, cor: cores[i % cores.length], tipo: "line",
+      rotulo: s.rotulo, cor: cores[i % cores.length], tipo: "line", frequencia: s.frequencia,
       pontos: aplicar(transf, dados[s.dado] ?? [], s.tipo, s.frequencia),
     }));
   }, [painel, dados, transf]);
@@ -74,7 +74,11 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
   const fim = linhas.flatMap((l) => l.pontos.map((p) => p.data)).sort().at(-1) ?? "";
   const inicio = inicioDoHorizonte(fim, HORIZONTES.find((h) => h.id === horizonte)!.anos);
   const visiveis = useMemo(
-    () => linhas.map((l) => ({ ...l, pontos: l.pontos.filter((p) => p.data >= inicio) })), [linhas, inicio]);
+    () => linhas.map((l) => ({
+      ...l,
+      // série anual: o ano em que o horizonte começa também entra (vale o ano todo)
+      pontos: l.pontos.filter((p) => (/^anual/i.test(l.frequencia) ? p.data.slice(0, 4) >= inicio.slice(0, 4) : p.data >= inicio)),
+    })), [linhas, inicio]);
   const casas = casasDecimais(painel.combinado ? "mom" : transf, painel.series[0].unidade);
   const vazio = visiveis.every((l) => l.pontos.length === 0);
 
@@ -82,7 +86,9 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
     if (!ref.current || tabela || vazio) return;
     const g = grafico.current ?? echarts.init(ref.current, undefined, { renderer: "canvas" });
     grafico.current = g;
-    const datas = [...new Set(visiveis.flatMap((l) => l.pontos.map((p) => p.data)))].sort();
+    // Eixo pelas séries não anuais (a anual vale o ano inteiro e só se encaixa nelas).
+    const doEixo = visiveis.some((l) => !/^anual/i.test(l.frequencia)) ? visiveis.filter((l) => !/^anual/i.test(l.frequencia)) : visiveis;
+    const datas = [...new Set(doEixo.flatMap((l) => l.pontos.map((p) => p.data)))].sort();
     const texto2 = cssVar("--cor-texto-2");
     g.setOption({
       animation: false,
@@ -107,10 +113,9 @@ export function PainelGrafico({ painel, dados }: { painel: Painel; dados: Record
       },
       dataZoom: [{ type: "inside" }],
       series: visiveis.map((l) => {
-        const mapa = new Map(l.pontos.map((p) => [p.data, p.valor]));
         return {
           name: l.rotulo, type: l.tipo, showSymbol: false, symbolSize: 8,
-          data: datas.map((d) => mapa.get(d) ?? null),
+          data: valoresNasDatas(l.pontos, datas, l.frequencia),
           connectNulls: false,
           lineStyle: { width: 2, color: cssVar(l.cor) },
           itemStyle: { color: cssVar(l.cor), borderRadius: [2, 2, 0, 0] },

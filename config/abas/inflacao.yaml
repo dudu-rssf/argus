@@ -9,6 +9,12 @@ paineis:
     series:
       - { dado: "BR-025:433", rotulo: IPCA }
 
+  - titulo: IPCA em 12 meses e meta para a inflação
+    transformacao: nivel
+    series:
+      - { dado: "BR-026:13522", rotulo: IPCA 12 meses }
+      - { dado: "BR-134:13521", rotulo: Meta (CMN) }
+
   - titulo: IPCA-15
     combinado: { barras: nivel, linha: acum12 }
     series:

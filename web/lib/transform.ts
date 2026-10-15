@@ -41,6 +41,7 @@ export function rotulo(id: IdTransformacao, tipo: TipoSerie): string {
 /** Transformações válidas por tipo de série. Trimestrais trocam MoM por QoQ. */
 export function transformacoesValidas(tipo: TipoSerie, frequencia: string): IdTransformacao[] {
   const trimestral = ehTrimestral(frequencia);
+  if (/^anual/i.test(frequencia)) return ["nivel"]; // um valor por ano: as janelas mensais não se aplicam
   switch (tipo) {
     case "Índice":
       return trimestral
@@ -203,4 +204,17 @@ export function acumuladoTrimestral(serie: Ponto[], q: number): Ponto[] {
     out.push({ data: serie[i].data, valor: (soma / somaAntes - 1) * 100 });
   }
   return out;
+}
+
+/**
+ * Valores de uma série nas datas do eixo do gráfico. Série anual (ex.: meta de inflação,
+ * datada em 1º de janeiro) vale o ano inteiro, em degrau; as demais só na própria data.
+ */
+export function valoresNasDatas(serie: Ponto[], datas: string[], frequencia: string): (number | null)[] {
+  if (/^anual/i.test(frequencia)) {
+    const porAno = new Map(serie.map((p) => [p.data.slice(0, 4), p.valor]));
+    return datas.map((d) => porAno.get(d.slice(0, 4)) ?? null);
+  }
+  const mapa = new Map(serie.map((p) => [p.data, p.valor]));
+  return datas.map((d) => mapa.get(d) ?? null);
 }
