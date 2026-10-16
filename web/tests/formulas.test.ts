@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import gerado from "@/lib/gerado/config.json";
-import { FORMULA_FATOS, FORMULA_TRAJETORIA, FORMULAS_ANALISES, FORMULAS_CENTRAL, FORMULAS_DERIVADAS, FORMULAS_PROTOTIPOS, FORMULAS_RESUMO, formulaTransformacao } from "@/lib/formulas";
+import { FORMULA_FATOS, FORMULA_TRAJETORIA, FORMULAS_ANALISES, FORMULAS_CENTRAL, FORMULAS_DERIVADAS, FORMULAS_GERAL, FORMULAS_RESUMO, formulaTransformacao } from "@/lib/formulas";
 import { ROTULOS, transformacoesValidas, type IdTransformacao, type TipoSerie } from "@/lib/transform";
 
 const TIPOS: TipoSerie[] = ["Índice", "Var % mensal", "Taxa", "Fluxo", "Estoque", "Derivado"];
@@ -30,7 +30,7 @@ describe("toda conta mostrada tem fórmula (decisão 0015)", () => {
   });
 
   it("fórmulas das análises, da Central e da trajetória completas", () => {
-    for (const [id, f] of Object.entries({ ...FORMULAS_ANALISES, ...FORMULAS_CENTRAL, ...FORMULAS_RESUMO, ...FORMULAS_PROTOTIPOS, fatos: FORMULA_FATOS, trajetoria: FORMULA_TRAJETORIA })) {
+    for (const [id, f] of Object.entries({ ...FORMULAS_ANALISES, ...FORMULAS_CENTRAL, ...FORMULAS_RESUMO, ...FORMULAS_GERAL, fatos: FORMULA_FATOS, trajetoria: FORMULA_TRAJETORIA })) {
       expect(f.formula.length, id).toBeGreaterThan(0);
       expect(f.variaveis.length, id).toBeGreaterThan(0);
       expect(f.metodologia.length, id).toBeGreaterThan(0);

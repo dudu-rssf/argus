@@ -317,18 +317,55 @@ export const FORMULA_FATOS: Formula = {
   limitacoes: ["Todas as medidas usam a mesma régua, então o texto pode soar repetitivo."],
 };
 
-export const FORMULAS_PROTOTIPOS = {
-  relevancia: {
-    titulo: "Ordem do briefing",
-    formula: ["Relevância = maior entre: |Δ3| / mediana dos |Δ3| em 10 anos; sequência / 3; anos do \"maior/menor desde\" / 2"],
-    variaveis: ["Os mesmos fatos das frases de leitura"],
-    metodologia: ["As 5 medidas com maior relevância aparecem primeiro. Um movimento de 3 meses duas vezes maior que o típico vale tanto quanto um \"menor desde\" de 4 anos."],
+
+// ---------------------------------------------------------------- seção Geral das abas (Fase 6d)
+
+export const FORMULAS_GERAL = {
+  relogio: {
+    titulo: "Relógio do ciclo",
+    formula: [
+      "Nível = xₜ − referência (na Inflação: IPCA 12 meses − meta do CMN do ano)",
+      "Direção = xₜ − xₜ₋₆ meses (p.p.)",
+      "Eixos padronizados: nível / desvio-padrão do nível em 10 anos; direção / desvio-padrão da direção em 10 anos",
+      "Fase: acima e subindo = aquecendo; acima e caindo = esfriando; abaixo e caindo = fria; abaixo e subindo = reaquecendo",
+    ],
+    variaveis: ["IPCA 12 meses (SGS 13522)", "Meta do CMN (SGS 13521)"],
+    metodologia: ["O ciclo costuma girar no sentido reaquecendo → aquecendo → esfriando → fria.", "Rastro: os 24 meses anteriores. \"Há N meses\": meses seguidos na fase atual."],
+    limitacoes: ["Descreve onde o dado está; não prevê a próxima fase. A direção de 6 meses pode discordar da de 3 meses (ver checklist)."],
   },
-  mapa: {
-    titulo: "Mapa de inflação",
-    formula: ["Eixo horizontal: xₜ − meta do ano (p.p.)", "Eixo vertical: Δ3 = xₜ − xₜ₋₃ meses (p.p.)", "Rastro: os mesmos dois números nos 6 meses anteriores"],
-    variaveis: ["Cada ponto é uma medida de inflação em 12 meses (IPCA, aberturas, núcleos, Focus)", "Meta: SGS 13521"],
-    metodologia: ["Quadrantes com nomes neutros: acima ou abaixo da meta, subindo ou caindo em 3 meses.", "Focus é diário: usa o último dado de cada mês."],
-    limitacoes: ["Comparar uma abertura (ex.: alimentos) com a meta é só uma régua comum; a meta vale para o IPCA cheio."],
+  checklist: {
+    titulo: "Checklist sim/não",
+    formula: [
+      "Acima da meta: IPCA 12m > meta do ano; \"há N meses\" = meses seguidos acima",
+      "Acelerando: Sim se o IPCA 12m subiu em 3 e em 6 meses; Não se não subiu em nenhum; Parcial se discordam",
+      "Núcleos confirmam: direção em 3 meses de cada núcleo em 12 meses (EX0, EX3, MS, DP, P55) igual à do IPCA: todos = Sim, nenhum = Não, alguns = Parcial",
+      "Serviços cedendo: serviços subjacentes em 12 meses caiu em 3 meses",
+      "Alta espalhada: difusão média dos últimos 3 meses > média de 10 anos",
+      "Expectativas acima da meta: Focus 12 meses > meta do ano",
+    ],
+    variaveis: ["SGS 13522, 13521, 11427, 27839, 4466, 16122, 28750, 29683, 21379 e Focus (BCB Olinda)"],
+    metodologia: ["As respostas são fatos sobre os dados, não julgamento (decisão 0017).", "Acumulados em 12 meses são encadeados a partir das variações mensais."],
+  },
+  cabo: {
+    titulo: "Cabo de guerra: contribuição por grupo",
+    formula: [
+      "Contribuição do grupo no mês = peso do grupo no mês × variação do grupo no mês / 100",
+      "Contribuição em 12 meses = soma das 12 contribuições mensais",
+      "O que mudou = contribuição em 12 meses hoje − a de 3 meses antes",
+    ],
+    variaveis: ["Variação (v63) e peso (v66) dos 9 grupos do IPCA, IBGE SIDRA t7060 (desde 2020)"],
+    metodologia: ["A soma dos 9 grupos num mês bate com o IPCA do mês (diferença máxima de 0,007 p.p. desde 2020, por arredondamento)."],
+    limitacoes: ["Em 12 meses a soma é aditiva e o IPCA oficial é encadeado (composto): a diferença aparece na página."],
+  },
+  parecidos: {
+    titulo: "Períodos parecidos",
+    formula: [
+      "zᵥ,ₘ = (xᵥ,ₘ − média de v) / desvio-padrão de v, desde 2002",
+      "Distância d(m) = √[ Σᵥ (zᵥ,ₘ − zᵥ,hoje)² / nº de variáveis ]; semelhança = máx(0; 1 − d/2) × 100%",
+      "Depois = valor 12 meses após o mês parecido",
+    ],
+    variaveis: ["IPCA 12m, média dos núcleos em 12m, serviços em 12m, Focus 12m e Selic"],
+    metodologia: ["Os 5 meses mais parecidos, fora dos últimos 24 meses e a pelo menos 12 meses um do outro (mesmo motor da aba Análises)."],
+    limitacoes: ["São poucos casos: é contexto histórico, não previsão."],
   },
 } satisfies Record<string, Formula>;
