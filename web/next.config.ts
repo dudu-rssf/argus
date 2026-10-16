@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const config: NextConfig = {
   poweredByHeader: false,
+  // Protótipos da Fase 6c foram removidos; o formato novo está na própria aba Inflação.
+  async redirects() {
+    return [{ source: "/prototipos/:modelo*", destination: "/aba/inflacao", permanent: false }];
+  },
   async headers() {
     return [{
       source: "/:path*",

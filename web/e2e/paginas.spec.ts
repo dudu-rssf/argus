@@ -165,3 +165,10 @@ test("Inflação abre na seção Geral: fase do ciclo, perguntas, contribuiçõe
   await page.getByRole("navigation", { name: "Seção da aba" }).getByRole("link", { name: "Todos os dados" }).click();
   await expect(page.getByRole("article", { name: "Resumo: Inflação" })).toBeVisible();
 });
+
+test("endereços antigos dos protótipos levam à Inflação; página inexistente tem 404 do Argus", async ({ page }) => {
+  await page.goto(SITE + "/prototipos/d");
+  await expect(page).toHaveURL(SITE + "/aba/inflacao");
+  await page.goto(SITE + "/nao-existe");
+  await expect(page.getByRole("heading", { name: /Esta página não existe/ })).toBeVisible();
+});
