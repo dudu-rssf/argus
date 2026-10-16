@@ -1,6 +1,6 @@
 # Fase 6c — Abas mais digeridas: quatro protótipos na Inflação
 
-**Status:** protótipos no ar (2026-10-15) · aguardando a escolha do dono. O formato escolhido é replicado nas outras abas e na Central.
+**Status:** encerrada sem escolha (2026-10-15). O dono não aprovou nenhum dos quatro; substituída pela Fase 6d (seções Geral e Dados). Os protótipos foram removidos do site.
 
 ## Base comum
 - **Fatos por regra** (`web/lib/fatos.ts`, testado), calculados para cada medida:

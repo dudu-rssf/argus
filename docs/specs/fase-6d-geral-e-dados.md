@@ -1,6 +1,6 @@
 # Fase 6d — Cada aba em duas seções: Geral e Dados
 
-**Status:** em andamento (2026-10-15, modo delegado). Começa pela Inflação e depois é replicada nas outras abas. Os protótipos da 6c saem do menu (o dono não aprovou nenhum).
+**Status:** Inflação no ar (2026-10-15), aguardando o retorno do dono antes de replicar nas outras abas. Os protótipos da 6c saíram do menu (o dono não aprovou nenhum).
 
 ## Pedido do dono
 - **Geral:** tudo o que preciso saber para formar opinião macro e montar tese do zero, sem estar atualizado. Intuitivo, informativo e analítico.
