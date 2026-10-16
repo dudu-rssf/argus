@@ -150,3 +150,25 @@ test("aba com resumo, índice, MoM/ToT/YoY, horizonte da aba, tela cheia e busca
   await expect(page).toHaveURL(/\/analises#taylor$/);
   await page.screenshot({ path: "test-results/apos-busca.png" });
 });
+
+test("protótipos da Inflação: os quatro formatos abrem com frases e gráficos", async ({ page }) => {
+  await page.getByRole("navigation", { name: "Abas" }).getByRole("link", { name: "A. Perguntas" }).click();
+  await expect(page.getByRole("heading", { name: "A inflação está convergindo para a meta?" })).toBeVisible();
+  await expect(page.getByText(/IPCA 12 meses em 4,22%: caiu/).first()).toBeVisible();
+  await page.screenshot({ path: "test-results/prototipo-a.png", fullPage: true });
+
+  await page.getByRole("navigation", { name: "Outros protótipos" }).getByRole("link", { name: "B. Sinais" }).click();
+  await expect(page.getByRole("cell", { name: "Serviços subjacentes" })).toBeVisible();
+  await page.getByRole("button", { name: "IPCA 12 meses" }).click();
+  await expect(page.getByRole("img", { name: "Gráfico: IPCA 12 meses" })).toBeVisible();
+  await page.screenshot({ path: "test-results/prototipo-b.png", fullPage: true });
+
+  await page.getByRole("navigation", { name: "Outros protótipos" }).getByRole("link", { name: "C. Briefing" }).click();
+  await expect(page.getByText("O que mais se moveu").first()).toBeVisible();
+  await page.screenshot({ path: "test-results/prototipo-c.png", fullPage: true });
+
+  await page.getByRole("navigation", { name: "Outros protótipos" }).getByRole("link", { name: "D. Mapa" }).click();
+  await page.getByRole("img", { name: "Gráfico: Mapa da inflação" }).waitFor();
+  await expect(page.getByRole("region", { name: "Acima da meta e caindo" })).toBeVisible();
+  await page.screenshot({ path: "test-results/prototipo-d.png", fullPage: true });
+});
