@@ -9,7 +9,7 @@ export type Ponto = { data: string; valor: number }; // data ISO AAAA-MM-DD
 export type TipoSerie = "Índice" | "Var % mensal" | "Taxa" | "Fluxo" | "Estoque" | "Derivado";
 
 export type IdTransformacao =
-  | "nivel" | "mom" | "qoq" | "yoy"
+  | "nivel" | "mom" | "qoq" | "tot" | "yoy"
   | "acum3" | "acum6" | "acum12"
   | "anual3" | "anual6"
   | "dpp1" | "dpp3" | "dpp12"
@@ -19,6 +19,7 @@ export const ROTULOS: Record<IdTransformacao, string> = {
   nivel: "Nível",
   mom: "Var. mensal (%)",
   qoq: "Var. trimestral (%)",
+  tot: "Trimestre contra trimestre anterior (%)",
   yoy: "Var. em 12 meses (%)",
   acum3: "Acumulado 3 meses (%)",
   acum6: "Acumulado 6 meses (%)",
@@ -46,15 +47,15 @@ export function transformacoesValidas(tipo: TipoSerie, frequencia: string): IdTr
     case "Índice":
       return trimestral
         ? ["nivel", "qoq", "yoy", "acum12", "anual6"]
-        : ["nivel", "mom", "yoy", "acum3", "acum6", "acum12", "anual3", "anual6"];
+        : ["nivel", "mom", "tot", "yoy", "acum3", "acum6", "acum12", "anual3", "anual6"];
     case "Var % mensal":
       return ["nivel", "acum3", "acum6", "acum12", "anual3", "anual6"];
     case "Taxa":
       return trimestral ? ["nivel", "dpp3", "dpp12"] : ["nivel", "dpp1", "dpp3", "dpp12"]; // trimestral: não há mês anterior
     case "Fluxo":
-      return ["nivel", "soma3", "soma12", "yoy"];
+      return trimestral ? ["nivel", "qoq", "yoy"] : ["nivel", "mom", "tot", "yoy", "soma3", "soma12"];
     case "Estoque":
-      return ["nivel", "mom", "yoy"];
+      return trimestral ? ["nivel", "qoq", "yoy"] : ["nivel", "mom", "tot", "yoy"];
     default:
       return ["nivel"];
   }
@@ -174,6 +175,7 @@ export function aplicar(id: IdTransformacao, serie: Ponto[], tipo: TipoSerie, fr
     case "nivel": return serie;
     case "mom": return variacaoPct(serie, 1, frequencia);
     case "qoq": return variacaoPct(serie, 3, frequencia);
+    case "tot": return triContraTri(serie, tipo, frequencia);
     case "yoy": return variacaoPct(serie, 12, frequencia);
     case "acum3": case "acum6": case "acum12": {
       const n = Number(id.slice(4));
@@ -217,4 +219,38 @@ export function valoresNasDatas(serie: Ponto[], datas: string[], frequencia: str
   }
   const mapa = new Map(serie.map((p) => [p.data, p.valor]));
   return datas.map((d) => mapa.get(d) ?? null);
+}
+
+
+/**
+ * Trimestre contra trimestre anterior, para séries mensais: média (índice, estoque) ou
+ * soma (fluxo) dos últimos 3 meses contra os 3 meses anteriores. Exige 6 meses seguidos.
+ * Séries diárias: variação em 3 meses (não há "trimestre" de dias úteis comparável).
+ */
+export function triContraTri(serie: Ponto[], tipo: TipoSerie, frequencia = "Mensal"): Ponto[] {
+  if (ehDiaria(frequencia) || ehTrimestral(frequencia)) return variacaoPct(serie, 3, frequencia);
+  return janelas(serie, 6).map(({ fim, itens }) => {
+    const antes = itens.slice(0, 3).reduce((s, p) => s + p.valor, 0);
+    const agora = itens.slice(3).reduce((s, p) => s + p.valor, 0);
+    return { data: fim.data, valor: (agora / antes - 1) * 100 };
+  }).filter((p) => Number.isFinite(p.valor));
+}
+
+export type Atalho = "mom" | "tot" | "yoy";
+export const ROTULO_ATALHO: Record<Atalho, string> = { mom: "MoM", tot: "ToT", yoy: "YoY" };
+
+/** O equivalente de MoM, ToT e YoY para cada tipo de série (null quando não se aplica). */
+export function atalhos(tipo: TipoSerie, frequencia: string): Record<Atalho, IdTransformacao | null> {
+  const tri = ehTrimestral(frequencia);
+  if (/^anual/i.test(frequencia)) return { mom: null, tot: null, yoy: null };
+  switch (tipo) {
+    case "Índice": case "Estoque": case "Fluxo":
+      return tri ? { mom: null, tot: "qoq", yoy: "yoy" } : { mom: "mom", tot: "tot", yoy: "yoy" };
+    case "Var % mensal":
+      return { mom: "nivel", tot: "acum3", yoy: "acum12" };
+    case "Taxa":
+      return tri ? { mom: null, tot: "dpp3", yoy: "dpp12" } : { mom: "dpp1", tot: "dpp3", yoy: "dpp12" };
+    default:
+      return { mom: null, tot: null, yoy: null };
+  }
 }

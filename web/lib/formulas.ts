@@ -35,6 +35,19 @@ export function formulaTransformacao(id: IdTransformacao, tipo: TipoSerie, frequ
     case "qoq": return { ...v(3, "Variação trimestral", "Var. = (xₜ / xₜ₋k − 1) × 100"),
       metodologia: [comparacao, trimestral ? "Série trimestral: compara com o trimestre anterior." : "Compara com 3 meses antes."] };
     case "yoy": return v(12, "Variação em 12 meses", "Var. = (xₜ / xₜ₋k − 1) × 100");
+    case "tot":
+      if (diaria || trimestral) return { ...v(3, "Variação em 3 meses", "Var. = (xₜ / xₜ₋k − 1) × 100"),
+        metodologia: [comparacao, trimestral ? "Série trimestral: compara com o trimestre anterior." : "Série diária: compara com o dado de 3 meses antes."] };
+      return {
+        titulo: "Trimestre contra trimestre anterior",
+        formula: [tipo === "Fluxo"
+          ? "ToT = [(xₜ + xₜ₋₁ + xₜ₋₂) / (xₜ₋₃ + xₜ₋₄ + xₜ₋₅) − 1] × 100"
+          : "ToT = [média(xₜ, xₜ₋₁, xₜ₋₂) / média(xₜ₋₃, xₜ₋₄, xₜ₋₅) − 1] × 100"],
+        variaveis: ["xₜ: valor do mês t"],
+        metodologia: ["Compara os últimos 3 meses com os 3 meses imediatamente anteriores (trimestre móvel). Exige 6 meses seguidos.",
+          "Em série com ajuste sazonal, mostra o ritmo recente sem o ruído de um mês só."],
+        limitacoes: ["Em série sem ajuste sazonal, mistura sazonalidade com tendência; prefira a variação em 12 meses."],
+      };
     case "dpp1": case "dpp3": case "dpp12": {
       const k = n(id);
       return { ...v(k, `Diferença em ${k} ${k === 1 ? "mês" : "meses"}`, "Δ = xₜ − xₜ₋k (pontos percentuais)"),

@@ -12,7 +12,7 @@ const AQUI = dirname(fileURLToPath(import.meta.url));
 const RAIZ = join(AQUI, "..", "..");
 const TIPOS = ["Índice", "Var % mensal", "Taxa", "Fluxo", "Estoque", "Derivado"];
 const EVENTOS = ["copom_comunicado", "copom_ata"];
-const TRANSF = ["nivel", "mom", "qoq", "yoy", "acum3", "acum6", "acum12", "anual3", "anual6",
+const TRANSF = ["nivel", "mom", "qoq", "tot", "yoy", "acum3", "acum6", "acum12", "anual3", "anual6",
   "dpp1", "dpp3", "dpp12", "soma3", "soma12"];
 
 function yamls(pasta) {

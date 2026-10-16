@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   acumuladoEncadeado, acumuladoIndice, aplicar, anualizado, deltaPP, somaMovel,
-  transformacoesValidas, valoresNasDatas, variacaoPct, type Ponto,
+  atalhos, transformacoesValidas, valoresNasDatas, variacaoPct, type Ponto,
 } from "@/lib/transform";
 
 const m = (ym: string, valor: number): Ponto => ({ data: `${ym}-01`, valor });
@@ -86,5 +86,35 @@ describe("série anual num painel com séries mais frequentes", () => {
   it("séries não anuais só aparecem na própria data", () => {
     const ipca = [{ data: "2023-01-01", valor: 5.77 }];
     expect(valoresNasDatas(ipca, ["2023-01-01", "2023-02-01"], "Mensal")).toEqual([5.77, null]);
+  });
+});
+
+describe("MoM, ToT e YoY", () => {
+  const idx = (vals: number[]) => vals.map((v, i) => ({ data: `2025-${String(i + 1).padStart(2, "0")}-01`, valor: v }));
+  it("ToT de índice: média dos 3 últimos meses contra os 3 anteriores", () => {
+    const [p] = aplicar("tot", idx([100, 101, 102, 104, 105, 106]), "Índice", "Mensal");
+    expect(p.data).toBe("2025-06-01");
+    expect(p.valor).toBeCloseTo((105 / 101 - 1) * 100, 10);
+  });
+  it("ToT de fluxo: soma contra soma", () => {
+    const [p] = aplicar("tot", idx([1, 2, 3, 2, 2, 2]), "Fluxo", "Mensal");
+    expect(p.valor).toBeCloseTo((6 / 6 - 1) * 100, 10);
+  });
+  it("ToT exige 6 meses seguidos", () => {
+    const s = idx([100, 101, 102, 104, 105, 106]);
+    s.splice(2, 1);
+    expect(aplicar("tot", s, "Índice", "Mensal")).toEqual([]);
+  });
+  it("atalhos certos por tipo", () => {
+    expect(atalhos("Índice", "Mensal")).toEqual({ mom: "mom", tot: "tot", yoy: "yoy" });
+    expect(atalhos("Índice", "Trimestral")).toEqual({ mom: null, tot: "qoq", yoy: "yoy" });
+    expect(atalhos("Var % mensal", "Mensal")).toEqual({ mom: "nivel", tot: "acum3", yoy: "acum12" });
+    expect(atalhos("Taxa", "Mensal")).toEqual({ mom: "dpp1", tot: "dpp3", yoy: "dpp12" });
+    expect(atalhos("Taxa", "Anual")).toEqual({ mom: null, tot: null, yoy: null });
+  });
+  it("todo atalho é uma transformação oferecida para o tipo", () => {
+    for (const tipo of ["Índice", "Estoque", "Fluxo", "Var % mensal", "Taxa"] as const)
+      for (const f of ["Mensal", "Trimestral", "Diária"])
+        for (const t of Object.values(atalhos(tipo, f))) if (t) expect(transformacoesValidas(tipo, f), `${tipo} ${f} ${t}`).toContain(t);
   });
 });
