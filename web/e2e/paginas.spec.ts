@@ -36,7 +36,7 @@ test("saúde dos dados mostra execuções e falhas", async ({ page }) => {
 });
 
 test("aba Política Monetária mostra o comunicado do Copom", async ({ page }) => {
-  await page.getByRole("link", { name: "Política Monetária" }).click();
+  await page.goto(SITE + "/aba/politica-monetaria?ver=dados");
   await expect(page.getByText("Copom reduz a taxa Selic para 13,75% a.a.")).toBeVisible();
   await expect(page.getByText(/O ambiente externo permanece incerto/).first()).toBeVisible();
   await page.screenshot({ path: "test-results/politica.png", fullPage: true });
@@ -161,7 +161,7 @@ test("Inflação abre na seção Geral: fase do ciclo, perguntas, contribuiçõe
   await expect(page.getByText("Os núcleos confirmam a direção do IPCA?")).toBeVisible();
   await expect(page.getByText("Alimentação e bebidas").first()).toBeVisible();
   await expect(page.getByText(/se parece com 5 momentos do passado/)).toBeVisible();
-  await page.getByRole("img", { name: "Gráfico: trajetórias do IPCA nos períodos parecidos" }).waitFor();
+  await page.getByRole("img", { name: "Gráfico: trajetórias de IPCA 12 meses nos períodos parecidos" }).waitFor();
   await expect(page.getByText("Renda e mercado de trabalho").first()).toBeVisible();
   await page.screenshot({ path: "test-results/inflacao-geral.png", fullPage: true });
 
@@ -199,3 +199,31 @@ test("endereços antigos dos protótipos levam à Inflação; página inexistent
   await page.goto(SITE + "/nao-existe");
   await expect(page.getByRole("heading", { name: /Esta página não existe/ })).toBeVisible();
 });
+
+const ABAS_GERAL = [
+  { id: "atividade", nome: "Atividade", pergunta: "A atividade está acelerando?", dec: "Quem está acelerando e quem está freando" },
+  { id: "mercado-de-trabalho", nome: "Mercado de Trabalho", pergunta: "O desemprego está menor que há um ano?", dec: "De onde veio a mudança no desemprego" },
+  { id: "politica-monetaria", nome: "Política Monetária", pergunta: "A política monetária está restritiva?", dec: "O que mexeu no juro real" },
+  { id: "fiscal", nome: "Fiscal", pergunta: "A dívida bruta está subindo?", dec: "O que mudou no déficit nominal" },
+  { id: "setor-externo", nome: "Setor Externo", pergunta: "As exportações estão crescendo?", dec: "Para onde vendemos: o que mudou nas exportações" },
+  { id: "familias", nome: "Famílias", pergunta: "A inadimplência das famílias está subindo?", dec: "Quais dívidas estão crescendo" },
+];
+for (const a of ABAS_GERAL) {
+  test(`${a.nome} abre na seção Geral: relógio, perguntas com Ver mais, decomposição por prazo e parecidos`, async ({ page }) => {
+    await page.getByRole("navigation", { name: "Abas" }).getByRole("link", { name: a.nome, exact: true }).click();
+    await expect(page).toHaveURL(SITE + `/aba/${a.id}`);
+    await expect(page.getByRole("navigation", { name: "Seção da aba" }).getByRole("link", { name: "Geral" })).toHaveAttribute("aria-current", "page");
+    await page.getByRole("img", { name: "Gráfico: Relógio do ciclo" }).waitFor();
+    await expect(page.getByText("Fase atual")).toBeVisible();
+    await expect(page.getByRole("heading", { name: a.dec })).toBeVisible();
+    await expect(page.getByText(/se parece com 5 momentos do passado/)).toBeVisible();
+    await page.getByRole("img", { name: /Gráfico: trajetórias de/ }).waitFor();
+    await page.screenshot({ path: `test-results/geral-${a.id}.png`, fullPage: true });
+    await page.getByRole("button", { name: `Ver mais: ${a.pergunta}` }).click();
+    await expect(page.getByRole("dialog", { name: a.pergunta }).locator("figure").first()).toBeVisible();
+    await page.screenshot({ path: `test-results/geral-${a.id}-ver-mais.png` });
+    await page.keyboard.press("Escape");
+    await page.getByRole("button", { name: "12m", exact: true }).click();
+    await expect(page.getByText(/Mudança em 12 meses/)).toBeVisible();
+  });
+}

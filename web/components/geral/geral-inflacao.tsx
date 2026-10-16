@@ -13,7 +13,10 @@ import { Gaveta } from "@/components/gaveta";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import { FORMULAS_GERAL } from "@/lib/formulas";
 import type { GeralInflacao } from "@/lib/geral/inflacao";
+import { VARIAVEIS_PARECIDAS } from "@/lib/geral/inflacao";
 import { FASES } from "@/lib/geral/relogio";
+
+const CURTO: Record<string, string> = { ipca12: "IPCA", nucleos: "núcleos", servicos: "serviços", focus12: "Focus", selic: "Selic" };
 import type { Resposta } from "@/lib/geral/checklist";
 
 const sinal = (v: number, c = 2) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${fmtNumero(Math.abs(v), c)}`;
@@ -118,7 +121,11 @@ export function GeralInflacaoView({ g, frase }: { g: GeralInflacao; frase: strin
 
       <Bloco titulo="As outras vezes em que esteve assim" formula={FORMULAS_GERAL.parecidos}
         explica="Os 5 meses do passado mais parecidos com hoje, comparando IPCA, núcleos, serviços, expectativas e Selic ao mesmo tempo. Para cada um: o que acontecia na economia, como estavam os dados e o que veio 12 meses depois. É contexto histórico, não previsão.">
-        <Parecidos p={g.parecidos} />
+        <Parecidos d={{
+          variaveis: VARIAVEIS_PARECIDAS.map((v) => ({ ...v, curto: CURTO[v.id] })), trajetoria: { id: "ipca12", rotulo: "IPCA 12 meses", unidade: "%" },
+          atual: g.parecidos.atual, lista: g.parecidos.lista, caiu: g.parecidos.caiu, subiu: g.parecidos.subiu, mediana: g.parecidos.medianaIpca,
+          hoje: g.parecidos.hoje, desde: "2002-01",
+        }} />
       </Bloco>
     </div>
   );

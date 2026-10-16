@@ -8,7 +8,9 @@ import { aba, resolverAno, resolverPainel } from "@/lib/config";
 import { lerEventos, lerSeries, ultimasDivulgacoes } from "@/lib/db";
 import { fichaResumo, maioresMudancas } from "@/lib/resumo";
 import Link from "next/link";
+import { GeralAbaView } from "@/components/geral/geral-aba";
 import { GeralInflacaoView } from "@/components/geral/geral-inflacao";
+import { GERAIS } from "@/lib/geral/abas";
 import { calcularFatos, frase } from "@/lib/fatos";
 import ipcaGerado from "@/lib/gerado/ipca.json";
 import type { Classificacao } from "@/lib/geral/composicao";
@@ -19,7 +21,7 @@ const IPCA = { subitens: ipcaGerado.subitens, classificacao: ipcaGerado.classifi
 type Props = { params: Promise<{ id: string }>; searchParams: Promise<{ ver?: string }> };
 
 /** Abas que já têm a seção Geral (Fase 6d). As outras abrem direto nos dados. */
-const COM_GERAL = new Set(["inflacao"]);
+const COM_GERAL = new Set(["inflacao", ...Object.keys(GERAIS)]);
 
 const FONTE_EVENTOS: Record<string, string> = {
   copom_comunicado: "Banco Central do Brasil, comunicados do Copom (BR-058)",
@@ -44,13 +46,14 @@ export default async function PaginaAba({ params, searchParams }: Props) {
   const ano = Number(hoje.slice(0, 4));
   const paineis = a.paineis.map((p) => resolverPainel(p, ano));
   const resumo = a.resumo.map((r) => ({ ...r, dado: resolverAno(r.dado, ano), rotulo: resolverAno(r.rotulo, ano) }));
+  const def = GERAIS[a.id];
   const ids = ver === "geral"
-    ? idsGeralInflacao(ano)
+    ? (def ? def.ids(ano) : idsGeralInflacao(ano))
     : [...new Set([...paineis.flatMap((p) => p.series.map((s) => s.dado)), ...resumo.map((r) => r.dado)])];
   const naoDiarias = [...new Set(paineis.flatMap((p) => p.series).filter((s) => !/di[áa]ria|semanal|cont[íi]nua/i.test(s.frequencia)).map((s) => s.dado))];
   const [dados, subitens, eventos, novidades] = await Promise.all([
     lerSeries(ids),
-    ver === "geral" ? lerSeries(idsSubitens(IPCA.subitens), desdeSubitens(hoje)) : Promise.resolve({}),
+    ver === "geral" && !def ? lerSeries(idsSubitens(IPCA.subitens), desdeSubitens(hoje)) : Promise.resolve({}),
     Promise.all(paineis.map((p) => (p.eventos && ver === "dados" ? lerEventos(p.eventos, p.quantidade ?? 3) : Promise.resolve([])))),
     ver === "dados" ? ultimasDivulgacoes(naoDiarias) : Promise.resolve([]),
   ]);
@@ -68,6 +71,21 @@ export default async function PaginaAba({ params, searchParams }: Props) {
       ))}
     </nav>
   );
+
+  if (ver === "geral" && def) {
+    return (
+      <section className="flex flex-col gap-5">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight">{a.titulo}</h1>
+            {a.descricao && <p className="mt-1 max-w-2xl text-sm text-texto-3">{a.descricao}</p>}
+          </div>
+          {seletor}
+        </div>
+        <GeralAbaView g={def.montar(dados, hoje)} />
+      </section>
+    );
+  }
 
   if (ver === "geral") {
     const ipca12 = dados[SERIES_GERAL_INFLACAO.ipca12] ?? [];

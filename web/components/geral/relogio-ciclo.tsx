@@ -11,14 +11,18 @@ import { LineChart, ScatterChart } from "echarts/charts";
 import { GraphicComponent, GridComponent, TooltipComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 import { fmtData, fmtNumero } from "@/lib/formato";
-import { FASES, type Relogio } from "@/lib/geral/relogio";
+import { FASES, type Fase, type Relogio } from "@/lib/geral/relogio";
 import { comAlfa, css, tooltipBase } from "@/lib/tema-grafico";
 
 echarts.use([LineChart, ScatterChart, GridComponent, TooltipComponent, GraphicComponent, CanvasRenderer]);
 
 const NOME = Object.fromEntries(FASES.map((f) => [f.id, f.nome]));
+/** Nomes longos em duas linhas, para caber nos cantos do círculo. */
+const quebra = (t: string) => (t.length > 10 ? t.replace(/,? /, "\n") : t);
 
-export function RelogioCiclo({ relogio, rotulo, referencia }: { relogio: Relogio; rotulo: string; referencia: string }) {
+type Props = { relogio: Relogio; rotulo: string; referencia: string; nomes?: Record<Fase, string>; unidade?: string; meses?: number };
+
+export function RelogioCiclo({ relogio, rotulo, referencia, nomes = NOME as Record<Fase, string>, unidade = "%", meses = 6 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!ref.current) return;
@@ -37,14 +41,15 @@ export function RelogioCiclo({ relogio, rotulo, referencia }: { relogio: Relogio
         formatter: (p: { data: { value: number[]; i: number } }) => {
           const ponto = relogio.rastro[p.data?.i ?? -1];
           if (!ponto) return "";
-          return `<b>${fmtData(ponto.data)}</b><br/>${rotulo}: ${fmtNumero(ponto.valor)}%<br/>vs ${referencia}: ${ponto.nivel > 0 ? "+" : ""}${fmtNumero(ponto.nivel)} p.p.<br/>Δ 6 meses: ${ponto.direcao > 0 ? "+" : ""}${fmtNumero(ponto.direcao)} p.p.<br/>Fase: ${NOME[ponto.fase]}`;
+          const d = unidade === "%" ? " p.p." : unidade ? ` ${unidade}` : "";
+          return `<b>${fmtData(ponto.data)}</b><br/>${rotulo}: ${fmtNumero(ponto.valor)}${unidade === "%" ? "%" : d}<br/>vs ${referencia}: ${ponto.nivel > 0 ? "+" : ""}${fmtNumero(ponto.nivel)}${d}<br/>Δ ${meses} meses: ${ponto.direcao > 0 ? "+" : ""}${fmtNumero(ponto.direcao)}${d}<br/>Fase: ${nomes[ponto.fase]}`;
         },
       },
       graphic: [
-        { type: "text", left: "62%", top: "18%", style: { text: "Aquecendo", fill: t3, fontSize: 12 } },
-        { type: "text", left: "62%", top: "76%", style: { text: "Esfriando", fill: t3, fontSize: 12 } },
-        { type: "text", left: "16%", top: "76%", style: { text: "Fria", fill: t3, fontSize: 12 } },
-        { type: "text", left: "13%", top: "18%", style: { text: "Reaquecendo", fill: t3, fontSize: 12 } },
+        { type: "text", left: "60%", top: "18%", style: { text: quebra(nomes.aquecendo), fill: t3, fontSize: 12 } },
+        { type: "text", left: "60%", top: "76%", style: { text: quebra(nomes.esfriando), fill: t3, fontSize: 12 } },
+        { type: "text", left: "10%", top: "76%", style: { text: quebra(nomes.fria), fill: t3, fontSize: 12 } },
+        { type: "text", left: "8%", top: "18%", style: { text: quebra(nomes.reaquecendo), fill: t3, fontSize: 12 } },
         { type: "text", right: 10, top: "47%", style: { text: "acima →", fill: t3, fontSize: 10 } },
         { type: "text", left: 10, top: "47%", style: { text: "← abaixo", fill: t3, fontSize: 10 } },
         { type: "text", left: "45%", top: 6, style: { text: "↑ subindo", fill: t3, fontSize: 10 } },
@@ -69,6 +74,6 @@ export function RelogioCiclo({ relogio, rotulo, referencia }: { relogio: Relogio
     const r = () => g.resize();
     window.addEventListener("resize", r);
     return () => { window.removeEventListener("resize", r); g.dispose(); };
-  }, [relogio, rotulo, referencia]);
+  }, [relogio, rotulo, referencia, nomes, unidade, meses]);
   return <div ref={ref} className="aspect-square w-full max-w-[380px]" role="img" aria-label="Gráfico: Relógio do ciclo" />;
 }

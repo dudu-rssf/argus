@@ -17,7 +17,7 @@ echarts.use([LineChart, GridComponent, TooltipComponent, MarkLineComponent, Canv
 
 export type Trajetoria = { rotulo: string; pontos: { t: number; valor: number }[] };
 
-export function GraficoTrajetorias({ hoje, passado, rotuloHoje }: { hoje: Trajetoria["pontos"]; passado: Trajetoria[]; rotuloHoje: string }) {
+export function GraficoTrajetorias({ hoje, passado, rotuloHoje, unidade = "%", rotuloSerie = "IPCA 12 meses" }: { hoje: Trajetoria["pontos"]; passado: Trajetoria[]; rotuloHoje: string; unidade?: string; rotuloSerie?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!ref.current) return;
@@ -33,24 +33,24 @@ export function GraficoTrajetorias({ hoje, passado, rotuloHoje }: { hoje: Trajet
           const t = Math.round(Number(ps[0]?.axisValue ?? 0));
           const linhas = todas.flatMap((s) => {
             const p = s.pontos.find((x) => x.t === t);
-            return p ? [`<span style="color:${s.destaque ? ouro : neutro}">●</span> ${s.rotulo}: <b>${fmtNumero(p.valor)}%</b>`] : [];
+            return p ? [`<span style="color:${s.destaque ? ouro : neutro}">●</span> ${s.rotulo}: <b>${fmtNumero(p.valor)}${unidade}</b>`] : [];
           });
           const quando = t === 0 ? "mês parecido (hoje)" : t < 0 ? `${-t} ${t === -1 ? "mês" : "meses"} antes` : `${t} ${t === 1 ? "mês" : "meses"} depois`;
-          return `IPCA 12 meses · ${quando}<br/>${linhas.join("<br/>")}`;
+          return `${rotuloSerie} · ${quando}<br/>${linhas.join("<br/>")}`;
         },
       },
       xAxis: eixoX({ type: "value", min: -12, max: 12, interval: 3,
         axisLabel: { ...eixoX().axisLabel, formatter: (v: number) => (v === 0 ? "0" : v > 0 ? `+${v}` : `${v}`) },
         name: "meses em relação ao período parecido", nameLocation: "middle", nameGap: 24, nameTextStyle: { color: fraco, fontSize: 11 },
         axisPointer: { label: { formatter: (p: { value: number }) => `${Math.round(p.value)}` } } }),
-      yAxis: eixoY({ axisLabel: { ...eixoY().axisLabel, formatter: (v: number) => `${fmtNumero(v, 0)}%` },
-        axisPointer: { label: { formatter: (p: { value: number }) => `${fmtNumero(p.value)}%` } } }),
+      yAxis: eixoY({ axisLabel: { ...eixoY().axisLabel, formatter: (v: number) => `${fmtNumero(v, Math.abs(v) < 10 && unidade !== "%" ? 1 : 0)}${unidade}` },
+        axisPointer: { label: { formatter: (p: { value: number }) => `${fmtNumero(p.value)}${unidade}` } } }),
       series: todas.map((s, i) => ({
         name: s.rotulo, type: "line", showSymbol: false, z: s.destaque ? 10 : 2,
         data: s.pontos.map((p) => [p.t, p.valor]),
         lineStyle: { width: s.destaque ? 2.75 : 1.25, color: s.destaque ? ouro : neutro, opacity: s.destaque ? 1 : 0.6 },
         itemStyle: { color: s.destaque ? ouro : neutro },
-        endLabel: s.destaque ? etiquetaFinal(ouro, (v) => `${fmtNumero(v)}%`) : { show: true, color: neutro, fontSize: 10, formatter: () => s.rotulo, distance: 4 },
+        endLabel: s.destaque ? etiquetaFinal(ouro, (v) => `${fmtNumero(v)}${unidade}`) : { show: true, color: neutro, fontSize: 10, formatter: () => s.rotulo, distance: 4 },
         emphasis: { focus: "series", lineStyle: { width: 2.5, opacity: 1 } },
         labelLayout: { moveOverlap: "shiftY" },
         ...(i === 0 ? { markLine: { silent: true, symbol: "none", lineStyle: { color: fraco, type: "dashed", width: 1 },
@@ -60,6 +60,6 @@ export function GraficoTrajetorias({ hoje, passado, rotuloHoje }: { hoje: Trajet
     const r = () => g.resize();
     window.addEventListener("resize", r);
     return () => { window.removeEventListener("resize", r); g.dispose(); };
-  }, [hoje, passado, rotuloHoje]);
-  return <div ref={ref} className="h-80 w-full" role="img" aria-label="Gráfico: trajetórias do IPCA nos períodos parecidos" />;
+  }, [hoje, passado, rotuloHoje, unidade, rotuloSerie]);
+  return <div ref={ref} className="h-80 w-full" role="img" aria-label={`Gráfico: trajetórias de ${rotuloSerie} nos períodos parecidos`} />;
 }
