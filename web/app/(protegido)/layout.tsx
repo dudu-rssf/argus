@@ -19,6 +19,10 @@ function grupos(): GrupoMenu[] {
   return [
     { titulo: "Visão geral", itens: [{ rotulo: "Central", href: "/" }] },
     ...porGrupo.values(),
+    { titulo: "Protótipos (Inflação)", itens: [
+      { rotulo: "A. Perguntas", href: "/prototipos/a" }, { rotulo: "B. Sinais", href: "/prototipos/b" },
+      { rotulo: "C. Briefing", href: "/prototipos/c" }, { rotulo: "D. Mapa", href: "/prototipos/d" },
+    ] },
     { titulo: "Sistema", itens: [{ rotulo: "Saúde dos dados", href: "/dados" }] },
   ];
 }
@@ -32,6 +36,10 @@ function itensBusca(): ItemBusca[] {
     { titulo: "Períodos históricos parecidos com hoje", onde: "Análises", href: "/analises#analogos", termos: "análogos" },
     { titulo: "Copom por diretor", onde: "Análises", href: "/analises#copom", termos: "votos diretores" },
     { titulo: "Saúde dos dados", onde: "Sistema", href: "/dados", termos: "coleta erro" },
+    { titulo: "Inflação A. Perguntas", onde: "Protótipos", href: "/prototipos/a" },
+    { titulo: "Inflação B. Sinais", onde: "Protótipos", href: "/prototipos/b" },
+    { titulo: "Inflação C. Briefing", onde: "Protótipos", href: "/prototipos/c" },
+    { titulo: "Inflação D. Mapa", onde: "Protótipos", href: "/prototipos/d" },
   ];
   for (const a of abas()) {
     itens.push({ titulo: a.titulo, onde: "Aba", href: `/aba/${a.id}` });
