@@ -297,3 +297,38 @@ export const FORMULAS_RESUMO = {
     limitacoes: ["Séries diárias medem o movimento de um dia; mensais, de um mês: a comparação é sempre com a própria série."],
   },
 } satisfies Record<string, Formula>;
+
+// ---------------------------------------------------------------- frases de leitura (decisão 0017)
+
+export const FORMULA_FATOS: Formula = {
+  titulo: "Frases de leitura (fatos por regra)",
+  formula: [
+    "Δ3 = xₜ − xₜ₋₃ meses (p.p.)   ·   Δ1 e Δ12 do mesmo jeito",
+    "Sequência = nº de períodos seguidos com a mesma direção (xₜ − xₜ₋₁ com o mesmo sinal), aparece a partir de 2",
+    "Meta: xₜ − meta do CMN do ano de t",
+    "Maior/menor desde: data do último ponto anterior que foi mais alto (ou mais baixo) que xₜ; só aparece se tiver 12 meses ou mais",
+    "Percentil: % das observações dos últimos 10 anos ≤ xₜ (aparece na frase só se ≥ 80% ou ≤ 20% e não houver \"desde\")",
+  ],
+  variaveis: ["xₜ: último valor da medida (ex.: IPCA acumulado em 12 meses)", "Meta: SGS 13521"],
+  metodologia: [
+    "A frase é montada só com esses fatos, na ordem: movimento em 3 meses e sequência; distância da meta; maior/menor desde (ou percentil).",
+    "Descreve o que aconteceu; não diz se é bom ou ruim, nem por quê, nem o que vai acontecer (decisão 0017).",
+  ],
+  limitacoes: ["Todas as medidas usam a mesma régua, então o texto pode soar repetitivo."],
+};
+
+export const FORMULAS_PROTOTIPOS = {
+  relevancia: {
+    titulo: "Ordem do briefing",
+    formula: ["Relevância = maior entre: |Δ3| / mediana dos |Δ3| em 10 anos; sequência / 3; anos do \"maior/menor desde\" / 2"],
+    variaveis: ["Os mesmos fatos das frases de leitura"],
+    metodologia: ["As 5 medidas com maior relevância aparecem primeiro. Um movimento de 3 meses duas vezes maior que o típico vale tanto quanto um \"menor desde\" de 4 anos."],
+  },
+  mapa: {
+    titulo: "Mapa de inflação",
+    formula: ["Eixo horizontal: xₜ − meta do ano (p.p.)", "Eixo vertical: Δ3 = xₜ − xₜ₋₃ meses (p.p.)", "Rastro: os mesmos dois números nos 6 meses anteriores"],
+    variaveis: ["Cada ponto é uma medida de inflação em 12 meses (IPCA, aberturas, núcleos, Focus)", "Meta: SGS 13521"],
+    metodologia: ["Quadrantes com nomes neutros: acima ou abaixo da meta, subindo ou caindo em 3 meses.", "Focus é diário: usa o último dado de cada mês."],
+    limitacoes: ["Comparar uma abertura (ex.: alimentos) com a meta é só uma régua comum; a meta vale para o IPCA cheio."],
+  },
+} satisfies Record<string, Formula>;
