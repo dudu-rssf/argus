@@ -2,11 +2,13 @@
  * Contexto histórico da economia brasileira por período (curadoria Argus), usado para
  * situar os períodos parecidos. Só fatos amplamente documentados (decisões do Copom,
  * choques conhecidos); sem juízo sobre acerto de política. Ordem cronológica; sem lacunas
- * entre 2002 e hoje, para todo mês ter um contexto.
+ * entre 1999 e hoje, para todo mês ter um contexto.
  */
 export type Episodio = { de: string; ate: string; titulo: string; texto: string };
 
 export const EPISODIOS: Episodio[] = [
+  { de: "1999-01", ate: "2001-12", titulo: "Câmbio flutuante e metas de inflação",
+    texto: "Desvalorização do real em jan/1999, adoção do câmbio flutuante e do regime de metas; crise de energia e racionamento em 2001." },
   { de: "2002-01", ate: "2003-06", titulo: "Choque de confiança de 2002",
     texto: "Incerteza eleitoral levou o dólar perto de R$ 4 e o IPCA de 12 meses a passar de 17% em 2003; o Copom subiu a Selic até 26,5%." },
   { de: "2003-07", ate: "2004-08", titulo: "Desinflação e cortes de 2003-04",
