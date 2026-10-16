@@ -33,6 +33,20 @@ SERIES = {
     "meta_inflacao_todo": ("BR-134:13521", "1999-01-01"),
     "desocupacao_todo": ("BR-015:24369", "2012-01-01"),
     "pib_indice_sa_todo": ("BR-001:t1621/v584/c11255=90707", "1996-01-01"),
+    # Protótipos da Inflação (Fase 6c)
+    "ipca_mensal_todo": ("BR-025:433", "2012-01-01"),
+    "servicos_mensal": ("BR-037:10844", "2012-01-01"),
+    "industriais_mensal": ("BR-038:27863", "2012-01-01"),
+    "alimentos_mensal": ("BR-038:27864", "2012-01-01"),
+    "livres_mensal": ("BR-035:11428", "2012-01-01"),
+    "monitorados_mensal": ("BR-036:4449", "2012-01-01"),
+    "nucleos_media_mensal": ("BR-127:derivado", "2012-01-01"),
+    "nucleos_p50_mensal": ("BR-128:derivado", "2012-01-01"),
+    "servicos_subjacentes_mensal": ("BR-042:29683", "2012-01-01"),
+    "industriais_subjacentes_mensal": ("BR-129:29684", "2012-01-01"),
+    "difusao": ("BR-040:21379", "2012-01-01"),
+    "igpm_mensal": ("BR-043:189", "2012-01-01"),
+    "focus_ipca_2027": ("BR-046:ExpectativasMercadoAnuais · Indicador='IPCA'@2027", "2023-01-01"),
 }
 
 
