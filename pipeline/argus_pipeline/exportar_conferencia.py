@@ -102,7 +102,7 @@ def main() -> None:
         sub: dict[str, list] = {}
         for chave, d, v in cur.fetchall():
             sub.setdefault(chave, []).append([d.isoformat(), v])
-        saida["subitens_desde_2023"] = {"series_id": "BR-041 (variável.categoria)", "obs": sub}
+        subitens = {"series_id": "BR-041 (variável.categoria)", "obs": sub}
         print(f"::notice::subitens do IPCA: {len(sub)} sub-séries")
         cur.execute("""select id, to_char(data_ref, 'YYYY-MM-DD'), titulo, texto from events
                        where tipo = 'copom_comunicado' order by data_ref""")
@@ -110,6 +110,8 @@ def main() -> None:
         print(f"::notice::comunicados do Copom: {len(comunicados)}")
     DESTINO.parent.mkdir(parents=True, exist_ok=True)
     DESTINO.write_text(json.dumps(saida, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    # Subitens em arquivo próprio: o formato (dicionário de sub-séries) é diferente do resto.
+    (DESTINO.parent / "subitens.json").write_text(json.dumps(subitens, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (DESTINO.parent / "copom_comunicados_todos.json").write_text(
         json.dumps(comunicados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
