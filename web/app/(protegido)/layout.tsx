@@ -1,3 +1,4 @@
+import { Busca, type ItemBusca } from "@/components/busca";
 import { BotaoAtualizar } from "@/components/cabecalho/botao-atualizar";
 import { Menu, type GrupoMenu } from "@/components/menu";
 import { exigirSessao } from "@/lib/auth/servidor";
@@ -22,6 +23,24 @@ function grupos(): GrupoMenu[] {
   ];
 }
 
+function itensBusca(): ItemBusca[] {
+  const itens: ItemBusca[] = [
+    { titulo: "Central", onde: "Visão geral", href: "/", termos: "mercado resumo divulgações" },
+    { titulo: "Ciclos de política monetária", onde: "Análises", href: "/analises#ciclos", termos: "selic copom corte alta" },
+    { titulo: "Postura monetária", onde: "Análises", href: "/analises#postura", termos: "juro real neutro" },
+    { titulo: "Hiato, regra de Taylor e curva de Phillips", onde: "Análises", href: "/analises#taylor", termos: "hiato taylor phillips nairu" },
+    { titulo: "Períodos históricos parecidos com hoje", onde: "Análises", href: "/analises#analogos", termos: "análogos" },
+    { titulo: "Copom por diretor", onde: "Análises", href: "/analises#copom", termos: "votos diretores" },
+    { titulo: "Saúde dos dados", onde: "Sistema", href: "/dados", termos: "coleta erro" },
+  ];
+  for (const a of abas()) {
+    itens.push({ titulo: a.titulo, onde: "Aba", href: `/aba/${a.id}` });
+    for (const p of a.paineis)
+      itens.push({ titulo: p.titulo, onde: a.titulo, href: `/aba/${a.id}#${p.id}`, termos: p.series.map((s) => `${s.rotulo} ${s.indicador ?? ""}`).join(" ") });
+  }
+  return itens;
+}
+
 async function estadoDosDados() {
   try {
     return { ...(await ultimaAtualizacao()), erroBanco: null as string | null };
@@ -39,7 +58,9 @@ export default async function LayoutProtegido({ children }: { children: React.Re
         <Menu grupos={grupos()} />
       </aside>
       <div className="flex min-w-0 flex-col">
-        <header className="flex min-h-14 flex-wrap items-center justify-end gap-x-5 gap-y-2 border-b border-linha px-6 py-2 text-sm">
+        <header className="sticky top-0 z-30 flex min-h-14 flex-wrap items-center justify-between gap-x-5 gap-y-2 border-b border-linha bg-fundo/90 px-6 py-2 text-sm backdrop-blur">
+          <Busca itens={itensBusca()} />
+          <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2">
           {estado.erroBanco ? (
             <span className="text-baixa">{estado.erroBanco}</span>
           ) : (
@@ -56,6 +77,7 @@ export default async function LayoutProtegido({ children }: { children: React.Re
           <form action={sair}>
             <button className="text-texto-2 hover:text-texto">Sair</button>
           </form>
+          </div>
         </header>
         <main className="flex-1 px-6 py-6">{children}</main>
       </div>
