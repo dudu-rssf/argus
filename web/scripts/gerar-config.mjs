@@ -97,6 +97,22 @@ export function montarConfig(arquivosSeries, arquivosAbas) {
   return { catalogo, abas: abas.sort((a, b) => a.ordem - b.ordem) };
 }
 
+/** Subitens do IPCA + classificação curada; recusa prefixo que não casa com nenhum subitem. */
+export function montarIpca(subitensDoc, classificacao, catalogo) {
+  const subitens = subitensDoc.subitens;
+  const erros = [];
+  const casa = (p) => subitens.some((s) => s.codigo.startsWith(p));
+  const prefixos = [...classificacao.servicos.flatMap((g) => g.prefixos), ...classificacao.monitorados, ...classificacao.alimentacao_domicilio];
+  for (const p of prefixos) if (!casa(String(p))) erros.push(`classificação do IPCA: prefixo ${p} não casa com nenhum subitem`);
+  for (const d of "123456789") if (!classificacao.grupos[d]) erros.push(`classificação do IPCA: falta o grupo ${d}`);
+  for (const a of [...classificacao.areas, ...classificacao.lentes]) {
+    const id = String(a.serie).split(":")[0];
+    if (!catalogo[id]) erros.push(`classificação do IPCA: ${a.serie} fora do catálogo`);
+  }
+  if (erros.length) throw new Error("Configuração inválida:\n- " + erros.join("\n- "));
+  return { subitens, classificacao };
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const ler = (p) => parse(readFileSync(p, "utf8"));
   const config = montarConfig(yamls(join(RAIZ, "config", "series")).map(ler), yamls(join(RAIZ, "config", "abas")).map(ler));
@@ -104,4 +120,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   mkdirSync(dirname(destino), { recursive: true });
   writeFileSync(destino, JSON.stringify(config));
   console.log(`config: ${Object.keys(config.catalogo).length} séries, ${config.abas.length} aba(s)`);
+  const ipca = montarIpca(ler(join(RAIZ, "config", "derivadas", "ipca_subitens_t7060.yaml")),
+    ler(join(RAIZ, "config", "derivadas", "ipca_classificacao.yaml")), config.catalogo);
+  writeFileSync(join(AQUI, "..", "lib", "gerado", "ipca.json"), JSON.stringify(ipca));
+  console.log(`ipca: ${ipca.subitens.length} subitens classificados`);
 }

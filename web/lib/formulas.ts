@@ -351,11 +351,19 @@ export const FORMULAS_GERAL = {
     formula: [
       "Contribuição do grupo no mês = peso do grupo no mês × variação do grupo no mês / 100",
       "Contribuição em 12 meses = soma das 12 contribuições mensais",
-      "O que mudou = contribuição em 12 meses hoje − a de 3 meses antes",
+      "O que mudou = contribuição em 12 meses hoje − a de k meses antes (k = 3, 6, 9 ou 12, no seletor)",
+      "Por trás de cada grupo: a mesma conta para cada subitem do grupo; mostra os de maior |mudança|",
     ],
-    variaveis: ["Variação (v63) e peso (v66) dos 9 grupos do IPCA, IBGE SIDRA t7060 (desde 2020)"],
-    metodologia: ["A soma dos 9 grupos num mês bate com o IPCA do mês (diferença máxima de 0,007 p.p. desde 2020, por arredondamento)."],
-    limitacoes: ["Em 12 meses a soma é aditiva e o IPCA oficial é encadeado (composto): a diferença aparece na página."],
+    variaveis: ["Variação (v63) e peso (v66) dos 9 grupos e dos subitens do IPCA, IBGE SIDRA t7060 (desde 2020)"],
+    metodologia: [
+      "A soma dos 9 grupos num mês bate com o IPCA do mês (diferença máxima de 0,007 p.p. desde 2020, por arredondamento).",
+      "Grupo de cada subitem: primeiro dígito do código IBGE de 7 dígitos.",
+      "Influências típicas: texto de curadoria (config/derivadas/ipca_classificacao.yaml) com os canais conhecidos de formação de preço de cada grupo.",
+    ],
+    limitacoes: [
+      "Em 12 meses a soma é aditiva e o IPCA oficial é encadeado (composto): a diferença aparece na página.",
+      "As influências típicas são canais possíveis, não a causa medida do movimento; os subitens são o fato.",
+    ],
   },
   parecidos: {
     titulo: "Períodos parecidos",
@@ -363,9 +371,43 @@ export const FORMULAS_GERAL = {
       "zᵥ,ₘ = (xᵥ,ₘ − média de v) / desvio-padrão de v, desde 2002",
       "Distância d(m) = √[ Σᵥ (zᵥ,ₘ − zᵥ,hoje)² / nº de variáveis ]; semelhança = máx(0; 1 − d/2) × 100%",
       "Depois = valor 12 meses após o mês parecido",
+      "Trajetória: IPCA 12 meses de t = −12 a t = +12 meses em torno do mês parecido",
+      "Mais parecido em / mais diferente em: variáveis ordenadas por |zᵥ,ₘ − zᵥ,hoje|",
     ],
     variaveis: ["IPCA 12m, média dos núcleos em 12m, serviços em 12m, Focus 12m e Selic"],
     metodologia: ["Os 5 meses mais parecidos, fora dos últimos 24 meses e a pelo menos 12 meses um do outro (mesmo motor da aba Análises)."],
-    limitacoes: ["São poucos casos: é contexto histórico, não previsão."],
+    limitacoes: ["São poucos casos: é contexto histórico, não previsão.", "Contexto da época: curadoria do Argus com fatos documentados (decisões do Copom, choques conhecidos)."],
+  },
+  areas: {
+    titulo: "IPCA por área de influência",
+    formula: [
+      "Cesta: serviços, bens industriais, alimentação no domicílio e monitorados (partição do IPCA usada pelo BCB)",
+      "Alta em 12 meses = Π (1 + mₜ/100) − 1 sobre a série mensal oficial do BCB de cada cesta",
+      "Contribuição da cesta em 12 meses = Σ₁₂ meses Σ subitens da cesta (peso × variação / 100)",
+      "Peso da cesta = Σ pesos dos seus subitens no mês",
+    ],
+    variaveis: [
+      "Séries do BCB: serviços (SGS 10844), bens industriais (27863), alimentação no domicílio (27864), monitorados (4449)",
+      "Lentes: comercializáveis (4447), não comercializáveis (4448), bens duráveis (10843)",
+      "Subitens do IPCA: variação (v63) e peso (v66), IBGE SIDRA t7060",
+    ],
+    metodologia: [
+      "Separação dos 377 subitens por curadoria do Argus (config/derivadas/ipca_classificacao.yaml), na ordem serviços → monitorados → alimentação no domicílio → industriais.",
+      "Conferência desde 2023: a variação de cada cesta reproduz a série do BCB com diferença média de 0,005 (serviços), 0,003 (alimentação), 0,002 (industriais) e 0,012 p.p. (monitorados) por mês; as quatro somam 100% do peso.",
+      "A área de influência nomeia a força dominante de cada cesta, conforme a literatura do BCB.",
+    ],
+    limitacoes: ["Cada cesta responde a mais de uma força; o rótulo é a principal, não a única.", "As lentes se sobrepõem às cestas e não somam o IPCA."],
+  },
+  servicos: {
+    titulo: "Composição dos serviços",
+    formula: [
+      "Tipo de serviço = conjunto de subitens (curadoria do Argus)",
+      "Peso nos serviços = Σ pesos dos subitens do tipo / Σ pesos de todos os serviços",
+      "Alta em 12m = Π (1 + variação ponderada do tipo no mês / 100) − 1",
+      "Contribuição para o IPCA 12m = Σ₁₂ meses Σ subitens (peso × variação / 100)",
+    ],
+    variaveis: ["Subitens do IPCA: variação (v63) e peso (v66), IBGE SIDRA t7060; Serviços (SGS 10844) e serviços subjacentes (SGS 29683)"],
+    metodologia: ["A cesta inteira reproduz a série de serviços do BCB (SGS 10844) com diferença média de 0,005 p.p. por mês desde 2023."],
+    limitacoes: ["A divisão em tipos é do Argus; o BCB não publica essa abertura."],
   },
 } satisfies Record<string, Formula>;

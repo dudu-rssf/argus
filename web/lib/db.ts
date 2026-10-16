@@ -22,16 +22,17 @@ function sql() {
   return neon(url);
 }
 
-export async function lerSeries(ids: string[]): Promise<Record<string, Ponto[]>> {
+/** Observações das séries pedidas; com `desde` (AAAA-MM-DD), só a partir dessa data. */
+export async function lerSeries(ids: string[], desde = "0001-01-01"): Promise<Record<string, Ponto[]>> {
   if (!ids.length) return {};
   const fx = await fixture();
   if (fx) {
     const series = fx.series as Record<string, [string, number][]>;
-    return Object.fromEntries(ids.map((id) => [id, (series[id] ?? []).map(([data, valor]) => ({ data, valor }))]));
+    return Object.fromEntries(ids.map((id) => [id, (series[id] ?? []).filter(([data]) => data >= desde).map(([data, valor]) => ({ data, valor }))]));
   }
   const linhas = (await sql()`
     select series_id, to_char(ref_date, 'YYYY-MM-DD') as data, value::float8 as valor
-    from observations where series_id = any(${ids}) order by series_id, ref_date`) as {
+    from observations where series_id = any(${ids}) and ref_date >= ${desde}::date order by series_id, ref_date`) as {
       series_id: string; data: string; valor: number }[];
   const out: Record<string, Ponto[]> = Object.fromEntries(ids.map((id) => [id, []]));
   for (const l of linhas) out[l.series_id].push({ data: l.data, valor: l.valor });

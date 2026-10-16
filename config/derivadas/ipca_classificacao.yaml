@@ -1,0 +1,140 @@
+# Classificação dos subitens do IPCA usada na seção Geral da Inflação (Fase 6e).
+# Curadoria Argus, conferida contra as séries oficiais do Banco Central: a variação
+# ponderada de cada cesta reproduz a série do SGS (teste tests/composicao-real.test.ts):
+#   serviços × SGS 10844, alimentação no domicílio × SGS 27864,
+#   bens industriais × SGS 27863, monitorados × SGS 4449.
+# Regras por prefixo do código IBGE de 7 dígitos (o primeiro dígito é o grupo).
+# Ordem de decisão: serviços → monitorados → alimentação no domicílio → bens industriais (resto).
+
+grupos:
+  # dígito do código → grupo do IPCA (categoria SIDRA da t7060) e influências típicas.
+  # As influências são canais conhecidos de formação de preço, não causas comprovadas do mês.
+  "1":
+    id: "7170"
+    nome: Alimentação e bebidas
+    influencias:
+      - "Clima e safra: seca, geada, excesso de chuva e o ciclo El Niño/La Niña mexem primeiro em hortaliças, frutas e tubérculos."
+      - "Preços internacionais de grãos, carnes e açúcar, convertidos pelo câmbio (ver IC-Br Agropecuária na aba de dados)."
+      - "Sazonalidade: entressafra de tubérculos e legumes no começo do ano; ciclo do boi nas carnes."
+      - "Renda e demanda pesam mais na alimentação fora de casa, que é serviço."
+  "2":
+    id: "7445"
+    nome: Habitação
+    influencias:
+      - "Energia elétrica: bandeiras tarifárias, reajustes anuais das distribuidoras (ANEEL) e bônus pontuais, como o de Itaipu."
+      - "Aluguel e condomínio: contratos reajustados por IGP-M ou IPCA passado, e salários de porteiros e zeladores."
+      - "Água e esgoto: reajustes autorizados pelas agências estaduais."
+      - "Gás de botijão: preço da Petrobras para o GLP, petróleo e câmbio."
+  "3":
+    id: "7486"
+    nome: Artigos de residência
+    influencias:
+      - "Câmbio: eletrônicos e eletrodomésticos têm muitos componentes importados."
+      - "Juros e crédito: são compras em geral parceladas."
+      - "Promoções sazonais (Black Friday, fim de ano) e preços de commodities como aço e plástico."
+  "4":
+    id: "7558"
+    nome: Vestuário
+    influencias:
+      - "Sazonalidade de coleções: alta na troca de estação e queda nas liquidações."
+      - "Renda das famílias e, em menor grau, câmbio e preço do algodão."
+  "5":
+    id: "7625"
+    nome: Transportes
+    influencias:
+      - "Gasolina e diesel: política de preços da Petrobras, petróleo Brent, câmbio e impostos (ICMS, PIS/Cofins, CIDE)."
+      - "Etanol: safra de cana e preço do açúcar."
+      - "Passagem aérea: muito volátil; querosene de aviação e demanda de temporada."
+      - "Automóveis: juros do financiamento, oferta das montadoras e incentivos fiscais."
+      - "Ônibus urbano e metrô: reajustes municipais e estaduais, em geral no início do ano."
+  "6":
+    id: "7660"
+    nome: Saúde e cuidados pessoais
+    influencias:
+      - "Medicamentos: reajuste anual máximo autorizado pela CMED, aplicado a partir de abril."
+      - "Plano de saúde: reajuste anual autorizado pela ANS, incorporado em parcelas mensais."
+      - "Higiene e beleza: câmbio, insumos e promoções."
+  "7":
+    id: "7712"
+    nome: Despesas pessoais
+    influencias:
+      - "Serviços com muita mão de obra (cabeleireiro, empregado doméstico, manicure): salários e salário mínimo."
+      - "Hospedagem e pacote turístico: demanda de temporada e câmbio."
+      - "Cigarro: impostos e preço mínimo fixado pelo governo."
+  "8":
+    id: "7766"
+    nome: Educação
+    influencias:
+      - "Reajuste anual de mensalidades, concentrado em fevereiro."
+      - "Salários de professores e demanda por cursos livres."
+  "9":
+    id: "7786"
+    nome: Comunicação
+    influencias:
+      - "Reajustes de planos de telefonia, internet e TV por assinatura; concorrência entre operadoras."
+      - "Tributação (ICMS sobre telecomunicações) e preço de aparelhos (câmbio)."
+
+servicos:
+  # Serviços livres (classificação do BCB, SGS 10844), em subgrupos para a composição.
+  - nome: Alimentação fora de casa
+    prefixos: ["1201"]
+  - nome: Moradia
+    prefixos: ["2101001", "2101002", "2101012", "2103042"]
+  - nome: Reparos e consertos
+    prefixos: ["3301", "5102011", "5102037"]
+  - nome: Transporte
+    prefixos: ["5101002", "5101007", "5101010", "5101026", "5101051", "5102005", "5102013", "5102051"]
+  - nome: Saúde
+    prefixos: ["6201", "6202"]
+  - nome: Pessoais e domésticos
+    prefixos: ["7101001", "7101005", "7101010", "7101011", "7101014", "7101144", "7101036", "7101076", "7101090"]
+  - nome: Lazer e turismo
+    prefixos: ["7201006", "7201015", "7201054", "7201090", "7201095", "7201256", "7201266"]
+  - nome: Educação
+    prefixos: ["8101", "8104"]
+  - nome: Comunicação
+    prefixos: ["9101008", "9101010", "9101018", "9101115", "9101116"]
+
+# Preços monitorados (contratos ou regulação): energia, água, gás, ônibus urbano, trem,
+# metrô, pedágio, emplacamento, multa, combustíveis (exceto etanol), plano de saúde,
+# medicamentos, telefone fixo, correio, cartório e jogos de azar.
+monitorados: ["2202003", "2101004", "2201004", "2201005", "5101001", "5101004", "5101006", "5101011", "5101053",
+  "5102015", "5102004", "5102006", "5104001", "5104003", "5104005", "6203001", "6101", "9101002", "9101001",
+  "7101034", "7201063"]
+
+alimentacao_domicilio: ["11"]
+
+# Áreas de influência: partição do IPCA (somam 100% do peso) pelo que mais move cada cesta.
+areas:
+  - id: servicos
+    nome: Serviços
+    influencia: Renda e mercado de trabalho
+    serie: "BR-037:10844"
+    racional: "Serviços usam muita mão de obra e não podem ser importados: o preço acompanha salários, emprego e demanda doméstica. É a parte mais lenta e mais ligada à política monetária."
+  - id: industriais
+    nome: Bens industriais
+    influencia: Câmbio e preços globais
+    serie: "BR-038:27863"
+    racional: "Bens que podem ser importados ou exportados (roupas, eletrônicos, carros, etanol, higiene): o preço segue o câmbio, commodities metálicas e a concorrência externa, além do crédito nos duráveis."
+  - id: alimentacao
+    nome: Alimentação no domicílio
+    influencia: Clima, safra e commodities agrícolas
+    serie: "BR-038:27864"
+    racional: "Alimentos comprados para casa: dependem de safra e clima e dos preços internacionais de grãos e carnes, convertidos pelo câmbio. É a parte mais volátil."
+  - id: monitorados
+    nome: Monitorados
+    influencia: Governo e regulação
+    serie: "BR-036:4449"
+    racional: "Preços definidos por contrato ou órgão público (energia, combustíveis da Petrobras, ônibus, plano de saúde, medicamentos): mudam por decisão administrativa, em datas conhecidas, e respondem pouco aos juros."
+
+# Lentes complementares (sobrepõem-se à partição; não somam o IPCA).
+lentes:
+  - nome: Comercializáveis
+    influencia: Exposição ao câmbio
+    serie: "BR-135:4447"
+  - nome: Não comercializáveis
+    influencia: Demanda doméstica
+    serie: "BR-136:4448"
+  - nome: Bens duráveis
+    influencia: Juros e crédito
+    serie: "BR-137:10843"
