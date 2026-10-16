@@ -1,6 +1,6 @@
 # Fase 6c — Abas mais digeridas: quatro protótipos na Inflação
 
-**Status:** em andamento (2026-10-15, modo delegado). O dono escolhe um formato, que depois é replicado nas outras abas e na Central.
+**Status:** protótipos no ar (2026-10-15) · aguardando a escolha do dono. O formato escolhido é replicado nas outras abas e na Central.
 
 ## Base comum
 - **Fatos por regra** (`web/lib/fatos.ts`, testado), calculados para cada medida:
