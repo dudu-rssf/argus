@@ -12,13 +12,13 @@ import { CanvasRenderer } from "echarts/renderers";
 import { RodapeFormula } from "@/components/formula";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import type { Formula } from "@/lib/formulas";
+import { css, eixoTexto, tooltipBase } from "@/lib/tema-grafico";
 
 echarts.use([ScatterChart, GridComponent, TooltipComponent, LegendComponent, CanvasRenderer]);
 
 export type PontoDispersao = { data: string; x: number; y: number };
 export type Periodo = { rotulo: string; de: string; ate: string };
 
-const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 
 export function GraficoDispersao({ titulo, subtitulo, pontos, periodos, eixoX, eixoY, frequencia, formula }: {
   titulo: string; subtitulo: string; pontos: PontoDispersao[]; periodos: Periodo[];
@@ -33,16 +33,15 @@ export function GraficoDispersao({ titulo, subtitulo, pontos, periodos, eixoX, e
     const fmt = (p: PontoDispersao) => [p.x, p.y, p.data];
     const eixo = (nome: string) => ({
       type: "value", scale: true, name: nome, nameLocation: "middle", nameGap: 26, nameTextStyle: { color: t2 },
-      axisLabel: { color: t2, formatter: (v: number) => fmtNumero(v, 0) },
-      splitLine: { lineStyle: { color: css("--grade") } }, axisLine: { lineStyle: { color: css("--cor-linha") } },
+      axisLabel: { ...eixoTexto(), formatter: (v: number) => fmtNumero(v, 0) },
+      splitLine: { show: false }, axisTick: { show: false }, axisLine: { lineStyle: { color: css("--cor-linha") } },
     });
     g.setOption({
       animation: false,
       grid: { left: 24, right: 16, top: 64, bottom: 36, containLabel: true },
       legend: { top: 0, left: 0, textStyle: { color: t2 } },
       tooltip: {
-        trigger: "item", backgroundColor: css("--cor-painel-alto"), borderColor: css("--cor-linha-forte"),
-        textStyle: { color: css("--cor-texto"), fontSize: 12 },
+        ...tooltipBase(), trigger: "item",
         formatter: (p: { value: [number, number, string] }) =>
           `${fmtData(p.value[2], frequencia)}<br/>${eixoX}: ${fmtNumero(p.value[0])}<br/>${eixoY}: ${fmtNumero(p.value[1])}`,
       },

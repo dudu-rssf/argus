@@ -1,3 +1,4 @@
+import { Info } from "@/components/info";
 import { diretores, type VotoReuniao } from "@/lib/copom-votos";
 import { fmtData } from "@/lib/formato";
 
@@ -10,7 +11,7 @@ export function SecaoCopom({ votos }: { votos: VotoReuniao[] }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">Copom por diretor</h2>
+      <h2 id="copom" className="flex scroll-mt-20 items-center gap-2 text-lg font-semibold tracking-tight">Copom por diretor<Info titulo="Copom por diretor">Votos tirados dos comunicados oficiais do Copom: quem votou, quem ficou vencido e quem presidiu. Os nomes só aparecem nos comunicados desde 2012; antes, só o placar. Quando o texto não diz, o campo fica vazio (nunca supomos unanimidade).</Info></h2>
       <div className="rounded-painel border border-linha bg-painel px-5 py-4">
         <p className="text-texto">
           Desde 2003: <span className="num">{desde2003.length}</span> reuniões,{" "}

@@ -1,3 +1,4 @@
+import { Info } from "@/components/info";
 import type { Metadata } from "next";
 import { AnalogosHistoricos } from "@/components/analises/analogos-historicos";
 import { SecaoCopom } from "@/components/analises/secao-copom";
@@ -10,6 +11,7 @@ import { extrairVotos } from "@/lib/copom-votos";
 import { lerEventos, lerSeries } from "@/lib/db";
 import { duracao, fmtData, fmtNumero } from "@/lib/formato";
 import { FORMULAS_ANALISES } from "@/lib/formulas";
+import { mesesEntre } from "@/lib/ciclos";
 
 export const metadata: Metadata = { title: "Análises" };
 
@@ -22,7 +24,9 @@ function alinhados(linhas: LinhaCiclo[], tipo: "corte" | "alta"): CicloAlinhado[
   const ultimo = doTipo.at(-1);
   return doTipo.map((l) => ({
     rotulo: `${tipo === "corte" ? "Corte" : "Alta"} de ${fmtData(l.inicio)}${l.emAndamento ? " (em andamento)" : ` a ${fmtData(l.fim)}`}`,
+    resumo: `${fmtNumero(l.selicInicial)}% → ${fmtNumero(l.selicFinal)}%, ${l.bps > 0 ? "+" : "−"}${Math.abs(l.bps)} bps em ${l.decisoes.length} ${l.decisoes.length === 1 ? "decisão" : "decisões"}, ${duracao(l.meses)}`,
     destaque: l === ultimo, pontos: l.trajetoria,
+    decisoes: l.decisoes.map((d) => ({ t: mesesEntre(l.inicio, d.data), data: d.data, de: d.de, para: d.para })),
   }));
 }
 
@@ -38,14 +42,14 @@ export default async function Analises() {
   return (
     <section className="flex flex-col gap-6">
       <div>
-        <h1 className="text-xl font-semibold">Análises</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Análises</h1>
         <p className="mt-1 max-w-3xl text-sm text-texto-2">
           Única aba com interpretação. Cada análise mostra a regra usada; mudar a regra muda o resultado.
         </p>
       </div>
 
       <div className="flex flex-col gap-4">
-        <h2 className="text-lg font-medium">Ciclos de política monetária</h2>
+        <h2 id="ciclos" className="flex scroll-mt-20 items-center gap-2 text-lg font-semibold tracking-tight">Ciclos de política monetária<Info titulo="Ciclos de política monetária">Cada episódio é um ciclo de corte, de alta ou um período de manutenção da Selic desde 1999. Clique numa linha da tabela para ver cada decisão (data, de quanto para quanto, bps) e as métricas no início e no fim. No gráfico alinhado, passe o mouse: aparecem a Selic de cada ciclo naquele mês, o total do ciclo e a decisão daquele mês.</Info></h2>
 
         {atual && (
           <div className="rounded-painel border border-ouro/40 bg-painel px-5 py-4">

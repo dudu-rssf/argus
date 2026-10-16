@@ -81,10 +81,11 @@ export function TabelaCiclos({ linhas }: { linhas: LinhaCiclo[] }) {
               const m = l.metricas;
               return (
                 <Fragment key={id}>
-                  <tr className={`cursor-pointer border-t border-linha hover:bg-painel ${ab ? "bg-painel" : ""}`}
+                  <tr className={`cursor-pointer border-t border-linha hover:bg-realce ${ab ? "bg-realce" : ""}`}
                     onClick={() => setAberto(ab ? null : id)}>
                     <td className="px-3 py-2">
-                      <button type="button" aria-expanded={ab} className="text-left">
+                      <button type="button" aria-expanded={ab} className="flex items-center gap-2 text-left">
+                        <span aria-hidden className={`inline-block w-3 text-texto-3 transition-transform ${ab ? "rotate-90 text-ouro" : ""}`}>›</span>
                         <span className="text-texto">{NOME[l.tipo]}</span>
                         {l.emAndamento && <span className="ml-2 text-xs text-ouro">em andamento</span>}
                       </button>
@@ -110,7 +111,7 @@ export function TabelaCiclos({ linhas }: { linhas: LinhaCiclo[] }) {
           </tbody>
         </table>
       </div>
-      <RodapeFormula formulas={[FORMULAS_ANALISES.ciclos]}>Clique num episódio para ver o detalhe.</RodapeFormula>
+      <RodapeFormula formulas={[FORMULAS_ANALISES.ciclos]}>Clique numa linha (›) para ver cada decisão: data, de quanto para quanto e bps.</RodapeFormula>
       </div>
     </div>
   );

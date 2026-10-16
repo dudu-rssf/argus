@@ -2,6 +2,7 @@
  * Item 5: hiato do produto, regra de Taylor e curva de Phillips (descritiva).
  * Componente de servidor: recebe tudo calculado e só exibe.
  */
+import { Info } from "@/components/info";
 import { PainelGrafico } from "@/components/grafico/painel-grafico";
 import { GraficoDispersao, type Periodo } from "@/components/analises/grafico-dispersao";
 import { GraficoFaixa } from "@/components/analises/grafico-faixa";
@@ -33,7 +34,8 @@ export function SecaoTaylor({ analise }: { analise: AnaliseItem5 }) {
   const serie = (k: "hp" | "hpTempoReal" | "hamilton") =>
     hiatos.filter((l) => l[k] !== null).map((l) => ({ data: l.data, valor: l[k] as number }));
   const painelHiato: Painel = {
-    titulo: "Hiato do produto, três estimativas (% do PIB tendencial)", transformacao: "nivel", combinado: null, eventos: null,
+    titulo: "Hiato do produto, três estimativas (% do PIB tendencial)", transformacao: "nivel",
+    descricao: "Quanto o PIB está acima (positivo) ou abaixo (negativo) da sua tendência. Como a tendência não é observável, aparecem três estimativas: HP com a amostra inteira, HP só com o que se sabia em cada momento, e Hamilton.", combinado: null, eventos: null,
     series: [serieHiato("hiato:hp", "HP, amostra inteira"), serieHiato("hiato:tr", "HP, tempo real"), serieHiato("hiato:ham", "Hamilton")],
   };
   const ultimoHiato = hiatos.at(-1);
@@ -41,7 +43,7 @@ export function SecaoTaylor({ analise }: { analise: AnaliseItem5 }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">Hiato do produto, regra de Taylor e curva de Phillips</h2>
+      <h2 id="taylor" className="flex scroll-mt-20 items-center gap-2 text-lg font-semibold tracking-tight">Hiato do produto, regra de Taylor e curva de Phillips<Info titulo="Hiato do produto, regra de Taylor e curva de Phillips">Hiato: quanto o PIB está acima ou abaixo da sua tendência, por três métodos (não é observável, por isso a faixa). Regra de Taylor: a Selic que uma fórmula convencional daria com a inflação, a meta, o neutro e o hiato de hoje, em 16 variações de peso; a faixa mostra a menor e a maior. Phillips: a relação entre inflação e folga da economia, só como dispersão. Passe o mouse nos gráficos para ver cada mês; o botão Fórmula tem as contas.</Info></h2>
 
       {ultimoHiato && hoje && (
         <div className="rounded-painel border border-linha bg-painel px-5 py-4">

@@ -12,12 +12,12 @@ import { CanvasRenderer } from "echarts/renderers";
 import { RodapeFormula } from "@/components/formula";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import type { Formula } from "@/lib/formulas";
+import { css, eixoX, eixoY, etiquetaFinal, miraEixo, tooltipBase } from "@/lib/tema-grafico";
 
 echarts.use([LineChart, GridComponent, TooltipComponent, LegendComponent, DataZoomComponent, CanvasRenderer]);
 
 export type PontoFaixa = { mes: string; selic: number | null; minimo: number | null; maximo: number | null; mediana: number | null };
 
-const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const HORIZONTES = [{ id: "5A", anos: 5 }, { id: "10A", anos: 10 }, { id: "Máx", anos: 0 }] as const;
 
 export function GraficoFaixa({ titulo, pontos, formula }: { titulo: string; pontos: PontoFaixa[]; formula: Formula }) {
@@ -38,22 +38,21 @@ export function GraficoFaixa({ titulo, pontos, formula }: { titulo: string; pont
     const datas = visiveis.map((p) => `${p.mes}-01`);
     g.setOption({
       animation: false,
-      grid: { left: 8, right: 16, top: 36, bottom: 28, containLabel: true },
+      grid: { left: 4, right: 4, top: 36, bottom: 24, containLabel: true },
       legend: { top: 0, left: 0, textStyle: { color: t2 }, data: ["Selic efetiva", "Mediana da regra", "Faixa da regra"] },
       tooltip: {
-        trigger: "axis", backgroundColor: css("--cor-painel-alto"), borderColor: css("--cor-linha-forte"),
-        textStyle: { color: css("--cor-texto"), fontSize: 12 },
+        ...tooltipBase(), trigger: "axis", axisPointer: miraEixo(),
         formatter: (ps: { dataIndex: number }[]) => {
           const p = visiveis[ps[0].dataIndex];
           const f = (v: number | null) => (v === null ? "—" : `${fmtNumero(v)}%`);
           return `${fmtData(`${p.mes}-01`)}<br/>Selic: ${f(p.selic)}<br/>Mediana da regra: ${f(p.mediana)}<br/>Faixa: ${f(p.minimo)} a ${f(p.maximo)}`;
         },
       },
-      xAxis: { type: "category", data: datas, boundaryGap: false,
-        axisLabel: { color: t2, formatter: (v: string) => fmtData(v), hideOverlap: true },
-        axisLine: { lineStyle: { color: css("--cor-linha") } }, axisTick: { show: false } },
-      yAxis: { type: "value", scale: true, axisLabel: { color: t2, formatter: (v: number) => `${fmtNumero(v, 0)}%` },
-        splitLine: { lineStyle: { color: css("--grade") } } },
+      xAxis: eixoX({ type: "category", data: datas, boundaryGap: false,
+        axisLabel: { ...eixoX().axisLabel, formatter: (v: string) => fmtData(v) },
+        axisPointer: { label: { formatter: (p: { value: string }) => fmtData(p.value) } } }),
+      yAxis: eixoY({ axisLabel: { ...eixoY().axisLabel, formatter: (v: number) => `${fmtNumero(v, 0)}%` },
+        axisPointer: { label: { formatter: (p: { value: number }) => `${fmtNumero(p.value)}%` } } }),
       dataZoom: [{ type: "inside" }],
       series: [
         { name: "base", type: "line", stack: "faixa", data: visiveis.map((p) => p.minimo), lineStyle: { opacity: 0 },
@@ -64,7 +63,8 @@ export function GraficoFaixa({ titulo, pontos, formula }: { titulo: string; pont
         { name: "Mediana da regra", type: "line", showSymbol: false, data: visiveis.map((p) => p.mediana),
           lineStyle: { width: 1.5, type: "dashed", color: css("--cor-texto-2") }, itemStyle: { color: css("--cor-texto-2") } },
         { name: "Selic efetiva", type: "line", showSymbol: false, step: "end", data: visiveis.map((p) => p.selic),
-          lineStyle: { width: 2.5, color: css("--cor-ouro") }, itemStyle: { color: css("--cor-ouro") }, z: 10 },
+          lineStyle: { width: 2.25, color: css("--cor-ouro") }, itemStyle: { color: css("--cor-ouro") }, z: 10,
+          endLabel: etiquetaFinal(css("--cor-ouro"), (v) => `${fmtNumero(v)}%`) },
       ],
     });
     const r = () => g.resize();

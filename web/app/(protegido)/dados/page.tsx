@@ -32,7 +32,7 @@ export default async function SaudeDosDados({ searchParams }: { searchParams: Pr
   return (
     <section className="flex flex-col gap-8">
       <div>
-        <h1 className="text-xl font-semibold">Saúde dos dados</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Saúde dos dados</h1>
         <p className="mt-1 text-sm text-texto-2">
           {series.length} séries de dados no banco; {comProblema.length === 0
             ? "nenhuma falhou na última coleta."

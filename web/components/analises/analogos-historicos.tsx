@@ -1,5 +1,6 @@
 "use client";
 
+import { Info } from "@/components/info";
 import { useMemo, useState } from "react";
 import { RodapeFormula } from "@/components/formula";
 import { FORMULAS_ANALISES } from "@/lib/formulas";
@@ -26,7 +27,7 @@ export function AnalogosHistoricos({ painel, variaveis }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">Períodos históricos parecidos com hoje</h2>
+      <h2 id="analogos" className="flex scroll-mt-20 items-center gap-2 text-lg font-semibold tracking-tight">Períodos históricos parecidos com hoje<Info titulo="Períodos históricos parecidos com hoje">Procura no passado os meses em que as variáveis marcadas estavam mais parecidas com as de hoje e mostra o que aconteceu nos 12 meses seguintes. Marque ou desmarque variáveis para mudar a comparação. Semelhança de 100% é idêntico; 0% está a 2 desvios-padrão de distância. São 5 casos: é contexto, não previsão.</Info></h2>
       <fieldset className="flex flex-wrap gap-x-5 gap-y-2 rounded-painel border border-linha bg-painel px-4 py-3 text-sm">
         <legend className="px-1 text-xs text-texto-3">Comparar por</legend>
         {variaveis.map((v) => (
