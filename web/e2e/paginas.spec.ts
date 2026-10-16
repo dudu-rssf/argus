@@ -28,7 +28,7 @@ test("aba Inflação montada só pela configuração", async ({ page }) => {
 });
 
 test("saúde dos dados mostra execuções e falhas", async ({ page }) => {
-  await page.getByRole("link", { name: "Saúde dos dados" }).click();
+  await page.getByRole("navigation").getByRole("link", { name: "Saúde dos dados" }).click();
   await expect(page.getByText("1 falhou na última coleta.")).toBeVisible();
   await page.getByRole("link", { name: /Só com problema/ }).click();
   await expect(page.getByText("FRED HTTP 500")).toBeVisible();
@@ -53,10 +53,12 @@ test("botão Fórmula explica a conta do gráfico", async ({ page }) => {
   await painel.getByRole("button", { name: "Fórmula" }).click();
   await expect(painel.getByText("Acumulado em 12 meses (encadeado)")).toBeVisible();
   await expect(painel.getByText(/\(1 \+ mₜ\/100\)/)).toBeVisible();
-  // dado bruto, sem conta: sem botão
+  // dado bruto: a única conta é a leitura de trajetória
   const meta = page.locator("article", { has: page.getByRole("heading", { name: "IPCA em 12 meses e meta para a inflação" }) });
-  await expect(meta.getByRole("button", { name: "Fórmula" })).toHaveCount(0);
-  await page.getByRole("link", { name: "Análises" }).click();
+  await meta.getByRole("button", { name: "Fórmula" }).click();
+  await expect(meta.getByText("Leitura de trajetória (curto, médio e longo prazo)")).toBeVisible();
+  await expect(meta.getByText(/Acumulado em/)).toHaveCount(0);
+  await page.getByRole("navigation").getByRole("link", { name: "Análises" }).click();
   const taylor = page.locator("article", { has: page.getByRole("heading", { name: "Selic efetiva e regra de Taylor" }) });
   await taylor.getByRole("button", { name: "Fórmula" }).click();
   await expect(taylor.getByText("Selic da regra = r* + π + a·(π − π*) + b·hiato")).toBeVisible();
@@ -64,7 +66,7 @@ test("botão Fórmula explica a conta do gráfico", async ({ page }) => {
 });
 
 test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async ({ page }) => {
-  await page.getByRole("link", { name: "Análises" }).click();
+  await page.getByRole("navigation").getByRole("link", { name: "Análises" }).click();
   await expect(page.getByRole("heading", { name: "Ciclos de política monetária" })).toBeVisible();
   await expect(page.getByText("Ciclo de corte desde 19/03/2026")).toBeVisible();
   await expect(page.getByRole("cell", { name: "14,25 → 6,50" })).toBeVisible(); // corte de 2016-2018
@@ -85,4 +87,22 @@ test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async (
   await expect(page.getByRole("heading", { name: "Copom por diretor" })).toBeVisible();
   await expect(page.getByText("Por uma redução de 0,50 ponto percentual:")).toBeVisible();
   await page.screenshot({ path: "test-results/analises.png", fullPage: true });
+});
+
+test("Central: mercado, resumo das análises e últimas divulgações", async ({ page }) => {
+  await expect(page.getByRole("heading", { name: "Central", level: 1 })).toBeVisible();
+  const mercado = page.getByRole("article", { name: "Faixa de mercado" });
+  await expect(mercado.getByText("Selic meta")).toBeVisible();
+  await expect(mercado.getByText("−25 bps")).toBeVisible();
+  await expect(mercado.getByText("IPCA 12 meses")).toBeVisible();
+  const resumo = page.getByRole("article", { name: "Resumo das análises" });
+  await expect(resumo.getByText(/Ciclo de corte há/)).toBeVisible();
+  await expect(resumo.getByText(/regra \d/)).toBeVisible();
+  await expect(resumo.getByText(/HP [+−]/)).toBeVisible();
+  const div = page.getByRole("article", { name: "Últimas divulgações" });
+  await expect(div.getByRole("link", { name: "IPCA 12 meses" })).toBeVisible();
+  await expect(div.getByText("−0,50 p.p.")).toBeVisible();
+  await div.getByRole("button", { name: "Fórmula" }).click();
+  await expect(div.getByText(/entrou ou foi revisado no banco nos últimos 7 dias/)).toBeVisible();
+  await page.screenshot({ path: "test-results/central.png", fullPage: true });
 });
