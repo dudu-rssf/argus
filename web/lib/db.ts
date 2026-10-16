@@ -121,3 +121,29 @@ export async function lerEventos(tipo: string, quantidade: number): Promise<Even
     select id, tipo, to_char(data_ref, 'YYYY-MM-DD') as data_ref, titulo, url, texto
     from events where tipo = ${tipo} order by data_ref desc, id desc limit ${quantidade}`) as Evento[];
 }
+
+export type Divulgacao = {
+  series_id: string; data: string; valor: number; anterior_data: string | null; anterior: number | null; quando: string;
+};
+
+/**
+ * Último dado de cada série que entrou (ou foi revisado) no banco nos últimos `dias`,
+ * com o dado anterior para comparação. Base das "Últimas divulgações" da Central.
+ */
+export async function ultimasDivulgacoes(ids: string[], dias = 7): Promise<Divulgacao[]> {
+  if (!ids.length) return [];
+  const fx = await fixture();
+  if (fx) return ((fx.divulgacoes ?? []) as Divulgacao[]).filter((d) => ids.includes(d.series_id));
+  return (await sql()`
+    with r as (
+      select series_id, ref_date, value::float8 as v, ingested_at,
+             row_number() over (partition by series_id order by ref_date desc) as rn
+      from observations where series_id = any(${ids})
+    )
+    select a.series_id, to_char(a.ref_date, 'YYYY-MM-DD') as data, a.v as valor,
+           to_char(b.ref_date, 'YYYY-MM-DD') as anterior_data, b.v as anterior,
+           to_char(a.ingested_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS"Z"') as quando
+    from r a left join r b on b.series_id = a.series_id and b.rn = 2
+    where a.rn = 1 and a.ingested_at > now() - make_interval(days => ${dias})
+    order by a.ingested_at desc, a.series_id`) as Divulgacao[];
+}
