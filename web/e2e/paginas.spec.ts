@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("aba Inflação montada só pela configuração", async ({ page }) => {
-  await page.getByRole("link", { name: "Inflação" }).click();
+  await page.goto(SITE + "/aba/inflacao?ver=dados");
   await expect(page.getByRole("heading", { name: "Inflação", level: 1 })).toBeVisible();
   const titulo = "IPCA, mês a mês e em 12 meses";
   await expect(page.getByRole("img", { name: `Gráfico: ${titulo}`, exact: true })).toBeVisible();
@@ -43,12 +43,12 @@ test("aba Política Monetária mostra o comunicado do Copom", async ({ page }) =
 });
 
 test("Inflação: IPCA 12 meses e meta em degrau", async ({ page }) => {
-  await page.getByRole("link", { name: "Inflação" }).click();
+  await page.goto(SITE + "/aba/inflacao?ver=dados");
   await expect(page.getByRole("heading", { name: "IPCA em 12 meses e meta para a inflação" })).toBeVisible();
 });
 
 test("botão Fórmula explica a conta do gráfico", async ({ page }) => {
-  await page.getByRole("link", { name: "Inflação" }).click();
+  await page.goto(SITE + "/aba/inflacao?ver=dados");
   const painel = page.locator("article", { has: page.getByRole("heading", { name: "Núcleos acompanhados pelo Copom" }) });
   await painel.getByRole("button", { name: "Fórmula" }).click();
   await expect(painel.getByText("Acumulado em 12 meses (encadeado)")).toBeVisible();
@@ -115,7 +115,7 @@ test("Central: mercado, resumo das análises e últimas divulgações", async ({
 });
 
 test("aba com resumo, índice, MoM/ToT/YoY, horizonte da aba, tela cheia e busca", async ({ page }) => {
-  await page.getByRole("navigation", { name: "Abas" }).getByRole("link", { name: "Inflação" }).click();
+  await page.goto(SITE + "/aba/inflacao?ver=dados");
   const resumo = page.getByRole("article", { name: "Resumo: Inflação" });
   await expect(resumo.getByText("IPCA 12 meses", { exact: true })).toBeVisible();
   await expect(resumo.getByText("4,22")).toBeVisible();
@@ -151,24 +151,17 @@ test("aba com resumo, índice, MoM/ToT/YoY, horizonte da aba, tela cheia e busca
   await page.screenshot({ path: "test-results/apos-busca.png" });
 });
 
-test("protótipos da Inflação: os quatro formatos abrem com frases e gráficos", async ({ page }) => {
-  await page.getByRole("navigation", { name: "Abas" }).getByRole("link", { name: "A. Perguntas" }).click();
-  await expect(page.getByRole("heading", { name: "A inflação está convergindo para a meta?" })).toBeVisible();
-  await expect(page.getByText(/IPCA 12 meses em 4,22%: caiu/).first()).toBeVisible();
-  await page.screenshot({ path: "test-results/prototipo-a.png", fullPage: true });
-
-  await page.getByRole("navigation", { name: "Outros protótipos" }).getByRole("link", { name: "B. Sinais" }).click();
-  await expect(page.getByRole("cell", { name: "Serviços subjacentes" })).toBeVisible();
-  await page.getByRole("button", { name: "IPCA 12 meses" }).click();
-  await expect(page.getByRole("img", { name: "Gráfico: IPCA 12 meses" })).toBeVisible();
-  await page.screenshot({ path: "test-results/prototipo-b.png", fullPage: true });
-
-  await page.getByRole("navigation", { name: "Outros protótipos" }).getByRole("link", { name: "C. Briefing" }).click();
-  await expect(page.getByText("O que mais se moveu").first()).toBeVisible();
-  await page.screenshot({ path: "test-results/prototipo-c.png", fullPage: true });
-
-  await page.getByRole("navigation", { name: "Outros protótipos" }).getByRole("link", { name: "D. Mapa" }).click();
-  await page.getByRole("img", { name: "Gráfico: Mapa da inflação" }).waitFor();
-  await expect(page.getByRole("region", { name: "Acima da meta e caindo" })).toBeVisible();
-  await page.screenshot({ path: "test-results/prototipo-d.png", fullPage: true });
+test("Inflação abre na seção Geral: fase do ciclo, perguntas, contribuições e períodos parecidos", async ({ page }) => {
+  await page.getByRole("navigation", { name: "Abas" }).getByRole("link", { name: "Inflação" }).click();
+  await expect(page.getByRole("navigation", { name: "Seção da aba" }).getByRole("link", { name: "Geral" })).toHaveAttribute("aria-current", "page");
+  await expect(page.getByText(/^IPCA 12 meses em 4,22%/)).toBeVisible();
+  await page.getByRole("img", { name: "Gráfico: Relógio do ciclo" }).waitFor();
+  await expect(page.getByText("Fase atual")).toBeVisible();
+  await expect(page.getByText("O IPCA está acima da meta?")).toBeVisible();
+  await expect(page.getByText("Os núcleos confirmam a direção do IPCA?")).toBeVisible();
+  await expect(page.getByText("Alimentação e bebidas").first()).toBeVisible();
+  await expect(page.getByText(/Nos 5 períodos mais parecidos/)).toBeVisible();
+  await page.screenshot({ path: "test-results/inflacao-geral.png", fullPage: true });
+  await page.getByRole("navigation", { name: "Seção da aba" }).getByRole("link", { name: "Todos os dados" }).click();
+  await expect(page.getByRole("article", { name: "Resumo: Inflação" })).toBeVisible();
 });
