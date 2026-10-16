@@ -391,3 +391,66 @@ series:
   observacao: Título oficial 'Meta para a inflação' conferido em 2026-10-15; valor central do ano (o intervalo de tolerância
     não está no SGS). Insumo da regra de Taylor e do desvio da meta
   acesso: sgs
+- id: BR-135
+  bloco: Aberturas
+  indicador: IPCA — Comercializáveis (tradables)
+  fonte: BCB SGS
+  codigo: '4447'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: Classificação do BCB; título oficial conferido no SGS em 2026-10-15. Preços formados no mercado internacional;
+    reagem a câmbio e commodities
+  acesso: sgs
+- id: BR-136
+  bloco: Aberturas
+  indicador: IPCA — Não comercializáveis
+  fonte: BCB SGS
+  codigo: '4448'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: Classificação do BCB; título oficial conferido no SGS em 2026-10-15. Preços formados no mercado doméstico; reagem
+    a renda e demanda interna
+  acesso: sgs
+- id: BR-137
+  bloco: Aberturas
+  indicador: IPCA — Bens duráveis
+  fonte: BCB SGS
+  codigo: '10843'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: Classificação do BCB; título oficial conferido no SGS em 2026-10-15. Compras em geral financiadas (veículos,
+    eletrodomésticos); sensíveis a crédito, juros e câmbio
+  acesso: sgs
+- id: BR-138
+  bloco: Aberturas
+  indicador: IPCA — Bens semiduráveis
+  fonte: BCB SGS
+  codigo: '10842'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: Classificação do BCB; título oficial conferido no SGS em 2026-10-15. Vestuário, calçados e similares
+  acesso: sgs
+- id: BR-139
+  bloco: Aberturas
+  indicador: IPCA — Bens não duráveis
+  fonte: BCB SGS
+  codigo: '10841'
+  frequencia: Mensal
+  unidade: '% m/m'
+  tipo: Var % mensal
+  fase: MVP
+  status: Verificado
+  observacao: Classificação do BCB; título oficial conferido no SGS em 2026-10-15. Alimentos, higiene, combustíveis e similares
+  acesso: sgs
