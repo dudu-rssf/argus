@@ -217,3 +217,47 @@ export const FORMULAS_ANALISES = {
 } satisfies Record<string, Formula>;
 
 export type IdAnalise = keyof typeof FORMULAS_ANALISES;
+
+// ---------------------------------------------------------------- leitura de trajetória (decisão 0013)
+
+export const FORMULA_TRAJETORIA: Formula = {
+  titulo: "Leitura de trajetória (curto, médio e longo prazo)",
+  formula: [
+    "Δcurto = xₜ − xₜ₋₃ meses   (em % quando a medida é um nível: (xₜ / xₜ₋₃ − 1) × 100)",
+    "Δmédio = xₜ − xₜ₋₁₂ meses",
+    "Estável se |Δ| ≤ 0,25 × mediana dos |Δ| do mesmo horizonte nos últimos 10 anos",
+    "Longo prazo: percentil = % das observações dos últimos 10 anos ≤ xₜ",
+  ],
+  variaveis: ["xₜ: último valor da medida mostrada no gráfico (já transformada)", "xₜ₋ₖ: valor k meses antes"],
+  metodologia: [
+    "Diz só para onde o dado foi e onde está na própria história; não diz se é bom ou ruim.",
+    "A escala de \"estável\" é a da própria série: a mediana não se distorce com crises.",
+    "Precisa de 24 observações no histórico para classificar como estável e para o percentil; séries diárias aceitam até 7 dias de distância na data de comparação.",
+  ],
+  limitacoes: ["Com menos de 10 anos de dados, o longo prazo usa o histórico disponível (o número de anos aparece na faixa)."],
+};
+
+// ---------------------------------------------------------------- Central
+
+export const FORMULAS_CENTRAL = {
+  faixa: {
+    titulo: "Faixa de mercado",
+    formula: [
+      "Selic: Δ = (Selic depois − Selic antes da última decisão) × 100 (pontos-base)",
+      "Dólar e Ibovespa: Δ% = (xₜ / x do dia útil anterior − 1) × 100",
+      "IPCA 12 meses: Δ = xₜ − x do mês anterior (p.p.)",
+      "Focus e juro real: Δ = xₜ − x de 4 semanas antes (p.p.)",
+    ],
+    variaveis: ["Selic meta (SGS 432)", "Dólar, taxa de câmbio livre, venda (SGS 1)", "Ibovespa (B3)", "IPCA 12 meses (SGS 13522)",
+      "Focus, mediana do IPCA 12 meses à frente (BCB Olinda)", "Juro real ex-ante (BR-055, ver fórmula na Política Monetária)"],
+    metodologia: ["Cada número é o último dado no banco, com a data dele.", "Quatro semanas antes: o último dado até 28 dias antes, com até 10 dias de folga."],
+  },
+  divulgacoes: {
+    titulo: "Últimas divulgações",
+    formula: ["Taxas e variações (%): Δ = valor novo − anterior (p.p.)", "Níveis: Δ% = (valor novo / anterior − 1) × 100"],
+    variaveis: ["Valor novo: o dado mais recente da série", "Anterior: o dado do período imediatamente anterior"],
+    metodologia: ["Entra na lista toda série das abas (mensal, trimestral ou anual) cujo dado mais recente entrou ou foi revisado no banco nos últimos 7 dias.",
+      "Séries diárias e semanais ficam de fora: elas estão na faixa de mercado e nos gráficos."],
+    limitacoes: ["Uma revisão do último dado também traz a série para a lista."],
+  },
+} satisfies Record<string, Formula>;

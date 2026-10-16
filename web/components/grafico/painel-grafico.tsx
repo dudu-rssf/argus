@@ -15,7 +15,7 @@ import { fmtData, fmtNumero } from "@/lib/formato";
 import { lerTrajetoria } from "@/lib/leitura";
 import { FaixaLeitura } from "./faixa-leitura";
 import { BotaoFormula, PainelFormula } from "@/components/formula";
-import { FORMULAS_DERIVADAS, formulaTransformacao, type Formula } from "@/lib/formulas";
+import { FORMULA_TRAJETORIA, FORMULAS_DERIVADAS, formulaTransformacao, type Formula } from "@/lib/formulas";
 import { aplicar, rotulo, transformacoesValidas, valoresNasDatas, type IdTransformacao, type Ponto } from "@/lib/transform";
 
 echarts.use([LineChart, BarChart, GridComponent, TooltipComponent, DataZoomComponent, CanvasRenderer]);
@@ -261,7 +261,7 @@ export function PainelGrafico({ painel, dados, formulasExtras = [] }: {
         </section>
       )}
 
-      {formulaAberta && formulas.length > 0 && <PainelFormula formulas={formulas} />}
+      {formulaAberta && <PainelFormula formulas={leituras.length ? [...formulas, FORMULA_TRAJETORIA] : formulas} />}
 
       <footer className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-linha px-4 py-2 text-xs text-texto-3">
         <span>
@@ -269,7 +269,7 @@ export function PainelGrafico({ painel, dados, formulasExtras = [] }: {
           {" "}({[...new Set(painel.series.map((s) => s.serie))].join(", ")})
         </span>
         <span className="flex gap-3">
-          {formulas.length > 0 && <BotaoFormula aberta={formulaAberta} alternar={() => setFormulaAberta((a) => !a)} />}
+          {(formulas.length > 0 || leituras.length > 0) && <BotaoFormula aberta={formulaAberta} alternar={() => setFormulaAberta((a) => !a)} />}
           <button type="button" onClick={() => setTabela((t) => !t)} className="hover:text-texto">
             {tabela ? "Ver gráfico" : "Ver tabela"}
           </button>
