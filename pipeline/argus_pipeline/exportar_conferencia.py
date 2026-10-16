@@ -71,8 +71,17 @@ SERIES = {
     "nucleo_ms_mensal": ("BR-030:4466", "2012-01-01"),
     "nucleo_dp_mensal": ("BR-033:16122", "2012-01-01"),
     "nucleo_p55_mensal": ("BR-034:28750", "2012-01-01"),
+    "comercializaveis_mensal": ("BR-135:4447", "2012-01-01"),
+    "nao_comercializaveis_mensal": ("BR-136:4448", "2012-01-01"),
+    "duraveis_mensal": ("BR-137:10843", "2012-01-01"),
+    "semiduraveis_mensal": ("BR-138:10842", "2012-01-01"),
+    "nao_duraveis_mensal": ("BR-139:10841", "2012-01-01"),
     "focus_ipca_2027": ("BR-046:ExpectativasMercadoAnuais · Indicador='IPCA'@2027", "2023-01-01"),
 }
+
+
+# Subitens do grupo 1 (Alimentação e bebidas), variação e peso, para o teste do detalhamento.
+SUBITENS_GRUPO_1_DESDE = "2023-01-01"
 
 
 def main() -> None:
@@ -87,6 +96,14 @@ def main() -> None:
                 raise SystemExit(f"::error::{nome} ({sid}) sem dados no banco")
             saida[nome] = {"series_id": sid, "obs": [[d.isoformat(), v] for d, v in linhas]}
             print(f"::notice::{nome}: {len(linhas)} observações")
+        cur.execute("""select split_part(series_id, '@', 2), ref_date, value::float8 from observations
+                       where starts_with(series_id, 'BR-041:t7060/v63,66/c315=all@') and ref_date >= %s
+                       order by 1, 2""", (SUBITENS_GRUPO_1_DESDE,))
+        sub: dict[str, list] = {}
+        for chave, d, v in cur.fetchall():
+            sub.setdefault(chave, []).append([d.isoformat(), v])
+        saida["subitens_desde_2023"] = {"series_id": "BR-041 (variável.categoria)", "obs": sub}
+        print(f"::notice::subitens do IPCA: {len(sub)} sub-séries")
         cur.execute("""select id, to_char(data_ref, 'YYYY-MM-DD'), titulo, texto from events
                        where tipo = 'copom_comunicado' order by data_ref""")
         comunicados = [{"id": i, "data_ref": d, "titulo": t, "texto": x} for i, d, t, x in cur.fetchall()]
