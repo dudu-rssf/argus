@@ -2,7 +2,7 @@
 
 Plataforma pessoal de inteligência global macro, com foco no Brasil. O Argus **entrega informação, não recomendação**: dados confiáveis, comparáveis e bem transformados. Interpretação só na aba Análises.
 
-O dono do projeto é iniciante em programação. Explique o que cada mudança faz em uma ou duas frases, sem jargão desnecessário, e peça aprovação antes de qualquer ação irreversível.
+O dono do projeto é iniciante em programação. Explique o que cada mudança faz em uma ou duas frases, sem jargão desnecessário, e peça aprovação antes de qualquer ação irreversível. Fora isso, trabalhe sozinho (modo delegado, regra 1).
 
 ## Leia antes de começar qualquer tarefa
 
@@ -20,9 +20,9 @@ O dono do projeto é iniciante em programação. Explique o que cada mudança fa
 
 ## Regras de trabalho
 
-1. Toda tarefa começa com um plano curto. Código só depois do plano aprovado.
+1. **Modo delegado (decisão 0016).** O dono passa o objetivo; o plano curto é escrito na spec da tarefa e executado direto, sem esperar aprovação, com publicação no `main` (o site atualiza sozinho). Só pare e pergunte antes de: ação irreversível (apagar dado do banco, trocar senha ou segredo), dependência nova não aprovada, ou mudança de rumo do projeto (trocar fonte oficial, mudar arquitetura). Ao terminar, mande um resumo curto do que foi feito.
 2. Teste antes da implementação. Adapter novo exige fixture gravada (resposta real da API) em `pipeline/tests/fixtures/` e teste de contrato.
-3. Um commit por passo com testes verdes. Nunca dois módulos no mesmo commit.
+3. Um commit por passo com testes verdes. Nunca dois módulos no mesmo commit. Antes de publicar no `main`: testes do pipeline e do site, build e e2e verdes localmente; depois, confira o CI e o deploy da Vercel. Se algo publicado quebrar, reverta o commit primeiro e corrija depois.
 4. Proibido silenciar erro: falha de fonte vira registro em `ingestion_runs`; nunca dado inventado, zero ou valor padrão.
 5. Nada de scripts avulsos de "fix" ou "seed" para corrigir dados. Corrija a causa no adapter ou na configuração e rode a carga de novo.
 6. Datas sempre ISO (`AAAA-MM-DD`), texto sempre UTF-8, números como número (nunca string com vírgula).
