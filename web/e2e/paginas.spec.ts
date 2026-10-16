@@ -70,7 +70,14 @@ test("Análises: ciclos da Selic com episódio atual, tabela e detalhe", async (
   await expect(page.getByRole("heading", { name: "Ciclos de política monetária" })).toBeVisible();
   await expect(page.getByText("Ciclo de corte desde 19/03/2026")).toBeVisible();
   await expect(page.getByRole("cell", { name: "14,25 → 6,50" })).toBeVisible(); // corte de 2016-2018
-  await page.getByRole("img", { name: "Gráfico: Ciclos de corte, alinhados no início" }).waitFor();
+  const corte = page.getByRole("img", { name: "Gráfico: Ciclos de corte, alinhados no início" });
+  await corte.waitFor();
+  await corte.scrollIntoViewIfNeeded();
+  const caixa = (await corte.boundingBox())!;
+  await page.mouse.move(caixa.x + caixa.width * 0.3, caixa.y + caixa.height * 0.4);
+  await expect(page.getByText(/Mês \d+ desde o início do ciclo/)).toBeVisible();
+  await expect(page.getByText(/bps em \d+ decisões/).first()).toBeVisible();
+  await page.screenshot({ path: "test-results/tooltip-ciclos.png", clip: { x: caixa.x - 20, y: caixa.y - 60, width: caixa.width + 40, height: caixa.height + 120 } });
   await expect(page.getByRole("heading", { name: "Postura monetária" })).toBeVisible();
   // Com só Selic e IPCA na base de teste, compara por essas duas
   for (const v of ["Expectativa Focus 12 meses", "Juro real ex-ante", "IBC-Br (var. anual)", "Dólar (var. anual)"])
@@ -105,4 +112,41 @@ test("Central: mercado, resumo das análises e últimas divulgações", async ({
   await div.getByRole("button", { name: "Fórmula" }).click();
   await expect(div.getByText(/entrou ou foi revisado no banco nos últimos 7 dias/)).toBeVisible();
   await page.screenshot({ path: "test-results/central.png", fullPage: true });
+});
+
+test("aba com resumo, índice, MoM/ToT/YoY, horizonte da aba, tela cheia e busca", async ({ page }) => {
+  await page.getByRole("navigation", { name: "Abas" }).getByRole("link", { name: "Inflação" }).click();
+  const resumo = page.getByRole("article", { name: "Resumo: Inflação" });
+  await expect(resumo.getByText("IPCA 12 meses", { exact: true })).toBeVisible();
+  await expect(resumo.getByText("4,22")).toBeVisible();
+  await resumo.getByRole("button", { name: "Sobre: IPCA 12 meses" }).click();
+  await expect(resumo.getByRole("dialog", { name: "IPCA 12 meses" })).toContainText("13522");
+
+  // índice leva ao painel
+  await page.getByRole("navigation", { name: "Painéis desta aba" }).getByRole("link", { name: "IPCA-15" }).click();
+  await expect(page).toHaveURL(/#ipca-15$/);
+
+  // atalhos MoM/ToT/YoY trocam a medida
+  const nucleos = page.locator("article#nucleos-acompanhados-pelo-copom");
+  await nucleos.getByRole("button", { name: "ToT" }).click();
+  await expect(nucleos.getByRole("combobox", { name: "Transformação" })).toHaveValue("acum3");
+
+  // horizonte da aba inteira
+  await page.getByRole("group", { name: "Horizonte de todos os gráficos" }).getByRole("button", { name: "3A" }).click();
+  await expect(page.locator("article#ipca-mes-a-mes-e-em-12-meses").getByRole("group", { name: "Horizonte" }).getByRole("button", { name: "3A" }))
+    .toHaveAttribute("aria-pressed", "true");
+
+  // tela cheia
+  const ipca = page.locator("article#ipca-mes-a-mes-e-em-12-meses");
+  await ipca.getByRole("button", { name: "Abrir em tela cheia" }).click();
+  await expect(ipca).toHaveClass(/fixed/);
+  await page.keyboard.press("Escape");
+  await expect(ipca).not.toHaveClass(/fixed/);
+
+  // busca rápida
+  await page.keyboard.press("Control+k");
+  await page.getByRole("textbox", { name: "Buscar" }).fill("taylor");
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/analises#taylor$/);
+  await page.screenshot({ path: "test-results/apos-busca.png" });
 });
