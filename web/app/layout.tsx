@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const sans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--fonte-sans" });
-const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--fonte-mono" });
+const sans = Archivo({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--fonte-sans" });
+const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--fonte-mono" });
 
 export const metadata: Metadata = {
   title: { default: "Argus", template: "%s · Argus" },

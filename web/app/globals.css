@@ -5,6 +5,7 @@
   --color-fundo: var(--cor-fundo);
   --color-painel: var(--cor-painel);
   --color-painel-alto: var(--cor-painel-alto);
+  --color-realce: var(--cor-realce);
   --color-linha: var(--cor-linha);
   --color-linha-forte: var(--cor-linha-forte);
   --color-texto: var(--cor-texto);
@@ -29,7 +30,10 @@ body {
   font-family: var(--font-sans);
   font-feature-settings: "tnum" 1;
 }
-.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+::selection { background: var(--cor-ouro-tenue); }
+* { scrollbar-color: var(--cor-linha-forte) transparent; scrollbar-width: thin; }
+html { scroll-padding-top: 72px; }
 :focus-visible { outline: 2px solid var(--cor-ouro); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

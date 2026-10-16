@@ -1,34 +1,37 @@
 /*
  * Design tokens do Argus — única fonte de cores, tipos e espaços (CLAUDE.md, regra 7).
- * Navy profundo como base, dourado como único destaque, cinzas frios para o secundário;
- * verde e vermelho só para variação (plano.md, Identidade visual).
+ * "Mesa de operações": fundo quase preto azulado, painéis com borda fina e sem sombra;
+ * dourado só para o que está selecionado ou é atual; verde e vermelho só em variação
+ * com sinal (Fase 6b).
  */
 :root {
-  --cor-fundo: #08111f;
-  --cor-painel: #0d1a2e;
-  --cor-painel-alto: #13233d;
-  --cor-linha: #1e3150;
-  --cor-linha-forte: #2c4469;
-  --cor-texto: #e4e9f1;
-  --cor-texto-2: #94a3ba;
-  --cor-texto-3: #64758f;
-  --cor-ouro: #c8a24a;
-  --cor-ouro-forte: #dcb85e;
-  --cor-ouro-tenue: rgba(200, 162, 74, 0.14);
-  --cor-alta: #4fb286;
-  --cor-baixa: #e06a5f;
+  --cor-fundo: #05080e;
+  --cor-painel: #0a1019;
+  --cor-painel-alto: #101824;
+  --cor-realce: #0e1622;
+  --cor-linha: #161f2c;
+  --cor-linha-forte: #24314a;
+  --cor-texto: #e6ebf2;
+  --cor-texto-2: #94a1b6;
+  --cor-texto-3: #6b7891;
+  --cor-ouro: #d4a64a;
+  --cor-ouro-forte: #e6bd63;
+  --cor-ouro-tenue: rgba(212, 166, 74, 0.12);
+  --cor-alta: #2fbf8a;
+  --cor-baixa: #ef5f5a;
   --cor-alerta: #d9a03f;
+  --cor-mira: #3a4a66;
 
   /* Séries de gráfico, nesta ordem fixa (nunca reciclada). Validadas contra o painel
-     (#0d1a2e): faixa de luminosidade, croma, separação para daltonismo e contraste. */
+     (#0a1019): faixa de luminosidade, croma, separação para daltonismo e contraste. */
   --serie-1: #b58d2c;
   --serie-2: #3f86d6;
   --serie-3: #d0704f;
   --serie-4: #239d95;
   --serie-5: #9b7fe0;
-  --grade: #172a45;
+  --grade: #111925;
 
-  --raio-painel: 6px;
-  --raio-controle: 4px;
-  --largura-menu: 232px;
+  --raio-painel: 4px;
+  --raio-controle: 3px;
+  --largura-menu: 220px;
 }
