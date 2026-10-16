@@ -1,6 +1,6 @@
 # Fase 6b — Experiência: resumo por aba, praticidade, MoM/ToT/YoY, explicações e estética
 
-**Status:** em andamento (2026-10-15, modo delegado). Pedido do dono, em 5 itens.
+**Status:** feita em 2026-10-15 (modo delegado). Pedido do dono, em 5 itens; todos no ar, com testes (unitários e e2e).
 
 ## 1. Resumo no topo de cada aba
 - Cada aba ganha `resumo:` no YAML com os 4 a 8 indicadores principais. Cada um mostra: o valor (na medida escolhida), a diferença para o período anterior, a data, uma minicurva de 24 meses e a direção.
