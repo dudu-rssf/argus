@@ -10,7 +10,11 @@ import { fichaResumo, maioresMudancas } from "@/lib/resumo";
 import Link from "next/link";
 import { GeralInflacaoView } from "@/components/geral/geral-inflacao";
 import { calcularFatos, frase } from "@/lib/fatos";
-import { geralInflacao, SERIES_GERAL_INFLACAO } from "@/lib/geral/inflacao";
+import ipcaGerado from "@/lib/gerado/ipca.json";
+import type { Classificacao } from "@/lib/geral/composicao";
+import { desdeSubitens, geralInflacao, idsGeralInflacao, idsSubitens, SERIES_GERAL_INFLACAO } from "@/lib/geral/inflacao";
+
+const IPCA = { subitens: ipcaGerado.subitens, classificacao: ipcaGerado.classificacao as Classificacao };
 
 type Props = { params: Promise<{ id: string }>; searchParams: Promise<{ ver?: string }> };
 
@@ -41,11 +45,12 @@ export default async function PaginaAba({ params, searchParams }: Props) {
   const paineis = a.paineis.map((p) => resolverPainel(p, ano));
   const resumo = a.resumo.map((r) => ({ ...r, dado: resolverAno(r.dado, ano), rotulo: resolverAno(r.rotulo, ano) }));
   const ids = ver === "geral"
-    ? [...new Set(Object.values(SERIES_GERAL_INFLACAO))]
+    ? idsGeralInflacao(ano)
     : [...new Set([...paineis.flatMap((p) => p.series.map((s) => s.dado)), ...resumo.map((r) => r.dado)])];
   const naoDiarias = [...new Set(paineis.flatMap((p) => p.series).filter((s) => !/di[áa]ria|semanal|cont[íi]nua/i.test(s.frequencia)).map((s) => s.dado))];
-  const [dados, eventos, novidades] = await Promise.all([
+  const [dados, subitens, eventos, novidades] = await Promise.all([
     lerSeries(ids),
+    ver === "geral" ? lerSeries(idsSubitens(IPCA.subitens), desdeSubitens(hoje)) : Promise.resolve({}),
     Promise.all(paineis.map((p) => (p.eventos && ver === "dados" ? lerEventos(p.eventos, p.quantidade ?? 3) : Promise.resolve([])))),
     ver === "dados" ? ultimasDivulgacoes(naoDiarias) : Promise.resolve([]),
   ]);
@@ -76,7 +81,7 @@ export default async function PaginaAba({ params, searchParams }: Props) {
           </div>
           {seletor}
         </div>
-        <GeralInflacaoView g={geralInflacao(dados, hoje)} frase={fatos ? frase("IPCA 12 meses", fatos, { unidade: "%", frequencia: "Mensal" }) : null} />
+        <GeralInflacaoView g={geralInflacao({ ...dados, ...subitens }, hoje, IPCA)} frase={fatos ? frase("IPCA 12 meses", fatos, { unidade: "%", frequencia: "Mensal" }) : null} />
       </section>
     );
   }

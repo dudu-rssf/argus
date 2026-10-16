@@ -160,8 +160,35 @@ test("Inflação abre na seção Geral: fase do ciclo, perguntas, contribuiçõe
   await expect(page.getByText("O IPCA está acima da meta?")).toBeVisible();
   await expect(page.getByText("Os núcleos confirmam a direção do IPCA?")).toBeVisible();
   await expect(page.getByText("Alimentação e bebidas").first()).toBeVisible();
-  await expect(page.getByText(/Nos 5 períodos mais parecidos/)).toBeVisible();
+  await expect(page.getByText(/se parece com 5 momentos do passado/)).toBeVisible();
+  await page.getByRole("img", { name: "Gráfico: trajetórias do IPCA nos períodos parecidos" }).waitFor();
+  await expect(page.getByText("Renda e mercado de trabalho").first()).toBeVisible();
   await page.screenshot({ path: "test-results/inflacao-geral.png", fullPage: true });
+
+  // Ver mais dos núcleos: explicação e minigráficos de cada núcleo
+  await page.getByRole("button", { name: "Ver mais: Os núcleos confirmam a direção do IPCA?" }).click();
+  const gaveta = page.getByRole("dialog", { name: "Os núcleos confirmam a direção do IPCA?" });
+  await expect(gaveta.getByText("EX0 · Exclusão 0")).toBeVisible();
+  await expect(gaveta.getByText("P55 · Percentil 55")).toBeVisible();
+  await page.screenshot({ path: "test-results/inflacao-ver-mais-nucleos.png" });
+  await page.keyboard.press("Escape");
+  await expect(gaveta).toBeHidden();
+
+  // Ver mais de serviços: composição por tipo
+  await page.getByRole("button", { name: "Ver mais: A inflação de serviços está cedendo?" }).click();
+  await expect(page.getByRole("dialog").getByRole("cell", { name: "Alimentação fora de casa" })).toBeVisible();
+  await page.screenshot({ path: "test-results/inflacao-ver-mais-servicos.png" });
+  await page.getByRole("button", { name: "Fechar painel" }).click();
+
+  // Cabo de guerra: troca de prazo e "por que mexeu" de um grupo
+  await page.getByRole("button", { name: "12m", exact: true }).click();
+  await expect(page.getByText(/Mudança da contribuição em 12 meses/)).toBeVisible();
+  await page.getByRole("button", { name: "Por que mexeu: Habitação: o que pode estar por trás" }).click();
+  const porTras = page.getByRole("dialog", { name: "Habitação: o que pode estar por trás" });
+  await expect(porTras.getByText("Energia elétrica residencial")).toBeVisible();
+  await expect(porTras.getByText(/bandeiras tarifárias/)).toBeVisible();
+  await page.screenshot({ path: "test-results/inflacao-por-tras.png" });
+  await page.keyboard.press("Escape");
   await page.getByRole("navigation", { name: "Seção da aba" }).getByRole("link", { name: "Todos os dados" }).click();
   await expect(page.getByRole("article", { name: "Resumo: Inflação" })).toBeVisible();
 });
