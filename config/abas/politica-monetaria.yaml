@@ -3,6 +3,14 @@ id: politica-monetaria
 titulo: Política Monetária
 grupo: Brasil
 ordem: 4
+descricao: Juros do Banco Central, juro real, expectativas para a Selic, comunicação do Copom e crédito.
+resumo:
+  - { dado: "BR-050:432", rotulo: Selic meta }
+  - { dado: "BR-055:derivado", tipo: Taxa, rotulo: Juro real ex-ante }
+  - { dado: "BR-118:derivado", tipo: Taxa, rotulo: Juro real − neutro }
+  - { dado: "BR-132:ExpectativasMercadoAnuais · Indicador='Selic'@{ano+1}", rotulo: "Focus Selic fim de {ano+1}" }
+  - { dado: "BR-065:20714", rotulo: Juro médio do crédito }
+  - { dado: "BR-062:20539", transformacao: yoy, rotulo: Saldo de crédito }
 paineis:
   - titulo: Meta Selic
     transformacao: nivel

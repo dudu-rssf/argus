@@ -5,20 +5,27 @@ import type { IdTransformacao, TipoSerie } from "./transform";
 export type SerieDoPainel = {
   dado: string; serie: string; rotulo: string; tipo: TipoSerie;
   frequencia: string; unidade: string; fonte: string; codigo: string;
+  indicador?: string; observacao?: string;
 };
+export type ItemResumo = SerieDoPainel & { transformacao: IdTransformacao };
 export type TipoEvento = "copom_comunicado" | "copom_ata";
 export type Painel = {
+  id?: string;
   titulo: string;
+  descricao?: string | null;
   transformacao: IdTransformacao;
   combinado: { barras: IdTransformacao; linha: IdTransformacao } | null;
   eventos: TipoEvento | null;
   quantidade?: number;
   series: SerieDoPainel[];
 };
-export type Aba = { id: string; titulo: string; grupo: string; ordem: number; paineis: Painel[] };
+export type Aba = {
+  id: string; titulo: string; grupo: string; ordem: number; descricao?: string | null;
+  resumo: ItemResumo[]; paineis: Painel[];
+};
 export type ItemCatalogo = {
   id: string; pais: string; aba: string; indicador: string; fonte: string; codigo: string;
-  frequencia: string; unidade: string; tipo: string; status: string;
+  frequencia: string; unidade: string; tipo: string; status: string; observacao?: string;
 };
 
 const config = gerado as unknown as { catalogo: Record<string, ItemCatalogo>; abas: Aba[] };

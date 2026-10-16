@@ -15,6 +15,11 @@ const EVENTOS = ["copom_comunicado", "copom_ata"];
 const TRANSF = ["nivel", "mom", "qoq", "tot", "yoy", "acum3", "acum6", "acum12", "anual3", "anual6",
   "dpp1", "dpp3", "dpp12", "soma3", "soma12"];
 
+export function slug(texto) {
+  return String(texto).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
 function yamls(pasta) {
   return readdirSync(pasta).flatMap((nome) => {
     const p = join(pasta, nome);
@@ -30,7 +35,7 @@ export function montarConfig(arquivosSeries, arquivosAbas) {
     for (const s of doc.series ?? []) {
       catalogo[s.id] = {
         id: s.id, pais: doc.pais, aba: doc.aba, indicador: s.indicador, fonte: s.fonte, codigo: String(s.codigo),
-        frequencia: s.frequencia, unidade: s.unidade, tipo: s.tipo, status: s.status,
+        frequencia: s.frequencia, unidade: s.unidade, tipo: s.tipo, status: s.status, observacao: s.observacao ?? "",
       };
     }
   }
@@ -46,7 +51,7 @@ export function montarConfig(arquivosSeries, arquivosAbas) {
       if (p.eventos) {
         if (!EVENTOS.includes(p.eventos)) erros.push(`${ondeP}: tipo de evento desconhecido "${p.eventos}"`);
         if (p.series?.length) erros.push(`${ondeP}: painel de eventos não leva séries`);
-        return { titulo: p.titulo, eventos: p.eventos, quantidade: p.quantidade ?? 3, series: [] };
+        return { id: slug(p.titulo), titulo: p.titulo, descricao: p.descricao ?? null, eventos: p.eventos, quantidade: p.quantidade ?? 3, series: [] };
       }
       if (!p.series?.length) erros.push(`${ondeP}: sem séries`);
       const series = (p.series ?? []).map((s) => {
@@ -64,11 +69,27 @@ export function montarConfig(arquivosSeries, arquivosAbas) {
         return {
           dado: s.dado, serie: id, rotulo: s.rotulo ?? cat.indicador, tipo,
           frequencia: cat.frequencia, unidade: cat.unidade, fonte: cat.fonte, codigo: cat.codigo,
+          indicador: cat.indicador, observacao: cat.observacao,
         };
       }).filter(Boolean);
-      return { titulo: p.titulo, transformacao: p.transformacao ?? "nivel", combinado: p.combinado ?? null, eventos: null, series };
+      return { id: slug(p.titulo), titulo: p.titulo, descricao: p.descricao ?? null, transformacao: p.transformacao ?? "nivel",
+        combinado: p.combinado ?? null, eventos: null, series };
     });
-    return { id: a.id, titulo: a.titulo, grupo: a.grupo, ordem: a.ordem ?? 99, paineis };
+    const slugs = paineis.map((p) => p.id);
+    for (const sl of slugs) if (slugs.filter((x) => x === sl).length > 1) erros.push(`${onde}: dois painéis com o mesmo título (${sl})`);
+    const resumo = (a.resumo ?? []).map((r, k) => {
+      const ondeR = `${onde}, resumo ${k + 1}`;
+      const id = String(r.dado ?? "").split(":")[0];
+      const cat = catalogo[id];
+      if (!cat) { erros.push(`${ondeR}: "${r.dado}" não está no catálogo`); return null; }
+      if (!["Verificado", "Derivado"].includes(cat.status)) erros.push(`${ondeR}: ${id} tem status "${cat.status}"`);
+      if (r.transformacao && !TRANSF.includes(r.transformacao)) erros.push(`${ondeR}: transformação desconhecida "${r.transformacao}"`);
+      const tipo = r.tipo ?? cat.tipo;
+      return { dado: r.dado, serie: id, rotulo: r.rotulo ?? cat.indicador, tipo, transformacao: r.transformacao ?? "nivel",
+        frequencia: cat.frequencia, unidade: cat.unidade, fonte: cat.fonte, codigo: cat.codigo,
+        indicador: cat.indicador, observacao: cat.observacao };
+    }).filter(Boolean);
+    return { id: a.id, titulo: a.titulo, grupo: a.grupo, ordem: a.ordem ?? 99, descricao: a.descricao ?? null, resumo, paineis };
   });
   const ids = abas.map((a) => a.id);
   for (const id of ids) if (ids.filter((x) => x === id).length > 1) erros.push(`aba "${id}" repetida`);

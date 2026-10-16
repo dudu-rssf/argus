@@ -274,3 +274,26 @@ export const FORMULAS_CENTRAL = {
     limitacoes: ["Uma revisão do último dado também traz a série para a lista."],
   },
 } satisfies Record<string, Formula>;
+
+// ---------------------------------------------------------------- resumo do topo das abas
+
+export const FORMULAS_RESUMO = {
+  fichas: {
+    titulo: "Fichas do resumo",
+    formula: ["Valor = último ponto da medida indicada na ficha (ex.: variação mensal, 12 meses, nível)",
+      "Δ = valor − valor do período anterior   (p.p. para taxas e variações; % para níveis: (valor / anterior − 1) × 100)",
+      "Minicurva = a mesma medida nos últimos 24 meses"],
+    variaveis: ["As séries de cada ficha, com fonte e código no botão i"],
+    metodologia: ["As setas de 3 e 12 meses seguem a leitura de trajetória dos gráficos (ver a fórmula abaixo)."],
+  },
+  mudancas: {
+    titulo: "O que mais mudou",
+    formula: ["Para cada painel: Δ = último movimento de um período para o seguinte, na medida padrão do painel",
+      "Típico = mediana dos |Δ| da mesma série nos últimos 10 anos",
+      "Tamanho do movimento = |Δ| / típico; aparecem os 3 maiores"],
+    variaveis: ["Primeira série de cada painel, na transformação padrão do painel"],
+    metodologia: ["Só entram dados recentes (até 120 dias antes de hoje) e séries com pelo menos 25 observações.",
+      "\"3,2× o típico\" quer dizer que o último movimento foi 3,2 vezes o movimento mediano da série. Não diz se é bom ou ruim."],
+    limitacoes: ["Séries diárias medem o movimento de um dia; mensais, de um mês: a comparação é sempre com a própria série."],
+  },
+} satisfies Record<string, Formula>;

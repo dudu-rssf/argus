@@ -3,6 +3,13 @@ id: familias
 titulo: Famílias
 grupo: Brasil
 ordem: 7
+descricao: "Situação financeira das famílias: dívida, comprometimento da renda, atraso no pagamento, crédito e renda."
+resumo:
+  - { dado: "BR-091:29037", rotulo: Endividamento }
+  - { dado: "BR-092:29034", rotulo: Comprometimento de renda }
+  - { dado: "BR-096:21084", rotulo: Inadimplência PF }
+  - { dado: "BR-094:20580", transformacao: yoy, rotulo: Crédito pessoal }
+  - { dado: "BR-020:t6392/v6293,6288@6293", transformacao: yoy, rotulo: Massa de renda real }
 paineis:
   - titulo: Endividamento e comprometimento de renda
     transformacao: nivel

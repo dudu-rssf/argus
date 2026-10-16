@@ -3,6 +3,14 @@ id: fiscal
 titulo: Fiscal
 grupo: Brasil
 ordem: 5
+descricao: Contas do governo e dívida pública, em % do PIB e em reais, e o que o mercado espera.
+resumo:
+  - { dado: "BR-069:5793", rotulo: Primário 12m }
+  - { dado: "BR-070:5727", rotulo: Nominal 12m }
+  - { dado: "BR-070:5760", rotulo: Juros 12m }
+  - { dado: "BR-072:13762", rotulo: Dívida bruta }
+  - { dado: "BR-073:4513", rotulo: Dívida líquida }
+  - { dado: "BR-077:ExpectativasMercadoAnuais · Indicador='Resultado primário'@{ano}", rotulo: "Focus primário {ano}" }
 paineis:
   - titulo: Resultado primário, setor público consolidado (12 meses, % do PIB)
     transformacao: nivel

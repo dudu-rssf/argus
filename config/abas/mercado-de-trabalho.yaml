@@ -3,6 +3,14 @@ id: mercado-de-trabalho
 titulo: Mercado de Trabalho
 grupo: Brasil
 ordem: 2
+descricao: Emprego, desemprego e renda do trabalho. PNAD Contínua (IBGE) e Novo CAGED (emprego com carteira).
+resumo:
+  - { dado: "BR-015:24369", rotulo: Desocupação }
+  - { dado: "BR-016:t5944/v4096", rotulo: Participação }
+  - { dado: "BR-018:t8513/v12466", rotulo: Informalidade }
+  - { dado: "BR-019:t6390/v5933,5929@5933", transformacao: yoy, rotulo: Rendimento real }
+  - { dado: "BR-020:t6392/v6293,6288@6293", transformacao: yoy, rotulo: Massa de renda real }
+  - { dado: "BR-133:derivado", transformacao: soma12, tipo: Fluxo, rotulo: CAGED 12 meses }
 paineis:
   - titulo: Taxa de desocupação
     transformacao: nivel

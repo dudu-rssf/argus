@@ -3,6 +3,14 @@ id: setor-externo
 titulo: Setor Externo
 grupo: Brasil
 ordem: 6
+descricao: Comércio exterior, contas externas, reservas e câmbio.
+resumo:
+  - { dado: "BR-085:1", rotulo: Dólar }
+  - { dado: "BR-082:23079", rotulo: Transações correntes }
+  - { dado: "BR-079:fluxo=export", transformacao: soma12, rotulo: Exportações 12m }
+  - { dado: "BR-079:fluxo=import", transformacao: soma12, rotulo: Importações 12m }
+  - { dado: "BR-084:13621", rotulo: Reservas }
+  - { dado: "BR-086:11752", rotulo: Câmbio real efetivo }
 paineis:
   - titulo: Exportações e importações (12 meses, US$)
     transformacao: soma12

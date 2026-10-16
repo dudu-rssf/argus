@@ -3,6 +3,14 @@ id: inflacao
 titulo: Inflação
 grupo: Brasil
 ordem: 3
+descricao: Preços ao consumidor e ao produtor, núcleos que o Copom acompanha e expectativas do mercado.
+resumo:
+  - { dado: "BR-025:433", rotulo: IPCA no mês }
+  - { dado: "BR-026:13522", rotulo: IPCA 12 meses }
+  - { dado: "BR-127:derivado", transformacao: acum12, tipo: Var % mensal, rotulo: Média dos núcleos 12m }
+  - { dado: "BR-042:29683", transformacao: acum12, rotulo: Serviços subjacentes 12m }
+  - { dado: "BR-040:21379", rotulo: Difusão }
+  - { dado: "BR-047:ExpectativasMercadoInflacao12Meses · Indicador='IPCA'", rotulo: Focus 12m à frente }
 paineis:
   - titulo: IPCA, mês a mês e em 12 meses
     combinado: { barras: nivel, linha: acum12 }
