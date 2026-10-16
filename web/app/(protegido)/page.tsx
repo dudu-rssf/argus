@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { RodapeFormula } from "@/components/formula";
+import { Info } from "@/components/info";
 import { analisarCiclos, analiseItem5, SERIES_CICLOS, SERIES_ITEM5 } from "@/lib/analises";
 import { direcoes, faixaMercado, seriesDivulgadas, SERIES_MERCADO, type Ficha } from "@/lib/central";
 import { abas } from "@/lib/config";
@@ -15,7 +16,16 @@ function hojeEmBrasilia(): string {
 }
 
 const sinal = (v: number, casas = 2) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${fmtNumero(Math.abs(v), casas)}`;
-const SETA: Record<Direcao, string> = { subiu: "↑ subiu", caiu: "↓ caiu", estavel: "→ estável" };
+const SETA: Record<Direcao, string> = { subiu: "↗ subiu", caiu: "↘ caiu", estavel: "→ estável" };
+
+const SOBRE: Record<Ficha["id"], string> = {
+  selic: "Meta da taxa Selic definida pelo Copom (BCB SGS 432). A variação é a da última decisão, em pontos-base (100 bps = 1 ponto percentual).",
+  dolar: "Taxa de câmbio livre, dólar americano, venda (BCB SGS 1, PTAX). Variação contra o dia útil anterior.",
+  ibov: "Índice Bovespa no fechamento (B3). Variação contra o pregão anterior.",
+  ipca12: "Inflação oficial acumulada em 12 meses (IBGE, via BCB SGS 13522). Diferença em pontos percentuais contra o mês anterior.",
+  focus12: "Mediana das projeções de inflação para os próximos 12 meses na pesquisa Focus do BCB. Diferença contra 4 semanas antes.",
+  juroReal: "Selic descontada da inflação esperada para 12 meses (fórmula de Fisher), calculado pelo Argus. Diferença contra 4 semanas antes.",
+};
 
 function textoComparacao(f: Ficha): string {
   if (!f.referencia) return "";
@@ -30,16 +40,16 @@ function textoComparacao(f: Ficha): string {
 function FichaMercado({ f }: { f: Ficha }) {
   return (
     <div className="flex flex-col gap-1 bg-painel px-4 py-3">
-      <p className="text-xs text-texto-3">{f.rotulo}</p>
+      <p className="flex items-center justify-between gap-1 text-xs text-texto-2">{f.rotulo}<Info titulo={f.rotulo} lado="direita">{SOBRE[f.id]}</Info></p>
       {f.ultimo ? (
         <>
           <p className="num text-2xl text-texto">
             {fmtNumero(f.ultimo.valor, f.casas)}<span className="ml-1 text-xs text-texto-3">{f.unidade}</span>
           </p>
           {f.delta !== null && (
-            <p className="num text-sm text-texto-2">
-              {f.deltaUnidade === "bps" ? `${sinal(f.delta, 0)} bps` : `${sinal(f.delta)}${f.deltaUnidade === "%" ? "%" : " p.p."}`}{" "}
-              <span className="text-xs text-texto-3">{textoComparacao(f)}</span>
+            <p className={`num text-sm ${f.delta > 0 ? "text-alta" : f.delta < 0 ? "text-baixa" : "text-texto-2"}`}>
+              {f.delta > 0 ? "▲ " : f.delta < 0 ? "▼ " : "■ "}{f.deltaUnidade === "bps" ? `${sinal(f.delta, 0)} bps` : `${sinal(f.delta)}${f.deltaUnidade === "%" ? "%" : " p.p."}`}{" "}
+              <span className="block font-sans text-xs text-texto-3">{textoComparacao(f)}</span>
             </p>
           )}
           <p className="text-xs text-texto-3">dado de {fmtData(f.ultimo.data, f.frequencia)}</p>
@@ -70,12 +80,12 @@ export default async function Central() {
   return (
     <section className="flex flex-col gap-6">
       <div>
-        <h1 className="text-xl font-semibold">Central</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Central</h1>
         <p className="mt-1 text-sm text-texto-2">O essencial do dia: mercado, o que mudou nas análises e o que acabou de ser divulgado.</p>
       </div>
 
       <article className="rounded-painel border border-linha bg-painel" aria-label="Faixa de mercado">
-        <header className="border-b border-linha px-4 py-3"><h2 className="font-medium text-texto">Mercado</h2></header>
+        <header className="border-b border-linha px-4 py-3"><h2 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-texto">Mercado<Info titulo="Mercado">Os preços e taxas que mais mexem com o dia a dia do mercado, cada um com a data do último dado e a comparação indicada. Clique no i de cada um para ver a fonte.</Info></h2></header>
         <div className="grid grid-cols-2 gap-px bg-linha md:grid-cols-3 xl:grid-cols-6">
           {fichas.map((f) => <FichaMercado key={f.id} f={f} />)}
         </div>
@@ -84,7 +94,7 @@ export default async function Central() {
 
       <article className="rounded-painel border border-linha bg-painel" aria-label="Resumo das análises">
         <header className="flex items-baseline justify-between gap-3 border-b border-linha px-4 py-3">
-          <h2 className="font-medium text-texto">Resumo das análises</h2>
+          <h2 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-texto">Resumo das análises<Info titulo="Resumo das análises">Os resultados atuais da aba Análises: em que ponto do ciclo de juros o Copom está, se o juro real está acima ou abaixo do neutro, onde a Selic está em relação à regra de Taylor e o hiato do produto. Embaixo, a direção recente de inflação, atividade e desemprego. O botão Fórmula tem todas as contas.</Info></h2>
           <Link href="/analises" className="text-sm text-ouro hover:text-ouro-forte">Ver na aba Análises →</Link>
         </header>
         <div className="grid grid-cols-1 gap-px bg-linha md:grid-cols-2 xl:grid-cols-4">
@@ -150,7 +160,7 @@ export default async function Central() {
 
       <article className="rounded-painel border border-linha bg-painel" aria-label="Últimas divulgações">
         <header className="border-b border-linha px-4 py-3">
-          <h2 className="font-medium text-texto">Últimas divulgações</h2>
+          <h2 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-texto">Últimas divulgações<Info titulo="Últimas divulgações">Dados mensais, trimestrais e anuais que acabaram de entrar no banco, com o valor anterior e a diferença. Clique no nome para ir à aba do indicador.</Info></h2>
           <p className="text-xs text-texto-3">Dados mensais, trimestrais e anuais que entraram no banco nos últimos 7 dias.</p>
         </header>
         {divulgacoes.length ? (
