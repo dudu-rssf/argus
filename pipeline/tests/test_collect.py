@@ -172,3 +172,53 @@ def test_falha_de_eventos_vira_registro(conn):
 
     run_id = run_collection(conn, [_copom()], {}, gatilho="teste", hoje=HOJE, eventos={"copom": falso})
     assert _q(conn, "select status from ingestion_runs where id=%s", run_id)[0][0] == "erro"
+
+
+def test_fonte_sem_mes_novo_nao_e_consultada(conn):
+    """ComexStat limita pedidos: se o banco já tem o último mês publicado, não pede de novo."""
+    chamadas = []
+
+    def falso(codigo, desde):
+        chamadas.append(codigo)
+        return [(date(2026, 8, 1), 10.0)]
+
+    serie = _s("BR-79", "22707")
+    terca = date(2026, 10, 6)
+    run_collection(conn, [serie], {"sgs": falso}, gatilho="teste", hoje=terca,
+                   publicado={"sgs": lambda: date(2026, 8, 1)})
+    assert chamadas == ["22707"]  # primeira vez: banco vazio, consulta
+    run_id = run_collection(conn, [serie], {"sgs": falso}, gatilho="teste", hoje=terca,
+                            publicado={"sgs": lambda: date(2026, 8, 1)})
+    assert chamadas == ["22707"]  # já tem ago/2026: não consulta
+    assert _q(conn, "select status, erro from ingestion_items where run_id=%s", run_id)[0] == ("sem_novidade", None)
+    run_collection(conn, [serie], {"sgs": falso}, gatilho="teste", hoje=terca,
+                   publicado={"sgs": lambda: date(2026, 9, 1)})
+    assert len(chamadas) == 2  # saiu set/2026: consulta
+
+
+def test_segunda_feira_consulta_mesmo_sem_mes_novo_para_pegar_revisoes(conn):
+    chamadas = []
+
+    def falso(codigo, desde):
+        chamadas.append(codigo)
+        return [(date(2026, 8, 1), 10.0)]
+
+    pub = {"sgs": lambda: date(2026, 8, 1)}
+    run_collection(conn, [_s("BR-79", "22708")], {"sgs": falso}, gatilho="teste", hoje=date(2026, 10, 6), publicado=pub)
+    run_collection(conn, [_s("BR-79", "22708")], {"sgs": falso}, gatilho="teste", hoje=date(2026, 10, 12), publicado=pub)
+    assert len(chamadas) == 2
+
+
+def test_se_a_data_publicada_falha_consulta_normalmente(conn):
+    chamadas = []
+
+    def falso(codigo, desde):
+        chamadas.append(codigo)
+        return [(date(2026, 8, 1), 10.0)]
+
+    def quebra():
+        raise AdapterError("limite de pedidos")
+
+    run_collection(conn, [_s("BR-79", "22708")], {"sgs": falso}, gatilho="teste", hoje=date(2026, 10, 6), publicado={"sgs": quebra})
+    run_collection(conn, [_s("BR-79", "22708")], {"sgs": falso}, gatilho="teste", hoje=date(2026, 10, 6), publicado={"sgs": quebra})
+    assert len(chamadas) == 2

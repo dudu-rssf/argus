@@ -112,3 +112,9 @@ def fetch(codigo: str, desde: date | None) -> list[Observacao]:
             obs.extend(parse(_pedir(c, "POST", f"{BASE}/general", json=montar_corpo(codigo, de, ate))))
     inicio = desde.replace(day=1) if desde else date.min
     return sorted(o for o in obs if o[0] >= inicio)
+
+
+def ultimo_publicado() -> date:
+    """Primeiro dia do último mês já publicado (para a coleta não pedir o que já tem)."""
+    ano, mes = _ultima_atualizacao().split("-")
+    return date(int(ano), int(mes), 1)

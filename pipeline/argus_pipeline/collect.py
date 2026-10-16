@@ -67,8 +67,26 @@ def run_collection(
     fases: tuple[str, ...] = ("MVP",),
     eventos: dict[str, Callable[[str, date | None], list[Evento]]] | None = None,
     derivadas: dict[str, Callable[[psycopg.Connection], list]] | None = None,
+    publicado: dict[str, Callable[[], date | None]] | None = None,
 ) -> int:
+    """`publicado`: por forma de acesso, a data do último dado que a fonte já publicou.
+    Se o banco já tem esse dado, a série não é consultada (fonte com limite de pedidos,
+    ex.: ComexStat), exceto às segundas-feiras, para pegar revisões."""
     eventos = eventos or {}
+    publicado = publicado or {}
+    hoje = hoje or date.today()
+    ultimo_publicado: dict[str, date | None] = {}
+
+    def ja_tem_o_ultimo(kind: str, ultima: date | None) -> bool:
+        if kind not in publicado or ultima is None or hoje.weekday() == 0:
+            return False
+        if kind not in ultimo_publicado:
+            try:
+                ultimo_publicado[kind] = publicado[kind]()
+            except AdapterError:
+                ultimo_publicado[kind] = None  # sem a data, consulta normalmente
+        pub = ultimo_publicado[kind]
+        return pub is not None and ultima >= pub
     derivadas = derivadas or {}
     alvo = [s for s in series if s.fase in fases and s.status in COLETAVEIS
             and (s.kind in adapters or s.kind in eventos)]
@@ -99,7 +117,13 @@ def run_collection(
                 continue
             fetch = adapters[s.kind]
             try:
-                desde = janela_inicio(ultima_data(conn, sid), s.frequencia)
+                ultima = ultima_data(conn, sid)
+                if ja_tem_o_ultimo(s.kind, ultima):
+                    _registrar_item(conn, run_id, sid, "sem_novidade", 0, ultima)
+                    conn.commit()
+                    oks += 1
+                    continue
+                desde = janela_inicio(ultima, s.frequencia)
                 linhas = fetch(cod, desde)
                 grupos: dict[str, list] = {}
                 for linha in linhas:
@@ -168,7 +192,7 @@ def main() -> None:
     with db.connect(os.environ["DATABASE_URL"]) as conn:
         db.apply_migrations(conn)
         run_id = run_collection(conn, series, adapters, gatilho=args.gatilho, eventos=eventos,
-                                derivadas=derivadas)
+                                derivadas=derivadas, publicado=registry.PUBLICADO)
         with conn.cursor() as cur:
             cur.execute("select status, count(*) from ingestion_items where run_id=%s group by 1", (run_id,))
             resumo = dict(cur.fetchall())

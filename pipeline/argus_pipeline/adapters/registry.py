@@ -15,3 +15,9 @@ ADAPTERS = {
 EVENTOS = {
     "copom": copom.fetch,
 }
+
+# Fontes com limite de pedidos: data do último dado publicado, para não pedir o que já
+# está no banco (a coleta consulta mesmo assim às segundas, para pegar revisões).
+PUBLICADO = {
+    "comexstat": comexstat.ultimo_publicado,
+}

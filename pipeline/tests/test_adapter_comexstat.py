@@ -119,3 +119,9 @@ def test_429_persistente_vira_adapter_error():
     respx.post(url__regex=r".*/general$").respond(429, text=_ler("comex_export_vazio.json"))
     with pytest.raises(AdapterError, match="429"):
         comexstat.fetch("fluxo=export", date(2026, 6, 1))
+
+
+def test_ultimo_publicado_vira_data(monkeypatch):
+    comexstat._ultima_atualizacao.cache_clear()
+    monkeypatch.setattr(comexstat, "_ultima_atualizacao", lambda: "2026-09")
+    assert comexstat.ultimo_publicado() == date(2026, 9, 1)
