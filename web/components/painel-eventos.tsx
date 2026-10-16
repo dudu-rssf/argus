@@ -2,11 +2,11 @@ import type { Evento } from "@/lib/db";
 import { fmtData } from "@/lib/formato";
 
 /** Textos oficiais (ex.: comunicados do Copom), na íntegra, como a fonte publicou. */
-export function PainelEventos({ titulo, eventos, fonte }: { titulo: string; eventos: Evento[]; fonte: string }) {
+export function PainelEventos({ id, titulo, eventos, fonte }: { id?: string; titulo: string; eventos: Evento[]; fonte: string }) {
   return (
-    <article className="flex flex-col rounded-painel border border-linha bg-painel">
+    <article id={id} className="flex scroll-mt-20 flex-col rounded-painel border border-linha bg-painel">
       <header className="border-b border-linha px-4 py-3">
-        <h2 className="font-medium text-texto">{titulo}</h2>
+        <h2 className="text-[15px] font-semibold tracking-tight text-texto">{titulo}</h2>
       </header>
       {eventos.length === 0 ? (
         <p className="px-4 py-10 text-center text-sm text-texto-2">Nenhum texto no banco ainda. Confira a página Saúde dos dados.</p>
