@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { dispararColeta, estadoDaColeta } from "@/lib/github";
+import { dispararColeta, estadoDaColeta, estadoDoBanco } from "@/lib/github";
 
 const resposta = (status: number, corpo?: unknown) =>
   new Response(corpo === undefined ? null : JSON.stringify(corpo), { status });
@@ -29,5 +29,12 @@ describe("botão Atualizar", () => {
   it("erro do GitHub vira mensagem, sem quebrar o site", async () => {
     const f = vi.fn().mockResolvedValueOnce(resposta(401, {}));
     expect(await estadoDaColeta("t", f)).toEqual({ estado: "erro", mensagem: "GitHub respondeu 401" });
+  });
+
+  it("sem token, o estado vem do banco (decisão 0018)", () => {
+    const ok = { id: 9, status: "ok", iniciado_em: "2026-10-19T12:00:00Z" };
+    expect(estadoDoBanco({ rodando: true, ultima: ok })).toMatchObject({ estado: "rodando" });
+    expect(estadoDoBanco({ rodando: false, ultima: ok })).toMatchObject({ estado: "ocioso", ultima: { conclusao: "success" } });
+    expect(estadoDoBanco({ rodando: false, ultima: { ...ok, status: "parcial" } })).toMatchObject({ ultima: { conclusao: "failure" } });
   });
 });

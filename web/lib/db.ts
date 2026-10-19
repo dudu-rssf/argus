@@ -1,5 +1,6 @@
 /**
- * Leitura do banco (Neon). Só SELECT; o usuário do site não tem permissão de escrita.
+ * Leitura do banco (Neon). Só SELECT, com uma exceção: gravar pedidos do botão "Atualizar"
+ * em pedidos_atualizacao (decisão 0018), a única tabela em que o usuário do site escreve.
  * Roda apenas no servidor: a URL do banco nunca chega ao navegador.
  */
 import { neon } from "@neondatabase/serverless";
@@ -147,4 +148,43 @@ export async function ultimasDivulgacoes(ids: string[], dias = 7): Promise<Divul
     from r a left join r b on b.series_id = a.series_id and b.rn = 2
     where a.rn = 1 and a.ingested_at > now() - make_interval(days => ${dias})
     order by a.ingested_at desc, a.series_id`) as Divulgacao[];
+}
+
+// ---------------------------------------------------------------- botão Atualizar sem token (decisão 0018)
+
+export type EstadoPeloBanco = {
+  rodando: boolean;
+  ultima: { id: number; status: string; iniciado_em: string; terminado_em: string | null } | null;
+};
+
+/**
+ * Coleta "rodando" se há pedido ainda não atendido, se um pedido foi atendido há menos de
+ * 5 minutos e nenhuma coleta começou depois dele (o workflow ainda está subindo), ou se a
+ * última execução ainda está em andamento.
+ */
+export async function estadoPeloBanco(): Promise<EstadoPeloBanco> {
+  const fx = await fixture();
+  if (fx) {
+    const u = (fx.execucoes as Execucao[])[0];
+    return { rodando: false, ultima: u ? { id: u.id, status: u.status, iniciado_em: u.iniciado_em, terminado_em: u.terminado_em } : null };
+  }
+  const [l] = (await sql()`
+    with u as (select id, status, iniciado_em, terminado_em from ingestion_runs order by id desc limit 1),
+         p as (select max(pedido_em) filter (where atendido_em is null) as pendente,
+                      max(atendido_em) as atendido from pedidos_atualizacao)
+    select u.id::int, u.status,
+           to_char(u.iniciado_em at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS"Z"') as iniciado_em,
+           to_char(u.terminado_em at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS"Z"') as terminado_em,
+           (p.pendente is not null
+             or (p.atendido > now() - interval '5 minutes' and (u.iniciado_em is null or u.iniciado_em < p.atendido))
+             or u.status = 'rodando') as rodando
+    from p left join u on true`) as { id: number | null; status: string | null; iniciado_em: string | null; terminado_em: string | null; rodando: boolean }[];
+  return { rodando: !!l?.rodando, ultima: l?.id ? { id: l.id, status: l.status!, iniciado_em: l.iniciado_em!, terminado_em: l.terminado_em } : null };
+}
+
+/** Registra um pedido de coleta (um por vez: se já há um pendente, não grava outro). */
+export async function registrarPedido(): Promise<void> {
+  if (await fixture()) return;
+  await sql()`insert into pedidos_atualizacao (pedido_em)
+              select now() where not exists (select 1 from pedidos_atualizacao where atendido_em is null)`;
 }

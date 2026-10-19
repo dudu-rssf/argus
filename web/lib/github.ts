@@ -1,6 +1,7 @@
 /**
- * Botão "Atualizar" (decisão 0008): o site dispara o workflow "Coleta" pela API do GitHub.
- * É a única chamada externa do site; ele nunca fala com as fontes de dados.
+ * Botão "Atualizar" (decisões 0008 e 0018). Com GITHUB_TOKEN na Vercel, o site dispara o
+ * workflow "Coleta" pela API do GitHub. Sem token, grava um pedido no banco e o workflow
+ * "Relógio" dispara a coleta em até 1 minuto. O site nunca fala com as fontes de dados.
  */
 export const REPO = "dudu-rssf/argus";
 export const WORKFLOW = "coleta.yml";
@@ -49,4 +50,14 @@ export async function dispararColeta(token: string | undefined, f: Fetch = fetch
   });
   if (r.status !== 204) return { estado: "erro", mensagem: `GitHub recusou o disparo (${r.status})` };
   return { estado: "rodando", ultima: atual.ultima, disparou: true };
+}
+
+/** Estado no formato do botão, a partir do banco (caminho sem token). */
+export function estadoDoBanco(b: { rodando: boolean; ultima: { id: number; status: string; iniciado_em: string } | null }): EstadoColeta {
+  const ultima: Execucao | null = b.ultima ? {
+    id: b.ultima.id, status: b.ultima.status === "rodando" ? "in_progress" : "completed",
+    conclusao: b.ultima.status === "rodando" ? null : b.ultima.status === "ok" ? "success" : "failure",
+    criada_em: b.ultima.iniciado_em, link: "/dados",
+  } : null;
+  return { estado: b.rodando ? "rodando" : "ocioso", ultima };
 }
