@@ -75,7 +75,8 @@ export function geralMonetaria(dados: Record<string, Ponto[]>, hoje: string): Ge
     explica: "Restritiva = juro real esperado acima do juro neutro implícito nas projeções do Focus para 3 anos à frente (BR-118).",
     verMais: { secoes: [
       { titulo: "O que é", paragrafos: [
-        "Juro real ex-ante é a Selic descontada da inflação esperada para os próximos 12 meses: o custo real do dinheiro que empresas e famílias enxergam hoje.",
+        "Juro real é quanto o dinheiro rende ou custa acima da inflação. \"Ex-ante\" quer dizer \"olhando para a frente\": desconta a inflação que se espera para os próximos 12 meses (Focus), e não a que já passou. É o custo real que empresas e famílias enxergam na hora de decidir pegar um empréstimo ou investir.",
+        "Exemplo: com Selic de 13,75% e inflação esperada de 4,5%, o juro real ex-ante é cerca de 8,9% (1,1375 ÷ 1,045 − 1). Atenção: a medida usa a Selic de hoje; como o mercado espera cortes, o juro esperado para os próximos 12 meses é menor, e o juro real ex-ante \"de mercado\" fica perto de 8%.",
         "Juro neutro é o nível que nem acelera nem freia a economia. Não é observável; aqui usamos o que está implícito nas projeções do Focus para daqui a 3 anos, quando os efeitos de curto prazo já passaram. Juro real acima do neutro freia a demanda e a inflação; abaixo, estimula.",
       ] },
       { titulo: "Gráficos", graficos: [

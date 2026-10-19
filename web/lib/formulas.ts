@@ -161,7 +161,11 @@ export const FORMULAS_DERIVADAS: Record<string, Formula> = {
     formula: ["r = [(1 + Selic/100) / (1 + πᵉ/100) − 1] × 100"],
     variaveis: ["Selic: meta vigente na data (SGS 432)", "πᵉ: mediana do Focus para o IPCA 12 meses à frente (BCB Olinda)"],
     metodologia: ["Fórmula de Fisher (exata, não a aproximação Selic − πᵉ).", "Uma observação por data de pesquisa do Focus, com a Selic vigente nesse dia."],
-    fundamento: ["O que pesa na decisão de gastar ou investir é o juro descontado da inflação que se espera, não o juro nominal (efeito Fisher)."],
+    fundamento: [
+      "Juro real = quanto o dinheiro rende (ou custa) acima da inflação. Ex-post (\"depois do fato\") usa a inflação que já aconteceu; ex-ante (\"antes do fato\") usa a inflação que se espera para frente.",
+      "Quem decide hoje tomar um empréstimo ou investir olha para a frente: compara o juro que vai pagar com a inflação que espera. Por isso o ex-ante é a medida que importa para a política monetária (efeito Fisher).",
+      "Exemplo de hoje: Selic de 13,75% e inflação esperada de 4,48% em 12 meses dão (1,1375 / 1,0448) − 1 ≈ 8,9% de juro real.",
+    ],
     limitacoes: ["Usa a Selic de hoje, não a Selic esperada nos próximos 12 meses. O padrão de mercado é o swap DI × pré de 360 dias (que o Argus ainda não coleta): em ciclo de corte, esta medida fica acima dele; em ciclo de alta, abaixo."],
     referencias: [REF.fisher],
   },
