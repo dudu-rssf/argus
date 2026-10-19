@@ -60,6 +60,11 @@ export type RelogioAba = {
   nomes: Record<Fase, string>; descricoes: Record<Fase, string>; explica: string; formula: Formula;
 };
 
+export type CurvaReunioes = {
+  pesquisa: string; selicHoje: number;
+  itens: { reuniao: string; data: string; mediana: number; mudanca: number; antes4: number | null }[];
+};
+
 export type GeralAba = {
   frase: string | null;
   relogio: RelogioAba | null;
@@ -68,6 +73,8 @@ export type GeralAba = {
   forcas: BlocoForcas | null;
   parecidos: ParecidosDados;
   formulaParecidos: Formula;
+  /** Política Monetária: Selic esperada pelo Focus em cada reunião do Copom. */
+  curvaReunioes?: CurvaReunioes | null;
 };
 
 // ---------------------------------------------------------------- utilidades
