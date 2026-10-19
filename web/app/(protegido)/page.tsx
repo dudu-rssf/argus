@@ -4,7 +4,7 @@ import { Info } from "@/components/info";
 import { analisarCiclos, analiseItem5, SERIES_CICLOS, SERIES_ITEM5 } from "@/lib/analises";
 import { direcoes, faixaMercado, seriesDivulgadas, SERIES_MERCADO, type Ficha } from "@/lib/central";
 import { abas } from "@/lib/config";
-import { lerSeries, ultimasDivulgacoes } from "@/lib/db";
+import { lerEventos, lerSeries, ultimasDivulgacoes } from "@/lib/db";
 import { duracao, fmtData, fmtMomento, fmtNumero } from "@/lib/formato";
 import { FORMULA_TRAJETORIA, FORMULAS_ANALISES, FORMULAS_CENTRAL } from "@/lib/formulas";
 import type { Direcao } from "@/lib/leitura";
@@ -16,6 +16,7 @@ function hojeEmBrasilia(): string {
 }
 
 const sinal = (v: number, casas = 2) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${fmtNumero(Math.abs(v), casas)}`;
+const FONTE_NOTICIA: Record<string, string> = { bcb_notas: "BCB · imprensa", bcb_noticias: "BCB", ibge: "IBGE", fed: "Federal Reserve" };
 const SETA: Record<Direcao, string> = { subiu: "↗ subiu", caiu: "↘ caiu", estavel: "→ estável" };
 
 const SOBRE: Record<Ficha["id"], string> = {
@@ -64,9 +65,10 @@ function FichaMercado({ f }: { f: Ficha }) {
 export default async function Central() {
   const hoje = hojeEmBrasilia();
   const divulgaveis = seriesDivulgadas(abas(), Number(hoje.slice(0, 4)));
-  const [dados, divulgacoes] = await Promise.all([
+  const [dados, divulgacoes, noticias] = await Promise.all([
     lerSeries([...new Set([...Object.values(SERIES_MERCADO), ...Object.values(SERIES_CICLOS), ...Object.values(SERIES_ITEM5)])]),
     ultimasDivulgacoes(divulgaveis.map((s) => s.dado)),
+    lerEventos("noticia", 30),
   ]);
   const fichas = faixaMercado(dados);
   const episodio = analisarCiclos(dados, hoje).at(-1);
@@ -204,8 +206,36 @@ export default async function Central() {
         <RodapeFormula formulas={[FORMULAS_CENTRAL.divulgacoes]} />
       </article>
 
+      <article className="rounded-painel border border-linha bg-painel" aria-label="Notícias oficiais">
+        <header className="border-b border-linha px-4 py-3">
+          <h2 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-texto">Notícias oficiais<Info titulo="Notícias oficiais">Comunicados publicados pelo Banco Central (notas à imprensa e notícias), pelo IBGE (divulgações da Agência de Notícias) e pelo Federal Reserve (política monetária), lidos dos feeds oficiais a cada coleta. O título leva ao texto completo no site da fonte.</Info></h2>
+          <p className="text-xs text-texto-3">Mais recentes primeiro. Só fontes oficiais, sem imprensa nem opinião.</p>
+        </header>
+        {noticias.length ? (
+          <ul className="divide-y divide-linha">
+            {noticias.map((n) => {
+              const fonte = FONTE_NOTICIA[n.id.split("-")[1]] ?? "Fonte oficial";
+              return (
+                <li key={n.id} className="grid grid-cols-[88px_minmax(0,1fr)] gap-3 px-4 py-2.5 sm:grid-cols-[88px_120px_minmax(0,1fr)]">
+                  <span className="num text-xs text-texto-3">{fmtData(n.data_ref, "Diária")}</span>
+                  <span className="hidden text-xs text-ouro sm:block">{fonte}</span>
+                  <div className="min-w-0">
+                    {n.url ? (
+                      <a href={n.url} target="_blank" rel="noopener noreferrer" className="text-sm text-texto hover:text-ouro">{n.titulo} <span aria-hidden className="text-texto-3">↗</span></a>
+                    ) : <span className="text-sm text-texto">{n.titulo}</span>}
+                    {n.texto && <p className="mt-0.5 line-clamp-2 text-xs leading-relaxed text-texto-3">{n.texto}</p>}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p className="px-4 py-8 text-center text-sm text-texto-2">As notícias aparecem depois da próxima coleta.</p>
+        )}
+      </article>
+
       <p className="text-xs text-texto-3">
-        Agenda de divulgações e notícias entram na próxima etapa. Situação de cada série: <Link href="/dados" className="text-ouro hover:text-ouro-forte">Saúde dos dados</Link>.
+        A agenda de divulgações entra na próxima etapa. Situação de cada série: <Link href="/dados" className="text-ouro hover:text-ouro-forte">Saúde dos dados</Link>.
       </p>
     </section>
   );

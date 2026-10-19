@@ -111,6 +111,9 @@ test("Central: mercado, resumo das análises e últimas divulgações", async ({
   await expect(div.getByText("−0,50 p.p.")).toBeVisible();
   await div.getByRole("button", { name: "Fórmula" }).click();
   await expect(div.getByText(/entrou ou foi revisado no banco nos últimos 7 dias/)).toBeVisible();
+  const noticias = page.getByRole("article", { name: "Notícias oficiais" });
+  await expect(noticias.getByRole("link", { name: /Federal Reserve issues FOMC statement/ })).toHaveAttribute("href", /federalreserve\.gov/);
+  await expect(noticias.getByText("IBGE").first()).toBeVisible();
   await page.screenshot({ path: "test-results/central.png", fullPage: true });
 });
 
