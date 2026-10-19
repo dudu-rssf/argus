@@ -84,7 +84,7 @@ SERIES = {
 # para anos de referência a partir de 2024.
 GERAL_ABAS = ["BR-001", "BR-003", "BR-004", "BR-005", "BR-006", "BR-007", "BR-008", "BR-009", "BR-014",
               "BR-015", "BR-016", "BR-017", "BR-018", "BR-019", "BR-020", "BR-022", "BR-133",
-              "BR-050", "BR-055", "BR-117", "BR-118", "BR-132", "BR-062", "BR-063", "BR-064", "BR-065", "BR-066",
+              "BR-050", "BR-055", "BR-056", "BR-117", "BR-118", "BR-132", "BR-062", "BR-063", "BR-064", "BR-065", "BR-066",
               "BR-069", "BR-070", "BR-071", "BR-072", "BR-073", "BR-074", "BR-077",
               "BR-079", "BR-080", "BR-081", "BR-082", "BR-083", "BR-084", "BR-085", "BR-086", "BR-088", "BR-089",
               "BR-091", "BR-092", "BR-093", "BR-094", "BR-095", "BR-096", "BR-026", "BR-047", "BR-134"]
@@ -118,7 +118,7 @@ def main() -> None:
                        where split_part(series_id, ':', 1) = any(%s) order by 1, 2""", (GERAL_ABAS,))
         abas: dict[str, list] = {}
         for sid, d, v in cur.fetchall():
-            ano = sid.rsplit("@", 1)[-1] if "ExpectativasMercadoAnuais" in sid else ""
+            ano = sid.rsplit("@", 1)[-1] if "ExpectativasMercadoAnuais" in sid else sid.rsplit("/", 1)[-1] if "ExpectativasMercadoSelic" in sid else ""
             if ano.isdigit() and int(ano) < FOCUS_ANUAL_DESDE:
                 continue
             abas.setdefault(sid, []).append([d.isoformat(), v])
