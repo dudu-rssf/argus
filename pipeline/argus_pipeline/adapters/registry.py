@@ -1,5 +1,5 @@
 """Adapters disponíveis por forma de acesso (campo 'acesso' do catálogo)."""
-from argus_pipeline.adapters import b3, comexstat, copom, focus, fred, sgs, sidra, tesouro
+from argus_pipeline.adapters import b3, comexstat, copom, focus, fred, rss, sgs, sidra, tesouro
 
 ADAPTERS = {
     "sgs": sgs.fetch,
@@ -14,6 +14,7 @@ ADAPTERS = {
 # Adapters de eventos (texto datado -> tabela events)
 EVENTOS = {
     "copom": copom.fetch,
+    "rss": rss.fetch,
 }
 
 # Fontes com limite de pedidos: data do último dado publicado, para não pedir o que já

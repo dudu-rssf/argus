@@ -1,0 +1,17 @@
+pais: BR
+aba: Central
+gerado_de: docs/catalogo — não edite à mão; edite o catálogo e rode o gerador
+series:
+- id: BR-140
+  bloco: Notícias
+  indicador: 'Notícias oficiais: BCB (notas e notícias), IBGE e Fed'
+  fonte: RSS oficial
+  codigo: bcb_notas ; bcb_noticias ; ibge ; fed
+  frequencia: Contínua
+  unidade: Texto
+  tipo: Texto
+  fase: MVP
+  status: Verificado
+  observacao: Feeds RSS/Atom oficiais (BCB sitefeeds, Agência IBGE, Federal Reserve press_monetary); título e resumo em texto
+    puro na tabela events (tipo noticia); fixtures reais gravadas em 2026-10-19
+  acesso: rss
