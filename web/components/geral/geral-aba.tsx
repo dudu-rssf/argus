@@ -139,6 +139,32 @@ export function GeralAbaView({ g }: { g: GeralAba }) {
 
       <PainelVerMais id="ver-mais-perguntas" />
 
+      {g.curvaReunioes && (
+        <Bloco titulo="O que o mercado espera em cada reunião do Copom" formula={FORMULAS_GERAL.curvaReunioes}
+          explica="Mediana do Focus para a Selic decidida em cada uma das próximas reuniões do Copom. A barra mostra o nível esperado; ao lado, quanto o mercado espera de mudança em cada reunião e como a expectativa mudou nas últimas 4 semanas. É expectativa de analistas, não promessa do Banco Central.">
+          <div className="flex flex-col gap-2">
+            <p className="text-xs text-texto-3">Pesquisa Focus de {fmtData(g.curvaReunioes.pesquisa, "Diária")} · Selic hoje {fmtNumero(g.curvaReunioes.selicHoje)}%</p>
+            <ul className="flex flex-col gap-1.5">
+              {(() => {
+                const c = g.curvaReunioes!;
+                const vals = [c.selicHoje, ...c.itens.map((i) => i.mediana)];
+                const min = Math.min(...vals) - 0.5, max = Math.max(...vals);
+                const w = (v: number) => `${((v - min) / (max - min || 1)) * 100}%`;
+                return c.itens.map((i) => (
+                  <li key={i.reuniao} className="grid grid-cols-[110px_minmax(0,1fr)_64px_96px_110px] items-center gap-3 text-xs">
+                    <span className="num text-texto-2">{fmtData(i.data, "Diária")}</span>
+                    <span className="h-3 rounded-sm bg-ouro/70" style={{ width: w(i.mediana) }} />
+                    <span className="num text-right text-sm font-semibold text-texto">{fmtNumero(i.mediana)}%</span>
+                    <span className={`num text-right ${cor(i.mudanca)}`}>{Math.abs(i.mudanca) < 0.005 ? "manutenção" : `${i.mudanca > 0 ? "+" : "−"}${Math.round(Math.abs(i.mudanca) * 100)} bps`}</span>
+                    <span className={`num text-right ${cor(i.antes4 === null ? null : i.mediana - i.antes4)}`}>{i.antes4 === null ? "—" : `${sinal(i.mediana - i.antes4)} p.p. em 4 sem.`}</span>
+                  </li>
+                ));
+              })()}
+            </ul>
+          </div>
+        </Bloco>
+      )}
+
       {g.decomposicao && <DecomposicaoInterativa d={g.decomposicao} />}
 
       {g.forcas && (

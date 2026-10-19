@@ -2,7 +2,8 @@
  * Geral da aba Política Monetária: postura (juro real × neutro implícito), decisões do
  * Copom, o que o mercado espera, o que mexeu no juro real e o crédito.
  */
-import { decisoes } from "../../ciclos";
+import { decisoes, valorAte } from "../../ciclos";
+import reunioesGeradas from "../../gerado/reunioes.json";
 import { calcularFatos, frase } from "../../fatos";
 import { fmtData, fmtNumero } from "../../formato";
 import type { Ponto } from "../../transform";
@@ -25,7 +26,34 @@ const S = {
   taxa: "BR-065:20714", spread: "BR-066:20783",
 };
 const focusSelic = (ano: number) => `BR-132:ExpectativasMercadoAnuais · Indicador='Selic'@${ano}`;
-export const idsMonetaria = (ano: number) => [...Object.values(S), focusSelic(ano), focusSelic(ano + 1), focusSelic(ano + 2)];
+const focusReuniao = (r: string) => `BR-056:ExpectativasMercadoSelic@${r}`;
+/** Reuniões do Copom de um ano, na ordem: R1/ano, R2/ano... com a data da decisão. */
+export function reunioesCopom(ano: number): { reuniao: string; data: string }[] {
+  return REUNIOES.copom.filter((r) => r.data.startsWith(String(ano))).map((r, i) => ({ reuniao: `R${i + 1}/${ano}`, data: r.data }));
+}
+export const idsMonetaria = (ano: number) => [...Object.values(S), focusSelic(ano), focusSelic(ano + 1), focusSelic(ano + 2),
+  ...[ano, ano + 1].flatMap((a) => reunioesCopom(a).map((r) => focusReuniao(r.reuniao)))];
+
+/** Selic esperada pelo Focus em cada reunião futura (última pesquisa), contra a Selic de hoje. */
+export function curvaReunioes(dados: Record<string, Ponto[]>, hoje: string, selicHoje: number | null) {
+  if (selicHoje === null) return null;
+  const ano = Number(hoje.slice(0, 4));
+  const futuras = [ano, ano + 1].flatMap(reunioesCopom).filter((r) => r.data >= hoje);
+  let anterior = selicHoje, pesquisa = "";
+  const itens = futuras.flatMap((r) => {
+    const s = dados[focusReuniao(r.reuniao)] ?? [];
+    const u = s.at(-1);
+    if (!u) return [];
+    pesquisa = u.data > pesquisa ? u.data : pesquisa;
+    const a4 = valorAte(s, new Date(Date.parse(u.data) - 28 * 86_400_000).toISOString().slice(0, 10), 10);
+    const item = { reuniao: r.reuniao, data: r.data, mediana: u.valor, mudanca: u.valor - anterior, antes4: a4 && a4.data < u.data ? a4.valor : null };
+    anterior = u.valor;
+    return [item];
+  });
+  return itens.length ? { pesquisa, selicHoje, itens } : null;
+}
+
+const REUNIOES = reunioesGeradas as { copom: { data: string }[] };
 
 const NOMES: Record<Fase, string> = { aquecendo: "Apertando", esfriando: "Afrouxando", fria: "Estimulando", reaquecendo: "Tirando estímulo" };
 const DESCR: Record<Fase, string> = {
@@ -218,5 +246,6 @@ export function geralMonetaria(dados: Record<string, Ponto[]>, hoje: string): Ge
       { id: "ipca12", rotulo: "IPCA 12m", curto: "IPCA", unidade: "%" },
     ], { id: "selic", rotulo: "Selic", unidade: "%" }, "2002-01", hoje),
     formulaParecidos: formulaParecidos("Selic (SGS 432), juro real ex-ante (BR-055), Focus IPCA 12 meses e IPCA 12 meses (SGS 13522)"),
+    curvaReunioes: curvaReunioes(dados, hoje, s("selic").at(-1)?.valor ?? null),
   };
 }

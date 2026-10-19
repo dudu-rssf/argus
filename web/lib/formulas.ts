@@ -398,6 +398,13 @@ export const FORMULAS_GERAL = {
     ],
     limitacoes: ["Cada cesta responde a mais de uma força; o rótulo é a principal, não a única.", "As lentes se sobrepõem às cestas e não somam o IPCA."],
   },
+  curvaReunioes: {
+    titulo: "Selic esperada em cada reunião do Copom",
+    formula: ["Selic esperada = mediana do Focus para a meta Selic decidida na reunião (última pesquisa)", "Mudança na reunião = esperada na reunião − esperada na reunião anterior (na primeira, − Selic de hoje)", "Δ 4 semanas = mediana de hoje − mediana da pesquisa de 4 semanas antes"],
+    variaveis: ["Focus, ExpectativasMercadoSelic por reunião (BCB Olinda, BR-056)", "Meta Selic vigente (SGS 432)", "Datas das reuniões: calendário oficial do Copom (config/agenda/reunioes.yaml)"],
+    metodologia: ["Reunião Rn/ano = n-ésima reunião do ano no calendário do Copom.", "Base de cálculo 0 do Focus (respostas dos últimos 30 dias)."],
+    limitacoes: ["Mediana de analistas, não preço de mercado (a curva de juros futuros pode divergir)."],
+  },
   servicos: {
     titulo: "Composição dos serviços",
     formula: [
