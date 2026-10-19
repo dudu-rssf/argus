@@ -11,7 +11,32 @@ export type Formula = {
   variaveis: string[];    // o que é cada termo, com fonte e código
   metodologia: string[];  // escolhas feitas
   limitacoes?: string[];
+  /** Por que a conta é feita assim: o conceito econômico por trás, em palavras simples. */
+  fundamento?: string[];
+  /** Base na literatura: autor, ano, título e onde foi publicado. */
+  referencias?: string[];
 };
+
+/** Referências bibliográficas usadas nas análises (uma fonte só, citada pelas fórmulas). */
+export const REF = {
+  fisher: "Fisher, I. (1930). The Theory of Interest. Nova York: Macmillan.",
+  wicksell: "Wicksell, K. (1898). Geldzins und Güterpreise. Jena: Fischer (trad. inglesa: Interest and Prices, 1936).",
+  laubachWilliams: "Laubach, T.; Williams, J. C. (2003). Measuring the Natural Rate of Interest. Review of Economics and Statistics, 85(4), 1063–1070.",
+  hlw: "Holston, K.; Laubach, T.; Williams, J. C. (2017). Measuring the natural rate of interest: International trends and determinants. Journal of International Economics, 108, S59–S75.",
+  taylor93: "Taylor, J. B. (1993). Discretion versus policy rules in practice. Carnegie-Rochester Conference Series on Public Policy, 39, 195–214.",
+  taylor99: "Taylor, J. B. (1999). A Historical Analysis of Monetary Policy Rules. Em: Taylor, J. B. (org.), Monetary Policy Rules. University of Chicago Press, 319–348.",
+  cgg: "Clarida, R.; Galí, J.; Gertler, M. (2000). Monetary Policy Rules and Macroeconomic Stability: Evidence and Some Theory. Quarterly Journal of Economics, 115(1), 147–180.",
+  orphanides01: "Orphanides, A. (2001). Monetary Policy Rules Based on Real-Time Data. American Economic Review, 91(4), 964–985.",
+  hp: "Hodrick, R. J.; Prescott, E. C. (1997). Postwar U.S. Business Cycles: An Empirical Investigation. Journal of Money, Credit and Banking, 29(1), 1–16.",
+  hamilton: "Hamilton, J. D. (2018). Why You Should Never Use the Hodrick-Prescott Filter. Review of Economics and Statistics, 100(5), 831–843.",
+  orphanidesVanNorden: "Orphanides, A.; van Norden, S. (2002). The Unreliability of Output-Gap Estimates in Real Time. Review of Economics and Statistics, 84(4), 569–583.",
+  okun: "Okun, A. M. (1962). Potential GNP: Its Measurement and Significance. Proceedings of the Business and Economic Statistics Section, American Statistical Association, 98–104.",
+  phillips: "Phillips, A. W. (1958). The Relation between Unemployment and the Rate of Change of Money Wage Rates in the United Kingdom, 1861–1957. Economica, 25(100), 283–299.",
+  friedman68: "Friedman, M. (1968). The Role of Monetary Policy. American Economic Review, 58(1), 1–17.",
+  lorenz: "Lorenz, E. N. (1969). Atmospheric Predictability as Revealed by Naturally Occurring Analogues. Journal of the Atmospheric Sciences, 26(4), 636–646.",
+  bryBoschan: "Bry, G.; Boschan, C. (1971). Cyclical Analysis of Time Series: Selected Procedures and Computer Programs. NBER Technical Paper 20.",
+  tracer: "van Ruth, F.; Schouten, B.; Wekker, R. (2005). The Statistics Netherlands' Business Cycle Tracer: methodological aspects. Statistics Netherlands (CBS). Mesma ideia do Business Cycle Clock usado pelo Eurostat e pela OCDE.",
+} as const;
 
 // ---------------------------------------------------------------- transformações
 
@@ -136,6 +161,9 @@ export const FORMULAS_DERIVADAS: Record<string, Formula> = {
     formula: ["r = [(1 + Selic/100) / (1 + πᵉ/100) − 1] × 100"],
     variaveis: ["Selic: meta vigente na data (SGS 432)", "πᵉ: mediana do Focus para o IPCA 12 meses à frente (BCB Olinda)"],
     metodologia: ["Fórmula de Fisher (exata, não a aproximação Selic − πᵉ).", "Uma observação por data de pesquisa do Focus, com a Selic vigente nesse dia."],
+    fundamento: ["O que pesa na decisão de gastar ou investir é o juro descontado da inflação que se espera, não o juro nominal (efeito Fisher)."],
+    limitacoes: ["Usa a Selic de hoje, não a Selic esperada nos próximos 12 meses. O padrão de mercado é o swap DI × pré de 360 dias (que o Argus ainda não coleta): em ciclo de corte, esta medida fica acima dele; em ciclo de alta, abaixo."],
+    referencias: [REF.fisher],
   },
   "BR-117": {
     titulo: "Juro neutro implícito no Focus",
@@ -143,12 +171,17 @@ export const FORMULAS_DERIVADAS: Record<string, Formula> = {
     variaveis: ["Selicₜ₊₃ e IPCAₜ₊₃: medianas do Focus para a Selic no fim do ano e o IPCA do ano, 3 anos à frente da data da pesquisa"],
     metodologia: ["Em cada pesquisa, ano de referência = ano da pesquisa + 3, quando os efeitos de curto prazo já passaram.",
       "Leitura de mercado, não estimativa estrutural do neutro."],
+    fundamento: ["Juro neutro é o juro real que nem acelera nem freia a economia (Wicksell). Não é observável: estima-se por modelo (Laubach e Williams) ou pelo que o mercado projeta para quando os choques de curto prazo tiverem passado, que é o caso aqui."],
+    limitacoes: ["Mistura neutro com prêmio de risco e com a crença do mercado sobre a política futura; pode ficar acima de estimativas estruturais em períodos de incerteza fiscal."],
+    referencias: [REF.wicksell, REF.laubachWilliams, REF.hlw, REF.fisher],
   },
   "BR-118": {
     titulo: "Juro real menos neutro",
     formula: ["Postura = r − r*"],
     variaveis: ["r: juro real ex-ante (BR-055)", "r*: neutro implícito no Focus (BR-117), o último disponível até a data"],
     metodologia: ["Positivo: juro acima do neutro implícito (contracionista por essa régua). Negativo: abaixo."],
+    fundamento: ["A distância entre o juro real e o neutro é a medida usual de quanto a política monetária está apertada ou frouxa (postura)."],
+    referencias: [REF.laubachWilliams, REF.hlw],
   },
 };
 
@@ -167,7 +200,11 @@ export const FORMULAS_ANALISES = {
       "Gráfico alinhado: t = 0 na primeira decisão; a Selic de cada mês é a vigente no fim do mês.",
       "Métricas usam o último dado até a data, pela data de referência do dado."],
     limitacoes: ["Quem decidiu no início do ciclo ainda não conhecia o PIB daquele trimestre (dados pela data de referência, não de divulgação).",
-      "Desocupação só desde 2012, Focus 12m desde 2001, Ibovespa desde 1998: sem dado, o campo fica vazio."],
+      "Desocupação só desde 2012, Focus 12m desde 2001, Ibovespa desde 1998: sem dado, o campo fica vazio.",
+      "A regra dos 6 meses é uma escolha: as altas de 2010 e de 2011 (pausa de 6 meses menos 1 dia) aparecem como um ciclo só.",
+      "Datas de início e fim são as de vigência da nova Selic no SGS (o dia seguinte à reunião)."],
+    fundamento: ["Datar ciclos por regras fixas e transparentes (pontos de virada e duração mínima) é a abordagem clássica de Bry e Boschan, aplicada aqui às decisões da Selic."],
+    referencias: [REF.bryBoschan],
   },
   postura: {
     titulo: "Postura monetária",
@@ -177,6 +214,8 @@ export const FORMULAS_ANALISES = {
       "Selicₜ₊₃, IPCAₜ₊₃: Focus, valores esperados para 3 anos à frente da pesquisa"],
     metodologia: ["Fórmula de Fisher exata.", "O percentil compara a postura de hoje com as observações dos últimos 10 anos."],
     limitacoes: ["O neutro implícito é leitura de mercado; as estimativas do BC entram depois, digitadas dos relatórios."],
+    fundamento: ["Juro real acima do neutro freia demanda e inflação; abaixo, estimula. É a leitura de postura usada com o conceito de juro natural."],
+    referencias: [REF.fisher, REF.wicksell, REF.laubachWilliams, REF.hlw],
   },
   analogos: {
     titulo: "Períodos históricos parecidos com hoje",
@@ -187,6 +226,8 @@ export const FORMULAS_ANALISES = {
     metodologia: ["Padronizar faz cada variável pesar igual.", "Os últimos 24 meses ficam de fora; os 5 escolhidos ficam a pelo menos 12 meses um do outro.",
       "\"Hoje\" é o último mês com todas as variáveis marcadas."],
     limitacoes: ["Não é previsão: são 5 casos, e a mediana de 5 casos tem pouca força estatística."],
+    fundamento: ["Método de análogos: procurar no passado os estados mais próximos do atual e ver o que veio depois. Origem na meteorologia (Lorenz); a distância é euclidiana entre variáveis padronizadas (z-score), para que nenhuma pese mais por ter escala maior."],
+    referencias: [REF.lorenz],
   },
   hiato: {
     titulo: "Hiato do produto",
@@ -200,6 +241,13 @@ export const FORMULAS_ANALISES = {
       "Os três conferidos contra o statsmodels com o PIB real do IBGE (6 casas)."],
     limitacoes: ["O hiato não é observável: é estimativa, e cada método erra de um jeito.",
       "HP tem problema de ponta (o último trimestre puxa a tendência) e revisa o passado."],
+    fundamento: [
+      "Hiato = distância entre o PIB e o PIB potencial (Okun). Como o potencial não é observado, separa-se tendência e ciclo.",
+      "HP (Hodrick e Prescott): tendência suave que equilibra ajuste aos dados e suavidade; λ = 1600 é o valor padrão para dados trimestrais.",
+      "Hamilton (2018) critica o HP (ciclos espúrios, problema de ponta) e propõe usar o erro de previsão de 2 anos à frente (h = 8, p = 4 em dados trimestrais).",
+      "HP em tempo real mostra o que se via na época: as estimativas de hiato mudam muito depois (Orphanides e van Norden).",
+    ],
+    referencias: [REF.okun, REF.hp, REF.hamilton, REF.orphanidesVanNorden],
   },
   taylor: {
     titulo: "Regra de Taylor",
@@ -207,12 +255,20 @@ export const FORMULAS_ANALISES = {
       "Faixa = menor e maior das 16 especificações no mês; linha tracejada = mediana"],
     variaveis: ["r*: neutro implícito no Focus (BR-117)", "π: IPCA 12 meses (SGS 13522) ou Focus IPCA 12 meses à frente",
       "π*: meta do CMN para o ano (SGS 13521)", "hiato: HP (amostra inteira) ou Hamilton, do trimestre do mês",
-      "a e b: 0,5 ou 1 (Taylor, 1993, usa 0,5 nos dois; o peso 1 aparece em variantes posteriores)"],
+      "a e b: 0,5 ou 1. Taylor (1993) usa 0,5 nos dois; Taylor (1999) usa 1 para o hiato; a = 1 testa uma reação mais forte à inflação"],
     metodologia: ["2 inflações × 2 valores de a × 2 de b × 2 hiatos = 16 especificações.",
       "Mês a mês desde dez/2001 (início do Focus 12 meses), com os dados do fim do mês; no mês corrente, os dados até hoje.",
       "Depois do último PIB, vale o último hiato conhecido (a página avisa)."],
     limitacoes: ["Referencial descritivo, não previsão nem recomendação; os pesos não foram estimados para o Brasil.",
-      "A meta é o valor central, sem o intervalo de tolerância."],
+      "A meta é o valor central, sem o intervalo de tolerância.",
+      "O hiato de cada mês é o do trimestre a que o mês pertence, que na época ainda não era conhecido (o PIB sai cerca de 2 meses depois do trimestre). Para o que se sabia em tempo real, ver Orphanides (2001)."],
+    fundamento: [
+      "Regra de Taylor: o juro nominal sobe com a inflação, mais uma reação à inflação acima da meta e ao hiato do produto, a partir do juro neutro.",
+      "Princípio de Taylor: com a > 0, o juro nominal sobe mais que a inflação, e o juro real sobe; é o que estabiliza a inflação.",
+      "Usar a inflação esperada (Focus) no lugar da passada é a versão prospectiva de Clarida, Galí e Gertler.",
+      "A faixa de 16 especificações mostra quanto o resultado depende das escolhas: não existe uma regra única certa.",
+    ],
+    referencias: [REF.taylor93, REF.taylor99, REF.cgg, REF.orphanides01],
   },
   phillipsDesocupacao: {
     titulo: "Inflação e desocupação",
@@ -220,12 +276,16 @@ export const FORMULAS_ANALISES = {
     variaveis: ["Desocupação: PNAD Contínua, trimestre móvel terminado em m (SGS 24369)", "IPCA 12 meses (SGS 13522)"],
     metodologia: ["Só descrição: sem reta ajustada e sem NAIRU estimada.", "Cores por período; o último ponto em dourado."],
     limitacoes: ["Só desde 2012 (início da PNAD Contínua)."],
+    fundamento: ["Curva de Phillips: relação inversa entre desemprego e inflação (Phillips, 1958). Friedman (1968) mostrou que ela se desloca com as expectativas, por isso o gráfico só descreve, sem ajustar reta."],
+    referencias: [REF.phillips, REF.friedman68],
   },
   phillipsHiato: {
     titulo: "Inflação acima da meta e hiato",
     formula: ["Ponto do trimestre q = (hiato HPq; IPCA 12 meses no fim de q − meta do ano)"],
     variaveis: ["Hiato HP com a amostra inteira (ver o gráfico do hiato)", "IPCA 12 meses (SGS 13522)", "Meta do CMN (SGS 13521)"],
     metodologia: ["Só descrição: sem reta ajustada.", "Cores por período; o último ponto em dourado."],
+    fundamento: ["Versão com hiato da curva de Phillips: economia acima do potencial (hiato positivo) tende a vir com inflação acima da meta."],
+    referencias: [REF.phillips, REF.friedman68, REF.okun],
   },
 } satisfies Record<string, Formula>;
 
@@ -332,6 +392,8 @@ export const FORMULAS_GERAL = {
     variaveis: ["IPCA 12 meses (SGS 13522)", "Meta do CMN (SGS 13521)"],
     metodologia: ["O ciclo costuma girar no sentido reaquecendo → aquecendo → esfriando → fria.", "Rastro: os 24 meses anteriores. \"Há N meses\": meses seguidos na fase atual."],
     limitacoes: ["Descreve onde o dado está; não prevê a próxima fase. A direção de 6 meses pode discordar da de 3 meses (ver checklist)."],
+    fundamento: ["Relógio do ciclo: cruza nível (acima ou abaixo da referência) e direção (subindo ou caindo) e lê o ciclo como um giro em quatro fases, como o Business Cycle Tracer do instituto de estatística holandês e o Business Cycle Clock do Eurostat e da OCDE."],
+    referencias: [REF.tracer],
   },
   checklist: {
     titulo: "Checklist sim/não",
@@ -377,6 +439,8 @@ export const FORMULAS_GERAL = {
     variaveis: ["IPCA 12m, média dos núcleos em 12m, serviços em 12m, Focus 12m e Selic"],
     metodologia: ["Os 5 meses mais parecidos, fora dos últimos 24 meses e a pelo menos 12 meses um do outro (mesmo motor da aba Análises)."],
     limitacoes: ["São poucos casos: é contexto histórico, não previsão.", "Contexto da época: curadoria do Argus com fatos documentados (decisões do Copom, choques conhecidos)."],
+    fundamento: ["Método de análogos (Lorenz): procura no passado os meses mais parecidos com hoje em várias variáveis padronizadas e mostra o que veio depois."],
+    referencias: [REF.lorenz],
   },
   areas: {
     titulo: "IPCA por área de influência",

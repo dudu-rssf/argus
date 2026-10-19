@@ -43,3 +43,15 @@ describe("toda conta mostrada tem fórmula (decisão 0015)", () => {
     expect(formulaTransformacao("acum12", "Índice", "Trimestral")!.titulo).toMatch(/4 trimestres/);
   });
 });
+
+describe("análises citam a base científica (pedido do dono, 19/10/2026)", () => {
+  it("toda análise tem fundamento e referências", () => {
+    const analises = { ...FORMULAS_ANALISES, relogio: FORMULAS_GERAL.relogio, parecidos: FORMULAS_GERAL.parecidos,
+      "BR-055": FORMULAS_DERIVADAS["BR-055"], "BR-117": FORMULAS_DERIVADAS["BR-117"], "BR-118": FORMULAS_DERIVADAS["BR-118"] };
+    for (const [id, f] of Object.entries(analises)) {
+      expect(f.fundamento?.length, id).toBeGreaterThan(0);
+      expect(f.referencias?.length, id).toBeGreaterThan(0);
+      for (const r of f.referencias!) expect(r, id).toMatch(/\(\d{4}\)/); // autor (ano). título...
+    }
+  });
+});

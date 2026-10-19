@@ -6,7 +6,7 @@
 import { encontrarAnalogos, painelMensal } from "../analogos";
 import { valorAte } from "../ciclos";
 import { fmtNumero } from "../formato";
-import type { Formula } from "../formulas";
+import { REF, type Formula } from "../formulas";
 import type { Ponto } from "../transform";
 import type { Resposta } from "./checklist";
 export type { Resposta };
@@ -217,6 +217,8 @@ export function formulaParecidos(variaveis: string): Formula {
     variaveis: [variaveis],
     metodologia: ["Os 5 meses mais parecidos, fora dos últimos 24 meses e a pelo menos 12 meses um do outro (mesmo motor da aba Análises)."],
     limitacoes: ["São poucos casos: é contexto histórico, não previsão.", "Contexto da época: curadoria do Argus com fatos documentados."],
+    fundamento: ["Método de análogos (Lorenz): procura no passado os meses mais parecidos com hoje em várias variáveis padronizadas e mostra o que veio depois."],
+    referencias: [REF.lorenz],
   };
 }
 
@@ -233,5 +235,7 @@ export function formulaRelogio(serie: string, referencia: string, nomes: Record<
     variaveis: [`${serie}; ${referencia}`],
     metodologia: ["Rastro: os 24 meses anteriores. \"Há N meses\": meses seguidos na fase atual."],
     limitacoes: ["Descreve onde o dado está; não prevê a próxima fase."],
+    fundamento: ["Cruza nível e direção e lê o ciclo como um giro em quatro fases, como o Business Cycle Tracer do instituto de estatística holandês e o Business Cycle Clock do Eurostat e da OCDE."],
+    referencias: [REF.tracer],
   };
 }

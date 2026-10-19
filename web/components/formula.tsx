@@ -39,9 +39,11 @@ export function PainelFormula({ formulas }: { formulas: Formula[] }) {
           <div className="flex flex-col gap-1 rounded-controle border border-linha bg-painel px-3 py-2">
             {f.formula.map((l) => <code key={l} className="num whitespace-pre-wrap text-texto">{l}</code>)}
           </div>
+          <Lista titulo="Por que essa conta" itens={f.fundamento} />
           <Lista titulo="Variáveis" itens={f.variaveis} />
           <Lista titulo="Metodologia" itens={f.metodologia} />
           <Lista titulo="Limitações" itens={f.limitacoes} />
+          <Lista titulo="Referências" itens={f.referencias} />
         </section>
       ))}
     </div>
