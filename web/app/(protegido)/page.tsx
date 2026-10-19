@@ -5,6 +5,8 @@ import { analisarCiclos, analiseItem5, SERIES_CICLOS, SERIES_ITEM5 } from "@/lib
 import { direcoes, faixaMercado, seriesDivulgadas, SERIES_MERCADO, type Ficha } from "@/lib/central";
 import { abas } from "@/lib/config";
 import { lerEventos, lerSeries, ultimasDivulgacoes } from "@/lib/db";
+import { montarAgenda, proxima, type Reunioes } from "@/lib/agenda";
+import reunioesGeradas from "@/lib/gerado/reunioes.json";
 import { duracao, fmtData, fmtMomento, fmtNumero } from "@/lib/formato";
 import { FORMULA_TRAJETORIA, FORMULAS_ANALISES, FORMULAS_CENTRAL } from "@/lib/formulas";
 import type { Direcao } from "@/lib/leitura";
@@ -16,6 +18,7 @@ function hojeEmBrasilia(): string {
 }
 
 const sinal = (v: number, casas = 2) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${fmtNumero(Math.abs(v), casas)}`;
+const DIA_SEMANA = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
 const FONTE_NOTICIA: Record<string, string> = { bcb_notas: "BCB · imprensa", bcb_noticias: "BCB", ibge: "IBGE", fed: "Federal Reserve" };
 const SETA: Record<Direcao, string> = { subiu: "↗ subiu", caiu: "↘ caiu", estavel: "→ estável" };
 
@@ -65,12 +68,17 @@ function FichaMercado({ f }: { f: Ficha }) {
 export default async function Central() {
   const hoje = hojeEmBrasilia();
   const divulgaveis = seriesDivulgadas(abas(), Number(hoje.slice(0, 4)));
-  const [dados, divulgacoes, noticias] = await Promise.all([
+  const [dados, divulgacoes, noticias, eventosAgenda] = await Promise.all([
     lerSeries([...new Set([...Object.values(SERIES_MERCADO), ...Object.values(SERIES_CICLOS), ...Object.values(SERIES_ITEM5)])]),
     ultimasDivulgacoes(divulgaveis.map((s) => s.dado)),
     lerEventos("noticia", 30),
+    lerEventos("agenda", 200),
   ]);
   const fichas = faixaMercado(dados);
+  const reunioes = reunioesGeradas as Reunioes;
+  const agenda = montarAgenda(eventosAgenda, reunioes, hoje, 45);
+  const proxCopom = proxima(reunioes.copom, hoje), proxFomc = proxima(reunioes.fomc, hoje);
+  const diasAte = (d: string) => Math.round((Date.parse(d) - Date.parse(hoje)) / 86_400_000);
   const episodio = analisarCiclos(dados, hoje).at(-1);
   const item5 = analiseItem5(dados, hoje);
   const taylor = [...item5.faixa].reverse().find((l) => l.mediana !== null);
@@ -160,6 +168,36 @@ export default async function Central() {
         <RodapeFormula formulas={[FORMULAS_ANALISES.ciclos, FORMULAS_ANALISES.postura, FORMULAS_ANALISES.taylor, FORMULAS_ANALISES.hiato, FORMULA_TRAJETORIA]} />
       </article>
 
+      <article className="rounded-painel border border-linha bg-painel" aria-label="Agenda">
+        <header className="flex flex-wrap items-end justify-between gap-3 border-b border-linha px-4 py-3">
+          <div>
+            <h2 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-texto">Agenda<Info titulo="Agenda">Próximas divulgações do IBGE (da API oficial de calendário do IBGE, atualizada a cada coleta) e as decisões de juros do Copom e do FOMC (calendários oficiais do Banco Central e do Federal Reserve, conferidos pelo Argus). Clique no indicador para ir à aba.</Info></h2>
+            <p className="text-xs text-texto-3">Próximos 45 dias. Datas de divulgação, não horários.</p>
+          </div>
+          <div className="num flex flex-wrap gap-2 text-xs">
+            {proxCopom && <span className="rounded-controle border border-ouro/50 bg-ouro-tenue px-2.5 py-1 text-ouro">Próximo Copom: {fmtData(proxCopom, "Diária")} · {diasAte(proxCopom) === 0 ? "hoje" : `em ${diasAte(proxCopom)} dias`}</span>}
+            {proxFomc && <span className="rounded-controle border border-linha-forte px-2.5 py-1 text-texto-2">Próximo FOMC: {fmtData(proxFomc, "Diária")} · {diasAte(proxFomc) === 0 ? "hoje" : `em ${diasAte(proxFomc)} dias`}</span>}
+          </div>
+        </header>
+        {agenda.length ? (
+          <ul className="divide-y divide-linha">
+            {agenda.map((a) => (
+              <li key={`${a.data}-${a.instituicao}-${a.titulo}`} className="grid grid-cols-[96px_56px_minmax(0,1fr)] items-baseline gap-3 px-4 py-2">
+                <span className="num text-xs text-texto-2">{DIA_SEMANA[new Date(`${a.data}T12:00:00Z`).getUTCDay()]} {fmtData(a.data, "Diária").slice(0, 5)}</span>
+                <span className={`text-xs ${a.instituicao === "IBGE" ? "text-texto-3" : "text-ouro"}`}>{a.instituicao}</span>
+                <span className="min-w-0 text-sm">
+                  {a.aba ? <Link href={`/aba/${a.aba}`} className={`${a.destaque ? "font-medium text-texto" : "text-texto-2"} hover:text-ouro`}>{a.titulo}</Link>
+                    : <span className={a.destaque ? "font-medium text-texto" : "text-texto-2"}>{a.titulo}</span>}
+                  <span className="ml-2 text-xs text-texto-3">{a.detalhe}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="px-4 py-8 text-center text-sm text-texto-2">A agenda do IBGE aparece depois da próxima coleta.</p>
+        )}
+      </article>
+
       <article className="rounded-painel border border-linha bg-painel" aria-label="Últimas divulgações">
         <header className="border-b border-linha px-4 py-3">
           <h2 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-texto">Últimas divulgações<Info titulo="Últimas divulgações">Dados mensais, trimestrais e anuais que acabaram de entrar no banco, com o valor anterior e a diferença. Clique no nome para ir à aba do indicador.</Info></h2>
@@ -235,7 +273,7 @@ export default async function Central() {
       </article>
 
       <p className="text-xs text-texto-3">
-        A agenda de divulgações entra na próxima etapa. Situação de cada série: <Link href="/dados" className="text-ouro hover:text-ouro-forte">Saúde dos dados</Link>.
+        Situação de cada série: <Link href="/dados" className="text-ouro hover:text-ouro-forte">Saúde dos dados</Link>.
       </p>
     </section>
   );

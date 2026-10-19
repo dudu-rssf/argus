@@ -111,6 +111,10 @@ test("Central: mercado, resumo das análises e últimas divulgações", async ({
   await expect(div.getByText("−0,50 p.p.")).toBeVisible();
   await div.getByRole("button", { name: "Fórmula" }).click();
   await expect(div.getByText(/entrou ou foi revisado no banco nos últimos 7 dias/)).toBeVisible();
+  const agenda = page.getByRole("article", { name: "Agenda" });
+  await expect(agenda.getByText(/Próximo Copom: \d{2}\/\d{2}\/\d{4}/)).toBeVisible();
+  await expect(agenda.getByRole("link", { name: "IPCA-15" }).first()).toHaveAttribute("href", "/aba/inflacao");
+  await expect(agenda.getByText("Decisão do FOMC (juros nos EUA)").first()).toBeVisible();
   const noticias = page.getByRole("article", { name: "Notícias oficiais" });
   await expect(noticias.getByRole("link", { name: /Federal Reserve issues FOMC statement/ })).toHaveAttribute("href", /federalreserve\.gov/);
   await expect(noticias.getByText("IBGE").first()).toBeVisible();

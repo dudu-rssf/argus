@@ -1,0 +1,43 @@
+# Reuniões de política monetária (curadoria Argus). `data` = dia da decisão (2º dia da
+# reunião). Conferir cada ano contra o calendário oficial publicado pela instituição.
+# Copom: calendários divulgados pelo BCB em jun/2025 (2026) e jun/2026 (2027); as decisões
+#   de 2026 no banco (Selic, SGS 432) batem com estas datas.
+# FOMC: federalreserve.gov/monetarypolicy/fomccalendars.htm (consultado em 2026-10-19);
+#   * = com projeções econômicas (SEP). As datas de 2027 são provisórias para o Fed.
+fontes:
+  copom: https://www.bcb.gov.br/politicamonetaria/copom
+  fomc: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
+copom:
+  - 2026-01-28
+  - 2026-03-18
+  - 2026-04-29
+  - 2026-06-17
+  - 2026-08-05
+  - 2026-09-16
+  - 2026-11-04
+  - 2026-12-09
+  - 2027-01-27
+  - 2027-03-17
+  - 2027-04-28
+  - 2027-06-16
+  - 2027-08-04
+  - 2027-09-22
+  - 2027-10-27
+  - 2027-12-08
+fomc:
+  - 2026-01-28
+  - 2026-03-18*
+  - 2026-04-29
+  - 2026-06-17*
+  - 2026-07-29
+  - 2026-09-16*
+  - 2026-10-28
+  - 2026-12-09*
+  - 2027-01-27
+  - 2027-03-17*
+  - 2027-04-28
+  - 2027-06-09*
+  - 2027-07-28
+  - 2027-09-15*
+  - 2027-10-27
+  - 2027-12-08*

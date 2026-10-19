@@ -97,6 +97,21 @@ export function montarConfig(arquivosSeries, arquivosAbas) {
   return { catalogo, abas: abas.sort((a, b) => a.ordem - b.ordem) };
 }
 
+/** Reuniões do Copom e do FOMC (curadoria); recusa data inválida ou fora de ordem. */
+export function montarReunioes(doc) {
+  const erros = [];
+  const lista = (nome) => (doc[nome] ?? []).map((x) => {
+    const m = /^(\d{4}-\d{2}-\d{2})(\*)?$/.exec(String(x));
+    if (!m || Number.isNaN(Date.parse(m[1]))) { erros.push(`reuniões ${nome}: data inválida "${x}"`); return null; }
+    return { data: m[1], projecoes: !!m[2] };
+  }).filter(Boolean);
+  const copom = lista("copom"), fomc = lista("fomc");
+  for (const [n, l] of [["copom", copom], ["fomc", fomc]])
+    for (let i = 1; i < l.length; i++) if (l[i].data <= l[i - 1].data) erros.push(`reuniões ${n}: ${l[i].data} fora de ordem`);
+  if (erros.length) throw new Error("Configuração inválida:\n- " + erros.join("\n- "));
+  return { fontes: doc.fontes, copom, fomc };
+}
+
 /** Subitens do IPCA + classificação curada; recusa prefixo que não casa com nenhum subitem. */
 export function montarIpca(subitensDoc, classificacao, catalogo) {
   const subitens = subitensDoc.subitens;
@@ -123,5 +138,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const ipca = montarIpca(ler(join(RAIZ, "config", "derivadas", "ipca_subitens_t7060.yaml")),
     ler(join(RAIZ, "config", "derivadas", "ipca_classificacao.yaml")), config.catalogo);
   writeFileSync(join(AQUI, "..", "lib", "gerado", "ipca.json"), JSON.stringify(ipca));
+  const reunioes = montarReunioes(ler(join(RAIZ, "config", "agenda", "reunioes.yaml")));
+  writeFileSync(join(AQUI, "..", "lib", "gerado", "reunioes.json"), JSON.stringify(reunioes));
   console.log(`ipca: ${ipca.subitens.length} subitens classificados`);
 }
