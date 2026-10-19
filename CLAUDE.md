@@ -14,7 +14,7 @@ O dono do projeto é iniciante em programação. Explique o que cada mudança fa
 ## Arquitetura (não negociável)
 
 - **Três camadas que nunca se misturam:** pipeline Python agendado (coleta e valida) → Postgres (Neon) → site Next.js (só lê o banco).
-- **Nenhuma chamada a fonte de dados fora de `pipeline/adapters/`.** O site nunca chama BCB, IBGE, FRED, RSS etc. diretamente, nem em rota de API. A única chamada externa do site é à API do GitHub, para o botão "Atualizar" disparar a coleta (decisão 0008).
+- **Nenhuma chamada a fonte de dados fora de `pipeline/adapters/`.** O site nunca chama BCB, IBGE, FRED, RSS etc. diretamente, nem em rota de API. A única chamada externa do site é à API do GitHub, para o botão "Atualizar" disparar a coleta (decisão 0008); sem token, o botão grava um pedido em `pedidos_atualizacao`, a única tabela em que o site escreve (decisão 0018).
 - **Séries são configuração, não código.** Uma série nova entra em `config/series/*.yaml`; o motor de gráfico e as abas leem a configuração.
 - **Todo código de série vem do catálogo** (`docs/catalogo/`) e só entra em produção com status `Verificado`, confirmado pelo validador contra o título oficial da fonte.
 
@@ -47,7 +47,8 @@ Pipeline (a partir de `pipeline/`):
 
 No GitHub Actions (aba Actions → workflow → Run workflow):
 
-- **Coleta**: roda sozinha 5× por dia útil; manual com `fontes` opcional.
+- **Relógio**: fica sempre rodando; dispara a Coleta nos 5 horários de dia útil e atende o botão "Atualizar" (decisão 0018). Se parar, rode-o à mão.
+- **Coleta**: disparada pelo Relógio; manual com `fontes` opcional.
 - **Saúde do banco**: resumo por série; `filtro` aceita prefixos (ex.: `BR-079 BR-080`).
 - **Gravar fixtures**: grava respostas reais em `pipeline/tests/fixtures/real/` (pares `nome=URL`; chave só como `{FRED_API_KEY}`; POST com `#post=<JSON em base64>`).
 - **Validar catálogo**: confere códigos contra os títulos oficiais e atualiza `docs/catalogo/validacao.md`.
