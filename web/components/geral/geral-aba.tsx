@@ -4,7 +4,7 @@
  * pelo motor comum (lib/geral/motor.ts). Componente de servidor.
  */
 import { RodapeFormula } from "@/components/formula";
-import { Gaveta } from "@/components/gaveta";
+import { Gaveta, PainelVerMais } from "@/components/gaveta";
 import { DecomposicaoInterativa } from "@/components/geral/decomposicao-interativa";
 import { Parecidos } from "@/components/geral/parecidos";
 import { RelogioCiclo } from "@/components/geral/relogio-ciclo";
@@ -44,7 +44,7 @@ function Forcas({ f }: { f: BlocoForcas }) {
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-xs text-texto-3">{f.legenda}</p>
-        <Gaveta titulo={f.titulo} subtitulo="O que cada força representa">
+        <Gaveta alvo="ver-mais-forcas" titulo={f.titulo} subtitulo="O que cada força representa">
           <p className="mb-4 text-sm leading-relaxed text-texto-2">{f.racionalGeral}</p>
           <ul className="flex flex-col gap-3">
             {f.itens.map((i) => (
@@ -56,6 +56,7 @@ function Forcas({ f }: { f: BlocoForcas }) {
           </ul>
         </Gaveta>
       </div>
+      <PainelVerMais id="ver-mais-forcas" />
       <ul>
         {f.itens.map((i) => (
           <li key={i.id} className="grid grid-cols-1 items-center gap-x-4 gap-y-1 border-t border-linha py-3 first:border-t-0 md:grid-cols-[240px_120px_150px_minmax(0,1fr)]">
@@ -124,7 +125,7 @@ export function GeralAbaView({ g }: { g: GeralAba }) {
                   <p className="mt-1 text-xs leading-relaxed text-texto-2">{i.evidencia}</p>
                   {i.resposta !== "Sem dados" && i.verMais.secoes.length > 0 && (
                     <div className="mt-2">
-                      <Gaveta titulo={i.pergunta} subtitulo={`Resposta: ${i.resposta}. ${i.evidencia}`}>
+                      <Gaveta alvo="ver-mais-perguntas" titulo={i.pergunta} subtitulo={`Resposta: ${i.resposta}. ${i.evidencia}`}>
                         <VerMaisGenerico v={i.verMais} />
                       </Gaveta>
                     </div>
@@ -135,6 +136,8 @@ export function GeralAbaView({ g }: { g: GeralAba }) {
           </ul>
         </Bloco>
       </div>
+
+      <PainelVerMais id="ver-mais-perguntas" />
 
       {g.decomposicao && <DecomposicaoInterativa d={g.decomposicao} />}
 

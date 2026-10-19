@@ -7,7 +7,7 @@
  */
 import { useState } from "react";
 import { RodapeFormula } from "@/components/formula";
-import { Gaveta } from "@/components/gaveta";
+import { Gaveta, PainelVerMais } from "@/components/gaveta";
 import { Info } from "@/components/info";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import type { Formula } from "@/lib/formulas";
@@ -89,7 +89,7 @@ export function CaboInterativo({ cabo, formula, explica }: { cabo: GeralInflacao
               <ul className="mt-3 flex flex-col gap-1.5">
                 {itens.map((i) => (
                   <li key={i.id} className="grid grid-cols-[20px_150px_minmax(0,1fr)_minmax(0,1fr)_52px] items-center gap-2 text-xs">
-                    <Gaveta variante="icone" rotulo="Por que mexeu" titulo={`${i.nome}: o que pode estar por trás`}
+                    <Gaveta alvo="ver-mais-cabo" variante="icone" rotulo="Por que mexeu" titulo={`${i.nome}: o que pode estar por trás`}
                       subtitulo={`Prazo de ${prazo} meses · dados até ${cabo.data ? fmtData(cabo.data) : "—"}`}>
                       <PorTras nome={i.nome} delta={i.delta} prazo={prazo} desde={desde}
                         movimentos={cabo.movimentos[i.id]?.[prazo] ?? []} influencias={cabo.influencias[i.id] ?? []} />
@@ -126,6 +126,7 @@ export function CaboInterativo({ cabo, formula, explica }: { cabo: GeralInflacao
           </div>
         ) : <p className="text-sm text-texto-3">Sem dados de grupos do IPCA no banco.</p>}
       </div>
+      <PainelVerMais id="ver-mais-cabo" className="mx-5 mb-4" />
       <RodapeFormula formulas={[formula]} />
     </article>
   );

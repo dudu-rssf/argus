@@ -9,7 +9,7 @@ import { CaboInterativo } from "@/components/geral/cabo-interativo";
 import { Parecidos } from "@/components/geral/parecidos";
 import { RelogioCiclo } from "@/components/geral/relogio-ciclo";
 import { VerMaisInflacao } from "@/components/geral/ver-mais-inflacao";
-import { Gaveta } from "@/components/gaveta";
+import { Gaveta, PainelVerMais } from "@/components/gaveta";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import { FORMULAS_GERAL } from "@/lib/formulas";
 import type { GeralInflacao } from "@/lib/geral/inflacao";
@@ -99,7 +99,7 @@ export function GeralInflacaoView({ g, frase }: { g: GeralInflacao; frase: strin
                   <p className="mt-1 text-xs leading-relaxed text-texto-2">{i.evidencia}</p>
                   {i.resposta !== "Sem dados" && (
                     <div className="mt-2">
-                      <Gaveta titulo={i.pergunta} subtitulo={`Resposta: ${i.resposta}. ${i.evidencia}`}>
+                      <Gaveta alvo="ver-mais-perguntas" titulo={i.pergunta} subtitulo={`Resposta: ${i.resposta}. ${i.evidencia}`}>
                         <VerMaisInflacao id={i.id} v={g.verMais} />
                       </Gaveta>
                     </div>
@@ -110,6 +110,8 @@ export function GeralInflacaoView({ g, frase }: { g: GeralInflacao; frase: strin
           </ul>
         </Bloco>
       </div>
+
+      <PainelVerMais id="ver-mais-perguntas" />
 
       <CaboInterativo cabo={g.cabo} formula={FORMULAS_GERAL.cabo}
         explica="Quanto cada um dos 9 grupos do IPCA contribui para a inflação de 12 meses (peso × variação). À esquerda, o cabo de guerra: quem empurrou o número para cima e quem puxou para baixo no prazo escolhido (3, 6, 9 ou 12 meses). À direita, de onde vem cada ponto do número de hoje. O ? de cada grupo mostra os subitens por trás do movimento." />

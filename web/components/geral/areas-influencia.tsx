@@ -3,7 +3,7 @@
  * (classificação do Banco Central), cada uma ligada ao que mais a move, mais três lentes
  * complementares. Barras do acumulado em 12 meses; contribuição em pontos do IPCA.
  */
-import { Gaveta } from "@/components/gaveta";
+import { Gaveta, PainelVerMais } from "@/components/gaveta";
 import { Minicurva } from "@/components/minicurva";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import type { Area, GeralInflacao } from "@/lib/geral/inflacao";
@@ -45,7 +45,7 @@ export function AreasInfluencia({ areas }: { areas: GeralInflacao["areas"] }) {
         <p className="text-xs text-texto-3">
           Alta em 12 meses de cada cesta (barra) · linha tracejada = IPCA de 12 meses{areas.ipca12 !== null ? ` (${fmtNumero(areas.ipca12)}%)` : ""} · mudança em 3 meses · contribuição para o IPCA · últimos 3 anos
         </p>
-        <Gaveta titulo="Como o IPCA foi agrupado por influência" subtitulo="Racional de cada cesta e como conferimos a conta">
+        <Gaveta alvo="ver-mais-areas" titulo="Como o IPCA foi agrupado por influência" subtitulo="Racional de cada cesta e como conferimos a conta">
           <p className="mb-4 text-sm leading-relaxed text-texto-2">
             Os 377 subitens do IPCA foram separados nas quatro cestas que o Banco Central usa para analisar a inflação. Elas não se sobrepõem e, juntas, formam 100% do índice. Cada cesta tem uma força dominante que mexe nos seus preços; é ela que dá nome à área.
           </p>
@@ -69,6 +69,7 @@ export function AreasInfluencia({ areas }: { areas: GeralInflacao["areas"] }) {
           </ul>
         </Gaveta>
       </div>
+      <PainelVerMais id="ver-mais-areas" />
       <ul>
         {areas.itens.map((a) => <Linha key={a.id} a={a} max={max} ipca={areas.ipca12} mostrarContrib />)}
       </ul>

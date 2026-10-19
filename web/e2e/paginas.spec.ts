@@ -167,7 +167,7 @@ test("Inflação abre na seção Geral: fase do ciclo, perguntas, contribuiçõe
 
   // Ver mais dos núcleos: explicação e minigráficos de cada núcleo
   await page.getByRole("button", { name: "Ver mais: Os núcleos confirmam a direção do IPCA?" }).click();
-  const gaveta = page.getByRole("dialog", { name: "Os núcleos confirmam a direção do IPCA?" });
+  const gaveta = page.getByRole("region", { name: "Os núcleos confirmam a direção do IPCA?" });
   await expect(gaveta.getByText("EX0 · Exclusão 0")).toBeVisible();
   await expect(gaveta.getByText("P55 · Percentil 55")).toBeVisible();
   await page.screenshot({ path: "test-results/inflacao-ver-mais-nucleos.png" });
@@ -176,7 +176,7 @@ test("Inflação abre na seção Geral: fase do ciclo, perguntas, contribuiçõe
 
   // Ver mais de serviços: composição por tipo
   await page.getByRole("button", { name: "Ver mais: A inflação de serviços está cedendo?" }).click();
-  await expect(page.getByRole("dialog").getByRole("cell", { name: "Alimentação fora de casa" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "A inflação de serviços está cedendo?" }).getByRole("cell", { name: "Alimentação fora de casa" })).toBeVisible();
   await page.screenshot({ path: "test-results/inflacao-ver-mais-servicos.png" });
   await page.getByRole("button", { name: "Fechar painel" }).click();
 
@@ -184,7 +184,7 @@ test("Inflação abre na seção Geral: fase do ciclo, perguntas, contribuiçõe
   await page.getByRole("button", { name: "12m", exact: true }).click();
   await expect(page.getByText(/Mudança da contribuição em 12 meses/)).toBeVisible();
   await page.getByRole("button", { name: "Por que mexeu: Habitação: o que pode estar por trás" }).click();
-  const porTras = page.getByRole("dialog", { name: "Habitação: o que pode estar por trás" });
+  const porTras = page.getByRole("region", { name: "Habitação: o que pode estar por trás" });
   await expect(porTras.getByText("Energia elétrica residencial")).toBeVisible();
   await expect(porTras.getByText(/bandeiras tarifárias/)).toBeVisible();
   await page.screenshot({ path: "test-results/inflacao-por-tras.png" });
@@ -220,7 +220,7 @@ for (const a of ABAS_GERAL) {
     await page.getByRole("img", { name: /Gráfico: trajetórias de/ }).waitFor();
     await page.screenshot({ path: `test-results/geral-${a.id}.png`, fullPage: true });
     await page.getByRole("button", { name: `Ver mais: ${a.pergunta}` }).click();
-    await expect(page.getByRole("dialog", { name: a.pergunta }).locator("figure").first()).toBeVisible();
+    await expect(page.getByRole("region", { name: a.pergunta }).locator("figure").first()).toBeVisible();
     await page.screenshot({ path: `test-results/geral-${a.id}-ver-mais.png` });
     await page.keyboard.press("Escape");
     await page.getByRole("button", { name: "12m", exact: true }).click();

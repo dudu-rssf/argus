@@ -7,7 +7,7 @@
  */
 import { useState } from "react";
 import { RodapeFormula } from "@/components/formula";
-import { Gaveta } from "@/components/gaveta";
+import { Gaveta, PainelVerMais } from "@/components/gaveta";
 import { Info } from "@/components/info";
 import { fmtData, fmtNumero } from "@/lib/formato";
 import type { Decomposicao, Prazo } from "@/lib/geral/motor";
@@ -52,7 +52,7 @@ export function DecomposicaoInterativa({ d }: { d: Decomposicao }) {
                 {itens.map((i) => (
                   <li key={i.id} className="grid grid-cols-[20px_minmax(110px,190px)_minmax(0,1fr)_minmax(0,1fr)_60px] items-center gap-2 text-xs">
                     {d.porTras[i.id]?.length ? (
-                      <Gaveta variante="icone" rotulo="O que pode estar por trás" titulo={`${i.nome}: o que pode estar por trás`}
+                      <Gaveta alvo="ver-mais-decomposicao" variante="icone" rotulo="O que pode estar por trás" titulo={`${i.nome}: o que pode estar por trás`}
                         subtitulo={`Prazo de ${prazo} meses · dados até ${d.data ? fmtData(d.data) : "—"}`}>
                         <p className="text-sm leading-relaxed text-texto-2">
                           No prazo de {prazo} meses, <b className="text-texto">{i.nome}</b> mudou <span className={`num ${cor(i.delta)}`}>{sinal(i.delta)} {u}</span>.
@@ -97,6 +97,7 @@ export function DecomposicaoInterativa({ d }: { d: Decomposicao }) {
           </div>
         ) : <p className="text-sm text-texto-3">Sem dados suficientes para este prazo.</p>}
       </div>
+      <PainelVerMais id="ver-mais-decomposicao" className="mx-5 mb-4" />
       <RodapeFormula formulas={[d.formula]} />
     </article>
   );
