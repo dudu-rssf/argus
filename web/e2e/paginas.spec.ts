@@ -225,6 +225,7 @@ for (const a of ABAS_GERAL) {
     await expect(page.getByRole("heading", { name: a.dec })).toBeVisible();
     await expect(page.getByText(/se parece com 5 momentos do passado/)).toBeVisible();
     await page.getByRole("img", { name: /Gráfico: trajetórias de/ }).waitFor();
+    if (a.id === "politica-monetaria") await expect(page.getByRole("heading", { name: "O que o mercado espera em cada reunião do Copom" })).toBeVisible();
     await page.screenshot({ path: `test-results/geral-${a.id}.png`, fullPage: true });
     await page.getByRole("button", { name: `Ver mais: ${a.pergunta}` }).click();
     await expect(page.getByRole("region", { name: a.pergunta }).locator("figure").first()).toBeVisible();
