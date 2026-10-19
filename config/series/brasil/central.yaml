@@ -15,3 +15,16 @@ series:
   observacao: Feeds RSS/Atom oficiais (BCB sitefeeds, Agência IBGE, Federal Reserve press_monetary); título e resumo em texto
     puro na tabela events (tipo noticia); fixtures reais gravadas em 2026-10-19
   acesso: rss
+- id: BR-141
+  bloco: Agenda
+  indicador: Agenda de divulgações do IBGE (IPCA, IPCA-15, PNAD, PIM, PMC, PMS, PIB, LSPA)
+  fonte: IBGE calendário (servicodados v3)
+  codigo: calendario
+  frequencia: Contínua
+  unidade: Data
+  tipo: Evento
+  fase: MVP
+  status: Verificado
+  observacao: API oficial de calendário do IBGE (servicodados/api/v3/calendario), janela de 120 dias; resposta real gravada
+    em 2026-10-19; vai para a tabela events (tipo agenda)
+  acesso: agenda

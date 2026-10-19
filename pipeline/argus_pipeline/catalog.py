@@ -126,6 +126,8 @@ def source_kind(fonte: str, codigo: str) -> str:
         return "b3"
     if "Copom" in fonte and re.fullmatch(r"(comunicados|atas)( ; (comunicados|atas))*", codigo.strip()):
         return "copom"
+    if fonte.startswith("IBGE calendário") and codigo.strip() == "calendario":
+        return "agenda"
     if fonte.startswith("RSS") and re.fullmatch(r"[a-z_]+( ; [a-z_]+)*", codigo.strip()):
         return "rss"
     return "manual"

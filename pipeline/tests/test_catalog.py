@@ -27,7 +27,7 @@ def eua():
 
 
 def test_carrega_todas_as_linhas(brasil, eua):
-    assert len(brasil) == 140
+    assert len(brasil) == 141
     assert len(eua) == 96
 
 
