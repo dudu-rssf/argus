@@ -1,30 +1,29 @@
 # Saúde da coleta
 
-Semana de 2026-10-12 a 2026-10-19. Gerado automaticamente pelo workflow "Resumo semanal"; não editar à mão.
+Semana de 2026-10-19 a 2026-10-26. Gerado automaticamente pelo workflow "Resumo semanal"; não editar à mão.
 
 ## Execuções
 
 | Gatilho | Status | Execuções |
 | --- | --- | --- |
 | agenda | ok | 10 |
-| agenda | parcial | 7 |
-| agenda | rodando | 3 |
-| manual | erro | 1 |
-| manual | ok | 6 |
+| agenda | parcial | 6 |
+| agenda | rodando | 11 |
+| manual | ok | 2 |
 
 ## Fontes
 
 | Acesso | Séries de dados | Último dado coletado |
 | --- | --- | --- |
-| agenda | 1 | 2027-02-16 |
-| b3 | 1 | 2026-10-16 |
+| agenda | 1 | 2027-02-17 |
+| b3 | 1 | 2026-10-23 |
 | comexstat | 5 | 2026-09-01 |
 | copom | 2 | 2026-09-16 |
 | derivado | 6 | 2026-10-16 |
-| focus | 389 | 2026-10-16 |
-| fred | 3 | 2026-10-14 |
-| rss | 4 | 2026-10-16 |
-| sgs | 74 | 2026-10-19 |
+| focus | 389 | 2026-10-23 |
+| fred | 3 | 2026-10-20 |
+| rss | 4 | 2026-10-26 |
+| sgs | 74 | 2026-10-26 |
 | sidra | 969 | 2026-09-01 |
 | tesouro | 7 | 2026-08-01 |
 
@@ -32,26 +31,19 @@ Semana de 2026-10-12 a 2026-10-19. Gerado automaticamente pelo workflow "Resumo 
 
 | Série | Falhas | Última | Erro mais recente |
 | --- | --- | --- | --- |
-| `BR-001:t1621/v584/c11255=90707` | 6 | 2026-10-15 22:39 | SIDRA indisponível (ConnectError) |
-| `BR-002:t5932/v6561,6562,6564/c11255=90707` | 6 | 2026-10-15 22:39 | SIDRA indisponível (ConnectError) |
-| `BR-003:t1621/v584/c11255=90687,90691,90696` | 6 | 2026-10-15 22:39 | SIDRA indisponível (ConnectError) |
-| `BR-004:t1621/v584/c11255=93404,93405,93406,93407,93408` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-007:t8888/v11602,11604/c544=129314` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-007:t8888/v12606,12607/c544=129314,129315,129316` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-008:t8880/v11708/c11046=56734` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-008:t8880/v7169,7170/c11046=56733,56734` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-008:t8881/v7169,7170/c11046=56735,56736` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-009:t5906/v7167,7168/c11046=56725,56726` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-016:t5944/v4096` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-016:t6379/v4097` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-017:t8501/v4090/c1350=57302,57303` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-018:t8513/v12466` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-019:t6390/v5933,5929` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-020:t6392/v6293,6288` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-041:t7060/v63,66/c315=all` | 6 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-079:fluxo=export` | 3 | 2026-10-19 15:31 | ComexStat HTTP 429: {"error":{"code":429,"message":"Voc\u00ea excedeu o limite de solicita\u00e7\u00f5es. Por favor, tente novamente em 10 segundos."}} |
-| `BR-079:fluxo=import` | 3 | 2026-10-19 15:31 | ComexStat HTTP 429: {"error":{"code":429,"message":"Voc\u00ea excedeu o limite de solicita\u00e7\u00f5es. Por favor, tente novamente em 10 segundos."}} |
-| `BR-080:fluxo=export/pais=160` | 3 | 2026-10-19 14:25 | ComexStat HTTP 429: {"error":{"code":429,"message":"Voc\u00ea excedeu o limite de solicita\u00e7\u00f5es. Por favor, tente novamente em 10 segundos."}} |
-| `BR-105:t1621/v584/c11255=93406` | 3 | 2026-10-15 22:39 | SIDRA não foi consultado nesta rodada: 3 falhas de conexão seguidas (IBGE fora do ar ou inacessível) |
-| `BR-080:fluxo=export/pais=249` | 2 | 2026-10-16 00:37 | ComexStat HTTP 429: {"error":{"code":429,"message":"Voc\u00ea excedeu o limite de solicita\u00e7\u00f5es. Por favor, tente novamente em 10 segundos."}} |
-| `BR-080:fluxo=export/bloco=22` | 1 | 2026-10-14 17:30 | ComexStat HTTP 429: {"error":{"code":429,"message":"Voc\u00ea excedeu o limite de solicita\u00e7\u00f5es. Por favor, tente novamente em 10 segundos."}} |
+| `BR-140:ibge` | 8 | 2026-10-26 15:30 | RSS ibge: HTTP 503 |
+| `BR-079:fluxo=export` | 5 | 2026-10-23 15:32 | ComexStat HTTP 503: <html> <head><title>503 Service Temporarily Unavailable</title></head> <body> <center><h1>503 Service Temporarily Unavailable</h1></cente |
+| `BR-079:fluxo=import` | 5 | 2026-10-23 15:32 | ComexStat HTTP 503: <html> <head><title>503 Service Temporarily Unavailable</title></head> <body> <center><h1>503 Service Temporarily Unavailable</h1></cente |
+| `BR-080:fluxo=export/bloco=22` | 5 | 2026-10-26 15:30 | ComexStat HTTP 429: {"error":{"code":429,"message":"Voc\u00ea excedeu o limite de solicita\u00e7\u00f5es. Por favor, tente novamente em 10 segundos."}} |
+| `BR-080:fluxo=export/pais=160` | 4 | 2026-10-23 15:32 | ComexStat HTTP 503: <html> <head><title>503 Service Temporarily Unavailable</title></head> <body> <center><h1>503 Service Temporarily Unavailable</h1></cente |
+| `BR-080:fluxo=export/pais=249` | 3 | 2026-10-23 15:32 | ComexStat HTTP 503: <html> <head><title>503 Service Temporarily Unavailable</title></head> <body> <center><h1>503 Service Temporarily Unavailable</h1></cente |
+| `BR-089:DCOILBRENTEU` | 3 | 2026-10-21 22:31 | FRED: resposta inesperada (JSONDecodeError: Expecting value: line 1 column 1 (char 0)) |
+| `BR-089:PIORECRUSDM` | 3 | 2026-10-21 22:31 | FRED: resposta inesperada (JSONDecodeError: Expecting value: line 1 column 1 (char 0)) |
+| `BR-089:PSOYBUSDM` | 3 | 2026-10-21 22:31 | FRED: resposta inesperada (JSONDecodeError: Expecting value: line 1 column 1 (char 0)) |
+| `BR-074:rtn=10.01.1` | 1 | 2026-10-20 18:31 | Tesouro HTTP 500: {"timestamp":"2026-10-20T18:39:15.143+00:00","status":500,"error":"Internal Server Error","path":"/v1/series-temporais/custom/resultado-fiscal |
+| `BR-074:rtn=10.01.2` | 1 | 2026-10-20 18:31 | Tesouro HTTP 500: {"timestamp":"2026-10-20T18:39:20.854+00:00","status":500,"error":"Internal Server Error","path":"/v1/series-temporais/custom/resultado-fiscal |
+| `BR-074:rtn=10.02.1` | 1 | 2026-10-20 18:31 | Tesouro HTTP 500: {"timestamp":"2026-10-20T18:39:18.008+00:00","status":500,"error":"Internal Server Error","path":"/v1/series-temporais/custom/resultado-fiscal |
+| `BR-074:rtn=10.03.1` | 1 | 2026-10-20 18:31 | Tesouro HTTP 500: {"timestamp":"2026-10-20T18:39:23.484+00:00","status":500,"error":"Internal Server Error","path":"/v1/series-temporais/custom/resultado-fiscal |
+| `BR-074:rtn=10.04.1` | 1 | 2026-10-20 18:31 | Tesouro HTTP 500: {"timestamp":"2026-10-20T18:39:25.899+00:00","status":500,"error":"Internal Server Error","path":"/v1/series-temporais/custom/resultado-fiscal |
+| `BR-074:rtn=10.08.1` | 1 | 2026-10-20 18:31 | Tesouro HTTP 500: {"timestamp":"2026-10-20T18:39:29.448+00:00","status":500,"error":"Internal Server Error","path":"/v1/series-temporais/custom/resultado-fiscal |
+| `BR-074:rtn=10.09.1` | 1 | 2026-10-20 18:31 | Tesouro HTTP 500: {"timestamp":"2026-10-20T18:39:32.237+00:00","status":500,"error":"Internal Server Error","path":"/v1/series-temporais/custom/resultado-fiscal |
