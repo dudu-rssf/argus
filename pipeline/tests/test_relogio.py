@@ -36,3 +36,18 @@ def test_horario_muito_atrasado_nao_dispara():
     assert r.precisa_coletar(agora, []) is True
     tarde = datetime(2026, 10, 19, 23, 0, tzinfo=BRT)  # 19:30 venceu há 3h30
     assert r.precisa_coletar(tarde, []) is False
+
+
+def test_pedidos_so_no_horario_de_uso_e_a_cada_15_min():
+    # decisão 0019: nunca consultar o banco a cada minuto (o Neon não dorme e a cota acaba)
+    dez = datetime(2026, 11, 26, 10, 0, tzinfo=BRT)
+    assert r.deve_ver_pedidos(dez, None) is True
+    assert r.deve_ver_pedidos(dez, dez - timedelta(minutes=14)) is False
+    assert r.deve_ver_pedidos(dez, dez - timedelta(minutes=15)) is True
+    assert r.deve_ver_pedidos(datetime(2026, 11, 26, 3, 0, tzinfo=BRT), None) is False
+    assert r.deve_ver_pedidos(datetime(2026, 11, 26, 23, 30, tzinfo=BRT), None) is False
+
+
+def test_intervalo_dos_pedidos_deixa_o_neon_dormir():
+    # o Neon gratuito suspende após 5 min sem uso; o intervalo precisa ser bem maior
+    assert r.PEDIDOS_A_CADA >= timedelta(minutes=15)

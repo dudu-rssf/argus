@@ -1,10 +1,14 @@
 """Relógio da coleta (decisão 0018).
 
 O agendamento do GitHub atrasa horas e pula horários. Este processo fica rodando dentro
-de um workflow (até ~5h50) e, a cada minuto:
-  1. dispara a Coleta quando um horário oficial venceu e nenhuma coleta começou depois dele;
-  2. dispara a Coleta quando o site registrou um pedido do botão "Atualizar"
-     (tabela pedidos_atualizacao), e marca o pedido como atendido.
+de um workflow (até ~5h50) e:
+  1. a cada minuto, só pela API do GitHub, dispara a Coleta quando um horário oficial venceu e
+     nenhuma coleta começou depois dele;
+  2. a cada 15 minutos, das 7h às 23h (Brasília), abre uma conexão curta com o banco para ver se
+     o site registrou um pedido do botão "Atualizar" (tabela pedidos_atualizacao); se houver,
+     dispara a Coleta e marca o pedido como atendido.
+O banco nunca fica com conexão aberta (decisão 0019): o Neon gratuito só desliga a computação
+depois de 5 minutos sem uso, e uma conexão permanente esgotou a cota mensal em novembro/2026.
 Ao terminar, dispara a si mesmo (continuação), de modo que sempre há um relógio rodando.
 O cron do próprio workflow só serve para religar se a corrente se romper.
 
@@ -27,6 +31,8 @@ HORARIOS = ["08:45", "09:30", "12:30", "15:30", "19:30"]  # decisão 0008
 ATRASO_MAXIMO = timedelta(hours=3)
 DURACAO = timedelta(hours=5, minutes=45)
 INTERVALO = 60  # segundos
+PEDIDOS_A_CADA = timedelta(minutes=15)  # > 5 min de inatividade do Neon: o banco dorme entre consultas
+PEDIDOS_DAS, PEDIDOS_ATE = 7, 23  # horas de Brasília em que o botão costuma ser usado
 API = "https://api.github.com"
 
 
@@ -91,12 +97,25 @@ def atender_pedidos(conn, gh: GitHub) -> int:
     return len(ids)
 
 
-def ciclo(conn, gh: GitHub, agora: datetime) -> None:
+def deve_ver_pedidos(agora: datetime, ultima_vez: datetime | None) -> bool:
+    """Consulta os pedidos só no horário de uso e no máximo a cada 15 min (decisão 0019)."""
+    hora = agora.astimezone(BRT).hour
+    if not PEDIDOS_DAS <= hora < PEDIDOS_ATE:
+        return False
+    return ultima_vez is None or agora - ultima_vez >= PEDIDOS_A_CADA
+
+
+def ver_pedidos(url: str, gh: GitHub) -> int:
+    """Conexão curta: abre, atende os pedidos pendentes e fecha."""
+    with db.connect(url) as conn:
+        return atender_pedidos(conn, gh)
+
+
+def ciclo(gh: GitHub, agora: datetime) -> None:
     inicios = [_quando(x) for x in gh.execucoes("coleta.yml", 10)]
     if precisa_coletar(agora, inicios):
         gh.disparar("coleta.yml", {"gatilho": "agenda"})
         print(f"::notice::coleta disparada para o horário {ultimo_horario(agora):%H:%M}", flush=True)
-    atender_pedidos(conn, gh)
 
 
 def main() -> None:
@@ -116,16 +135,22 @@ def main() -> None:
         print("::notice::já há um relógio rodando; este sai sem fazer nada")
         return
 
+    url = os.environ["DATABASE_URL"]
     fim = datetime.now(timezone.utc) + DURACAO
-    with db.connect(os.environ["DATABASE_URL"]) as conn:
-        db.apply_migrations(conn)
-        while datetime.now(timezone.utc) < fim:
+    ultima_vez: datetime | None = None
+    while datetime.now(timezone.utc) < fim:
+        agora = datetime.now(timezone.utc)
+        try:
+            ciclo(gh, agora)
+        except Exception as e:  # um erro passageiro não derruba o relógio; fica no log
+            print(f"::warning::ciclo do relógio falhou: {e}", flush=True)
+        if deve_ver_pedidos(agora, ultima_vez):
+            ultima_vez = agora
             try:
-                ciclo(conn, gh, datetime.now(timezone.utc))
-            except Exception as e:  # um erro passageiro não derruba o relógio; fica no log
-                conn.rollback()
-                print(f"::warning::ciclo do relógio falhou: {e}", flush=True)
-            time.sleep(INTERVALO)
+                ver_pedidos(url, gh)
+            except Exception as e:  # banco fora do ar não impede a coleta agendada
+                print(f"::warning::não consegui ler os pedidos do botão: {e}", flush=True)
+        time.sleep(INTERVALO)
     gh.disparar("relogio.yml", {"continuacao": "true"})
     print("::notice::relógio encerrado; próximo disparado")
 
